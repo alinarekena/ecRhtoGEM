@@ -5,7 +5,6 @@ disp(model)
 %% Set glucose bound to zero and xylose as a carbon source
 printConstraints(model,-1000,1000);
 model = changeRxnBounds(model, {'r_1714'},0,'l');      %D-glucose exchange
-%model = changeRxnBounds(model, {'r_4046'},0,'l');     %NGAM reaction
 
 model = changeRxnBounds(model, {'r_1718'},-1.74,'l');  %D-xylose exchange
 

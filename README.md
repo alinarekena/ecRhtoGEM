@@ -2,7 +2,7 @@
 ### Brief repository description:
 * This repository contains the work on metabolic engineering of oleaginous, non-conventional yeast *R.toruloides* using genome-scale modelling.
 
-* Repository consists of model files, scripts and files for visualisations of microbial metabolic networks.
+* Repository consists of code, data, model files and result files that can be also used for visualising metabolic networks.
 
 #### Model files (xml, xlsx, mat, json)
 * As a starting point for this work, a metabolic genome-scale model, named **rhto-GEM**, developed by [Tiukova et al. 2019](https://onlinelibrary.wiley.com/doi/abs/10.1002/bit.27162), was used.
@@ -18,5 +18,11 @@
 * The results were directly visualised in Jupyter Notebook using Escher Python package.
 * The documentation of Escher is browseable [here](https://escher.readthedocs.io/en/latest/).
 
+
+### Instructions:
+* `edit_rhtoGEM.m`: run this script to prepare the initial rhto model for upgrading with enzymatic constraints.
+* `reconstruct_ecRhtoGEM.m`: generate carbon source specific enzyme-constrained models with proteomics data integration. Models are reconstructed based on optimized parameters, including manually curated enzymatic kcat values as provided in `manualModifications.m`. Model reconstruction involves the following steps: 1) `geckomat/enhanceGEM.m` pipeline which creates the first version of ec-model with an enzyme pool used for screening required kcat modifications; 2) `gecomat/utilities/integrate_proteomics/generate_protModels.m` pipeline which sets constraints on high-quality measured individual enzymes from the provided proteomics dataset; 3) adding ribosomal subunits to the ec-models. In `results/enhanceGEM_pipeline` is written the top used enzymes of the protein pool according to the FBA analysis for experimental conditions. In `results/generate_protModels_pipeline` is written which enzyme abundances were automatically modified in order to reach the experimental conditions. In `results/ribosome_integration` is written which subunit abundances were flexibilized in order to reach experimental conditions.
+* `enzymeUsage.m`: run this script to generate flux balance analysis and enzyme usage results which are stored in `results/modelSimulation`.
+
 ##### Last update:
-2020-04-09
+2020-09-22

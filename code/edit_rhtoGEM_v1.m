@@ -2,10 +2,10 @@
 % edit_rhtoGEM
 %
 %   This script prepares the original rhtoGEM (from Tiukova et al. 2019)
-%   for the integration of enzymatic constraints. Sets the carbon source,
+%   for the integration of enzymatic constraints. Sets the carbon source uptake,
 %   adds D-arabinitol pathway and makes some other minor changes.
 %
-%   Last modified: 2020-09-22
+%   Last modified: 2020-09-25
 
 code = pwd();
 
@@ -15,15 +15,20 @@ disp(model)
 
 %% Set glucose bound to zero and xylose as a carbon source
 printConstraints(model,-1000,1000);
+% XP1:
 model = changeRxnBounds(model, {'r_1714'},0,'l');      %D-glucose exchange
-
 model = changeRxnBounds(model, {'r_1718'},-1.74,'l');  %D-xylose exchange
-
-%% If separate base model for xylose P3 is to be created, then change bounds
+% XP3:
+%model = changeRxnBounds(model, {'r_1714'},0,'l');
 %model = changeRxnBounds(model, {'r_2104'},-0.039,'l'); %xylitol exchange
 %model = changeRxnBounds(model, {'r_4340'},-0.142,'l');%D-arabinitol
 %exchange
-%printConstraints(model,-1000,1000);
+% GNexc:
+model = changeRxnBounds(model, {'r_1714'},-2.6,'l'); 
+% ANexc:
+model = changeRxnBounds(model, {'r_1634'},-6.9,'l'); 
+
+printConstraints(model,-1000,1000);
 
 %% Introduce a set of reactions for D-arabinitol
 % Define reactions equations
@@ -80,9 +85,14 @@ geneAssoc = 'RHTO_03646';
 model = changeGeneAssoc(model,rxnID,geneAssoc);
 
 %% Save new models
+% XP1:
 exportToExcelFormat(model,'../models/rhto_edit_v1_XP1.xlsx')
 exportModel(model,'../models/rhto_edit_v1_XP1.xml')
 save('../models/rhto_edit_v1_XP1.mat','model')
+% GNexc:
+exportToExcelFormat(model,'../models/rhto_edit_GNexc.xlsx')
+exportModel(model,'../models/rhto_edit_GNexc.xml')
+save('../models/rhto_edit_GNexc.mat','model')
 
 clear geneAssoc genesToAdd grRules metsToAdd
 clear r_4339 r_4340 rxnGeneMat rxnID rxnsToAdd t_0883

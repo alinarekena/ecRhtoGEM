@@ -9,11 +9,11 @@
 
 %% Load models
 
-load('../models/ecModel_P_XP1.mat')
+load('../models/ecModel_P_Xexp.mat')
 
-printConstraints(ecModelP_XP1,-1000,1000); % check that model is constrained by experimental data
+printConstraints(ecModelP_Xexp,-1000,1000); % check that model is constrained by experimental data
 
-ecModels{1}=ecModelP_XP1;
+ecModels{1}=ecModelP_Xexp;
 
 %% Get enzymes usages to each reaction
 for i=1:1
@@ -39,7 +39,7 @@ for i=1:1
 end
 
 %% All usage per subSystem
-head={'protID','geneID','protName','capUse_XP1','absUse_XP1','UB_XP1'};
+head={'protID','geneID','protName','capUse_Xexp','absUse_Xexp','UB_Xexp'};
 out=cell2table(out,'VariableNames',head);
 writetable(out,fullfile('..','results','modelSimulation','enzymeUsages.txt'),'Delimiter','\t')
 

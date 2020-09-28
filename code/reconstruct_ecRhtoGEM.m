@@ -26,46 +26,45 @@ git('pull')
 cd ..
 
 % Replace custom GECKO scripts
-fileNames = struct2cell(dir('customGECKO_XP1_v2_C'));
+fileNames = struct2cell(dir('customGECKO_Xexp_v2_C'));
 fileNames = fileNames(1,:);
 fileNames(startsWith(fileNames,'.')) = [];
 for i = 1:length(fileNames)
     GECKO_path = dir(['GECKO/**/' fileNames{i}]);
-    copyfile(['customGECKO_XP1_v2_C' filesep fileNames{i}],GECKO_path.folder)
+    copyfile(['customGECKO_Xexp_v2_C' filesep fileNames{i}],GECKO_path.folder)
+    disp(['Replaced ' fileNames{i} ' at ' GECKO_path.folder '\'])
+end
+
+% Replace custom GECKO scripts
+fileNames = struct2cell(dir('customGECKO_Gexp'));
+fileNames = fileNames(1,:);
+fileNames(startsWith(fileNames,'.')) = [];
+for i = 1:length(fileNames)
+    GECKO_path = dir(['GECKO/**/' fileNames{i}]);
+    copyfile(['customGECKO_Gexp' filesep fileNames{i}],GECKO_path.folder)
     disp(['Replaced ' fileNames{i} ' at ' GECKO_path.folder '\'])
 end
 
 delete relative_proteomics.txt
-copyfile('customGECKO_XP1_v2_C/relative_proteomics.txt','GECKO/Databases','f')
+copyfile('customGECKO_Xexp_v2_C/relative_proteomics.txt','GECKO/Databases','f')
 delete GECKO/Databases/prot_abundance.txt
 
 %% Load model
-model    = load('models/rhto_edit_v1_XP1.mat');
+model    = load('models/model_edit_Xexp.mat');
 model    = model.model;
 modelVer = model.description(strfind(model.description,'_v')+1:end);
 
-%% I.enhanceGEM pipeline: checklist for GECKO
-%
-%   /databases: uniprot.tab, relative_proteomics.txt, chemostatData.tsv;
-%   /geckomat/getModelParameters.m: sigma, Ptot, gR_exp, c_source,
-%   exch_name{2};
-%   /geckomat/enhanceGEM.m: disp(['Sigma factor (not fitted)...
-%   /geckomat/limit_proteins/getConstrainedModel.m: OptSigma=sigma;
-%   ecModel_batch=...currentEnzymeUB;
-%   /geckomat/kcat_sensitivity_analysis/changeMedia_batch.m: %block xylose
-%   and oxygen production;
-%   /geckomat/change_model/manualModifications.m: %growth limiting Kcats
-%   section;
-%
-%% Run GECKO/enhanceGEM pipeline
+%% I.enhanceGEM pipeline:
+
+% Run GECKO/enhanceGEM pipeline
 cd GECKO
 GECKOver = git('describe --tags');
 cd geckomat/get_enzyme_data
 updateDatabases;
 cd ..
 [ecModel,ecModel_batch] = enhanceGEM(model,'COBRA','ecYeastGEM',modelVer);
-save('../../models/ecModel_XP1_v2_C.mat','ecModel')
-save('../../models/ecModel_batch_XP1_v2_C.mat','ecModel_batch')
+save('../../models/ecModel_Xexp_v2_C.mat','ecModel')
+save('../../models/ecModel_batch_Xexp_v2_C.mat','ecModel_batch')
 
 % Check model solutions: set experimental conditions
 printConstraints(ecModel_batch,-1000,1000);
@@ -78,7 +77,7 @@ printConstraints(tempModel,-1000,1000);
 solveLP(tempModel,1)
 % 1. fluxes
 %printFluxVector(tempModel, ans.x, 'true', 'true');
-printFluxes(tempModel,ans.x,false,0,fullfile('../..','results','enhanceGEM_pipeline',['allFluxes_XP1_v2_C.csv']),'%rxnID\t%rxnName\t%eqn\t%flux\n');
+printFluxes(tempModel,ans.x,false,0,fullfile('../..','results','enhanceGEM_pipeline',['allFluxes_Xexp_v2_C.csv']),'%rxnID\t%rxnName\t%eqn\t%flux\n');
 % 2. top used enzymes (how to save?)
 %topUsedEnzymes(ans.x,tempModel,{''},{''},false)
 topUsedEnzymes(ans.x,tempModel,{''},{''})
@@ -90,30 +89,23 @@ topUsedEnzymes(ans.x,tempModel,{''},{''})
 % protein pool, proceed with the generate_protModels pipeline for the
 % proteomics integration.
 
-save('../../models/ecModel_batch_XP1_v2_C_tempModel.mat','tempModel')
-exportToExcelFormat(tempModel,'../../models/ecModel_batch_XP1_v2_C_tempModel.xlsx')
+save('../../models/ecModel_batch_Xexp_v2_C_tempModel.mat','tempModel')
+exportToExcelFormat(tempModel,'../../models/ecModel_batch_Xexp_v2_C_tempModel.xlsx')
 cd ../..
 
-%% II.generate_protModels pipeline: checklist for GECKO
-%
-%   /databases: abs_proteomics.txt, fermentationData.txt,
-%   chemostatData.tsv and relative_proteomics.txt (for the protein pool);
-%   /geckomat/getModelParameters.m: sigma=1, Ptot, gR_exp, c_source,
-%   exch_names{2};
-%   /geckomat/kcat_sensitivity_analysis/changeMedia_batch.m: %block glucose
-%   and oxygen production;
-%   
+%% II.generate_protModels pipeline:
+
 % Replace custom GECKO scripts
-fileNames = struct2cell(dir('customGECKO_XP1_v2_C_proteomics'));
+fileNames = struct2cell(dir('customGECKO_Xexp_v2_C_proteomics'));
 fileNames = fileNames(1,:);
 fileNames(startsWith(fileNames,'.')) = [];
 for i = 1:length(fileNames)
     GECKO_path = dir(['GECKO/**/' fileNames{i}]);
-    copyfile(['customGECKO_XP1_v2_C_proteomics' filesep fileNames{i}],GECKO_path.folder)
+    copyfile(['customGECKO_Xexp_v2_C_proteomics' filesep fileNames{i}],GECKO_path.folder)
     disp(['Replaced ' fileNames{i} ' at ' GECKO_path.folder '\'])
 end
 
-%% generate_protModels pipeline: incorporate proteomics
+% Incorporate proteomics
 
 grouping   = [3];   %Our dataset contains three replicates per condition
 flexFactor = 1.05;  %Allowable flexibilization factor for fixing carbon uptake rate
@@ -121,13 +113,13 @@ flexFactor = 1.05;  %Allowable flexibilization factor for fixing carbon uptake r
 cd GECKO/geckomat/utilities/integrate_proteomics
 generate_protModels(ecModel,grouping,'ecYeastGEM',ecModel_batch);
 
-load('../../../models/prot_constrained/ecYeastGEM/ecYeastGEM_XP1.mat');
-save('../../../../models/ecModelP_XP1_v2_C.mat','ecModelP')
+load('../../../models/prot_constrained/ecYeastGEM/ecYeastGEM_Xexp.mat');
+save('../../../../models/ecModelP_Xexp_v2_C.mat','ecModelP')
 
 % Run flux balance analysis and save results
 % 1. Model information, modified enzymes 2nd round of auto flexibilization,
 % etc.
-movefile ../../../models/prot_constrained/ecYeastGEM/ ../../../../results/generate_protModels_pipeline
+movefile ../../../models/prot_constrained/ecYeastGEM/ ../../../../results/generate_protModels_pipeline_auto
 delete ../../../../results/generate_protModels_pipeline/ecYeastGEM_XP1.mat
 % 2. Auto-flexibilized enzymes from 1st round (how to save? currently
 % appears only in command window, "Limiting abundance for...")
@@ -149,11 +141,11 @@ printConstraints(tempModel,-1000,1000);
 solveLP(tempModel,1)
 % 3. fluxes
 %printFluxVector(tempModel, ans.x, 'true', 'true');
-printFluxes(tempModel,ans.x,false,0,fullfile('../../../..','results','generate_protModels_pipeline',['allFluxes_XP1_v2_C.csv']),'%rxnID\t%rxnName\t%eqn\t%flux\n');
+printFluxes(tempModel,ans.x,false,0,fullfile('../../../..','results','generate_protModels_pipeline',['allFluxes_Xexp_v2_C.csv']),'%rxnID\t%rxnName\t%eqn\t%flux\n');
 
-save('../../../../models/ecModelP_XP1_v2_C_tempModel.mat','tempModel')
-exportToExcelFormat(tempModel,'../../../../models/ecModelP_XP1_v2_C_tempModel.xlsx')
-cd
+save('../../../../models/ecModelP_Xexp_v2_C_tempModel.mat','tempModel')
+exportToExcelFormat(tempModel,'../../../../models/ecModelP_Xexp_v2_C_tempModel.xlsx')
+
 clear fileNames flexFactor grouping i
 
 %% III.Add ribosome subunits
@@ -161,6 +153,8 @@ clear fileNames flexFactor grouping i
 %Load proteomics data
 fID       = fopen('../../../databases/abs_proteomics.txt');
 prot.cond = textscan(fID,['%s' repmat(' %s',1,4)],1);
+% Note! In case dataset contains zeros instead of NA, have to execute few
+% more lines of code at ksdensity step later in the script
 prot.data = textscan(fID,['%s %s' repmat(' %f',1,3)],'TreatAsEmpty',{'NA','na','NaN'});
 prot.cond = [prot.cond{3:end}];
 prot.IDs  = prot.data{1};
@@ -221,14 +215,22 @@ repRibo.protein=ribo(repRibo.dataIdx>0);
 repRibo.dataIdx(repRibo.dataIdx==0)=[];
 repRibo.avgLevel=mean(prot.data(repRibo.dataIdx,:),2);
 
+% Note! next 6 lines are introduced for data containing zeros
+rmRibo=repRibo.avgLevel>0 | isnan(repRibo.avgLevel); %keep only abundances >0
+ribo=repRibo.protein(rmRibo); %get IDs of abundances >0, 'protein' means IDs
+
+[~,repRibo.dataIdx]=ismember(ribo,prot.IDs);
+repRibo.protein=ribo(repRibo.dataIdx>0);
+repRibo.dataIdx(repRibo.dataIdx==0)=[];
+repRibo.avgLevel=mean(prot.data(repRibo.dataIdx,:),2); %create 'double' structure for average abundances
+
 %Density plot to see distribution of subunit abundances
 [f,xi]=ksdensity(log10(repRibo.avgLevel),'Bandwidth',0.1);
-% why f is NaN?
 plot(xi,f);
 xlabel('Subunit abundance (log10(mmol/gDCW))');
 ylabel('Density');
 title('Distribution of average ribosomal subunit abundances');
-saveas(gca,fullfile('..','results','modelGeneration','average_riboSubunit_abundance.pdf'));
+saveas(gca,fullfile('../../../..','results','ribosome_integration','average_riboSubunit_abundance.jpg'));
 
 %Only include ribosomal subunite with abundance over 1e-5 mmol/gDCW 
 rmRibo=repRibo.avgLevel<1e-5 | isnan(repRibo.avgLevel);
@@ -335,7 +337,7 @@ fprintf(fid,'protein_IDs previous_values modified_values condition\n');
 fprintf(fid,'%s %f %f %s\n',adjusted{:});
 fclose(fid);
 
-exportToExcelFormat(ecModelP_XP1,'../../../../models/ecModel_P_XP1.xlsx')
+exportToExcelFormat(ecModelP_Xexp,'../../../../models/ecModel_P_Xexp.xlsx')
 
 clear cond abundances aaMetIdx filtAbundances i j genesToAdd metsToAdd mmolAA
 clear protId prot pIDs pathways MWs model enzGenes enzNames enzAdjust protMetIdx

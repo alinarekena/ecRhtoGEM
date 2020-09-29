@@ -1,15 +1,15 @@
 # This script takes the enzyme usage data from ec-models and plots this in various ways
 #install.packages("tidyverse") # Install tidyverse if required
-#library(tidyverse)
+library(tidyverse)             # for write_delim
 #install.packages("magrittr")
-#library(dplyr)
+library(dplyr)                 # for mutate_if
 #install.packages("dplyr")
 #install.packages("readr")
 #library(readr)
 #library(tidyr)
 #library(ggplot2)
 # Adjust to the correct directory 
-setwd("~/Documents/GitHub/ecRhtoGEM/results/modelSimulation")
+setwd("~/Documents/GitHub/ecRhtoGEM/results/modelSimulation")  # directory path for Mac computers
 
 # Load usage information and remove proteins with always zero usage
 capUse <- read.delim('enzymeUsages.txt')
@@ -32,11 +32,19 @@ write_delim(capUse,'../../results/modelSimulation/capUsage.txt',delim = '\t')
 
 capUse <- gather(capUse, 'Condition', 'Usage', 4:4)
 capUse$GOterm <- factor(capUse$GOterm, levels=c('glycolysis','TCA cycle','ETC','PPP','Ribosome'))
-capUse$Condition <- factor(capUse$Condition, levels=c('XP1'))
+capUse$Condition <- factor(capUse$Condition, levels=c('Xexp'))
 
 plot1<-capUse[capUse$GOterm %in% c('glycolysis','TCA cycle','ETC','PPP','Ribosome'),]
+
+#plot1_annot <- plot1 %>%
+#  count(GOterm) %>%
+#  mutate(
+#    label = paste0("n = ", n)
+#  )
+
 ggplot(plot1, aes(x = Condition, y = Usage, color=GOterm)) +
   geom_boxplot(lwd = 0.35) +
+#  geom_text(aes(Condition, y = Inf, label = label), data = plot1_annot, hjust = 0.05, vjust = +1) +
   scale_color_manual(values=c('#CBBBA0','#1D1D1B','#1D71B8','#878787','#FF0000')) +
   facet_grid(. ~ GOterm) +
   labs(x = '', y = 'Capacity usage (%)') + 

@@ -35,16 +35,6 @@ for i = 1:length(fileNames)
     disp(['Replaced ' fileNames{i} ' at ' GECKO_path.folder '\'])
 end
 
-% Replace custom GECKO scripts
-fileNames = struct2cell(dir('customGECKO_Gexp'));
-fileNames = fileNames(1,:);
-fileNames(startsWith(fileNames,'.')) = [];
-for i = 1:length(fileNames)
-    GECKO_path = dir(['GECKO/**/' fileNames{i}]);
-    copyfile(['customGECKO_Gexp' filesep fileNames{i}],GECKO_path.folder)
-    disp(['Replaced ' fileNames{i} ' at ' GECKO_path.folder '\'])
-end
-
 delete relative_proteomics.txt
 copyfile('customGECKO_Xexp_v2_C/relative_proteomics.txt','GECKO/Databases','f')
 delete GECKO/Databases/prot_abundance.txt
@@ -107,12 +97,15 @@ end
 
 % Incorporate proteomics
 
-grouping   = [3];   %Our dataset contains three replicates per condition
+grouping   = [2];   %Number represents replicates per condition, count of numbers - how many conditions
 flexFactor = 1.05;  %Allowable flexibilization factor for fixing carbon uptake rate
 
 cd GECKO/geckomat/utilities/integrate_proteomics
 generate_protModels(ecModel,grouping,'ecYeastGEM',ecModel_batch);
 
+%saveas(gca,fullfile('../../../..','results','generate_protModels_pipeline','abundances.jpg'));
+%saveas(gca,fullfile('../../../..','results','generate_protModels_pipeline','usages.jpg'));
+%saveas(gca,fullfile('../../../..','results','generate_protModels_pipeline','gam_fitting.jpg'));
 load('../../../models/prot_constrained/ecYeastGEM/ecYeastGEM_Xexp.mat');
 save('../../../../models/ecModelP_Xexp_v2_C.mat','ecModelP')
 
@@ -120,7 +113,7 @@ save('../../../../models/ecModelP_Xexp_v2_C.mat','ecModelP')
 % 1. Model information, modified enzymes 2nd round of auto flexibilization,
 % etc.
 movefile ../../../models/prot_constrained/ecYeastGEM/ ../../../../results/generate_protModels_pipeline_auto
-delete ../../../../results/generate_protModels_pipeline/ecYeastGEM_XP1.mat
+delete ../../../../results/generate_protModels_pipeline/ecYeastGEM_Xexp.mat
 % 2. Auto-flexibilized enzymes from 1st round (how to save? currently
 % appears only in command window, "Limiting abundance for...")
 
@@ -152,10 +145,8 @@ clear fileNames flexFactor grouping i
 
 %Load proteomics data
 fID       = fopen('../../../databases/abs_proteomics.txt');
-prot.cond = textscan(fID,['%s' repmat(' %s',1,4)],1);
-% Note! In case dataset contains zeros instead of NA, have to execute few
-% more lines of code at ksdensity step later in the script
-prot.data = textscan(fID,['%s %s' repmat(' %f',1,3)],'TreatAsEmpty',{'NA','na','NaN'});
+prot.cond = textscan(fID,['%s' repmat(' %s',1,3)],1);
+prot.data = textscan(fID,['%s %s' repmat(' %f',1,2)],'TreatAsEmpty',{'NA','na','NaN'});
 prot.cond = [prot.cond{3:end}];
 prot.IDs  = prot.data{1};
 prot.data = cell2mat(prot.data(3:end));
@@ -184,7 +175,7 @@ cd utilities/integrate_proteomics
 
 %Set some additional parameters
 oxPhos = ecModelP.rxns(startsWith(ecModelP.rxns,params.oxPhos));
-grouping=[3];
+grouping=[2];
 clear repl
 for i=1:length(grouping)
     try
@@ -214,15 +205,6 @@ ribo=data{1};
 repRibo.protein=ribo(repRibo.dataIdx>0);
 repRibo.dataIdx(repRibo.dataIdx==0)=[];
 repRibo.avgLevel=mean(prot.data(repRibo.dataIdx,:),2);
-
-% Note! next 6 lines are introduced for data containing zeros
-rmRibo=repRibo.avgLevel>0 | isnan(repRibo.avgLevel); %keep only abundances >0
-ribo=repRibo.protein(rmRibo); %get IDs of abundances >0, 'protein' means IDs
-
-[~,repRibo.dataIdx]=ismember(ribo,prot.IDs);
-repRibo.protein=ribo(repRibo.dataIdx>0);
-repRibo.dataIdx(repRibo.dataIdx==0)=[];
-repRibo.avgLevel=mean(prot.data(repRibo.dataIdx,:),2); %create 'double' structure for average abundances
 
 %Density plot to see distribution of subunit abundances
 [f,xi]=ksdensity(log10(repRibo.avgLevel),'Bandwidth',0.1);

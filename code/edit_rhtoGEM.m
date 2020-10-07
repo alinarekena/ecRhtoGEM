@@ -12,22 +12,6 @@ code = pwd();
 %% Load the model MATLAB structure
 load('../models/rhto.mat')
 disp(model)
-
-%% Set glucose bound to zero and xylose as a carbon source
-printConstraints(model,-1000,1000);
-% Xexp:
-model = changeRxnBounds(model, {'r_1714'},0,'l');      %D-glucose exchange
-model = changeRxnBounds(model, {'r_1718'},-1.74,'l');  %D-xylose exchange
-% XP3:
-%model = changeRxnBounds(model, {'r_1714'},0,'l');
-%model = changeRxnBounds(model, {'r_2104'},-0.039,'l'); %xylitol exchange
-%model = changeRxnBounds(model, {'r_4340'},-0.142,'l');%D-arabinitol
-%exchange
-% Gexp:
-model = changeRxnBounds(model, {'r_1714'},-2.6,'l'); 
-% Aexp:
-model = changeRxnBounds(model, {'r_1634'},-6.9,'l'); 
-
 printConstraints(model,-1000,1000);
 
 %% Introduce a set of reactions for D-arabinitol
@@ -68,10 +52,6 @@ model = addRxns(model,rxnsToAdd,3);
 model.grRules     = grRules;
 model.rxnGeneMat  = rxnGeneMat;
 
-
-%model = changeRxnBounds(model, {'r_4340'},-0.142,'l');%D-arabinitol
-printConstraints(model,-1000,1000);
-
 %% Change gene associations for the following reactions
 %String or cell array of reaction IDs
 rxnID = 'r_0697';
@@ -84,15 +64,11 @@ rxnID = {'t_0240' 't_0241'};
 geneAssoc = 'RHTO_03646';
 model = changeGeneAssoc(model,rxnID,geneAssoc);
 
-%% Save new models
-% Xexp:
-exportToExcelFormat(model,'../models/model_edit_Xexp.xlsx')
-exportModel(model,'../models/model_edit_Xexp.xml')
-save('../models/model_edit_Xexp.mat','model')
-% Gexp:
-exportToExcelFormat(model,'../models/rhto_edit_Gexp.xlsx')
-exportModel(model,'../models/rhto_edit_Gexp.xml')
-save('../models/rhto_edit_Gexp.mat','model')
+%% Save models
+
+exportToExcelFormat(model,'../models/model_edit.xlsx')
+exportModel(model,'../models/model_edit.xml')
+save('../models/model_edit.mat','model')
 
 clear geneAssoc genesToAdd grRules metsToAdd
 clear r_4339 r_4340 rxnGeneMat rxnID rxnsToAdd t_0883

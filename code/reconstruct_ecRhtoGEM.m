@@ -11,6 +11,39 @@
 %   Last modified: 2020-09-22
 %
 
+%% Load model
+model    = load('models/model_edit.mat');
+model    = model.model;
+modelVer = model.description(strfind(model.description,'_v')+1:end);
+
+% Next, constrain the model to generate ecModel. For that you have to set
+% xylose uptake only. The rest of the bounds is for testing if normal
+% rhtoGEM works.
+
+% Xexp:
+model = changeRxnBounds(model, {'r_1714'},0,'l');      %D-glucose exchange
+model = changeRxnBounds(model, {'r_1718'},-1.74,'l');  %D-xylose exchange
+model = changeRxnBounds(model, {'r_2104'},0.228,'b');  %xylitol exchange
+model = changeRxnBounds(model, {'r_4340'},0.372,'b');  %D-arabinitol
+
+% XNlim:
+model = changeRxnBounds(model, {'r_1718'},-0.4345,'l');
+model = changeRxnBounds(model, {'r_2104'},0.004,'b');
+model = changeRxnBounds(model, {'r_4340'},0.077,'b');
+
+% XP3:
+%model = changeRxnBounds(model, {'r_1714'},0,'l');
+%model = changeRxnBounds(model, {'r_2104'},-0.039,'l');
+%model = changeRxnBounds(model, {'r_4340'},-0.142,'l');
+
+% Gexp:
+model = changeRxnBounds(model, {'r_1714'},-2.6,'l'); 
+
+% Aexp:
+model = changeRxnBounds(model, {'r_1634'},-6.9,'l'); 
+
+printConstraints(model,-1000,1000);
+
 %% Prepare software
 code = pwd();
 
@@ -26,23 +59,18 @@ git('pull')
 cd ..
 
 % Replace custom GECKO scripts
-fileNames = struct2cell(dir('customGECKO_Xexp_v2_C'));
+fileNames = struct2cell(dir('customGECKO'));
 fileNames = fileNames(1,:);
 fileNames(startsWith(fileNames,'.')) = [];
 for i = 1:length(fileNames)
     GECKO_path = dir(['GECKO/**/' fileNames{i}]);
-    copyfile(['customGECKO_Xexp_v2_C' filesep fileNames{i}],GECKO_path.folder)
+    copyfile(['customGECKO' filesep fileNames{i}],GECKO_path.folder)
     disp(['Replaced ' fileNames{i} ' at ' GECKO_path.folder '\'])
 end
 
 delete relative_proteomics.txt
-copyfile('customGECKO_Xexp_v2_C/relative_proteomics.txt','GECKO/Databases','f')
+copyfile('customGECKO/relative_proteomics.txt','GECKO/Databases','f')
 delete GECKO/Databases/prot_abundance.txt
-
-%% Load model
-model    = load('models/model_edit_Xexp.mat');
-model    = model.model;
-modelVer = model.description(strfind(model.description,'_v')+1:end);
 
 %% I.enhanceGEM pipeline:
 
@@ -53,24 +81,31 @@ cd geckomat/get_enzyme_data
 updateDatabases;
 cd ..
 [ecModel,ecModel_batch] = enhanceGEM(model,'COBRA','ecYeastGEM',modelVer);
-save('../../models/ecModel_Xexp_v2_C.mat','ecModel')
-save('../../models/ecModel_batch_Xexp_v2_C.mat','ecModel_batch')
+save('../../models/ecModel.mat','ecModel')
+save('../../models/ecModel_batch.mat','ecModel_batch')
 
-% Check model solutions: set experimental conditions
+% ecModel contains manually curated Kcat values, previously tested for each condition
+% Check the solution of each condition by setting experimental data
+% Xexp:
 printConstraints(ecModel_batch,-1000,1000);
-tempModel = setParam(ecModel_batch,'ub','r_1718_REV',1.74)  %xylose uptake
+tempModel = setParam(ecModel_batch,'ub','r_1718_REV',1.74)  %D-xylose uptake
 tempModel = setParam(tempModel,'eq','r_2104',0.228)         %xylitol exchange
 tempModel = setParam(tempModel,'eq','r_4340',0.372)         %D-arabinitol
+% XNlim:
+tempModel = setParam(ecModel_batch,'ub','r_1718_REV',0.4345);
+tempModel = setParam(tempModel,'eq','r_2104',0.004);
+tempModel = setParam(tempModel,'eq','r_4340',0.077);
+
 printConstraints(tempModel,-1000,1000);
 
 % Run flux balance analysis and save results
 solveLP(tempModel,1)
 % 1. fluxes
-%printFluxVector(tempModel, ans.x, 'true', 'true');
+printFluxVector(tempModel, ans.x, 'true', 'true'); %or
 printFluxes(tempModel,ans.x,false,0,fullfile('../..','results','enhanceGEM_pipeline',['allFluxes_Xexp_v2_C.csv']),'%rxnID\t%rxnName\t%eqn\t%flux\n');
 % 2. top used enzymes (how to save?)
-%topUsedEnzymes(ans.x,tempModel,{''},{''},false)
-topUsedEnzymes(ans.x,tempModel,{''},{''})
+topUsedEnzymes(ans.x,tempModel,{''},{''},false)
+% topUsedEnzymes(ans.x,tempModel,{''},{''}) %How to write table?
 % 3. sigma fitted from previous optimization (already saved in
 % results/enhanceGEM_pipeline)
 
@@ -79,19 +114,19 @@ topUsedEnzymes(ans.x,tempModel,{''},{''})
 % protein pool, proceed with the generate_protModels pipeline for the
 % proteomics integration.
 
-save('../../models/ecModel_batch_Xexp_v2_C_tempModel.mat','tempModel')
-exportToExcelFormat(tempModel,'../../models/ecModel_batch_Xexp_v2_C_tempModel.xlsx')
+save('../../models/ecModel_batch_tempModel.mat','tempModel')
+exportToExcelFormat(tempModel,'../../models/ecModel_batch_tempModel.xlsx')
 cd ../..
 
 %% II.generate_protModels pipeline:
 
 % Replace custom GECKO scripts
-fileNames = struct2cell(dir('customGECKO_Xexp_v2_C_proteomics'));
+fileNames = struct2cell(dir('customGECKO_proteomics'));
 fileNames = fileNames(1,:);
 fileNames(startsWith(fileNames,'.')) = [];
 for i = 1:length(fileNames)
     GECKO_path = dir(['GECKO/**/' fileNames{i}]);
-    copyfile(['customGECKO_Xexp_v2_C_proteomics' filesep fileNames{i}],GECKO_path.folder)
+    copyfile(['customGECKO_proteomics' filesep fileNames{i}],GECKO_path.folder)
     disp(['Replaced ' fileNames{i} ' at ' GECKO_path.folder '\'])
 end
 

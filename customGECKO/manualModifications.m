@@ -135,13 +135,14 @@ end
 function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,modifications)
         newValue = [];
         reaction = string(reaction);
-        % [M7WT33//EC2.4.1.109] dolichyl-phosphate-mannose--protein
+        % 1. [M7WT33//EC2.4.1.109] dolichyl-phosphate-mannose--protein
         % mannosyltransferase (No2):
         % prev_Kcat:0.0053666 new_Kcat:0.0053667 CC:6.6589 Err:-81.3496%
         % No Kcats available in BRENDA; S.A. values for EC2.4.1.109 were
         % very low;
         % New Kcat chosen according to a wild card:
         % EC2.4.1.-/any/'substrate';
+        % Required for Xexp condition;
           if contains(reaction,'dolichyl-phosphate-mannose--protein mannosyltransferase')
               if strcmpi('prot_M7WT33',enzName)
                  % S.cerevisiae EC2.4.1.83 Kcat [2020-04-28];
@@ -159,12 +160,13 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
                   modifications{2} = [modifications{2}; reaction];
               end
           end
-        % [M7XI04/EC1.1.1.34] HMG-CoA reductase/ 3-hydroxy-3-methylglutaryl
+        % 2. [M7XI04/EC1.1.1.34] HMG-CoA reductase/ 3-hydroxy-3-methylglutaryl
         % coenzyme A reductase:
         % 1.7122e-01 of total protein pool at round A of ecRhtoGEM generation;
         % Higher than prev_Kcat not available in BRENDA (Rattus
         % Norvegicus).
         % New value of S.A. chosen according to: EC number/any organism;
+        % Required for Xexp condition;
           if (strcmpi('prot_M7XI04',enzName) && (contains(reaction,'hydroxymethylglutaryl CoA reductase')))
              %Homarus americanus S.A. [2020-05-14];
              %https://www.brenda-enzymes.org/literature.php?e=1.1.1.34&r=654546;
@@ -175,11 +177,12 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
              modifications{1} = [modifications{1}; 'M7XI04'];
              modifications{2} = [modifications{2}; reaction];
           end
-         % [M7XKV7//EC#:6.3.5.3] 5'-phosphoribosylformyl glycinamidine
+         % 3. [M7XKV7//EC#:6.3.5.3] 5'-phosphoribosylformyl glycinamidine
          % synthetase:
          % 8.4551e-02 of total protein pool at round A of ecRhtoGEM generation;
          % Higher than prev_Kcat not available in BRENDA (E.coli).
          % New value of S.A. chosen according to: EC number/any organism;
+         % Required for Xexp condition;
           if (strcmpi('prot_M7XKV7',enzName)) && (contains(reaction,'phosphoribosylformyl'))
              % E.coli S.A. [2020-04-28];
              % https://www.brenda-enzymes.org/literature.php?e=6.3.5.3&r=1670;
@@ -187,10 +190,11 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
              modifications{1} = [modifications{1}; 'M7XKV7'];
              modifications{2} = [modifications{2}; reaction];
           end
-        % [M7WFB4//EC#:2.4.1.34] 1,3-beta-glucan synthase (No1):
+        % 4. [M7WFB4//EC#:2.4.1.34] 1,3-beta-glucan synthase (No1):
         % 7.0144e-02 of total protein pool at round A of ecRhtoGEM generation;
         % No higher than prev_Kcat available in BRENDA (S.aureus).
         % New value of S.A. chosen according to: EC number/any organism;
+        % Required for Xexp condition;
           if (strcmpi('prot_M7WFB4',enzName)) && (contains(reaction,'1,3-beta-glucan synthase'))
              % S.cerevisiae S.A. [2020-04-28];
              % https://www.brenda-enzymes.org/literature.php?e=2.4.1.34&r=489076;
@@ -216,13 +220,14 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
               %modifications{1} = [modifications{1}; 'M7X0R7'];
               %modifications{2} = [modifications{2}; reaction];
           %end
-        % [M7XI95//EC#:1.14.19.1] Delta-9 fatty acid desaturase ER membrane
+        % 5. [M7XI95//EC#:1.14.19.1] Delta-9 fatty acid desaturase ER membrane
         % (No1); stearoyl- or oleoyl- or palmitoyl-CoA desaturase
         % (n-C18:0CoA -> n-C18:1CoA),(n-C18:1CoA -n-C18:2CoA),(n-C16:0CoA
         % -> n-C16:1CoA);
         % 2.6441e-02  of total protein pool (version B of ecModel);
         % Kcat values available in BRENDA were for Rattus norvegicus and
         % spinach. Further artificially increased. 10 times.
+        % Required for Xexp condition;
           if (strcmpi('prot_M7XI95',enzName)) && (contains(reaction,'-CoA desaturase'))
              % Spinacia oleracea [2020-05-01]
              % https://www.brenda-enzymes.org/literature.php?e=1.14.19.1&r=437670;
@@ -231,11 +236,12 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
              modifications{1} = [modifications{1}; 'M7XI95'];
              modifications{2} = [modifications{2}; reaction];
           end
-          % [M7WPW0/EC2.1.1.41] sterol 24-C-methyltransferase:
+          % 6. [M7WPW0/EC2.1.1.41] sterol 24-C-methyltransferase:
           % 2.3058e-02 of total protein pool (version B of ecModel);
           % prev_Kcat:0.013;
           % Higher than prev_Kcat not available in BRENDA (S.cerevisiae);
           % New value of S.A. chosen according to: EC number/any organism;
+          % Required for Xexp condition;
           if strcmpi('prot_M7WPW0',enzName) && contains(reaction,'24-sterol-c-methyltransferase')
               % S.cerevisiae S.A. [2020-05-01];
               % https://www.brenda-enzymes.org/literature.php?e=2.1.1.41&r=485321;
@@ -299,11 +305,12 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
               %modifications{1} = [modifications{1}; 'M7X5F4'];
               %modifications{2} = [modifications{2}; reaction];
           %end
-          % [M7WFJ0/EC2.3.1.35] Glutamate N-acetyltransferase/ ornithine
+          % 7. [M7WFJ0/EC2.3.1.35] Glutamate N-acetyltransferase/ ornithine
           % transacetylase (No1):
           % 3.1109e-02 of total protein pool (version B of ecModel); prev_Kcat:0.22;
           % No Kcats available in BRENDA.
           % New value of S.A. chosen according to: EC number/organism;
+          % Required for Xexp condition;
           if strcmpi('prot_M7WFJ0',enzName) && contains(reaction,'ornithine transacetylase (No1)')
              % S.cerevisiae S.A. [2020-05-01];
              % https://www.brenda-enzymes.org/literature.php?e=2.3.1.35&r=486801;
@@ -324,11 +331,12 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
                %%modifications{1} = [modifications{1}; 'M7X749'];
                %%modifications{2} = [modifications{2}; reaction];
           %%end
-          % [M7X6X3/EC4.2.1.3] aconitase/ aconitate hydratase:
+          % 8. [M7X6X3/EC4.2.1.3] aconitase/ aconitate hydratase:
           % 1.1823e-01 of total protein pool (version B of ecModel); prev_Kcat:5.2;
           % Higher than prev_Kcat not available in BRENDA (Salmonella
           % enterica subsp. enterica serovar Typhimurium;
           % New S.A. chosen;
+          % Required for Xexp condition;
           if strcmpi('prot_M7X6X3',enzName)
               if contains(reaction,'citrate to cis-aconitate(3-)')
                  % M.tuberculosis S.A. [2020-05-13];
@@ -614,7 +622,7 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
               %modifications{1} = [modifications{1}; 'M7WNB5'];
               %modifications{2} = [modifications{2}; reaction];
           %end
-          % [M7WG08/EC1.1.1.302]
+          % 9. [M7WG08/EC1.1.1.302]
           % 2,5-diamino-6-ribosylamino-4(3H)-pyrimidinone 5'-phosphate
           % reductase (NADPH):
           % 2.0551e-02 of total protein pool; prev_Kcat:0.0006;
@@ -622,6 +630,7 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
           % for Methanocaldococcus jannaschii 0.0008 (prev_Kcat calculated
           % from that);
           % Artificially increased 10 times;
+          % Required for Xexp condition;
           if strcmpi('prot_M7WG08',enzName) && contains(reaction,'2,5-diamino-6-ribosylamino-4(3H)-pyrimidinone')
               newValue      = -(10*0.0008*50*60)^-1;
               modifications{1} = [modifications{1}; 'M7WG08'];
@@ -669,10 +678,11 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
               %modifications{1} = [modifications{1}; 'M7WHZ8'];
               %modifications{2} = [modifications{2}; reaction];
           %end
-          % [M7X6B9/EC6.2.1.3] fatty-acid--CoA ligase:
+          % 10. [M7X6B9/EC6.2.1.3] fatty-acid--CoA ligase:
           % 6.5097e-02 of total protein pool (version B of ecModel); prev_Kcat: 0.029;
           % and [M7WNY8/EC6.2.1.3]; prev_Kcat:1.2;
           % No higher Kcats reported on BRENDA;
+          % Required for Xexp condition;
           if strcmpi('prot_M7WNY8',enzName) && contains(reaction,'fatty-acid--CoA ligase')
               % Y.lipolytica S.A. [2020-06-09];
               % https://www.brenda-enzymes.org/literature.php?e=6.2.1.3&r=759;
@@ -848,12 +858,13 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
                   %modifications{2} = [modifications{2}; reaction];
               %end
           %end
-          % [M7WT53/EC2.3.1.158] Phospholipid:diacylglycerol acyltransferase:
+          % 11. [M7WT53/EC2.3.1.158] Phospholipid:diacylglycerol acyltransferase:
           % 5.1163e-01 of total protein pool (B version of ecModel);
           % 3.0163e-01 of total protein pool (C version of ecModel);
           % prev_Kcat:0.00346; it's a specific activity of S.cerevisiae as
           % reported on BRENDA; No Kcats available on BRENDA;
           % Therefore, Kcat value artificially increased 10 and 100 times;
+          % Required for Xexp condition;
           if strcmpi('prot_M7WT53',enzName) && contains(reaction,'diacylglycerol')
               % S.cerevisiae S.A. [2020-07-12];
               % https://www.brenda-enzymes.org/literature.php?e=2.3.1.158&r=685341;
@@ -862,11 +873,12 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
               modifications{1} = [modifications{1}; 'M7WT53'];
               modifications{2} = [modifications{2}; reaction];
           end
-           % EC1.9.3.1 - cytochrome-c oxidase;
+           % 12. EC1.9.3.1 - cytochrome-c oxidase;
            % 0.034 to 0.086 % of total protein pool at version A;
            % prev_Kcat for M7WUI0 0.15634;
            % The highest available S.A. in BRENDA gives Kcat of 712.5 [1/s]
            % for S.cerevisiae;
+           % Required for Xexp condition;
           if contains(reaction,'ferrocytochrome-c:oxygen oxidoreductase')
               if strcmpi('prot_M7WUI0',enzName)
                  % S.cerevisiae Kcat [2020-05-08];

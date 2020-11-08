@@ -13,10 +13,10 @@ setwd("~/Documents/GitHub/ecRhtoGEM/results/modelSimulation")  # directory path 
 
 # Load usage information and remove proteins with always zero usage
 capUse <- read.delim('enzymeUsages.txt')
-capUse <- capUse[,1:4]
-capSum <- capUse[,4]
+capUse <- capUse[,1:5]
+capSum <- rowSums(capUse[,4:5])
 capUse <- capUse[!capSum==0,]
-capUse[,4:4] <- capUse[,4:4]*100
+capUse[,4:5] <- capUse[,4:5]*100
 
 # Plot based on GO term annotation as obtained from Uniprot (first rearrange data)
 GO <- read.delim('../../data/selectedAnnotation.txt', stringsAsFactors = F)
@@ -30,9 +30,9 @@ colnames(capUse) <- gsub('capUse_','',colnames(capUse))
 capUse <- capUse %>% mutate_if(is.numeric, round, digits = 3)
 write_delim(capUse,'../../results/modelSimulation/capUsage.txt',delim = '\t')
 
-capUse <- gather(capUse, 'Condition', 'Usage', 4:4)
+capUse <- gather(capUse, 'Condition', 'Usage', 4:5)
 capUse$GOterm <- factor(capUse$GOterm, levels=c('glycolysis','TCA cycle','ETC','PPP','Ribosome'))
-capUse$Condition <- factor(capUse$Condition, levels=c('Xexp'))
+capUse$Condition <- factor(capUse$Condition, levels=c('Xexp','XNlim'))
 
 plot1<-capUse[capUse$GOterm %in% c('glycolysis','TCA cycle','ETC','PPP','Ribosome'),]
 

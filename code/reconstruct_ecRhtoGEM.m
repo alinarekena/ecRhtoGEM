@@ -16,9 +16,15 @@ model    = load('models/model_edit.mat');
 model    = model.model;
 modelVer = model.description(strfind(model.description,'_v')+1:end);
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Following part should be taken out for final script; it's just testing
+% rhtoGEM
+
+%Don't constrain model except carbon source before ecModel reconstruction
+
 % Next, constrain the model to generate ecModel. For that you have to set
-% xylose uptake only. The rest of the bounds is for testing if normal
-% rhtoGEM works.
+% xylose uptake only. (all other constraints except carbon source will stay for the ecModel).
+% The rest of the bounds is for testing if normal rhtoGEM works.
 
 % Xexp:
 model = changeRxnBounds(model, {'r_1714'},0,'l');      %D-glucose exchange
@@ -36,11 +42,22 @@ model = changeRxnBounds(model, {'r_4340'},0.077,'b');
 %model = changeRxnBounds(model, {'r_2104'},-0.039,'l');
 %model = changeRxnBounds(model, {'r_4340'},-0.142,'l');
 
+% Aexp:
+model = changeRxnBounds(model, {'r_1718'},0,'l');
+model = changeRxnBounds(model, {'r_1634'},-6.941,'l'); % acetate exchange
+model = changeRxnBounds(model, {'r_1687'},0.127,'b');  % citrate(3-) exchange
+
+% ANlim:
+model = changeRxnBounds(model, {'r_1718'},0,'l');
+model = changeRxnBounds(model, {'r_1634'},-1.9706,'l'); % acetate exchange
+model = changeRxnBounds(model, {'r_1687'},-0.033,'b');  % citrate(3-) exchange
+
 % Gexp:
 model = changeRxnBounds(model, {'r_1714'},-2.6,'l'); 
+model = changeRxnBounds(model, {'r_1654'},0,'l');       % block ammonium uptake
+model = changeRxnBounds(model, {'r_2091'},-1000,'l');   % allow urea uptake
 
-% Aexp:
-model = changeRxnBounds(model, {'r_1634'},-6.9,'l'); 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 printConstraints(model,-1000,1000);
 
@@ -86,17 +103,37 @@ save('../../models/ecModel_batch.mat','ecModel_batch')
 
 % ecModel contains manually curated Kcat values, previously tested for each condition
 % Check the solution of each condition by setting experimental data
-% Xexp:
+
+%%% Xexp:
 printConstraints(ecModel_batch,-1000,1000);
 tempModel = setParam(ecModel_batch,'ub','r_1718_REV',1.74)  %D-xylose uptake
 tempModel = setParam(tempModel,'eq','r_2104',0.228)         %xylitol exchange
 tempModel = setParam(tempModel,'eq','r_4340',0.372)         %D-arabinitol
-% XNlim:
+
+%%% XNlim:
 tempModel = setParam(ecModel_batch,'ub','r_1718_REV',0.4345);
 tempModel = setParam(tempModel,'eq','r_2104',0.004);
 tempModel = setParam(tempModel,'eq','r_4340',0.077);
 
+%%% Aexp:
+tempModel = setParam(ecModel_batch,'ub','r_1634_REV',6.941) % acetate exchange
+%tempModel = setParam(ecModel_batch,'eq','r_1634_REV',6.941)
+%tempModel = setParam(tempModel,'eq','r_1634',0)
+%tempModel = setParam(tempModel,'ub','r_1718_REV',0)         % !!! block xylose uptake
+tempModel = setParam(tempModel,'eq','r_1687',0.127);        % citrate(3-) exchange
+
+%ANlim:
+printConstraints(ecModel_batch,-1000,1000);
+
+tempModel = setParam(ecModel_batch,'ub','r_1634_REV',1.9706)
+tempModel = setParam(tempModel,'eq','r_1687_REV',0.033);
+
 printConstraints(tempModel,-1000,1000);
+
+%Gexp
+tempModel = setParam(ecModel_batch,'ub','r_1714_REV',1.76)
+tempModel = setParam(tempModel,'ub','r_1654_REV',0);
+tempModel = setParam(tempModel,'ub','r_2091_REV',Inf);
 
 % Run flux balance analysis and save results
 solveLP(tempModel,1)
@@ -142,7 +179,11 @@ generate_protModels(ecModel,grouping,'ecYeastGEM',ecModel_batch);
 %saveas(gca,fullfile('../../../..','results','generate_protModels_pipeline','usages.jpg'));
 %saveas(gca,fullfile('../../../..','results','generate_protModels_pipeline','gam_fitting.jpg'));
 load('../../../models/prot_constrained/ecYeastGEM/ecYeastGEM_Xexp.mat');
-save('../../../../models/ecModelP_Xexp_v2_C.mat','ecModelP')
+load('../../../models/prot_constrained/ecYeastGEM/ecYeastGEM_XNlim.mat');
+load('../../../models/prot_constrained/ecYeastGEM/ecYeastGEM_Aexp.mat');
+load('../../../models/prot_constrained/ecYeastGEM/ecYeastGEM_ANlim.mat');
+load('../../../models/prot_constrained/ecYeastGEM/ecYeastGEM_Gexp.mat');
+save('../../../../models/ecModelP_XNlim.mat','ecModelP_XNlim')
 
 % Run flux balance analysis and save results
 % 1. Model information, modified enzymes 2nd round of auto flexibilization,
@@ -152,27 +193,100 @@ delete ../../../../results/generate_protModels_pipeline/ecYeastGEM_Xexp.mat
 % 2. Auto-flexibilized enzymes from 1st round (how to save? currently
 % appears only in command window, "Limiting abundance for...")
 
-checkObjective(ecModelP);
-ecModelP=changeObjective(ecModelP,'r_2111');
-printConstraints(ecModelP,-1000,1000);
-% set constraints according to experimental results (change from flexibilized
-% rates when model was generated)
-tempModel = setParam(ecModelP,'ub','r_1718_REV',1.74)  %xylose uptake
-tempModel = setParam(tempModel,'lb','r_1718_REV',0)
-tempModel = setParam(tempModel,'lb','r_2111',0)        %growth
-tempModel = setParam(tempModel,'lb','r_4041',0)        %biomass pseudoreaction
-tempModel = setParam(tempModel,'eq','r_2104',0.228)    %xylitol exchange
-tempModel = setParam(tempModel,'eq','r_4340',0.372)    %D-arabinitol
+%%% Xexp:
+printConstraints(ecModelP_Xexp,-1000,1000);
+checkObjective(ecModelP_Xexp);
 
-printConstraints(tempModel,-1000,1000);
+tempModel_Xexp = setParam(ecModelP_Xexp,'ub','r_1718_REV',1.74)  %xylose uptake
+tempModel_Xexp = setParam(tempModel_Xexp,'lb','r_1718_REV',0)
+tempModel_Xexp = setParam(tempModel_Xexp,'lb','r_2111',0)        %growth
+tempModel_Xexp = setParam(tempModel_Xexp,'lb','r_4041',0)        %biomass pseudoreaction
+tempModel_Xexp = setParam(tempModel_Xexp,'eq','r_2104',0.228)    %xylitol exchange
+tempModel_Xexp = setParam(tempModel_Xexp,'eq','r_4340',0.372)    %D-arabinitol
 
-solveLP(tempModel,1)
+tempModel_Xexp=changeObjective(tempModel_Xexp,'r_2111');
+
+printConstraints(tempModel_Xexp,-1000,1000);
+solveLP(tempModel_Xexp,1)
+
+%%% XNlim:
+printConstraints(ecModelP_XNlim,-1000,1000);
+checkObjective(ecModelP_XNlim);
+
+tempModel_XNlim = setParam(ecModelP_XNlim,'ub','r_1718_REV',0.4345)%xylose uptake
+tempModel_XNlim = setParam(tempModel_XNlim,'lb','r_1718_REV',0)
+tempModel_XNlim = setParam(tempModel_XNlim,'lb','r_2111',0)        %growth
+tempModel_XNlim = setParam(tempModel_XNlim,'lb','r_4041',0)        %biomass pseudoreaction
+tempModel_XNlim = setParam(tempModel_XNlim,'eq','r_2104',0.004)    %xylitol exchange
+tempModel_XNlim = setParam(tempModel_XNlim,'eq','r_4340',0.077)    %D-arabinitol
+
+tempModel_XNlim=changeObjective(tempModel_XNlim,'r_2111');
+
+printConstraints(tempModel_XNlim,-1000,1000);
+solveLP(tempModel_XNlim,1)
+
+%Aexp
+printConstraints(ecModelP_Aexp,-1000,1000);
+checkObjective(ecModelP_Aexp);
+
+tempModel_Aexp = setParam(ecModelP_Aexp,'ub','r_1634_REV',6.941) %carbon uptake
+tempModel_Aexp = setParam(tempModel_Aexp,'lb','r_1634_REV',0)
+tempModel_Aexp = setParam(tempModel_Aexp,'lb','r_2111',0)        %growth
+tempModel_Aexp = setParam(tempModel_Aexp,'lb','r_4041',0)        %biomass pseudoreaction
+tempModel_Aexp = setParam(tempModel_Aexp,'eq','r_1687',0.127)    %citrate(3-) secretion
+
+tempModel_Aexp=changeObjective(tempModel_Aexp,'r_2111');
+
+printConstraints(tempModel_Aexp,-1000,1000);
+solveLP(tempModel_Aexp,1)
+printFluxVector(tempModel_Aexp, ans.x, 'true', 'true');
+
+%%% ANlim:
+printConstraints(ecModelP_ANlim,-1000,1000);
+checkObjective(ecModelP_ANlim);
+
+tempModel_ANlim = setParam(ecModelP_ANlim,'ub','r_1634_REV',1.9706) %carbon uptake
+tempModel_ANlim = setParam(tempModel_ANlim,'lb','r_1634_REV',1.9706)
+tempModel_ANlim = setParam(tempModel_ANlim,'lb','r_2111',0)        %growth
+tempModel_ANlim = setParam(tempModel_ANlim,'lb','r_4041',0)        %biomass pseudoreaction 
+tempModel_ANlim = setParam(tempModel_ANlim,'ub','r_1687_REV',0.033)%citrate(3-) uptake 
+
+tempModel_ANlim=changeObjective(tempModel_ANlim,'r_2111');
+
+printConstraints(tempModel_ANlim,-1000,1000);
+solveLP(tempModel_ANlim,1)
+
+%%% Gexp:
+printConstraints(ecModelP_Gexp,-1000,1000);
+checkObjective(ecModelP_Gexp);
+
+tempModel_Gexp = setParam(ecModelP_Gexp,'ub','r_1714_REV',3.28) %carbon uptake
+tempModel_Gexp = setParam(tempModel_Gexp,'lb','r_1714_REV',0)
+tempModel_Gexp = setParam(tempModel_Gexp,'lb','r_2111',0)        %growth
+tempModel_Gexp = setParam(tempModel_Gexp,'lb','r_4041',0)        %biomass pseudoreaction
+tempModel_Gexp = setParam(tempModel_Gexp,'eq','r_1808',0.06)    %glycerol
+
+tempModel_Gexp=changeObjective(tempModel_Gexp,'r_2111');
+
+printConstraints(tempModel_Gexp,-1000,1000);
+solveLP(tempModel_Gexp,1)
+printFluxVector(tempModel_Gexp, ans.x, 'true', 'true');
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+printFluxVector(tempModel, ans.x, 'true', 'true');
+topUsedEnzymes(ans.x,tempModel,{''},{''},false)
+[capUsage,absUsage] = enzymeUsage(tempModel,ans.x)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % 3. fluxes
 %printFluxVector(tempModel, ans.x, 'true', 'true');
 printFluxes(tempModel,ans.x,false,0,fullfile('../../../..','results','generate_protModels_pipeline',['allFluxes_Xexp_v2_C.csv']),'%rxnID\t%rxnName\t%eqn\t%flux\n');
 
-save('../../../../models/ecModelP_Xexp_v2_C_tempModel.mat','tempModel')
-exportToExcelFormat(tempModel,'../../../../models/ecModelP_Xexp_v2_C_tempModel.xlsx')
+save('../../../../models/ecModelP_XNlim_tempModel.mat','tempModel')
+exportToExcelFormat(tempModel,'../../../../models/ecModelP_XNlim_tempModel.xlsx')
 
 clear fileNames flexFactor grouping i
 
@@ -180,8 +294,8 @@ clear fileNames flexFactor grouping i
 
 %Load proteomics data
 fID       = fopen('../../../databases/abs_proteomics.txt');
-prot.cond = textscan(fID,['%s' repmat(' %s',1,3)],1);
-prot.data = textscan(fID,['%s %s' repmat(' %f',1,2)],'TreatAsEmpty',{'NA','na','NaN'});
+prot.cond = textscan(fID,['%s' repmat(' %s',1,5)],1);
+prot.data = textscan(fID,['%s %s' repmat(' %f',1,4)],'TreatAsEmpty',{'NA','na','NaN'});
 prot.cond = [prot.cond{3:end}];
 prot.IDs  = prot.data{1};
 prot.data = cell2mat(prot.data(3:end));
@@ -210,7 +324,7 @@ cd utilities/integrate_proteomics
 
 %Set some additional parameters
 oxPhos = ecModelP.rxns(startsWith(ecModelP.rxns,params.oxPhos));
-grouping=[2];
+grouping=[2 2];
 clear repl
 for i=1:length(grouping)
     try
@@ -227,7 +341,8 @@ positionsEC(1) = find(strcmpi(ecModelP.rxnNames,params.c_source));
 positionsEC(2) = find(strcmpi(ecModelP.rxns,params.bioRxn));
 clear ans fID data byProds fileNames GECKO_path i fID
 
-ecModels{1}=tempModel;
+ecModels{1}=tempModel_Xexp;
+ecModels{2}=tempModel_XNlim;
 
 % Load ribosome information
 fid=fopen('../../../../data/ribosome.txt');
@@ -354,7 +469,7 @@ fprintf(fid,'protein_IDs previous_values modified_values condition\n');
 fprintf(fid,'%s %f %f %s\n',adjusted{:});
 fclose(fid);
 
-exportToExcelFormat(ecModelP_Xexp,'../../../../models/ecModel_P_Xexp.xlsx')
+exportToExcelFormat(ecModelP_XNlim,'../../../../models/ecModel_P_XNlim.xlsx')
 
 clear cond abundances aaMetIdx filtAbundances i j genesToAdd metsToAdd mmolAA
 clear protId prot pIDs pathways MWs model enzGenes enzNames enzAdjust protMetIdx

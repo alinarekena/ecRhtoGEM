@@ -1,0 +1,2 @@
+protein_IDs	previous_values	modified_values	flex_Mass
+prot_M7XHB5	2.85460795454017e-06	1.01474649825098e-05	0.000301602957677289

@@ -1,0 +1,2 @@
+Condition	Ptot	D	Acetate [mmol/gDwh]	CO2 production [mmol/gDwh]	Oxygen uptake [mmol/gDwh]	citrate(3-)
+Aexp	0.386	0.076	6.941	5.22	7.14	0.127

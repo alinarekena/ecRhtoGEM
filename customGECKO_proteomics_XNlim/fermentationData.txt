@@ -1,0 +1,2 @@
+Condition	Ptot	D	Xylose [mmol/gDWh]	CO2 production [mmol/gDWh]	Oxygen uptake [mmol/gDWh]	Xylitol	D-arabinitol
+XNlim	0.197	0.018	0.4345	1.277	1.037	0.004	0.077

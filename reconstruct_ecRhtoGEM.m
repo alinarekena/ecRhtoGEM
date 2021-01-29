@@ -11,9 +11,12 @@
 %   Last modified: 2021-01-21
 %
 
+% Prepare COBRA and set repo root path
+initCobraToolbox
+root = pwd; % Get the root directory of the folder
+
 %% Load model
-model    = load('models/model_edit.mat');
-model    = model.model;
+model    = importModel(fullfile(root,'models','model_edit.xml'));
 modelVer = model.description(strfind(model.description,'_v')+1:end);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

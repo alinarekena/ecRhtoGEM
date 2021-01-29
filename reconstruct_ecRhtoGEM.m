@@ -21,46 +21,40 @@ modelVer = model.description(strfind(model.description,'_v')+1:end);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Constrain the model to generate ecModel.
-% model_edit is constrained with xylose uptake.
-% All other constraints except carbon source will stay for the ecModel.
-
-% Xexp:
-model = changeRxnBounds(model, {'r_1718'},-1.74,'l');  %D-xylose uptake
-model = changeRxnBounds(model, {'r_2104'},0.228,'b');  %xylitol production
-model = changeRxnBounds(model, {'r_4340'},0.372,'b');  %D-arabinitol production
-
-% XNlim:
-model = changeRxnBounds(model, {'r_1718'},-0.4345,'l');%D-xylose uptake
-model = changeRxnBounds(model, {'r_2104'},0.004,'b');  %xylitol production
-model = changeRxnBounds(model, {'r_4340'},0.077,'b');  %D-arabinitol production
-
-% XP3:
-%model = changeRxnBounds(model, {'r_2104'},-0.039,'l');%xylitol uptake
-%model = changeRxnBounds(model, {'r_4340'},-0.142,'l');%D-arabinitol uptake
-
-% Aexp:
-model = changeRxnBounds(model, {'r_1718'},0,'l');
-model = changeRxnBounds(model, {'r_1634'},-6.941,'l'); % acetate uptake
-model = changeRxnBounds(model, {'r_1687'},0.127,'b');  % citrate(3-) production
-
-% ANlim:
-model = changeRxnBounds(model, {'r_1718'},0,'l');
-model = changeRxnBounds(model, {'r_1634'},-1.9706,'l'); % acetate uptake
-model = changeRxnBounds(model, {'r_1687'},-0.033,'b');  % citrate(3-) uptake
-
-% Gexp_in_urea:
-model = changeRxnBounds(model, {'r_1718'},0,'l');       %D-xylose uptake
-model = changeRxnBounds(model, {'r_1714'},-3.0,'l');      %D-glucose uptake
-model = changeRxnBounds(model, {'r_1654'},0,'l');       % block ammonium uptake
-model = changeRxnBounds(model, {'r_2091'},-1000,'l');   % allow urea uptake
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-printConstraints(model,-1000,1000);
-solveLP(model,1);
-printFluxVector(model, ans.x, 'true', 'true');
-
+%% Define the model conditions and their "parameters"
+% Expand on this conditions structure with more model specific information
+% that is required to run the script. Define all of these parameters here
+% in the beginning.
+conditions.abbrev = {'Xexp','XNlim','Aexp','ANlim','GexpUrea','GNlim'}; % Left out XP3, as it was commented out
+conditions.exch.rxns = {{'r_1718','r_2104','r_4340'},... % D-xylose uptake, xylitol production, D-arabinitol production
+    {'r_1718','r_2104','r_4340'},... % D-xylose uptake, xylitol production, D-arabinitol production
+    {'r_1718','r_1634','r_1687'},...  % D-xylose uptake, acetate uptake, citrate(3-) production
+    {'r_1718','r_1634','r_1687'},... % D-xylose uptake, acetate uptake, citrate(3-) production
+    {'r_1718','r_1714','r_1654','r_2091'},... % D-xylose uptake, D-glucose uptake, block ammonium uptake, allow urea uptake
+    {}}; % Unclear what should be constrained for GNlim
+conditions.exch.value = {[-1.74,0.228,0.372],... % Xexp
+    [-0.4345,0.004,0.077],... % XNlim
+    [0,-6.941,0.127],... % Aexp
+    [0,-1.9706,-0.033],... % ANlim
+    [0,-3,0,-1000],... % GexpUrea
+    []}; %GNlim
+conditions.exch.lbub = {{'lb','ub','ub'},... % Xexp
+    {'lb','ub','ub'},... % XNlim
+    {'lb','lb','ub'},... % Aexp
+    {'lb','lb','ub'},... % ANlim
+    {'lb','lb','lb','lb'},... % GexpUrea
+    {}}; % GNlim
+    
+for i = 1:numel(conditions.abbrev) % Loop through the conditions
+    modelTmp = model; % Work on a temporary model structure, leaving the original untouched for the next condition
+    modelTmp = setParam(modelTmp, conditions.exch.lbub{i}, ...
+        conditions.exch.rxns{i}, conditions.exch.value{i});
+    fprintf(['\n=========== Results from model: ' conditions.abbrev{i}, ' ===========\n\n'])    
+    printConstraints(modelTmp,-1000,1000);
+    sol = solveLP(modelTmp,1);
+    printFluxVector(modelTmp, sol.x, 'true', 'true');
+    conditions.model{i} = modelTmp;
+end
 
 %% I.enhanceGEM pipeline
 code = pwd();

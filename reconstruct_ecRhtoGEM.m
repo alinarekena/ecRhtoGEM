@@ -57,17 +57,20 @@ for i = 1:numel(conditions.abbrev) % Loop through the conditions
 end
 
 %% I.enhanceGEM pipeline
-code = pwd();
 
 %Clone the necessary repos:
-cd ..
 %delete GECKO in case that a previous copy exists here
 if isfolder('GECKO') 
     rmdir ('GECKO','s')
 end
 git('clone https://github.com/SysBioChalmers/GECKO.git')
 cd GECKO
-git('pull')
+git('fetch')
+% Switch GECKO to the last commit (4480b07) that is part of GECKO pull
+% request #130: https://github.com/SysBioChalmers/GECKO/pull/130
+% This contains the necessary changes in measureAbundance, constrainEnzymes
+% and generate_protModels.
+git('switch -d 4408b07be48be5acaabe2acbf8c5724ede4013f2')
 cd ..
 
 % Replace custom GECKO scripts

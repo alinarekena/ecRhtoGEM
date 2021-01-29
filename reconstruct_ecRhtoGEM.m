@@ -73,6 +73,18 @@ git('fetch')
 git('switch -d 4408b07be48be5acaabe2acbf8c5724ede4013f2')
 cd ..
 
+% From here define a new loop that generates the condition-specific batch
+% models. I am currently not entirely sure how this was done. Did you
+% generate just one batch model? Or one for each condition? The folder
+% 'customGECKO' does not exist, but it seems like it was done for acetate
+% and xylose?
+
+% Regarding the files in the customGECKO subfolders, which are identical in
+% all of the folders? Better to have them gathered once, then to have
+% multiple copies. uniprot.tab and ProtDatabase.mat are two examples. 
+% And how have the "custom" files been obtained / what is the difference
+% with the GECKO repository? The new git switch command already contains
+% updated versions of three functions.
 % Replace custom GECKO scripts
 fileNames = struct2cell(dir('customGECKO'));
 fileNames = fileNames(1,:);

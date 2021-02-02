@@ -78,8 +78,10 @@ cd ..
 % The folder 'customGECKO' contains identical files for all conditions,
 % folders 'customGECKO_' contain condition-specific files
 
-% files addProtein, getEnzyeCodes, saveECmodel, sumBioMass, and
-% updateDatabases are from older GECKO versions to avoid some errors.
+% files saveECmodel and sumBioMass are from older GECKO versions to avoid some errors.
+
+% TODO: updateDatabases, addProtein, getEnzymeCodes, convertToEnzymeModel
+% are in GECKO PR #122 and custom functions can be removed once PR is merged
 
 % files manualModifications, relative_proteomics, uniprot.tab contain
 % R.toruloides-specific information.

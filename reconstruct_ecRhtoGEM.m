@@ -86,9 +86,6 @@ cd ..
 % files manualModifications, relative_proteomics, uniprot.tab contain
 % R.toruloides-specific information.
 
-% files enhanceGEM and getConstrained model differ from GECKO repository in
-% parts of sigma factor fitting.
-
 % Replace custom GECKO scripts
 fileNames = struct2cell(dir('customGECKO'));
 fileNames = fileNames(1,:);
@@ -110,7 +107,18 @@ GECKOver = git('describe --tags');
 cd geckomat/get_enzyme_data
 updateDatabases;
 cd ..
-[ecModel,ecModel_batch] = enhanceGEM(model,'COBRA','ecYeastGEM',modelVer);
+[ecModel,ecModel_batch] = enhanceGEM(model,'COBRA','ecRhtoGEM',modelVer);
+
+% Ignore the sigma fitting, manually set sigma to 1
+params = getModelParameters();
+cd limit_proteins
+f = measureAbundance(ecModel_batch.enzymes);
+ecModel_batch = updateProtPool(ecModel_batch,params.Ptot,f); % Should f not be multiplied with params.sigma?
+
+% Overwrite the files exported by enhanceGEM, now with the new pool UB
+cd ../../models
+ecModel_batch = saveECmodel(ecModel_batch,'COBRA','ecRhtoGEM_batch',modelVer);
+cd ../geckomat
 
 
 % ecModel contains manually curated Kcat values, previously tested for each condition

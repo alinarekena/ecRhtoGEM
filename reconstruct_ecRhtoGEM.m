@@ -8,7 +8,7 @@
 %   measurements for the modelled enzymes. Thirdly, adds ribosomal subunits
 %   to the ec-models by adding a translation pseudoreaction.
 %
-%   Last modified: 2021-01-21
+%   Last modified: 2021-02-02
 %
 
 % Prepare COBRA and set repo root path
@@ -25,25 +25,25 @@ modelVer = model.description(strfind(model.description,'_v')+1:end);
 % Expand on this conditions structure with more model specific information
 % that is required to run the script. Define all of these parameters here
 % in the beginning.
-conditions.abbrev = {'Xexp','XNlim','Aexp','ANlim','GexpUrea','GNlim'}; % Left out XP3, as it was commented out
-conditions.exch.rxns = {{'r_1718','r_2104','r_4340'},... % D-xylose uptake, xylitol production, D-arabinitol production
-    {'r_1718','r_2104','r_4340'},... % D-xylose uptake, xylitol production, D-arabinitol production
-    {'r_1718','r_1634','r_1687'},...  % D-xylose uptake, acetate uptake, citrate(3-) production
-    {'r_1718','r_1634','r_1687'},... % D-xylose uptake, acetate uptake, citrate(3-) production
-    {'r_1718','r_1714','r_1654','r_2091'},... % D-xylose uptake, D-glucose uptake, block ammonium uptake, allow urea uptake
-    {}}; % Unclear what should be constrained for GNlim
+conditions.abbrev = {'Xexp','XNlim','Aexp','ANlim','GexpUrea','GNlimUrea'};
+conditions.exch.rxns = {{'r_1718','r_2104','r_4340'},...    % D-xylose uptake, xylitol production, D-arabinitol production
+    {'r_1718','r_2104','r_4340'},...                        % D-xylose uptake, xylitol production, D-arabinitol production
+    {'r_1718','r_1634','r_1687'},...                        % block D-xylose uptake, allow acetate uptake, citrate(3-) production
+    {'r_1718','r_1634','r_1687'},...                        % block D-xylose uptake, allow acetate uptake, citrate(3-) uptake
+    {'r_1718','r_1654','r_1714','r_2091'},...               % block D-xylose uptake, ammonium uptake, allow D-glucose uptake, urea uptake
+    {'r_1718','r_1654','r_1714','r_2091'}};                 % block D-xylose uptake, ammonium uptake, allow D-glucose uptake, urea uptake
 conditions.exch.value = {[-1.74,0.228,0.372],... % Xexp
-    [-0.4345,0.004,0.077],... % XNlim
-    [0,-6.941,0.127],... % Aexp
-    [0,-1.9706,-0.033],... % ANlim
-    [0,-3,0,-1000],... % GexpUrea
-    []}; %GNlim
-conditions.exch.lbub = {{'lb','ub','ub'},... % Xexp
-    {'lb','ub','ub'},... % XNlim
-    {'lb','lb','ub'},... % Aexp
-    {'lb','lb','ub'},... % ANlim
-    {'lb','lb','lb','lb'},... % GexpUrea
-    {}}; % GNlim
+    [-0.4345,0.004,0.077],...                   % XNlim
+    [0,-6.941,0.127],...                        % Aexp
+    [0,-1.9706,-0.033],...                      % ANlim
+    [0,0,-3,-1000],...                          % GexpUrea
+    [0,0,-0.415,-1000]};                        %GNlimUrea
+conditions.exch.lbub = {{'lb','ub','ub'},...    % Xexp
+    {'lb','ub','ub'},...                        % XNlim
+    {'lb','lb','ub'},...                        % Aexp
+    {'lb','lb','lb'},...                        % ANlim
+    {'lb','lb','lb','lb'},...                   % GexpUrea
+    {'lb','lb','lb','lb'}};                     % GNlimUrea
     
 for i = 1:numel(conditions.abbrev) % Loop through the conditions
     modelTmp = model; % Work on a temporary model structure, leaving the original untouched for the next condition
@@ -74,17 +74,19 @@ git('switch -d 4408b07be48be5acaabe2acbf8c5724ede4013f2')
 cd ..
 
 % From here define a new loop that generates the condition-specific batch
-% models. I am currently not entirely sure how this was done. Did you
-% generate just one batch model? Or one for each condition? The folder
-% 'customGECKO' does not exist, but it seems like it was done for acetate
-% and xylose?
+% models.
+% The folder 'customGECKO' contains identical files for all conditions,
+% folders 'customGECKO_' contain condition-specific files
 
-% Regarding the files in the customGECKO subfolders, which are identical in
-% all of the folders? Better to have them gathered once, then to have
-% multiple copies. uniprot.tab and ProtDatabase.mat are two examples. 
-% And how have the "custom" files been obtained / what is the difference
-% with the GECKO repository? The new git switch command already contains
-% updated versions of three functions.
+% files addProtein, getEnzyeCodes, saveECmodel, sumBioMass, and
+% updateDatabases are from older GECKO versions to avoid some errors.
+
+% files manualModifications, relative_proteomics, uniprot.tab contain
+% R.toruloides-specific information.
+
+% files enhanceGEM and getConstrained model differ from GECKO repository in
+% parts of sigma factor fitting.
+
 % Replace custom GECKO scripts
 fileNames = struct2cell(dir('customGECKO'));
 fileNames = fileNames(1,:);

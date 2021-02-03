@@ -8,7 +8,7 @@
 %   measurements for the modelled enzymes. Thirdly, adds ribosomal subunits
 %   to the ec-models by adding a translation pseudoreaction.
 %
-%   Last modified: 2021-02-02
+%   Last modified: 2021-02-03
 %
 
 % Prepare COBRA and set repo root path
@@ -124,15 +124,39 @@ cd ../geckomat
 % ecModel contains manually curated Kcat values, previously tested for each condition
 % Check the solution of each condition by setting experimental data
 
-%%% Xexp:
-printConstraints(ecModel_batch,-1000,1000);
-tempModel_batch = setParam(ecModel_batch,'ub','r_1718_REV',1.74);  %D-xylose uptake
+conditions.abbrev = {'Xexp','XNlim','Aexp','ANlim','GexpUrea','GNlimUrea'};
+conditions.exch.rxns = {{'r_1718_REV','r_2104','r_4340'},...    % D-xylose uptake, xylitol production, D-arabinitol production
+    {'r_1718_REV','r_2104','r_4340'},...                        % D-xylose uptake, xylitol production, D-arabinitol production
+    {'r_1718_REV','r_1634_REV','r_1687'},...                    % block D-xylose uptake, allow acetate uptake, citrate(3-) production
+    {'r_1718_REV','r_1634_REV','r_1687_REV'},...                % block D-xylose uptake, allow acetate uptake, citrate(3-) uptake
+    {'r_1718_REV','r_1654_REV','r_1714_REV','r_2091_REV','r_1808'},...  % block D-xylose uptake, ammonium uptake, allow D-glucose uptake, urea uptake, glycerol production
+    {'r_1718_REV','r_1654_REV','r_1714_REV','r_2091_REV'}};             % block D-xylose uptake, ammonium uptake, allow D-glucose uptake, urea uptake
+conditions.exch.value = {[1.74,0.228,0.372],...                 % Xexp
+    [0.4345,0.004,0.077],...                                    % XNlim
+    [0,6.941,0.127],...                                         % Aexp
+    [0,1.9706,0.033],...                                        % ANlim
+    [0,0,3,1000,0.071],...                                      % GexpUrea
+    [0,0,0.415,1000]};                                          %GNlimUrea
+conditions.exch.lbub = {{'ub','ub','ub'},...                    % Xexp
+    {'ub','ub','ub'},...                                        % XNlim
+    {'ub','ub','ub'},...                                        % Aexp
+    {'ub','ub','ub'},...                                        % ANlim
+    {'ub','ub','ub','ub','ub'},...                              % GexpUrea
+    {'ub','ub','ub','ub'}};                                     % GNlimUrea
 
-%%% XNlim:
-printConstraints(ecModel_batch,-1000,1000);
-tempModel_batch = setParam(ecModel_batch,'ub','r_1718_REV',0.4345);%D-xylose uptake
-tempModel_batch = setParam(tempModel_batch,'eq','r_2104',0.004);   %xylitol production
-tempModel_batch = setParam(tempModel_batch,'eq','r_4340',0.077);   %arabitol production
+for i = 1:numel(conditions.abbrev) % Loop through the conditions
+    modelTmp_batch = ecModel_batch; % Work on a temporary model structure, leaving the original untouched for the next condition
+    modelTmp_batch = setParam(modelTmp_batch, conditions.exch.lbub{i}, ...
+        conditions.exch.rxns{i}, conditions.exch.value{i});
+    fprintf(['\n=========== Results from model: ' conditions.abbrev{i}, ' ===========\n\n'])    
+    printConstraints(modelTmp_batch,-1000,1000);
+    sol = solveLP(modelTmp_batch,1);
+    printFluxVector(modelTmp_batch, sol.x, 'true', 'true');
+    conditions.ecModel_batch{i} = modelTmp_batch;
+end
+
+
+
 %if tempModel_batch results are successful, constrain ecModels accordingly:
 ecModel_batch = setParam(ecModel_batch,'eq','r_2104',0.004);       %xylitol production
 ecModel_batch = setParam(ecModel_batch,'eq','r_4340',0.077);       %arabitol production
@@ -140,17 +164,6 @@ ecModel = setParam(ecModel,'ub','r_1718_REV',0.4345);              %xylose uptak
 ecModel = setParam(ecModel,'eq','r_2104',0.004);                   %xylitol uptake
 ecModel = setParam(ecModel,'eq','r_4340',0.077);                   %arabitol uptake
 
-
-%%% Aexp:
-printConstraints(ecModel_batch,-1000,1000);
-tempModel_batch = setParam(ecModel_batch,'ub','r_1634_REV',6.941);      % acetate uptake
-
-%%% ANlim:
-printConstraints(ecModel_batch,-1000,1000);
-tempModel_batch = setParam(ecModel_batch,'ub','r_1634_REV',1.9706);     % acetate uptake
-tempModel_batch = setParam(tempModel_batch,'lb','r_1687',0);            % citrate production
-tempModel_batch = setParam(tempModel_batch,'ub','r_1687',Inf);          % citrate production
-tempModel_batch = setParam(tempModel_batch,'eq','r_1687_REV',0.033);    % citrate uptake
 %if tempModel_batch results are successful, constrain ecModels accordingly:
 %     remove byproduct constraints:
 %     (with citrate uptake 'r_1687_REV'0.033 modelP can't be generated

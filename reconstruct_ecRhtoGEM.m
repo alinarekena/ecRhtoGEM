@@ -144,8 +144,20 @@ conditions.exch.lbub = {{'ub','ub','ub'},...                    % Xexp
     {'ub','ub','ub','ub','ub'},...                              % GexpUrea
     {'ub','ub','ub','ub'}};                                     % GNlimUrea
 
+cd utilities/integrate_proteomics
+[pIDs,protData,fermParams,byProds] = load_Prot_Ferm_Data([2,2,2,2,2,2]);
+cd ../../limit_proteins
+% Quickly average the replicates, no filtering, just to be able to
+% calculate conditon specific f-values.
+for i=1:numel(fermParams.conds) 
+    tmp = [protData{2*i-1} protData{2*i}];
+    avgProtData(:,i) = mean(tmp,2);
+    f(i) = measureAbundance(ecModel_batch.enzymes,pIDs,avgProtData(:,i));
+end
+
 for i = 1:numel(conditions.abbrev) % Loop through the conditions
     modelTmp_batch = ecModel_batch; % Work on a temporary model structure, leaving the original untouched for the next condition
+    modelTmp_batch = updateProtPool(modelTmp_batch,fermParams.Ptot(i),f(i)*0.5); % Sigma = 0.5
     modelTmp_batch = setParam(modelTmp_batch, conditions.exch.lbub{i}, ...
         conditions.exch.rxns{i}, conditions.exch.value{i});
     fprintf(['\n=========== Results from model: ' conditions.abbrev{i}, ' ===========\n\n'])    

@@ -66,11 +66,10 @@ end
 git('clone https://github.com/SysBioChalmers/GECKO.git')
 cd GECKO
 git('fetch')
-% Switch GECKO to the last commit (4480b07) that is part of GECKO pull
-% request #130: https://github.com/SysBioChalmers/GECKO/pull/130
-% This contains the necessary changes in measureAbundance, constrainEnzymes
-% and generate_protModels.
-git('switch -d 4408b07be48be5acaabe2acbf8c5724ede4013f2')
+% Switch GECKO to the 'temp_rhto' branch where relative changes to the
+% GECKO code are tracked. This contains various necessary changes in
+% e.g. measureAbundance, constrainEnzymes and generate_protModels.
+git('switch temp_rhto')
 cd ..
 
 % From here define a new loop that generates the condition-specific batch
@@ -95,10 +94,7 @@ for i = 1:length(fileNames)
     copyfile(['customGECKO' filesep fileNames{i}],GECKO_path.folder)
     disp(['Replaced ' fileNames{i} ' at ' GECKO_path.folder '\'])
 end
-
-delete relative_proteomics.txt;
-copyfile('customGECKO/relative_proteomics.txt','GECKO/Databases','f');
-
+movefile('relative_proteomics.txt','GECKO/Databases','f');
 
 % Start GECKO/enhanceGEM pipeline
 cd GECKO

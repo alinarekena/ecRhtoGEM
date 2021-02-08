@@ -9,7 +9,7 @@ function parameters = getModelParameters
 %   Alina Rekena. Last edited: 2021-01-14
 
 %Average enzyme saturation factor
-parameters.sigma = 1;
+parameters.sigma = 0.35;       % fitted for Xexp condition
 
 %Total protein content in the cell [g protein/gDw]
 parameters.Ptot = 0.4385;      %Assumed constant

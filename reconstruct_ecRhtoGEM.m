@@ -8,7 +8,7 @@
 %   measurements for the modelled enzymes. Thirdly, adds ribosomal subunits
 %   to the ec-models by adding a translation pseudoreaction.
 %
-%   Last modified: 2021-02-03
+%   Last modified: 2021-02-08
 %
 
 % Prepare COBRA and set repo root path
@@ -109,11 +109,11 @@ updateDatabases;
 cd ..
 [ecModel,ecModel_batch] = enhanceGEM(model,'COBRA','ecRhtoGEM',modelVer);
 
-% Ignore the sigma fitting, manually set sigma to 1
+% Ignore the sigma fitting, manually set sigma to 1; -why 1 if fitted sigma for Xexp was 0.35?
 params = getModelParameters();
 cd limit_proteins
-f = measureAbundance(ecModel_batch.enzymes);
-ecModel_batch = updateProtPool(ecModel_batch,params.Ptot,f); % Should f not be multiplied with params.sigma?
+f = measureAbundance(ecModel_batch.enzymes); % calculates f from average abundances of all conditions
+ecModel_batch = updateProtPool(ecModel_batch,params.Ptot,f*params.sigma); % f should be multiplied with params.sigma
 
 % Overwrite the files exported by enhanceGEM, now with the new pool UB
 cd ../../models
@@ -164,9 +164,9 @@ for i = 1:numel(conditions.abbrev) % Loop through the conditions
     printConstraints(modelTmp_batch,-1000,1000);
     sol = solveLP(modelTmp_batch,1);
     printFluxVector(modelTmp_batch, sol.x, 'true', 'true');
+    topUsedEnzymes(sol.x,modelTmp_batch,{''},{''},false); % can output be written in command window?
     conditions.ecModel_batch{i} = modelTmp_batch;
 end
-
 
 
 %if tempModel_batch results are successful, constrain ecModels accordingly:
@@ -214,9 +214,6 @@ ecModel = setParam(ecModel,'ub','r_1714_REV',0.415);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-printConstraints(tempModel_batch,-1000,1000);
-solveLP(tempModel_batch,1);
-printFluxVector(tempModel_batch, ans.x, 'true', 'true');
 topUsedEnzymes(ans.x,tempModel_batch,{''},{''},false);    %how to save and write a table?
 
 
@@ -232,20 +229,8 @@ cd ../..
 
 %% II.generate_protModels pipeline
 
-% Replace custom GECKO scripts
-fileNames = struct2cell(dir('customGECKO_proteomics'));
-fileNames = fileNames(1,:);
-fileNames(startsWith(fileNames,'.')) = [];
-for i = 1:length(fileNames)
-    GECKO_path = dir(['GECKO/**/' fileNames{i}]);
-    copyfile(['customGECKO_proteomics' filesep fileNames{i}],GECKO_path.folder)
-    disp(['Replaced ' fileNames{i} ' at ' GECKO_path.folder '\'])
-end
-
-% Incorporate proteomics
-
-grouping   = [2];   %Number represents replicates per condition, count of numbers - how many conditions
-flexFactor = 1.0;  %Allowable flexibilization factor for fixing carbon uptake rate
+grouping   = [2 2 2 2 2 2];   %Number represents replicates per condition, count of numbers - how many conditions
+flexFactor = 1.05;  %Allowable flexibilization factor for fixing carbon uptake rate
 
 cd GECKO/geckomat/utilities/integrate_proteomics
 generate_protModels(ecModel,grouping,'ecYeastGEM',ecModel_batch);

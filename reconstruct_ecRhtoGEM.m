@@ -113,9 +113,11 @@ ecModel_batch = updateProtPool(ecModel_batch,params.Ptot,f*params.sigma); % f sh
 
 % Overwrite the files exported by enhanceGEM, now with the new pool UB
 cd ../../models
-ecModel_batch = saveECmodel(ecModel_batch,'COBRA','ecRhtoGEM_batch',modelVer);
-cd ../geckomat
-
+ecModel_batch = saveECmodel(ecModel_batch,'RAVEN','ecRhtoGEM_batch',modelVer);
+ecModel = saveECmodel(ecModel,'RAVEN','ecRhtoGEM',modelVer);
+cd ecRhtoGEM
+movefile('*','../../../models/')
+cd ../../geckomat
 
 % ecModel contains manually curated Kcat values, previously tested for each condition
 % Check the solution of each condition by setting experimental data
@@ -228,8 +230,8 @@ cd ../..
 grouping   = [2 2 2 2 2 2];   %Number represents replicates per condition, count of numbers - how many conditions
 flexFactor = 1.05;  %Allowable flexibilization factor for fixing carbon uptake rate
 
-cd GECKO/geckomat/utilities/integrate_proteomics
-generate_protModels(ecModel,grouping,'ecYeastGEM',ecModel_batch);
+cd([root '/GECKO/geckomat/utilities/integrate_proteomics'])
+generate_protModels(ecModel,grouping,'ecRhtoGEM',ecModel_batch);
 
 
 % how to: save at '../../../../results/generate_protModels_pipeline' graphical output?

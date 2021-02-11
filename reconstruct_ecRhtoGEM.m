@@ -66,10 +66,10 @@ end
 git('clone https://github.com/SysBioChalmers/GECKO.git')
 cd GECKO
 git('fetch')
-% Switch GECKO to the 'temp_rhto' branch where relative changes to the
+% Switch GECKO to the 'notReviewedDevel' branch where relative changes to the
 % GECKO code are tracked. This contains various necessary changes in
 % e.g. measureAbundance, constrainEnzymes and generate_protModels.
-git('switch temp_rhto')
+git('switch notReviewedDevel')
 cd ..
 
 % From here define a new loop that generates the condition-specific batch

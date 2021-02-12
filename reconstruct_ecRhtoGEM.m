@@ -103,7 +103,7 @@ GECKOver = git('describe --tags');
 cd geckomat/get_enzyme_data
 updateDatabases;
 cd ..
-[ecModel,ecModel_batch] = enhanceGEM(model,'COBRA','ecRhtoGEM',modelVer);
+[ecModel,ecModel_batch] = enhanceGEM(model,'RAVEN','ecRhtoGEM',modelVer);
 
 % Ignore the sigma fitting, manually set sigma to 1; -why 1 if fitted sigma for Xexp was 0.35?
 params = getModelParameters();
@@ -114,7 +114,6 @@ ecModel_batch = updateProtPool(ecModel_batch,params.Ptot,f*params.sigma); % f sh
 % Overwrite the files exported by enhanceGEM, now with the new pool UB
 cd ../../models
 ecModel_batch = saveECmodel(ecModel_batch,'RAVEN','ecRhtoGEM_batch',modelVer);
-ecModel = saveECmodel(ecModel,'RAVEN','ecRhtoGEM',modelVer);
 cd ecRhtoGEM
 movefile('*','../../../models/')
 cd ../../geckomat

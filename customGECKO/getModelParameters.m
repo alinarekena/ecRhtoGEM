@@ -17,6 +17,13 @@ parameters.Ptot = 0.4385;      %Assumed constant
 %Minimum growth rate the model should grow at [1/h]
 parameters.gR_exp = 0.064;     %[g/gDw h] 
 
+%Set GAM parameters (optional)
+%Note: the GAM value specified here represents only the part of growth
+%associated energy cost that cannot be attributed to the cost of polymerizing
+%the macromolecules that make up biomass. This can be determined by splitGAEC.m.
+parameters.GAM = 111.3; 
+parameters.maxGAM = 200; %Maximum allowable GAM to be used by fitGAM, default is 100;
+
 %Provide your organism scientific name
 parameters.org_name = 'rhodotorula toruloides';
 
@@ -52,6 +59,14 @@ parameters.bio_comp{1} = 'protein';
 parameters.bio_comp{2} = 'carbohydrate';
 parameters.bio_comp{3} = 'lipid backbone';
 parameters.bio_comp{4} = 'lipid chain';
+
+%Polymerization costs from Forster et al 2003 - table S8. NOTE: This
+%parameter is only used by scaleBioMass.m, so if you do not use said
+%function you don not need to define it. (optional)
+parameters.pol_cost(1) = 37.7; %Ptot 
+parameters.pol_cost(2) = 12.8; %Ctot
+parameters.pol_cost(3) = 26.0; %RNA 
+parameters.pol_cost(4) = 26.0; %DNA
 
 %Rxn IDs for reactions in the oxidative phosphorylation pathway (optional)
 parameters.oxPhos{1} = 'r_1021';

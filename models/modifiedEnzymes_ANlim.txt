@@ -1,0 +1,2 @@
+protein_IDs	previous_values	modified_values	flex_Mass
+prot_M7WQ73	4.475512423539e-07	1.8481658238075e-06	0.000121773507500008

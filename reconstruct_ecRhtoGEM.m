@@ -69,21 +69,19 @@ git('fetch')
 % Switch GECKO to the 'notReviewedDevel' branch where relative changes to the
 % GECKO code are tracked. This contains various necessary changes in
 % e.g. measureAbundance, constrainEnzymes and generate_protModels.
+    % files saveECmodel and sumBioMass were from older GECKO versions to avoid some errors.
+    % TODO: updateDatabases, addProtein, getEnzymeCodes, convertToEnzymeModel
+    % are in GECKO PR #122 and custom functions can be removed once PR is
+    % merged.
 git('switch notReviewedDevel')
 cd ..
 
 % From here define a new loop that generates the condition-specific batch
 % models.
-% The folder 'customGECKO' contains identical files for all conditions,
-% folders 'customGECKO_' contain condition-specific files
-
-% files saveECmodel and sumBioMass are from older GECKO versions to avoid some errors.
-
-% TODO: updateDatabases, addProtein, getEnzymeCodes, convertToEnzymeModel
-% are in GECKO PR #122 and custom functions can be removed once PR is merged
-
-% files manualModifications, relative_proteomics, uniprot.tab contain
-% R.toruloides-specific information.
+% The folder 'customGECKO' contains identical files for all conditions.
+    % files manualModifications, relative_proteomics, uniprot.tab,
+    % abs_proteomics, fermentationData, ProtDatabase contain
+    % R.toruloides-specific information.
 
 % Replace custom GECKO scripts
 fileNames = struct2cell(dir('customGECKO'));
@@ -103,9 +101,9 @@ GECKOver = git('describe --tags');
 cd geckomat/get_enzyme_data
 updateDatabases;
 cd ..
-[ecModel,ecModel_batch] = enhanceGEM(model,'RAVEN','ecRhtoGEM',modelVer);
+[ecModel,ecModel_batch] = enhanceGEM(model,'RAVEN','ecRhtoGEM',modelVer);%error fitGAM line 54 column 10
 
-% Ignore the sigma fitting, manually set sigma to 1; -why 1 if fitted sigma for Xexp was 0.35?
+% Ignore the sigma fitting, manually set sigma to 1;
 params = getModelParameters();
 cd limit_proteins
 f = measureAbundance(ecModel_batch.enzymes); % calculates f from average abundances of all conditions
@@ -113,7 +111,7 @@ ecModel_batch = updateProtPool(ecModel_batch,params.Ptot,f*params.sigma); % f sh
 
 % Overwrite the files exported by enhanceGEM, now with the new pool UB
 cd ../../models
-ecModel_batch = saveECmodel(ecModel_batch,'RAVEN','ecRhtoGEM_batch',modelVer);
+ecModel_batch = saveECmodel(ecModel_batch,'RAVEN','ecRhtoGEM_batch',modelVer);%error using exportForGit: too many input arguments, saveECmodel line60
 cd ecRhtoGEM
 movefile('*','../../../models/')
 cd ../../geckomat
@@ -161,58 +159,9 @@ for i = 1:numel(conditions.abbrev) % Loop through the conditions
     printConstraints(modelTmp_batch,-1000,1000);
     sol = solveLP(modelTmp_batch,1);
     printFluxVector(modelTmp_batch, sol.x, 'true', 'true');
-    topUsedEnzymes(sol.x,modelTmp_batch,{''},{''},false); % can output be written in command window?
+    topUsedEnzymes(sol.x,modelTmp_batch,{''},{''},false); % currently shows in 'ans' variable, can it be written to command window?
     conditions.ecModel_batch{i} = modelTmp_batch;
 end
-
-
-%if tempModel_batch results are successful, constrain ecModels accordingly:
-ecModel_batch = setParam(ecModel_batch,'eq','r_2104',0.004);       %xylitol production
-ecModel_batch = setParam(ecModel_batch,'eq','r_4340',0.077);       %arabitol production
-ecModel = setParam(ecModel,'ub','r_1718_REV',0.4345);              %xylose uptake
-ecModel = setParam(ecModel,'eq','r_2104',0.004);                   %xylitol uptake
-ecModel = setParam(ecModel,'eq','r_4340',0.077);                   %arabitol uptake
-
-%if tempModel_batch results are successful, constrain ecModels accordingly:
-%     remove byproduct constraints:
-%     (with citrate uptake 'r_1687_REV'0.033 modelP can't be generated
-%     probably because in that case it would be the 2nd uptake constraint)
-ecModel_batch = setParam(ecModel_batch,'lb','r_1687',0);
-ecModel_batch = setParam(ecModel_batch,'ub','r_1687',Inf);
-%     constrain ecModel:
-ecModel = setParam(ecModel,'ub','r_1634_REV',1.9706);                   % acetate uptake
-ecModel = setParam(ecModel,'lb','r_1687',0);
-ecModel = setParam(ecModel,'ub','r_1687',Inf);
-
-
-%%% Gexp_in_urea:
-printConstraints(ecModel_batch,-1000,1000);
-tempModel_batch = setParam(ecModel_batch,'ub','r_1714_REV',3);          % glucose uptake
-tempModel_batch = setParam(tempModel_batch,'eq','r_1808',0.071);        % glycerol production
-tempModel_batch = setParam(tempModel_batch,'ub','r_1654_REV',0);        % block ammonium uptake
-tempModel_batch = setParam(tempModel_batch,'ub','r_2091_REV',Inf);      % allow urea uptake
-tempModel_batch = setParam(tempModel_batch,'ub','prot_pool_exchange',0.2);
-
-ecModel_batch = setParam(ecModel_batch,'ub','r_1654_REV',0);
-ecModel_batch = setParam(ecModel_batch,'ub','r_2091_REV',Inf);
-ecModel_batch = setParam(ecModel_batch,'ub','r_1808',0,.071);   % ?
-
-ecModel = setParam(ecModel,'ub','r_1714_REV',3.0);
-
-ecModel = setParam(ecModel,'ub','r_1654_REV',0);
-ecModel = setParam(ecModel,'ub','r_2091_REV',Inf);
-
-%%% GNim_in_urea:
-tempModel_batch = setParam(tempModel_batch,'ub','r_1714_REV',0.415);
-
-ecModel = setParam(ecModel,'ub','r_1714_REV',0.415);
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-topUsedEnzymes(ans.x,tempModel_batch,{''},{''},false);    %how to save and write a table?
-
 
 % If the solution shows that the ecRhtoGEM model can reach the experimental
 % parameters and the majority of topUsedEnzymes are less than 10% of
@@ -221,6 +170,7 @@ topUsedEnzymes(ans.x,tempModel_batch,{''},{''},false);    %how to save and write
 
 % sigma factor for each condition has been fitted and saved 'results/enhanceGEM_pipeline'
 
+clear avgProtData tmp
 
 cd ../..
 
@@ -232,6 +182,9 @@ flexFactor = 1.05;  %Allowable flexibilization factor for fixing carbon uptake r
 cd([root '/GECKO/geckomat/utilities/integrate_proteomics'])
 generate_protModels(ecModel,grouping,'ecRhtoGEM',ecModel_batch);
 
+cd ../../../models/prot_constrained/ecRhtoGEM
+movefile('*','../../../../models/')
+cd ../../../..
 
 % how to: save at '../../../../results/generate_protModels_pipeline' graphical output?
      %saveas(gca,fullfile('../../../..','results','generate_protModels_pipeline','abundances.jpg'));
@@ -242,14 +195,14 @@ generate_protModels(ecModel,grouping,'ecRhtoGEM',ecModel_batch);
 %    saved at same place where ecModelP
 
 % is it possible to have ecModelP on workspace automatically? otherwise:
-load('../../../models/prot_constrained/ecYeastGEM/ecYeastGEM_Xexp.mat');
-load('../../../models/prot_constrained/ecYeastGEM/ecYeastGEM_XNlim.mat');
-load('../../../models/prot_constrained/ecYeastGEM/ecYeastGEM_Aexp.mat');
-load('../../../models/prot_constrained/ecYeastGEM/ecYeastGEM_ANlim.mat');
-load('../../../models/prot_constrained/ecYeastGEM/ecYeastGEM_Gexp.mat');
-load('../../../models/prot_constrained/ecYeastGEM/ecYeastGEM_GNlim.mat');
+load('GECKO/models/prot_constrained/ecYeastGEM/ecYeastGEM_Xexp.mat');
+load('GECKO/models/prot_constrained/ecYeastGEM/ecYeastGEM_XNlim.mat');
+load('GECKO/models/prot_constrained/ecYeastGEM/ecYeastGEM_Aexp.mat');
+load('GECKO/models/prot_constrained/ecYeastGEM/ecYeastGEM_ANlim.mat');
+load('GECKO/models/prot_constrained/ecYeastGEM/ecYeastGEM_Gexp.mat');
+load('GECKO/models/prot_constrained/ecYeastGEM/ecYeastGEM_GNlim.mat');
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% Xexp:
 printConstraints(ecModelP,-1000,1000);
@@ -338,42 +291,16 @@ clear fileNames flexFactor grouping i
 %% III.Add ribosome subunits
 
 %Load proteomics data
-fID       = fopen('../../../Databases/abs_proteomics.txt');
-prot.cond = textscan(fID,['%s' repmat(' %s',1,3)],1); %n-1
-prot.data = textscan(fID,['%s %s' repmat(' %f',1,2)],'TreatAsEmpty',{'NA','na','NaN'}); %n-2
+fID       = fopen('GECKO/Databases/abs_proteomics.txt');
+prot.cond = textscan(fID,['%s' repmat(' %s',1,14)],1); %n-1
+prot.data = textscan(fID,['%s %s' repmat(' %f',1,12)],'TreatAsEmpty',{'NA','na','NaN'}); %n-2
 prot.cond = [prot.cond{3:end}];
 prot.IDs  = prot.data{1};
 prot.data = cell2mat(prot.data(3:end));
 fclose(fID);
 
-%Load total protein content and fermentation data
-fID       = fopen('../../../Databases/fermentationData.txt');
-% xylose (2 byproducts)
-byProds   = textscan(fID,['%s' repmat(' %s',1,7)],1,'Delimiter','\t'); %n-1
-data      = textscan(fID,['%s' repmat(' %f',1,7)],'TreatAsEmpty',{'NA','na','NaN'}); %n-1
-% acetate & glucose (1 byproduct)
-byProds   = textscan(fID,['%s' repmat(' %s',1,6)],1,'Delimiter','\t'); %n-1
-data      = textscan(fID,['%s' repmat(' %f',1,6)],'TreatAsEmpty',{'NA','na','NaN'}); %n-1
-fclose(fID);
-
-flux.conds     = data{1};
-flux.Ptot      = data{2};
-flux.Drate     = data{3};
-flux.GUR       = data{4};
-flux.CO2prod   = data{5};
-flux.OxyUptake = data{6};
-flux.byP_flux  = [data{7:end}];
-flux.byP_flux(isnan(flux.byP_flux))=0;
-flux.byProds   = [byProds{7:end}];
-
-% Load model and additional parameters
-cd ../..
-params = getModelParameters;
-cd utilities/integrate_proteomics
-
 %Set some additional parameters
-oxPhos = ecModelP.rxns(startsWith(ecModelP.rxns,params.oxPhos));
-grouping=[2];
+oxPhos = ecModel.rxns(startsWith(ecModel.rxns,params.oxPhos));
 clear repl
 for i=1:length(grouping)
     try
@@ -386,15 +313,19 @@ for i=1:length(grouping)
 end
 
 %Get indexes for carbon source uptake and biomass pseudoreactions
-positionsEC(1) = find(strcmpi(ecModelP.rxnNames,params.c_source));
-positionsEC(2) = find(strcmpi(ecModelP.rxns,params.bioRxn));
+positionsEC(1) = find(strcmpi(ecModel.rxnNames,params.c_source));
+positionsEC(2) = find(strcmpi(ecModel.rxns,params.bioRxn));
 clear ans fID data byProds fileNames GECKO_path i fID
 
-ecModels{1}=tempModelP;
-%ecModels{2}=tempModelP;
+ecModels{1}=ecModelP_Xexp;
+ecModels{2}=ecModelP_XNlim;
+ecModels{3}=ecModelP_Aexp;
+ecModels{4}=ecModelP_ANlim;
+ecModels{5}=ecModelP_GexpUrea;
+ecModels{6}=ecModelP_GNlimUrea;
 
 % Load ribosome information
-fid=fopen('../../../Databases/ribosome.txt');
+fid=fopen('data/ribosome.txt');
 data=textscan(fid,'%q %q %q %q %q %q','HeaderLines',1,'Delimiter','\t');
 fclose(fid);
 ribo=data{1};
@@ -411,7 +342,7 @@ plot(xi,f);
 xlabel('Subunit abundance (log10(mmol/gDCW))');
 ylabel('Density');
 title('Distribution of average ribosomal subunit abundances');
-saveas(gca,fullfile('../../../..','results','ribosome_integration','average_riboSubunit_abundance.jpg'));
+saveas(gca,fullfile('results','ribosome_integration','average_riboSubunit_abundance.jpg'));
 
 %Only include ribosomal subunite with abundance over 1e-5 mmol/gDCW 
 rmRibo=repRibo.avgLevel<1e-5 | isnan(repRibo.avgLevel);
@@ -423,14 +354,15 @@ enzNames=data{2}(idx);
 enzGenes=data{3}(idx);
 MWs=str2double(data{5}(idx))/1000;
 sequences=data{6}(idx);
-pathways={'sce03010  Ribosome'};
+pathways={'Ribosome'};
 
+cd([root '/GECKO/geckomat/utilities/integrate_proteomics'])
 clear repRibo rmRibo idx data fid ans f xi
 
 % Modify reactions
 adjusted=cell.empty();
 for j=1:numel(ecModels);
-    disp(['Add ribosome subunits to condition: ' flux.conds{j}])
+    disp(['Add ribosome subunits to condition: ' fermParams.conds{j}])
     model_P=ecModels{j};
     %Add enzymes and genes
     model_P.enzymes=[model_P.enzymes;ribo];
@@ -470,7 +402,7 @@ for j=1:numel(ecModels);
     rxnsToAdd.rxns={'translation'};
     rxnsToAdd.mets=[model_P.mets(protMetIdx),model_P.mets(aaMetIdx),riboToAdd.mets'];
     rxnsToAdd.stoichCoeffs=[1,-1,repmat(-riboKcat,1,numel(riboToAdd.mets))];
-    rxnsToAdd.subSystem={'sce03010  Ribosome'};
+    rxnsToAdd.subSystem={'Ribosome'};
     rxnsToAdd.grRules={strjoin(enzGenes,' and ')};
     model_P=addRxns(model_P,rxnsToAdd);
     
@@ -483,7 +415,7 @@ for j=1:numel(ecModels);
     %cd geckomat/utilities/integrate_proteomics
     abundances   = prot.data(:,repl.first(j):repl.last(j));
     [pIDs, filtAbundances] = filter_ProtData(prot.IDs,abundances,1.96,true);
-    %cd ../../../..
+    cd ../../../..
     sol=solveLP(model_P);
     for i=riboExchId(1):riboExchId(2)
         protId=regexprep(model_P.rxnNames{i},'prot_(......).*','$1');
@@ -499,7 +431,7 @@ for j=1:numel(ecModels);
                 adjusted{end+1,1}=protId;
                 adjusted{end,2}=filtAbundances(k);
                 adjusted{end,3}=sol.x(i)*1.01;
-                adjusted{end,4}=flux.conds{j};
+                adjusted{end,4}=fermParams.conds{j};
                 fprintf('%s abundance adjusted. Measured: %e / Adjusted: %e\n',adjusted{end,1:3})
             end
         else
@@ -509,11 +441,11 @@ for j=1:numel(ecModels);
         end
     end
     ecModels{j}=model_P;
-    eval(['ecModelP_' flux.conds{j} ' = model_P;']);
-    save(fullfile('../../../..','models',['ecModel_P_' flux.conds{j}]), ['ecModelP_' flux.conds{j}]);
+    eval(['ecModelP_' fermParams.conds{j} ' = model_P;']);
+    save(fullfile('models',['ecModel_P_' fermParams.conds{j}]), ['ecModelP_' fermParams.conds{j}]);
 end
 adjusted=adjusted';
-fid=fopen(fullfile('../../../..','results','ribosome_integration','modifiedRibosomeSubunits.txt'),'w');
+fid=fopen(fullfile('results','ribosome_integration','modifiedRibosomeSubunits.txt'),'w');
 fprintf(fid,'protein_IDs previous_values modified_values condition\n');
 fprintf(fid,'%s %f %f %s\n',adjusted{:});
 fclose(fid);
@@ -525,6 +457,48 @@ clear sequences sol fid adjusted
 clear oxPhos params positionsEC grouping
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%if tempModel_batch results are successful, constrain ecModels accordingly:
+ecModel_batch = setParam(ecModel_batch,'eq','r_2104',0.004);       %xylitol production
+ecModel_batch = setParam(ecModel_batch,'eq','r_4340',0.077);       %arabitol production
+ecModel = setParam(ecModel,'ub','r_1718_REV',0.4345);              %xylose uptake
+ecModel = setParam(ecModel,'eq','r_2104',0.004);                   %xylitol uptake
+ecModel = setParam(ecModel,'eq','r_4340',0.077);                   %arabitol uptake
+
+%if tempModel_batch results are successful, constrain ecModels accordingly:
+%     remove byproduct constraints:
+%     (with citrate uptake 'r_1687_REV'0.033 modelP can't be generated
+%     probably because in that case it would be the 2nd uptake constraint)
+ecModel_batch = setParam(ecModel_batch,'lb','r_1687',0);
+ecModel_batch = setParam(ecModel_batch,'ub','r_1687',Inf);
+%     constrain ecModel:
+ecModel = setParam(ecModel,'ub','r_1634_REV',1.9706);                   % acetate uptake
+ecModel = setParam(ecModel,'lb','r_1687',0);
+ecModel = setParam(ecModel,'ub','r_1687',Inf);
+
+
+%%% Gexp_in_urea:
+printConstraints(ecModel_batch,-1000,1000);
+tempModel_batch = setParam(ecModel_batch,'ub','r_1714_REV',3);          % glucose uptake
+tempModel_batch = setParam(tempModel_batch,'eq','r_1808',0.071);        % glycerol production
+tempModel_batch = setParam(tempModel_batch,'ub','r_1654_REV',0);        % block ammonium uptake
+tempModel_batch = setParam(tempModel_batch,'ub','r_2091_REV',Inf);      % allow urea uptake
+tempModel_batch = setParam(tempModel_batch,'ub','prot_pool_exchange',0.2);
+
+ecModel_batch = setParam(ecModel_batch,'ub','r_1654_REV',0);
+ecModel_batch = setParam(ecModel_batch,'ub','r_2091_REV',Inf);
+ecModel_batch = setParam(ecModel_batch,'ub','r_1808',0,.071);   % ?
+
+ecModel = setParam(ecModel,'ub','r_1714_REV',3.0);
+
+ecModel = setParam(ecModel,'ub','r_1654_REV',0);
+ecModel = setParam(ecModel,'ub','r_2091_REV',Inf);
+
+%%% GNim_in_urea:
+tempModel_batch = setParam(tempModel_batch,'ub','r_1714_REV',0.415);
+
+ecModel = setParam(ecModel,'ub','r_1714_REV',0.415);
+
 
 %% Get fluxes and enzyme usages to each reaction
 

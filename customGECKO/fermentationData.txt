@@ -1,7 +1,7 @@
-Condition	c_source	Ptot	D	Carbon_uptake	CO2_production	Oxygen_uptake	citrate(3-)	Glycerol	Xylitol	D-arabinitol
-Xexp	D-xylose exchange (reversible)	0.4385	0.064	1.74	2.878	2.769	0	0	0.228	0.372
-XNlim	D-xylose exchange (reversible)	0.197	0.018	0.4345	1.277	1.037	0	0	0.004	0.077
-Aexp	acetate exchange (reversible)	0.386	0.076	6.941	5.22	7.14	0.127	0	0	0
-ANlim	acetate exchange (reversible)	0.217	0.012	1.9706	2.23	2.26	0	0	0	0
-GexpUrea	D-glucose exchange (reversible)	0.636	0.238	3	7.3	5.6	0	0.071	0	0
-GNlimUrea	D-glucose exchange (reversible)	0.227	0.019	0.415	1.44	1.16	0	0	0	0
+Condition	c_source	Ptot	D	Carbon_uptake	CO2_production	Oxygen_uptake	citrate(3-)	Glycerol	Xylitol	D-arabinitol	ammonium	urea
+Xexp	D-xylose exchange (reversible)	0.4385	0.064	1.74	2.878	2.769	0	0	0.228	0.372	-1000	0
+XNlim	D-xylose exchange (reversible)	0.197	0.018	0.4345	1.277	1.037	0	0	0.004	0.077	-1000	0
+Aexp	acetate exchange (reversible)	0.386	0.076	6.941	5.22	7.14	0.127	0	0	0	-1000	0
+ANlim	acetate exchange (reversible)	0.217	0.012	1.9706	2.23	2.26	-0.033	0	0	0	-1000	0
+GexpUrea	D-glucose exchange (reversible)	0.636	0.238	3	7.3	5.6	0	0.071	0	0	0	-1000
+GNlimUrea	D-glucose exchange (reversible)	0.227	0.019	0.415	1.44	1.16	0	0	0	0	0	-1000

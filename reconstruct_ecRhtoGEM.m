@@ -101,15 +101,15 @@ updateDatabases;
 cd ..
 [ecModel,ecModel_batch] = enhanceGEM(model,'RAVEN','ecRhtoGEM',modelVer);%error fitGAM line 54 column 10
 
-% Ignore the sigma fitting, manually set sigma to 1;
+% Ignore the sigma fitting, manually set sigma to 0.35, as specified in getModelParameters;
 params = getModelParameters();
 cd limit_proteins
 f = measureAbundance(ecModel_batch.enzymes); % calculates f from average abundances of all conditions
-ecModel_batch = updateProtPool(ecModel_batch,params.Ptot,f*params.sigma); % f should be multiplied with params.sigma
+ecModel_batch = updateProtPool(ecModel_batch,params.Ptot,f*params.sigma);
 
 % Overwrite the files exported by enhanceGEM, now with the new pool UB
 cd ../../models
-ecModel_batch = saveECmodel(ecModel_batch,'RAVEN','ecRhtoGEM_batch',modelVer);%error using exportForGit: too many input arguments, saveECmodel line60
+ecModel_batch = saveECmodel(ecModel_batch,'RAVEN','ecRhtoGEM_batch',modelVer);% RAVEN v2.4.1+
 cd ecRhtoGEM
 movefile('*','../../../models/')
 cd ../../geckomat
@@ -157,7 +157,7 @@ for i = 1:numel(conditions.abbrev) % Loop through the conditions
     printConstraints(modelTmp_batch,-1000,1000);
     sol = solveLP(modelTmp_batch,1);
     printFluxVector(modelTmp_batch, sol.x, 'true', 'true');
-    topUsedEnzymes(sol.x,modelTmp_batch,{''},{''},false); % currently shows in 'ans' variable, can it be written to command window?
+    topUsedEnzymes(sol.x,modelTmp_batch,{''},{''},false) % currently shows in 'ans' variable, can it be written to command window? (removed ;)
     conditions.ecModel_batch{i} = modelTmp_batch;
 end
 
@@ -173,32 +173,37 @@ clear avgProtData tmp
 cd ../..
 
 %% II.generate_protModels pipeline
-
 grouping   = [2 2 2 2 2 2];   %Number represents replicates per condition, count of numbers - how many conditions
-flexFactor = 1.05;  %Allowable flexibilization factor for fixing carbon uptake rate
-
+load([root '/models/ecRhtoGEM_batch.mat'])
+ecModel_batch = model;
+load([root '/models/ecRhtoGEM.mat'])
+ecModel = model;
 cd([root '/GECKO/geckomat/utilities/integrate_proteomics'])
+
 generate_protModels(ecModel,grouping,'ecRhtoGEM',ecModel_batch);
+% TODO: save auto-flexibilized enzymes
+% TODO: move modifiedEnzymes_.txt to /results/generate_protModels_pipeline
+% TODO: save abundance and usage plots to files in /results/generate_protModels_pipeline
 
+% Move the files outside of GECKO folder
+cd([root '/GECKO/models/prot_constrained/ecRhtoGEM/'])
+delete('ecRhtoGEM*.txt') % yml file more complete
+movefile('*',[root '/models/'])
 
-% The idea would be at this point to load models that are saved on GECKO
-% folder, because they are not automatically loaded in comparison with
-% 'enhanceGEM' pipeline. Can they maybe be loaded automatically?
-load('GECKO/models/prot_constrained/ecYeastGEM/ecYeastGEM_Xexp.mat');
-% ..and so on for all others, as they would be required for the next step
-
+% Models are stored in /models, not in the GECKO folder (as the GECKO
+% folder would be deleted if you rerun this script). No easy way to load
+% the files, so will just load one by one. Can also assign them to
+% ecRhtoGEM_P(1) to ecRhtoGEM_P(6), instead of ecRhtoGEM_P_Aexp to
+% ecRhtoGEM_P_GNlimUrea, thiw would make it easier to loop through them
+% later on.
+load([root '/models/ecRhtoGEM_P_Aexp.mat']); ecRhtoGEM_P_Aexp = model;
+load([root '/models/ecRhtoGEM_P_ANlim.mat']); ecRhtoGEM_P_ANlim = model;
+load([root '/models/ecRhtoGEM_P_Xexp.mat']); ecRhtoGEM_P_Xexp = model;
+load([root '/models/ecRhtoGEM_P_XNlim.mat']); ecRhtoGEM_P_XNlim = model;
+load([root '/models/ecRhtoGEM_P_GexpUrea.mat']); ecRhtoGEM_P_GexpUrea = model;
+load([root '/models/ecRhtoGEM_P_GNlimUrea.mat']); ecRhtoGEM_P_GNlimUrea = model;
 
 clear fileNames flexFactor i
-
-% Some questions in regard to 'generate_protModels' pipeline:
-% should graphical output of abundances and usage be saved?
-     %saveas(gca,fullfile('../../../..','results','generate_protModels_pipeline','abundances.jpg'));
-     %saveas(gca,fullfile('../../../..','results','generate_protModels_pipeline','usages.jpg'));
-% how to: save auto-flexibilized enzymes from 1st round? currently appears only in command window, "Limiting abundance for..."
-% how to: save modifiedEnzymes_.txt (2nd round of auto flexibilization) at
-%    '../../../../results/generate_protModels_pipeline'? currently it is
-%    saved at same place where ecModelP
-
 
 % Note: Models are saved with prot_pool_exchange as an objective function,
 % constrained with GR (lb), carbon uptake (b, flexibilized), byproducts

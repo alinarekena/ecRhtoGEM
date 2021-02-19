@@ -173,35 +173,41 @@ clear avgProtData tmp
 cd ../..
 
 %% II.generate_protModels pipeline
-grouping   = [2 2 2 2 2 2];   %Number represents replicates per condition, count of numbers - how many conditions
-load([root '/models/ecRhtoGEM_batch.mat'])
-ecModel_batch = model;
-load([root '/models/ecRhtoGEM.mat'])
-ecModel = model;
+% Uncomment and run if the above code was not run in the same session
+%root = pwd; % Get the root directory of the folder
+%grouping = [2,2,2,2,2,2];
+%load([root '/models/ecRhtoGEM_batch.mat'])
+%ecModel_batch = model;
+%load([root '/models/ecRhtoGEM.mat'])
+%ecModel = model;
 cd([root '/GECKO/geckomat/utilities/integrate_proteomics'])
+[~,~,fermParams] = load_Prot_Ferm_Data(grouping);
 
+close all % Close all figures, to facilitate saving of new figures
 generate_protModels(ecModel,grouping,'ecRhtoGEM',ecModel_batch);
 % TODO: save auto-flexibilized enzymes
-% TODO: move modifiedEnzymes_.txt to /results/generate_protModels_pipeline
-% TODO: save abundance and usage plots to files in /results/generate_protModels_pipeline
+% Save figure windows to files
+figHandles = get(groot, 'Children'); 
+[~,B] = sort([figHandles.Number]);
+figHandles = figHandles(B);
+for f = 1:numel(figHandles)
+    if rem(f,2)
+        figCond = fermParams.conds{round(f/2)};
+        saveas(figHandles(f),[root, '/results/generate_protModels_pipeline/usage_', figCond, '.jpg']);
+    else
+        saveas(figHandles(f),[root, '/results/generate_protModels_pipeline/abundance_', figCond, '.jpg']);
+    end
+end
 
 % Move the files outside of GECKO folder
 cd([root '/GECKO/models/prot_constrained/ecRhtoGEM/'])
 delete('ecRhtoGEM*.txt') % yml file more complete
+delete('dependencies.txt')
+movefile('*.txt',[root, '/results/generate_protModels_pipeline'])
 movefile('*',[root '/models/'])
 
 % Models are stored in /models, not in the GECKO folder (as the GECKO
-% folder would be deleted if you rerun this script). No easy way to load
-% the files, so will just load one by one. Can also assign them to
-% ecRhtoGEM_P(1) to ecRhtoGEM_P(6), instead of ecRhtoGEM_P_Aexp to
-% ecRhtoGEM_P_GNlimUrea, thiw would make it easier to loop through them
-% later on.
-load([root '/models/ecRhtoGEM_P_Aexp.mat']); ecRhtoGEM_P_Aexp = model;
-load([root '/models/ecRhtoGEM_P_ANlim.mat']); ecRhtoGEM_P_ANlim = model;
-load([root '/models/ecRhtoGEM_P_Xexp.mat']); ecRhtoGEM_P_Xexp = model;
-load([root '/models/ecRhtoGEM_P_XNlim.mat']); ecRhtoGEM_P_XNlim = model;
-load([root '/models/ecRhtoGEM_P_GexpUrea.mat']); ecRhtoGEM_P_GexpUrea = model;
-load([root '/models/ecRhtoGEM_P_GNlimUrea.mat']); ecRhtoGEM_P_GNlimUrea = model;
+% folder would be deleted if you rerun this script)
 
 clear fileNames flexFactor i
 
@@ -226,6 +232,13 @@ fclose(fID);
 %Set some additional parameters
 oxPhos = ecModel.rxns(startsWith(ecModel.rxns,params.oxPhos));
 clear repl
+load([root '/models/ecRhtoGEM_Xexp.mat']); ecModels{1} = model;
+load([root '/models/ecRhtoGEM_XNlim.mat']); ecModels{2} = model;
+load([root '/models/ecRhtoGEM_Aexp.mat']); ecModels{3} = model;
+load([root '/models/ecRhtoGEM_ANlim.mat']); ecModels{4} = model;
+load([root '/models/ecRhtoGEM_GexpUrea.mat']); ecModels{5} = model;
+load([root '/models/ecRhtoGEM_GNlimUrea.mat']); ecModels{6} = model;
+% Order in ecModels matches protData and fermParams
 for i=1:length(grouping)
     try
         repl.first(i)=repl.last(end)+1;

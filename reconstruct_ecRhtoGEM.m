@@ -174,18 +174,19 @@ cd ../..
 
 %% II.generate_protModels pipeline
 % Uncomment and run if the above code was not run in the same session
-%root = pwd; % Get the root directory of the folder
-%grouping = [2,2,2,2,2,2];
-%load([root '/models/ecRhtoGEM_batch.mat'])
-%ecModel_batch = model;
-%load([root '/models/ecRhtoGEM.mat'])
-%ecModel = model;
+% root = pwd; % Get the root directory of the folder
+% grouping = [2,2,2,2,2,2];
+% load([root '/models/ecRhtoGEM_batch.mat'])
+% ecModel_batch = model;
+% load([root '/models/ecRhtoGEM.mat'])
+% ecModel = model;
 cd([root '/GECKO/geckomat/utilities/integrate_proteomics'])
 [~,~,fermParams] = load_Prot_Ferm_Data(grouping);
 
 close all % Close all figures, to facilitate saving of new figures
 generate_protModels(ecModel,grouping,'ecRhtoGEM',ecModel_batch);
-% TODO: save auto-flexibilized enzymes
+% TODO: save auto-flexibilized enzymes, now only shown in command window
+
 % Save figure windows to files
 figHandles = get(groot, 'Children'); 
 [~,B] = sort([figHandles.Number]);
@@ -219,19 +220,15 @@ clear fileNames flexFactor i
 % At this point don't test for growth optimization yet?
 
 %% III.Add ribosome subunits
+% Uncomment and run if the above code (step I and II) was not run in the
+% same MATLAB session
+%root = pwd; % Get the root directory of the repository
+%cd([root, '/GECKO/geckomat/utilities/integrate_proteomics']);
+grouping = [2,2,2,2,2,2];
 
-%Load proteomics data
-fID       = fopen('GECKO/Databases/abs_proteomics.txt');
-prot.cond = textscan(fID,['%s' repmat(' %s',1,14)],1); %n-1
-prot.data = textscan(fID,['%s %s' repmat(' %f',1,12)],'TreatAsEmpty',{'NA','na','NaN'}); %n-2
-prot.cond = [prot.cond{3:end}];
-prot.IDs  = prot.data{1};
-prot.data = cell2mat(prot.data(3:end));
-fclose(fID);
+[pIDs,protData,fermParams,byProds] = load_Prot_Ferm_Data(grouping);
+protData = cell2mat(protData);
 
-%Set some additional parameters
-oxPhos = ecModel.rxns(startsWith(ecModel.rxns,params.oxPhos));
-clear repl
 load([root '/models/ecRhtoGEM_Xexp.mat']); ecModels{1} = model;
 load([root '/models/ecRhtoGEM_XNlim.mat']); ecModels{2} = model;
 load([root '/models/ecRhtoGEM_Aexp.mat']); ecModels{3} = model;
@@ -239,6 +236,8 @@ load([root '/models/ecRhtoGEM_ANlim.mat']); ecModels{4} = model;
 load([root '/models/ecRhtoGEM_GexpUrea.mat']); ecModels{5} = model;
 load([root '/models/ecRhtoGEM_GNlimUrea.mat']); ecModels{6} = model;
 % Order in ecModels matches protData and fermParams
+
+%Get indexes for each replicate
 for i=1:length(grouping)
     try
         repl.first(i)=repl.last(end)+1;
@@ -249,21 +248,17 @@ for i=1:length(grouping)
     end
 end
 
-%Get indexes for carbon source uptake and biomass pseudoreactions
-positionsEC(1) = find(strcmpi(ecModel.rxnNames,params.c_source));
-positionsEC(2) = find(strcmpi(ecModel.rxns,params.bioRxn));
-
 % Load ribosome information
-fid=fopen('data/ribosome.txt');
+fid=fopen([root '/data/ribosome.txt']);
 data=textscan(fid,'%q %q %q %q %q %q','HeaderLines',1,'Delimiter','\t');
 fclose(fid);
 ribo=data{1};
 
 %Keep only the subunits that are also in the proteomics data
-[~,repRibo.dataIdx]=ismember(ribo,prot.IDs);
+[~,repRibo.dataIdx]=ismember(ribo,pIDs);
 repRibo.protein=ribo(repRibo.dataIdx>0);
 repRibo.dataIdx(repRibo.dataIdx==0)=[];
-repRibo.avgLevel=mean(prot.data(repRibo.dataIdx,:),2);
+repRibo.avgLevel=mean(protData(repRibo.dataIdx,:),2);
 
 %Density plot to see distribution of subunit abundances
 [f,xi]=ksdensity(log10(repRibo.avgLevel),'Bandwidth',0.1);
@@ -271,9 +266,11 @@ plot(xi,f);
 xlabel('Subunit abundance (log10(mmol/gDCW))');
 ylabel('Density');
 title('Distribution of average ribosomal subunit abundances');
-saveas(gca,fullfile('results','ribosome_integration','average_riboSubunit_abundance.jpg'));
+saveas(gca,[root, '/results/ribosome_integration/average_riboSubunit_abundance.jpg']);
 
-%Only include ribosomal subunite with abundance over 1e-5 mmol/gDCW 
+%Only include ribosomal subunite with abundance over 1e-5 mmol/gDCW, as
+%these are likely essential subunits, while lower abundances are
+%alternative subunits
 rmRibo=repRibo.avgLevel<1e-5 | isnan(repRibo.avgLevel);
 ribo=repRibo.protein(~rmRibo);
 
@@ -284,17 +281,6 @@ enzGenes=data{3}(idx);
 MWs=str2double(data{5}(idx))/1000;
 sequences=data{6}(idx);
 pathways={'Ribosome'};
-
-clear repRibo rmRibo data idx fid ans f xi
-
-ecModels{1}=ecModelP_Xexp;
-ecModels{2}=ecModelP_XNlim;
-ecModels{3}=ecModelP_Aexp;
-ecModels{4}=ecModelP_ANlim;
-ecModels{5}=ecModelP_GexpUrea;
-ecModels{6}=ecModelP_GNlimUrea;
-
-cd([root '/GECKO/geckomat/utilities/integrate_proteomics'])
 
 % Modify reactions
 adjusted=cell.empty();
@@ -350,13 +336,13 @@ for j=1:numel(ecModels);
     %Add UB for enzyme exchange reactions based on measurements.
     %If UB is too low, then adjust to value predicted by model.
     %cd geckomat/utilities/integrate_proteomics
-    abundances   = prot.data(:,repl.first(j):repl.last(j));
-    [pIDs, filtAbundances] = filter_ProtData(prot.IDs,abundances,1.96,true);
+    abundances   = protData(:,repl.first(j):repl.last(j));
+    [pIDsCond, filtAbundances] = filter_ProtData(pIDs,abundances,1.96,true);
     %cd ../../../..
     sol=solveLP(model_P);
     for i=riboExchId(1):riboExchId(2)
         protId=regexprep(model_P.rxnNames{i},'prot_(......).*','$1');
-        k=find(strcmp(protId,pIDs));
+        k=find(strcmp(protId,pIDsCond));
         if ~isempty(k)
             model_P.rxns{i}=['prot_' protId '_exchange'];
             model_P.rxnNames{i}=['prot_' protId '_exchange'];
@@ -379,22 +365,18 @@ for j=1:numel(ecModels);
     end
     ecModels{j}=model_P;
     eval(['ecModelP_' fermParams.conds{j} ' = model_P;']);
-    save(fullfile('../../../../models',['ecRhtoGEM_P_' fermParams.conds{j}]), ['ecModelP_' fermParams.conds{j}]);
+    exportForGit(model_P,['ecRhtoGEM_' fermParams.conds{j}],[root, '/models'],{'xml','yml','mat'},false,false);
 end
 adjusted=adjusted';
-fid=fopen(fullfile('results','ribosome_integration','modifiedRibosomeSubunits.txt'),'w');
+fid=fopen([root, '/results/ribosome_integration/modifiedRibosomeSubunits.txt'],'w');
 fprintf(fid,'protein_IDs previous_values modified_values condition\n');
 fprintf(fid,'%s %f %f %s\n',adjusted{:});
 fclose(fid);
 
-clear abundances aaMetIdx filtAbundances i j genesToAdd metsToAdd mmolAA
-clear protId pathways MWs enzGenes enzNames enzAdjust protMetIdx
-clear protRxnIdx sequences riboExchId riboKcat riboToAdd rxnsToAdd ribo
-clear ecModels model_P
-clear pIDs protData fermParams byProds
-clear sol fID adjusted GECKO_path k kegg
-clear params grouping flexFactor prot oxPhos repl positionsEC
-
+clear abundances aaMetIdx adjusted ans enzGenes enzNames fid filtAbundances
+clear genesToAdd i j k metsToAdd mmolAA model_P MWs pathways pIDsCond protId
+clear protMetIdx protRxnIdx repl ribo riboExchId riboKcat riboToAdd 
+clear rxnsToAdd sequences sol
 cd root
 
 %% Get fluxes and enzyme usages to each reaction

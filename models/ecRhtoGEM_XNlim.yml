@@ -43952,7 +43952,7 @@
     - metabolites: !!omap
       - prot_M7XHB5: 1
     - lower_bound: 0
-    - upper_bound: 1.1858e-06
+    - upper_bound: 1.9431e-06
     - gene_reaction_rule: "RHTO_04328"
   - !!omap
     - id: "prot_M7XHE8_exchange"
@@ -44688,7 +44688,7 @@
     - metabolites: !!omap
       - prot_pool: 1
     - lower_bound: 0
-    - upper_bound: 0.013109
+    - upper_bound: 0.013107
     - gene_reaction_rule: ""
   - !!omap
     - id: "r_0001No1"
@@ -69532,7 +69532,7 @@
     - metabolites: !!omap
       - s_0523: -1
     - lower_bound: 0
-    - upper_bound: 1000
+    - upper_bound: 0
     - gene_reaction_rule: ""
     - annotation: !!omap
       - bigg.reaction:
@@ -71889,7 +71889,7 @@
     - metabolites: !!omap
       - s_0766: -1
     - lower_bound: 0
-    - upper_bound: 1000
+    - upper_bound: 0
     - gene_reaction_rule: ""
     - annotation: !!omap
       - bigg.reaction:
@@ -78856,7 +78856,7 @@
     - metabolites: !!omap
       - s_1553: -1
     - lower_bound: 0
-    - upper_bound: 1000
+    - upper_bound: 0
     - gene_reaction_rule: ""
     - annotation: !!omap
       - bigg.reaction:
@@ -79670,7 +79670,7 @@
     - metabolites: !!omap
       - s_1567: -1
     - lower_bound: 0
-    - upper_bound: 1000
+    - upper_bound: 0.0044
     - gene_reaction_rule: ""
     - annotation: !!omap
       - bigg.reaction:
@@ -79688,7 +79688,7 @@
     - metabolites: !!omap
       - s_1567: 1
     - lower_bound: 0
-    - upper_bound: 0.0044
+    - upper_bound: 0
     - gene_reaction_rule: ""
     - annotation: !!omap
       - bigg.reaction:
@@ -93978,7 +93978,7 @@
     - metabolites: !!omap
       - s_D-arabinitol_e: -1
     - lower_bound: 0
-    - upper_bound: 1000
+    - upper_bound: 0.0847
     - gene_reaction_rule: ""
     - annotation: !!omap
       - sbo: "SBO:0000176"
@@ -93988,7 +93988,7 @@
     - metabolites: !!omap
       - s_D-arabinitol_e: 1
     - lower_bound: 0
-    - upper_bound: 0.0847
+    - upper_bound: 0
     - gene_reaction_rule: ""
     - annotation: !!omap
       - sbo: "SBO:0000176"

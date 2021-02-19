@@ -67,7 +67,7 @@ c_source   = fermData.c_source;
 for i=1:length(conditions)
     cd (current)
     disp(conditions{i})
-    c_source_exch = c_source(i);
+    c_source_exch = c_source{i};
     positionsEC(1) = find(strcmpi(ecModel.rxnNames,c_source_exch));
     %Extract data for the i-th condition
     abundances   = cell2mat(absValues(1:grouping(i)));
@@ -106,6 +106,7 @@ for i=1:length(conditions)
     %and flexibilization
     expData  = [GUR(i),CO2prod(i),OxyUptake(i)];
     flexGUR  = flexFactor*GUR(i);
+    ecModelP = setParam(ecModelP,'ub',positionsEC(1),flexGUR);
     ecModelP = DataConstrains(ecModelP,byProducts,byP_flux(i,:),1.1);
     %Get a temporary model structure with the same constraints to be used
     %for minimal enzyme requirements analysis. For all measured enzymes
@@ -120,7 +121,7 @@ for i=1:length(conditions)
         tempModel = setParam(enzModel,'obj',rxnIndex,-1);
         tempSol   = solveLP(tempModel);
         %Compare enzyme minimum usage with abundance value
-        if (tempSol.x(rxnIndex)-abundances(iA(j)))>0
+        if ~isempty(tempSol.x) & (tempSol.x(rxnIndex)-abundances(iA(j)))>0
             %Flexibilize limiting values
             disp(['Limiting abundance found for: ' matchedEnz{j} '/Previous value: ' num2str(abundances(iA(j))) ' /New value: ' num2str(tempSol.x(rxnIndex))])
             abundances(iA(j)) = 1.01*tempSol.x(rxnIndex);
@@ -135,7 +136,8 @@ for i=1:length(conditions)
     %flexibilization as applied to the measured proteins.
     sumPfilt = sum(abundances);
     flexPtot=Ptot(i)*(sumPfilt/sumP);
-    [ecModelP,usagesT,modificationsT,~,coverage] = constrainEnzymes(ecModelP,f,GAM,flexPtot,pIDs,abundances,Drate(i),flexGUR);
+    
+    [ecModelP,usagesT,modificationsT,~,coverage] = constrainEnzymes(ecModelP,f,GAM,flexPtot,pIDs,abundances,Drate(i));
     matchedProteins = usagesT.prot_IDs;
     prot_input = {initialProts filteredProts matchedProteins ecModel.enzymes coverage};
     writeProtCounts(conditions{i},prot_input,name); 
@@ -199,7 +201,7 @@ if ~isempty(compounds)
     disp('Constraining byproducts exchange fluxes with fermentation data')
     for i=1:length(compounds)
         %Get exchange rxn index
-        if ~strcmpi(compounds{i},'oxygen') & ~bounds(i)<0
+        if ~strcmpi(compounds{i},'oxygen') & le(0,bounds(i))
             rxnName = [compounds{i} ' exchange'];
         else
             rxnName = [compounds{i} ' exchange (reversible)'];

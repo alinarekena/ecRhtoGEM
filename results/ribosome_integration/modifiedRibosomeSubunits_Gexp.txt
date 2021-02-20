@@ -1,3 +1,0 @@
-protein_IDs previous_values modified_values condition
-M7WVZ3 0.000012 0.000037 Gexp
-M7XAQ2 0.000017 0.000037 Gexp

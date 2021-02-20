@@ -1,1 +1,0 @@
-protein_IDs	previous_values	modified_values	flex_Mass

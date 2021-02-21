@@ -1408,7 +1408,7 @@ r_1714_REV	  -> s_0565 		  0.00	 -0.00	  0.00
 r_1715_REV	  -> s_0572 		  0.00	 -0.00	  0.00
 r_1716_REV	  -> s_0576 		  0.00	 -0.00	  0.00
 r_1717_REV	s_0561  -> s_0562 		  0.00	1000.00	  0.00
-r_1718_REV	  -> s_0579 		  0.00	  1.74	  0.00
+r_1718_REV	  -> s_0579 		  0.00	  1.86	  0.00
 r_1719_REV	s_0578  -> s_0579 	RHTO_01630 or RHTO_03448 or RHTO_07444 or RHTO_06801 or RHTO_06080 or RHTO_01923	  0.00	1000.00	  0.00
 r_1720_REV	s_0583  -> s_0582 		  0.00	1000.00	  0.00
 r_1721_REV	s_0588  -> s_0587 		  0.00	1000.00	  0.00
@@ -4350,7 +4350,9 @@ y300072No2	1.8618e-07 prot_M7X0J8 + pmet_y300072  -> s_0394 + s_0412 + s_0794 	R
 y300074No1	s_0647 + s_0803 + 2.8935e-10 prot_M7WZ93  -> s_0649 + s_0794 + s_1322 	RHTO_00390	  0.00	1000.00	  0.00
 y300075No1	s_0650 + s_0803 + 9.7775e-08 prot_M7WZ93  -> s_0647 + s_0794 + s_1322 	RHTO_00390	  0.00	1000.00	  0.00
 y300078No1	s_0639 + s_0803 + 2.8935e-10 prot_M7XTB2  -> m_0030 + s_0633 + s_0794 	RHTO_07202	  0.00	1000.00	  0.00
-t_0883No1	s_0580 + s_0794 + s_1203 + 2.9214e-07 prot_M7XGH5  -> s_1198 + s_D-arabinitol_c 	RHTO_07844	  0.00	1000.00	  0.00
+t_0883No1	s_0580 + s_0794 + s_1203 + 1.2626e-09 prot_M7XGH5  -> s_1198 + s_D-arabinitol_c 	RHTO_07844	  0.00	1000.00	  0.00
+t_0884No1	s_0794 + s_1212 + s_D-ribulose + 8.5734e-10 prot_M7X791  -> s_1207 + s_D-arabinitol_c 	RHTO_00373	  0.00	1000.00	  0.00
+t_0885No1	s_0434 + s_D-ribulose + 1.8618e-07 prot_M7WVT6  -> s_0394 + s_0577 + s_0794 	RHTO_00950	  0.00	1000.00	  0.00
 r_0003_REVNo1	s_0020 + s_0794 + s_1203 + 1.2626e-09 prot_M7WPN2  -> s_0035 + s_1198 	RHTO_04102	  0.00	1000.00	  0.00
 r_0012_REVNo1	s_0799 + s_0993 + s_1205 + 1.1111e-05 prot_M7XID1  -> s_0119 + 2 s_0807 + s_1200 	RHTO_07378	  0.00	1000.00	  0.00
 r_0018_REVNo1	s_0180 + s_0953 + 3.9683e-07 prot_M7XIA6  -> s_0176 + s_0991 	RHTO_07353	  0.00	1000.00	  0.00
@@ -4992,7 +4994,8 @@ y300059_REVNo1	s_0370 + s_1460 + 2.2222e-07 prot_M7X1C7  -> m_0022 + s_1464 	RHT
 y300063_REVNo1	s_0983 + s_0991 + 2.2311e-05 prot_M7XTZ9  -> s_0750 + s_0803 	RHTO_06762	  0.00	1000.00	  0.00
 y300065_REVNo1	m_0035 + s_0955 + 1.8038e-07 prot_M7X6H1  -> s_1039 + s_1399 	RHTO_05191	  0.00	1000.00	  0.00
 y300066_REVNo1	m_0035 + s_1003 + 8.9606e-08 prot_M7X6H1  -> s_0779 + s_1039 	RHTO_05191	  0.00	1000.00	  0.00
-t_0883_REVNo1	s_1198 + s_D-arabinitol_c + 2.9214e-07 prot_M7XGH5  -> s_0580 + s_0794 + s_1203 	RHTO_07844	  0.00	1000.00	  0.00
+t_0883_REVNo1	s_1198 + s_D-arabinitol_c + 3.171e-07 prot_M7XGH5  -> s_0580 + s_0794 + s_1203 	RHTO_07844	  0.00	1000.00	  0.00
+t_0884_REVNo1	s_1207 + s_D-arabinitol_c + 3.171e-07 prot_M7X791  -> s_0794 + s_1212 + s_D-ribulose 	RHTO_00373	  0.00	1000.00	  0.00
 prot_M7WCH0_exchange	  -> prot_M7WCH0 	RHTO_07387	  0.00	1000.00	  0.00
 prot_M7WCK1_exchange	  -> prot_M7WCK1 	RHTO_06687	  0.00	1000.00	  0.00
 prot_M7WCS9_exchange	  -> prot_M7WCS9 	RHTO_06603	  0.00	1000.00	  0.00
@@ -5228,6 +5231,7 @@ prot_M7WVH9_exchange	  -> prot_M7WVH9 	RHTO_04781	  0.00	1000.00	  0.00
 prot_M7WVM4_exchange	  -> prot_M7WVM4 	RHTO_04826	  0.00	1000.00	  0.00
 prot_M7WVP5_exchange	  -> prot_M7WVP5 	RHTO_04846	  0.00	1000.00	  0.00
 prot_M7WVT2_exchange	  -> prot_M7WVT2 	RHTO_04872	  0.00	1000.00	  0.00
+prot_M7WVT6_exchange	  -> prot_M7WVT6 	RHTO_00950	  0.00	1000.00	  0.00
 prot_M7WVT8_exchange	  -> prot_M7WVT8 	RHTO_04877	  0.00	1000.00	  0.00
 prot_M7WVW2_exchange	  -> prot_M7WVW2 	RHTO_01205	  0.00	1000.00	  0.00
 prot_M7WVW4_exchange	  -> prot_M7WVW4 	RHTO_00975	  0.00	1000.00	  0.00

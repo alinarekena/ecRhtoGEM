@@ -7290,6 +7290,11 @@
     - compartment: "c"
     - formula: ""
   - !!omap
+    - id: "prot_M7WVT6"
+    - name: "prot_M7WVT6"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
     - id: "prot_M7WVT8"
     - name: "prot_M7WVT8"
     - compartment: "c"
@@ -34727,15 +34732,16 @@
     - name: "D-arabinitol"
     - compartment: "c"
     - formula: ""
-    - annotation: !!omap
-      - sbo: "SBO:0000247"
   - !!omap
     - id: "s_D-arabinitol_e"
     - name: "D-arabinitol"
     - compartment: "e"
     - formula: ""
-    - annotation: !!omap
-      - sbo: "SBO:0000247"
+  - !!omap
+    - id: "s_D-ribulose"
+    - name: "D-ribulose"
+    - compartment: "c"
+    - formula: ""
 - reactions:
   - !!omap
     - id: "arm_r_0001"
@@ -42156,7 +42162,7 @@
     - metabolites: !!omap
       - prot_M7WKX0: 1
     - lower_bound: 0
-    - upper_bound: 5.7395e-06
+    - upper_bound: 4.8427e-06
     - gene_reaction_rule: "RHTO_05784"
   - !!omap
     - id: "prot_M7WKZ4_exchange"
@@ -42372,7 +42378,7 @@
     - metabolites: !!omap
       - prot_M7WMT2: 1
     - lower_bound: 0
-    - upper_bound: 1.2694e-06
+    - upper_bound: 1.0711e-06
     - gene_reaction_rule: "RHTO_05318"
   - !!omap
     - id: "prot_M7WMU5_exchange"
@@ -42428,7 +42434,7 @@
     - metabolites: !!omap
       - prot_M7WNB5: 1
     - lower_bound: 0
-    - upper_bound: 2.0934e-06
+    - upper_bound: 1.7663e-06
     - gene_reaction_rule: "RHTO_01252"
   - !!omap
     - id: "prot_M7WNN8_exchange"
@@ -42756,7 +42762,7 @@
     - metabolites: !!omap
       - prot_M7WS89: 1
     - lower_bound: 0
-    - upper_bound: 9.75e-07
+    - upper_bound: 8.2266e-07
     - gene_reaction_rule: "RHTO_07171"
   - !!omap
     - id: "prot_M7WSB2_exchange"
@@ -43111,6 +43117,14 @@
     - upper_bound: 2.3477e-06
     - gene_reaction_rule: "RHTO_04846"
   - !!omap
+    - id: "prot_M7WVT6_exchange"
+    - name: "prot_M7WVT6_exchange"
+    - metabolites: !!omap
+      - prot_M7WVT6: 1
+    - lower_bound: 0
+    - upper_bound: 6.2929e-06
+    - gene_reaction_rule: "RHTO_00950"
+  - !!omap
     - id: "prot_M7WVW2_exchange"
     - name: "prot_M7WVW2_exchange"
     - metabolites: !!omap
@@ -43140,7 +43154,7 @@
     - metabolites: !!omap
       - prot_M7WW40: 1
     - lower_bound: 0
-    - upper_bound: 3.3574e-06
+    - upper_bound: 2.8328e-06
     - gene_reaction_rule: "RHTO_01050"
   - !!omap
     - id: "prot_M7WW42_exchange"
@@ -44412,7 +44426,7 @@
     - metabolites: !!omap
       - prot_M7XBZ9: 1
     - lower_bound: 0
-    - upper_bound: 4.6826e-06
+    - upper_bound: 3.9509e-06
     - gene_reaction_rule: "RHTO_01745"
   - !!omap
     - id: "prot_M7XCG8_exchange"
@@ -44684,7 +44698,7 @@
     - metabolites: !!omap
       - prot_M7XHB5: 1
     - lower_bound: 0
-    - upper_bound: 7.5139e-06
+    - upper_bound: 6.3399e-06
     - gene_reaction_rule: "RHTO_04328"
   - !!omap
     - id: "prot_M7XHF8_exchange"
@@ -44748,7 +44762,7 @@
     - metabolites: !!omap
       - prot_M7XI04: 1
     - lower_bound: 0
-    - upper_bound: 8.0074e-07
+    - upper_bound: 6.7562e-07
     - gene_reaction_rule: "RHTO_04045"
   - !!omap
     - id: "prot_M7XI20_exchange"
@@ -44764,7 +44778,7 @@
     - metabolites: !!omap
       - prot_M7XI95: 1
     - lower_bound: 0
-    - upper_bound: 1.6131e-06
+    - upper_bound: 1.3611e-06
     - gene_reaction_rule: "RHTO_03911"
   - !!omap
     - id: "prot_M7XIA6_exchange"
@@ -44828,7 +44842,7 @@
     - metabolites: !!omap
       - prot_M7XIT2: 1
     - lower_bound: 0
-    - upper_bound: 2.1051e-06
+    - upper_bound: 1.7912e-06
     - gene_reaction_rule: "RHTO_03621"
   - !!omap
     - id: "prot_M7XIT7_exchange"
@@ -44860,7 +44874,7 @@
     - metabolites: !!omap
       - prot_M7XJ70: 1
     - lower_bound: 0
-    - upper_bound: 3.1948e-06
+    - upper_bound: 2.6956e-06
     - gene_reaction_rule: "RHTO_07003"
   - !!omap
     - id: "prot_M7XJ78_exchange"
@@ -45052,7 +45066,7 @@
     - metabolites: !!omap
       - prot_M7XKV7: 1
     - lower_bound: 0
-    - upper_bound: 3.3126e-07
+    - upper_bound: 2.795e-07
     - gene_reaction_rule: "RHTO_02389"
   - !!omap
     - id: "prot_M7XKW6_exchange"
@@ -45628,7 +45642,7 @@
     - metabolites: !!omap
       - prot_pool: 1
     - lower_bound: 0
-    - upper_bound: 0.030493
+    - upper_bound: 0.030594
     - gene_reaction_rule: ""
   - !!omap
     - id: "r_0001No1"
@@ -69851,7 +69865,7 @@
     - metabolites: !!omap
       - s_0420: 1
     - lower_bound: 0
-    - upper_bound: 1000
+    - upper_bound: 1100
     - gene_reaction_rule: ""
     - annotation: !!omap
       - bigg.reaction:
@@ -71376,8 +71390,8 @@
     - name: "D-xylose exchange (reversible)"
     - metabolites: !!omap
       - s_0579: 1
-    - lower_bound: 1.7226
-    - upper_bound: 1.7398
+    - lower_bound: 1.8414
+    - upper_bound: 1.8598
     - gene_reaction_rule: ""
     - annotation: !!omap
       - bigg.reaction:
@@ -80610,7 +80624,7 @@
     - metabolites: !!omap
       - s_1567: -1
     - lower_bound: 0
-    - upper_bound: 0.2508
+    - upper_bound: 0.2453
     - gene_reaction_rule: ""
     - annotation: !!omap
       - bigg.reaction:
@@ -80742,7 +80756,7 @@
     - name: "growth"
     - metabolites: !!omap
       - s_0450: -1
-    - lower_bound: 0.06336
+    - lower_bound: 0.05346
     - upper_bound: 1000
     - gene_reaction_rule: ""
     - annotation: !!omap
@@ -90784,7 +90798,7 @@
       - s_0794: 1
       - s_0803: -1
       - s_1322: 1
-    - lower_bound: 3.65
+    - lower_bound: 3.6
     - upper_bound: 1000
     - gene_reaction_rule: ""
     - annotation: !!omap
@@ -94899,8 +94913,6 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: ""
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
     - id: "r_4339_REV"
     - name: "D-arabinitol transport (reversible)"
@@ -94910,18 +94922,14 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: ""
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
     - id: "r_4340"
     - name: "D-arabinitol exchange"
     - metabolites: !!omap
       - s_D-arabinitol_e: -1
     - lower_bound: 0
-    - upper_bound: 0.4092
+    - upper_bound: 0.4037
     - gene_reaction_rule: ""
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
     - id: "r_4340_REV"
     - name: "D-arabinitol exchange (reversible)"
@@ -94930,8 +94938,6 @@
     - lower_bound: 0
     - upper_bound: 0
     - gene_reaction_rule: ""
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
     - id: "t_0001No1"
     - name: "NADH dehydrogenase (complex I) (No1)"
@@ -111460,9 +111466,9 @@
     - subsystem: "Pentose and glucuronate interconversions"
   - !!omap
     - id: "t_0883No1"
-    - name: "D-arabinitol dehydrogenase (No1)"
+    - name: "D-arabinitol 4-dehydrogenase (No1)"
     - metabolites: !!omap
-      - prot_M7XGH5: -2.9214e-07
+      - prot_M7XGH5: -1.2626e-09
       - s_0580: -1
       - s_0794: -1
       - s_1198: 1
@@ -111473,9 +111479,9 @@
     - gene_reaction_rule: "RHTO_07844"
   - !!omap
     - id: "t_0883_REVNo1"
-    - name: "D-arabinitol dehydrogenase (reversible) (No1)"
+    - name: "D-arabinitol 4-dehydrogenase (reversible) (No1)"
     - metabolites: !!omap
-      - prot_M7XGH5: -2.9214e-07
+      - prot_M7XGH5: -3.171e-07
       - s_0580: 1
       - s_0794: 1
       - s_1198: -1
@@ -111484,6 +111490,45 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_07844"
+  - !!omap
+    - id: "t_0884No1"
+    - name: "D-arabinitol 2-dehydrogenase/D-ribulose reductase (No1)"
+    - metabolites: !!omap
+      - prot_M7X791: -8.5734e-10
+      - s_0794: -1
+      - s_1207: 1
+      - s_1212: -1
+      - s_D-arabinitol_c: 1
+      - s_D-ribulose: -1
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_00373"
+  - !!omap
+    - id: "t_0884_REVNo1"
+    - name: "D-arabinitol 2-dehydrogenase/D-ribulose reductase (reversible) (No1)"
+    - metabolites: !!omap
+      - prot_M7X791: -3.171e-07
+      - s_0794: 1
+      - s_1207: -1
+      - s_1212: 1
+      - s_D-arabinitol_c: -1
+      - s_D-ribulose: 1
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_00373"
+  - !!omap
+    - id: "t_0885No1"
+    - name: "D-ribulokinase (No1)"
+    - metabolites: !!omap
+      - prot_M7WVT6: -1.8618e-07
+      - s_0394: 1
+      - s_0434: -1
+      - s_0577: 1
+      - s_0794: 1
+      - s_D-ribulose: -1
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_00950"
   - !!omap
     - id: "translation"
     - name: ""
@@ -114132,6 +114177,9 @@
     - id: "RHTO_00942"
     - name: "RHTO_00942"
   - !!omap
+    - id: "RHTO_00950"
+    - name: "RHTO_00950"
+  - !!omap
     - id: "RHTO_00975"
     - name: "RHTO_00975"
   - !!omap
@@ -114982,7 +115030,7 @@
     - name: "RHTO_03637"
   - !!omap
     - id: "RHTO_03646"
-    - name: "RHTO_03646"
+    - name: ""
   - !!omap
     - id: "RHTO_03653"
     - name: "RHTO_03653"
@@ -115912,7 +115960,7 @@
     - name: "RHTO_06288"
   - !!omap
     - id: "RHTO_06289"
-    - name: "RHTO_06289"
+    - name: ""
   - !!omap
     - id: "RHTO_06298"
     - name: "RHTO_06298"

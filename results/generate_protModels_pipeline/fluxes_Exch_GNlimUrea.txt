@@ -1,5 +1,5 @@
 EXCHANGE FLUXES:
-r_1634	(acetate exchange):	0.00185
+r_1634	(acetate exchange):	0.0018498
 r_1650	(alpha,alpha-trehalose exchange):	0.034768
 r_1672	(carbon dioxide exchange):	1.2574
 r_1832	(H+ exchange):	0.030514

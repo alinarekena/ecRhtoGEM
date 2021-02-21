@@ -4,9 +4,6 @@ function parameters = getModelParameters
 %   Set model and organism specific parameters that are used by the
 %   ecModel generation pipeline.
 %
-%   Ivan Domenzain. Last edited: 2020-02-07
-%
-%   Alina Rekena. Last edited: 2021-01-14
 
 %Average enzyme saturation factor
 parameters.sigma = 0.35;       % fitted for Xexp condition
@@ -15,7 +12,7 @@ parameters.sigma = 0.35;       % fitted for Xexp condition
 parameters.Ptot = 0.4385;      %Assumed constant
 
 %Minimum growth rate the model should grow at [1/h]
-parameters.gR_exp = 0.064;     %[g/gDw h] 
+parameters.gR_exp = 0.054;     %[g/gDw h] 
 
 %Set GAM parameters (optional)
 %Note: the GAM value specified here represents only the part of growth

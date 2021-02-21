@@ -16,7 +16,7 @@ initCobraToolbox
 root = pwd; % Get the root directory of the folder
 
 %% Load model
-model    = importModel(fullfile(root,'models','model_edit.xml'));
+model    = importModel(fullfile(root,'models','rhto_edit.xml'));
 modelVer = model.description(strfind(model.description,'_v')+1:end);
 
 %% Define the model conditions and their "parameters"
@@ -30,11 +30,11 @@ conditions.exch.rxns = {{'r_1718','r_2104','r_4340'},...    % D-xylose uptake, x
     {'r_1718','r_1634','r_1687'},...                        % block D-xylose uptake, allow acetate uptake, citrate(3-) uptake
     {'r_1718','r_1654','r_1714','r_2091'},...               % block D-xylose uptake, ammonium uptake, allow D-glucose uptake, urea uptake
     {'r_1718','r_1654','r_1714','r_2091'}};                 % block D-xylose uptake, ammonium uptake, allow D-glucose uptake, urea uptake
-conditions.exch.value = {[-1.74,0.228,0.372],... % Xexp
+conditions.exch.value = {[-1.86,0.223,0.367],... % Xexp
     [-0.4345,0.004,0.077],...                   % XNlim
     [0,-6.941,0.127],...                        % Aexp
     [0,-1.9706,-0.033],...                      % ANlim
-    [0,0,-3,-1000],...                          % GexpUrea
+    [0,0,-2.45,-1000],...                          % GexpUrea
     [0,0,-0.415,-1000]};                        %GNlimUrea
 conditions.exch.lbub = {{'lb','ub','ub'},...    % Xexp
     {'lb','ub','ub'},...                        % XNlim
@@ -124,11 +124,11 @@ conditions.exch.rxns = {{'r_1718_REV','r_2104','r_4340'},...    % D-xylose uptak
     {'r_1718_REV','r_1634_REV','r_1687_REV'},...                % block D-xylose uptake, allow acetate uptake, citrate(3-) uptake
     {'r_1718_REV','r_1654_REV','r_1714_REV','r_2091_REV','r_1808'},...  % block D-xylose uptake, ammonium uptake, allow D-glucose uptake, urea uptake, glycerol production
     {'r_1718_REV','r_1654_REV','r_1714_REV','r_2091_REV'}};             % block D-xylose uptake, ammonium uptake, allow D-glucose uptake, urea uptake
-conditions.exch.value = {[1.74,0.228,0.372],...                 % Xexp
+conditions.exch.value = {[1.86,0.223,0.367],...                 % Xexp
     [0.4345,0.004,0.077],...                                    % XNlim
     [0,6.941,0.127],...                                         % Aexp
     [0,1.9706,0.033],...                                        % ANlim
-    [0,0,3,1000,0.071],...                                      % GexpUrea
+    [0,0,2.45,1000,0.06],...                                      % GexpUrea
     [0,0,0.415,1000]};                                          %GNlimUrea
 conditions.exch.lbub = {{'ub','ub','ub'},...                    % Xexp
     {'ub','ub','ub'},...                                        % XNlim

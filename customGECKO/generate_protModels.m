@@ -201,19 +201,21 @@ if ~isempty(compounds)
     disp('Constraining byproducts exchange fluxes with fermentation data')
     for i=1:length(compounds)
         %Get exchange rxn index
-        if ~strcmpi(compounds{i},'oxygen') & le(0,bounds(i))
-            rxnName = [compounds{i} ' exchange'];
+        if le(0,bounds(i))
+            inFlux = 0; % Excretion
         else
-            rxnName = [compounds{i} ' exchange (reversible)'];
+            inFlux = 1; % Uptake
         end
-        BPindex = find(strcmpi(model.rxnNames,rxnName));
-        if ~isempty(BPindex)
+        rxnNames = strcat(compounds{i}, {' exchange',' exchange (reversible)'});
+        [~, BPindex] = ismember(lower(rxnNames),lower(model.rxnNames));
+        if ~isempty(BPindex(inFlux+1))
             disp([compounds{i} ' exchange has been constrained to: ' num2str(bounds(i)) ' [mmol/gDw h]'])
             %Allow some flexibility 
-            model = setParam(model,'ub',BPindex,flexBounds(1)*abs(bounds(i)));
+            model = setParam(model,'ub',BPindex(inFlux+1),flexBounds(1)*abs(bounds(i)));
             if numel(flexBounds)>1
-                model = setParam(model,'lb',BPindex,flexBounds(2)*abs(bounds(i)));
+                model = setParam(model,'lb',BPindex(inFlux+1),flexBounds(2)*abs(bounds(i)));
             end
+            model = setParam(model,'eq',BPindex(~inFlux+1),0); % Block exchange reaction in other direction
         else
             disp(['No exchange rxn for ' compounds{i} ' was found in ecModel'])
         end

@@ -34352,16 +34352,22 @@
     - name: "D-arabinitol"
     - compartment: "c"
     - formula: ""
+    - annotation: !!omap
+      - sbo: "SBO:0000247"
   - !!omap
     - id: "s_D-arabinitol_e"
     - name: "D-arabinitol"
     - compartment: "e"
     - formula: ""
+    - annotation: !!omap
+      - sbo: "SBO:0000247"
   - !!omap
     - id: "s_D-ribulose"
     - name: "D-ribulose"
     - compartment: "c"
     - formula: ""
+    - annotation: !!omap
+      - sbo: "SBO:0000247"
 - reactions:
   - !!omap
     - id: "arm_r_0001"
@@ -93642,6 +93648,8 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: ""
+    - annotation: !!omap
+      - sbo: "SBO:0000176"
   - !!omap
     - id: "r_4339_REV"
     - name: "D-arabinitol transport (reversible)"
@@ -93651,6 +93659,8 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: ""
+    - annotation: !!omap
+      - sbo: "SBO:0000176"
   - !!omap
     - id: "r_4340"
     - name: "D-arabinitol exchange"
@@ -93659,6 +93669,8 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: ""
+    - annotation: !!omap
+      - sbo: "SBO:0000176"
   - !!omap
     - id: "r_4340_REV"
     - name: "D-arabinitol exchange (reversible)"
@@ -93667,6 +93679,8 @@
     - lower_bound: 0
     - upper_bound: 0
     - gene_reaction_rule: ""
+    - annotation: !!omap
+      - sbo: "SBO:0000176"
   - !!omap
     - id: "t_0001No1"
     - name: "NADH dehydrogenase (complex I) (No1)"
@@ -113598,7 +113612,7 @@
     - name: "RHTO_03621"
   - !!omap
     - id: "RHTO_03646"
-    - name: ""
+    - name: "RHTO_03646"
   - !!omap
     - id: "RHTO_03653"
     - name: "RHTO_03653"
@@ -114426,7 +114440,7 @@
     - name: "RHTO_06288"
   - !!omap
     - id: "RHTO_06289"
-    - name: ""
+    - name: "RHTO_06289"
   - !!omap
     - id: "RHTO_06298"
     - name: "RHTO_06298"

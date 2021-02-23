@@ -1,2 +1,2 @@
 initial_prots	filtered_prots	matched_prots	model_prots	mass_coverage
-3160	1800	386	693	0.217890397740611
+3160	1800	386	693	0.177246643949961

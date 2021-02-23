@@ -1,16 +1,16 @@
 EXCHANGE FLUXES:
-r_1572	(2-isopropylmalate exchange):	0.0020943
-r_1651	(alpha-D-glucosamine 6-phosphate exchange):	0.025588
-r_1672	(carbon dioxide exchange):	6.4524
+r_1672	(carbon dioxide exchange):	7.4332
 r_1683	(choline exchange):	0.00043411
+r_1832	(H+ exchange):	998.3087
 r_1883	(L-cysteine exchange):	0.028289
+r_2005	(phosphate exchange):	999.957
 r_2046	(sn-glycero-3-phosphocholine exchange):	0.0045296
-r_2100	(water exchange):	10.6038
+r_2100	(water exchange):	9.8547
 r_2111	(growth):	0.1881
-r_1654_REV	(ammonium exchange (reversible)):	1.7022
-r_1714_REV	(D-glucose exchange (reversible)):	2.4498
-r_1832_REV	(H+ exchange (reversible)):	0.040277
-r_1992_REV	(oxygen exchange (reversible)):	6.007
-r_2005_REV	(phosphate exchange (reversible)):	0.068566
+r_1714_REV	(D-glucose exchange (reversible)):	2.4455
+r_1832_REV	(H+ exchange (reversible)):	1000
+r_1992_REV	(oxygen exchange (reversible)):	6.1505
+r_2005_REV	(phosphate exchange (reversible)):	1000
 r_2060_REV	(sulphate exchange (reversible)):	0.061192
-prot_pool_exchange	(prot_pool_exchange):	0.0037143
+r_2091_REV	(urea exchange (reversible)):	0.8383
+prot_pool_exchange	(prot_pool_exchange):	0.0039212

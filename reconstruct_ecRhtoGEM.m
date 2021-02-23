@@ -361,6 +361,7 @@ for j=1:numel(ecModels);
             model_P.rxnNames{i}=['draw_prot_' protId];
         end
     end
+    model_P = rmfield(model_P,'subSystems');
     ecModels{j}=model_P;
     eval(['ecModelP_' fermParams.conds{j} ' = model_P;']);
     exportForGit(model_P,['ecRhtoGEM_' fermParams.conds{j}],[root, '/models'],{'xml','yml','mat'},false,false);

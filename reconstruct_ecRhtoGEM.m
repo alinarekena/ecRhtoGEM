@@ -91,6 +91,9 @@ for i = 1:length(fileNames)
     disp(['Replaced ' fileNames{i} ' at ' GECKO_path.folder '\'])
 end
 movefile('relative_proteomics.txt','GECKO/Databases','f');
+movefile('abs_proteomics.txt','GECKO/Databases','f');
+movefile('fermentationData.txt','GECKO/Databases','f');
+clear fileNames GECKO_path i
 
 % Start GECKO/enhanceGEM pipeline
 cd GECKO
@@ -105,7 +108,7 @@ cd ..
 params = getModelParameters();
 cd limit_proteins
 f = measureAbundance(ecModel_batch.enzymes); % calculates f from average abundances of all conditions
-ecModel_batch = updateProtPool(ecModel_batch,params.Ptot,f*params.sigma);
+ecModel_batch.ub(getIndexes(ecModel_batch,'prot_pool_exchange','rxns')) = params.Ptot*f*params.sigma;
 
 % Overwrite the files exported by enhanceGEM, now with the new pool UB
 cd ../../models
@@ -150,7 +153,7 @@ end
 
 for i = 1:numel(conditions.abbrev) % Loop through the conditions
     modelTmp_batch = ecModel_batch; % Work on a temporary model structure, leaving the original untouched for the next condition
-    modelTmp_batch = updateProtPool(modelTmp_batch,fermParams.Ptot(i),f(i)*0.5); % Sigma = 0.5
+    modelTmp_batch.ub(getIndexes(modelTmp_batch,'prot_pool_exchange','rxns')) = fermParams.Ptot(i),f(i)*0.5; %sigma = 0.5, use params.sigma instead?
     modelTmp_batch = setParam(modelTmp_batch, conditions.exch.lbub{i}, ...
         conditions.exch.rxns{i}, conditions.exch.value{i});
     fprintf(['\n=========== Results from model: ' conditions.abbrev{i}, ' ===========\n\n'])    

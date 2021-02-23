@@ -153,7 +153,7 @@ end
 
 for i = 1:numel(conditions.abbrev) % Loop through the conditions
     modelTmp_batch = ecModel_batch; % Work on a temporary model structure, leaving the original untouched for the next condition
-    modelTmp_batch.ub(getIndexes(modelTmp_batch,'prot_pool_exchange','rxns')) = fermParams.Ptot(i),f(i)*0.5; %sigma = 0.5, use params.sigma instead?
+    modelTmp_batch.ub(getIndexes(modelTmp_batch,'prot_pool_exchange','rxns')) = fermParams.Ptot(i)*f(i)*params.sigma;
     modelTmp_batch = setParam(modelTmp_batch, conditions.exch.lbub{i}, ...
         conditions.exch.rxns{i}, conditions.exch.value{i});
     fprintf(['\n=========== Results from model: ' conditions.abbrev{i}, ' ===========\n\n'])    

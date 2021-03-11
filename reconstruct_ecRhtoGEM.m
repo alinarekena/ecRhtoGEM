@@ -71,7 +71,7 @@ git('fetch')
     % TODO: updateDatabases, addProtein, getEnzymeCodes, convertToEnzymeModel
     % are in GECKO PR #122 and custom functions can be removed once PR is
     % merged.
-git('switch notReviewedDevel')
+git('switch notReviewedDevel2')
 cd ..
 
 % From here define a new loop that generates the condition-specific batch
@@ -90,9 +90,9 @@ for i = 1:length(fileNames)
     copyfile(['customGECKO' filesep fileNames{i}],GECKO_path.folder)
     disp(['Replaced ' fileNames{i} ' at ' GECKO_path.folder '\'])
 end
-movefile('relative_proteomics.txt','GECKO/Databases','f');
-movefile('abs_proteomics.txt','GECKO/Databases','f');
-movefile('fermentationData.txt','GECKO/Databases','f');
+movefile('relative_proteomics.txt','GECKO/databases','f');
+movefile('abs_proteomics.txt','GECKO/databases','f');
+movefile('fermentationData.txt','GECKO/databases','f');
 clear fileNames GECKO_path i
 
 % Start GECKO/enhanceGEM pipeline
@@ -236,6 +236,7 @@ load([root '/models/ecRhtoGEM_GNlimUrea.mat']); ecModels{6} = model;
 % Order in ecModels matches protData and fermParams
 
 %Get indexes for each replicate
+clear repl
 for i=1:length(grouping)
     try
         repl.first(i)=repl.last(end)+1;
@@ -319,6 +320,7 @@ for j=1:numel(ecModels);
     mmolAA=-sum(mmolAA(mmolAA<0)); %mmol amino acids in biomass
     riboKcat=10.5*3600; %10.5 aa/sec (doi:10.1042/bj1680409) -> aa/hour
     riboKcat=mmolAA/riboKcat; %compensate for the amount of amino acids elongated
+    riboKcat=riboKcat*1000; % 1000-fold increase to prevent very low fluxes
     % Include new reaction representing ribosomes (=translation)
     rxnsToAdd.rxns={'translation'};
     rxnsToAdd.mets=[model_P.mets(protMetIdx),model_P.mets(aaMetIdx),riboToAdd.mets'];
@@ -334,7 +336,7 @@ for j=1:numel(ecModels);
     %Add UB for enzyme exchange reactions based on measurements.
     %If UB is too low, then adjust to value predicted by model.
     %cd geckomat/utilities/integrate_proteomics
-    abundances   = protData(:,repl.first(j):repl.last(j));
+    abundances   = protData(:,repl.first(j):repl.last(j))*1000; % multiplied by 1000 to prevent very low fluxes
     [pIDsCond, filtAbundances] = filter_ProtData(pIDs,abundances,1.96,true);
     %cd ../../../..
     sol=solveLP(model_P);

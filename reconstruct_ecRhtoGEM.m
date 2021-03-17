@@ -101,7 +101,11 @@ delete databases/prot_abundance.txt;  % if not deleted,f factor will not be calc
 GECKOver = git('describe --tags');
 cd geckomat/get_enzyme_data
 updateDatabases;
-cd ..
+
+% Change lipid and protein conteint to Xexp condition
+cd([root '/code'])
+model = scaleLipidProtein(model,0.17,0.4385);
+cd([root '/GECKO/geckomat/'])
 [ecModel,ecModel_batch] = enhanceGEM(model,'RAVEN','ecRhtoGEM',modelVer);
 
 % Ignore the sigma fitting, manually set sigma to 0.35, as specified in getModelParameters;

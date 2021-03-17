@@ -16,12 +16,13 @@ function generate_protModels(ecModel,grouping,name,ecModel_batch)
 % Usage:  generate_protModels(ecModel,grouping,name,ecModel_batch)
 %
 % Last modified.  Ivan Domenzain 2020-04-06
-close all
-current = pwd;
 
 if nargin<4
     ecModel_batch = [];
 end
+close all
+current = pwd;
+
 %Flexibilization factor for carbon source uptake rate (needed for
 %flexibilizeProteins step in constrainEnzymes).
 flexFactor = 1.05;
@@ -31,6 +32,8 @@ parameters = getModelParameters;
 Ptot_model = parameters.Ptot;
 growthRxn  = parameters.exch_names{1};
 NGAM       = parameters.NGAM;
+c_source   = parameters.c_source;
+GAM        = [];
 if isfield(parameters,'GAM')
     GAM = parameters.GAM;
 else
@@ -67,6 +70,11 @@ CO2prod    = fermData.CO2prod;
 OxyUptake  = fermData.OxyUptake;
 byP_flux   = fermData.byP_flux;
 c_source   = fermData.c_source;
+
+%Load protein and lipid content
+fID      = fopen('../../../../data/lipidContent.txt');
+lipidContent = textscan(fID,'%s %f','HeaderLines',1);
+lipidContent = lipidContent{2}; fclose(fID);
 
 %Increase enzyme usage fluxes 1000-fold, to prevent very low fluxes.
 models={ecModel,ecModel_batch};
@@ -114,10 +122,13 @@ for i=1:length(conditions)
     %If the ecModel's protein content is not the same as the Ptot for i-th
     %condition then biomass should be rescaled and GAM refitted to this condition.
     %For fitting GAM a functional model is needed therefore an ecModel with
-    if Ptot_model ~= Ptot(i)
-        ecModelP = scaleBioMass(ecModelP,Ptot(i),GAM,true);
+    if sumProtein(ecModel) ~= Ptot(i)
+        cd ../../../code
+        ecModelP = scaleLipidProtein(ecModelP,lipidContent(i),Ptot(i),GAM);
+        tempModel = scaleLipidProtein(tempModel,lipidContent(i),Ptot(i),GAM);
+        cd ../GECKO/geckomat/limit_proteins
         disp(' ')
-    end 
+    end
     %Block production of non-observed metabolites before data incorporation
     %and flexibilization
     expData  = [GUR(i),CO2prod(i),OxyUptake(i)];
@@ -132,6 +143,7 @@ for i=1:length(conditions)
     tempModel       = setParam(tempModel,'ub',positionsEC(1),flexGUR);
     [matchedEnz,iA] = intersect(pIDs,tempModel.enzymes);
     enzModel        = setParam(tempModel,'lb',positionsEC(2),Drate(i));
+    enzModel.ub(end)= Ptot(i)*f*1000;
     for j=1:length(matchedEnz)
         rxnIndex  = find(contains(tempModel.rxnNames,matchedEnz{j}));
         tempModel = setParam(enzModel,'obj',rxnIndex,-1);
@@ -144,7 +156,7 @@ for i=1:length(conditions)
         end
         enzIndex = find(contains(tempModel.enzymes,matchedEnz{j}));
     end
-    %Get model with proteomics
+   %Get model with proteomics
     disp(['Incorporation of proteomics constraints for ' conditions{i} ' condition'])
     %Get sum of measured protein after filter, adding flexFactor and setting minimum value. 
     %If this is higher than the sum of raw measured protein (sumP), then increase the total 

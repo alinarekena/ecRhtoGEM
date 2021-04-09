@@ -104,7 +104,7 @@ updateDatabases;
 
 % Change lipid and protein conteint to Xexp condition
 cd([root '/code'])
-model = scaleLipidProtein(model,0.17,0.4385);
+model = scaleLipidProtein(model,0.182,0.4385);
 cd([root '/GECKO/geckomat/'])
 [ecModel,ecModel_batch] = enhanceGEM(model,'RAVEN','ecRhtoGEM',modelVer);
 

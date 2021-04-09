@@ -56,7 +56,7 @@ comps = {'s_0404'	89.09       'P'     % A     Alanine         ala
 cd ../GECKO/geckomat/limit_proteins/
 
 % Get current non-polymerization part of GAM
-if nargin<3
+if nargin<4
     GAMnonPol = splitGAEC(model);
 end
 

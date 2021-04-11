@@ -17,7 +17,10 @@ root = pwd; % Get the root directory of the folder
 
 %% Load model
 model    = importModel(fullfile(root,'models','rhto_edit.xml'));
-modelVer = model.description(strfind(model.description,'_v')+1:end);
+if isfield(model,'description')
+    model.name=model.description; % Field will likely be renamed in RAVEN 2.5.0
+end
+modelVer = model.name(strfind(model.name,'_v')+1:end);
 
 %% Define the model conditions and their "parameters"
 % Expand on this conditions structure with more model specific information
@@ -104,7 +107,8 @@ updateDatabases;
 
 % Change lipid and protein conteint to Xexp condition
 cd([root '/code'])
-model = scaleLipidProtein(model,0.182,0.4385);
+lipidData = loadLipidChainData(model,1);
+model = scaleLipidProtein(model,lipidData,0.4385);
 cd([root '/GECKO/geckomat/'])
 [ecModel,ecModel_batch] = enhanceGEM(model,'RAVEN','ecRhtoGEM',modelVer);
 
@@ -179,11 +183,11 @@ clear avgProtData tmp
 
 %% II.generate_protModels pipeline
 % Uncomment and run if the above code was not run in the same session
-% root = pwd; % Get the root directory of the folder
-% load([root '/models/ecRhtoGEM_batch.mat'])
-% ecModel_batch = model;
-% load([root '/models/ecRhtoGEM.mat'])
-% ecModel = model;
+root = pwd; % Get the root directory of the folder
+load([root '/models/ecRhtoGEM_batch.mat'])
+ecModel_batch = model;
+load([root '/models/ecRhtoGEM.mat'])
+ecModel = model;
 cd([root '/GECKO/geckomat/utilities/integrate_proteomics'])
 grouping = [2,2,2,2,2,2];
 [~,~,fermParams] = load_Prot_Ferm_Data(grouping);

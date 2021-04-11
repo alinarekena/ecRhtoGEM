@@ -71,11 +71,6 @@ OxyUptake  = fermData.OxyUptake;
 byP_flux   = fermData.byP_flux;
 c_source   = fermData.c_source;
 
-%Load protein and lipid content
-fID      = fopen('../../../../data/lipidContent.txt');
-lipidContent = textscan(fID,'%s %f','HeaderLines',1);
-lipidContent = lipidContent{2}; fclose(fID);
-
 %Increase enzyme usage fluxes 1000-fold, to prevent very low fluxes.
 models={ecModel,ecModel_batch};
 for m=1:2
@@ -122,13 +117,15 @@ for i=1:length(conditions)
     %If the ecModel's protein content is not the same as the Ptot for i-th
     %condition then biomass should be rescaled and GAM refitted to this condition.
     %For fitting GAM a functional model is needed therefore an ecModel with
-    if sumProtein(ecModel) ~= Ptot(i)
+    %if sumProtein(ecModel) ~= Ptot(i)
         cd ../../../code
-        ecModelP = scaleLipidProtein(ecModelP,lipidContent(i),Ptot(i),GAM);
-        tempModel = scaleLipidProtein(tempModel,lipidContent(i),Ptot(i),GAM);
+        %Load lipid data
+        lipidData = loadLipidChainData(ecModelP,i);
+        ecModelP = scaleLipidProtein(ecModelP,lipidData,Ptot(i),GAM);
+        tempModel = scaleLipidProtein(tempModel,lipidData,Ptot(i),GAM);
         cd ../GECKO/geckomat/limit_proteins
         disp(' ')
-    end
+    %end
     %Block production of non-observed metabolites before data incorporation
     %and flexibilization
     expData  = [GUR(i),CO2prod(i),OxyUptake(i)];

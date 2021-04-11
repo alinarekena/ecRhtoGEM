@@ -1,4 +1,4 @@
-function model = scaleLipidProtein(model,lipid,protein,GAMnonPol)
+function model = scaleLipidProtein(model,lipidData,protein,GAMnonPol)
 % scaleLipidProtein
 %
 % Function that takes an ecModel and constraints it with absolute proteomics 
@@ -75,8 +75,13 @@ while abs(fL-1) > 1e-12
     fL0 = fL;
     model.S(scaleLp,lipidPos) = model.S(scaleLp,lipidPos)*fL;
     [~,~,~,~,~,L] = sumBioMass(model);
-    fL = lipid/L;
+    fL = lipidData.lipidContent/L;
 end
+
+model = adjustLipidChain(model,lipidData);
+cd ../../../code
+model=scaleLipidsRhto(model,'tails');
+cd ../GECKO/geckomat/limit_proteins/
 
 % Scale carbohydrate to correct for protein and lipid changes
 [X,~,C,~,~,~] = sumBioMass(model);
@@ -102,6 +107,8 @@ GAMpol        = P*37.7 + C*12.8 + R*26.0 + D*26.0;    %Forster 2003 (sup table 8
 GAM           = GAMpol + GAMnonPol;
 model         = setGAM(model,GAM);
 cd ../../../code
+
+
 end
 
 function model = setGAM(model,GAM)
@@ -113,4 +120,22 @@ for i = 1:length(model.mets)
         model.S(i,xr_pos) = sign(S_ix) * GAM;
     end
 end
+end
+
+function model = adjustLipidChain(model,lipidData)
+% Change lipid chain length distribution
+rxnIdx                  =   getIndexes(model,'r_4065','rxns');%lipid chain pseudoreaction
+metIdx                  =   cell2mat(getIndexes(model,strcat('C',lipidData.chainData.chain,' chain'),'metnames'));
+bbIdx                   =   getIndexes(model,'s_3747','mets');%lipid chain
+model.S(:,rxnIdx)       =   0;
+% Normalize lipid chain data to lipid backbone level, to get reasonable
+% estimate before final scaling
+scaling = lipidData.lipidContent / sum([lipidData.chainData.abundance;lipidData.chainData.std],'omitnan');
+scaling = (lipidData.chainData.abundance + lipidData.chainData.std) * scaling;
+model.S(metIdx,rxnIdx)  =   -scaling;
+model.S(bbIdx,rxnIdx)   =   1;
+
+chainExIdx  = getIndexes(model,'r_4064','rxns');
+backbExIdx  = getIndexes(model,'r_4062','rxns');
+model = setParam(model,'ub',[chainExIdx,backbExIdx],[1000,1000]);
 end

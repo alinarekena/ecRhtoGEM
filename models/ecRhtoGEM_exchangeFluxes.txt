@@ -1,12 +1,11 @@
 EXCHANGE FLUXES:
-r_1672	(carbon dioxide exchange):	2.4865
-r_1832	(H+ exchange):	0.12565
-r_2046	(sn-glycero-3-phosphocholine exchange):	0.0038181
-r_2100	(water exchange):	3.3593
-r_2111	(growth):	0.051298
-r_1654_REV	(ammonium exchange (reversible)):	0.32561
-r_1718_REV	(D-xylose exchange (reversible)):	0.94734
-r_1992_REV	(oxygen exchange (reversible)):	2.2509
-r_2005_REV	(phosphate exchange (reversible)):	0.015446
-r_2060_REV	(sulphate exchange (reversible)):	0.0065053
+r_1672	(carbon dioxide exchange):	2.5692
+r_1832	(H+ exchange):	0.138
+r_2100	(water exchange):	3.482
+r_2111	(growth):	0.054516
+r_1654_REV	(ammonium exchange (reversible)):	0.34199
+r_1718_REV	(D-xylose exchange (reversible)):	0.98512
+r_1992_REV	(oxygen exchange (reversible)):	2.3252
+r_2005_REV	(phosphate exchange (reversible)):	0.012375
+r_2060_REV	(sulphate exchange (reversible)):	0.0069134
 prot_pool_exchange	(prot_pool_exchange):	0.0059257

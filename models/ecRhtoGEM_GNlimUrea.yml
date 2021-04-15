@@ -40633,7 +40633,7 @@
     - metabolites: !!omap
       - prot_M7WFB4: 1
     - lower_bound: 0
-    - upper_bound: 0.00022246
+    - upper_bound: 0.00022023
     - gene_reaction_rule: "RHTO_05280"
   - !!omap
     - id: "prot_M7WFI6_exchange"
@@ -40817,7 +40817,7 @@
     - metabolites: !!omap
       - prot_M7WJI1: 1
     - lower_bound: 0
-    - upper_bound: 0.0001969
+    - upper_bound: 0.00019493
     - gene_reaction_rule: "RHTO_02590"
   - !!omap
     - id: "prot_M7WJN6_exchange"
@@ -41217,7 +41217,7 @@
     - metabolites: !!omap
       - prot_M7WNB5: 1
     - lower_bound: 0
-    - upper_bound: 0.0019111
+    - upper_bound: 0.001892
     - gene_reaction_rule: "RHTO_01252"
   - !!omap
     - id: "prot_M7WNN8_exchange"
@@ -41577,7 +41577,7 @@
     - metabolites: !!omap
       - prot_M7WS89: 1
     - lower_bound: 0
-    - upper_bound: 0.00089012
+    - upper_bound: 0.00088121
     - gene_reaction_rule: "RHTO_07171"
   - !!omap
     - id: "prot_M7WSB2_exchange"
@@ -41977,7 +41977,7 @@
     - metabolites: !!omap
       - prot_M7WW40: 1
     - lower_bound: 0
-    - upper_bound: 0.00099672
+    - upper_bound: 0.00098675
     - gene_reaction_rule: "RHTO_01050"
   - !!omap
     - id: "prot_M7WW42_exchange"
@@ -42465,7 +42465,7 @@
     - metabolites: !!omap
       - prot_M7X109: 1
     - lower_bound: 0
-    - upper_bound: 0.0003304
+    - upper_bound: 0.0003271
     - gene_reaction_rule: "RHTO_06005"
   - !!omap
     - id: "prot_M7X113_exchange"
@@ -43705,7 +43705,7 @@
     - metabolites: !!omap
       - prot_M7XI04: 1
     - lower_bound: 0
-    - upper_bound: 0.00073101
+    - upper_bound: 0.0007237
     - gene_reaction_rule: "RHTO_04045"
   - !!omap
     - id: "prot_M7XI20_exchange"
@@ -43721,7 +43721,7 @@
     - metabolites: !!omap
       - prot_M7XI95: 1
     - lower_bound: 0
-    - upper_bound: 0.0014727
+    - upper_bound: 0.0010006
     - gene_reaction_rule: "RHTO_03911"
   - !!omap
     - id: "prot_M7XIA6_exchange"
@@ -43825,7 +43825,7 @@
     - metabolites: !!omap
       - prot_M7XJ70: 1
     - lower_bound: 0
-    - upper_bound: 0.00049098
+    - upper_bound: 0.00050418
     - gene_reaction_rule: "RHTO_07003"
   - !!omap
     - id: "prot_M7XJ78_exchange"
@@ -44009,7 +44009,7 @@
     - metabolites: !!omap
       - prot_M7XKV7: 1
     - lower_bound: 0
-    - upper_bound: 9.8344e-05
+    - upper_bound: 9.736e-05
     - gene_reaction_rule: "RHTO_02389"
   - !!omap
     - id: "prot_M7XKW6_exchange"
@@ -44161,7 +44161,7 @@
     - metabolites: !!omap
       - prot_M7XN88: 1
     - lower_bound: 0
-    - upper_bound: 0.00015508
+    - upper_bound: 6.6644e-05
     - gene_reaction_rule: "RHTO_01718"
   - !!omap
     - id: "prot_M7XN95_exchange"
@@ -44657,7 +44657,7 @@
     - metabolites: !!omap
       - prot_pool: 1
     - lower_bound: 0
-    - upper_bound: 63.2061
+    - upper_bound: 63.2196
     - gene_reaction_rule: ""
   - !!omap
     - id: "r_0001No1"
@@ -84467,7 +84467,7 @@
       - s_0794: 1
       - s_0803: -1
       - s_1322: 1
-    - lower_bound: 3.25
+    - lower_bound: 3.35
     - upper_bound: 1000
     - gene_reaction_rule: ""
     - annotation: !!omap
@@ -84633,6 +84633,14 @@
       - sbo: "SBO:0000655"
     - confidence_score: 1
   - !!omap
+    - id: "r_4062"
+    - name: ""
+    - metabolites: !!omap
+      - s_3746: -1
+    - lower_bound: 0
+    - upper_bound: 0
+    - gene_reaction_rule: ""
+  - !!omap
     - id: "r_4063"
     - name: "lipid backbone pseudoreaction"
     - metabolites: !!omap
@@ -84654,14 +84662,22 @@
       - sbo: "SBO:0000395"
     - confidence_score: 1
   - !!omap
+    - id: "r_4064"
+    - name: ""
+    - metabolites: !!omap
+      - s_3747: -1
+    - lower_bound: 0
+    - upper_bound: 0
+    - gene_reaction_rule: ""
+  - !!omap
     - id: "r_4065"
     - name: "lipid chain pseudoreaction"
     - metabolites: !!omap
-      - m_0102: -0.084539
-      - m_0103: -0.042597
-      - s_3740: -0.059855
-      - s_3742: -0.028213
-      - s_3743: -0.13345
+      - m_0102: -0.034978
+      - m_0103: -0.0079185
+      - s_3740: -0.093677
+      - s_3742: -0.030791
+      - s_3743: -0.18125
       - s_3747: 1
     - lower_bound: 0
     - upper_bound: 1000

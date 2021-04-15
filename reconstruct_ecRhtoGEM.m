@@ -17,10 +17,7 @@ root = pwd; % Get the root directory of the folder
 
 %% Load model
 model    = importModel(fullfile(root,'models','rhto_edit.xml'));
-if isfield(model,'description')
-    model.name=model.description; % Field will likely be renamed in RAVEN 2.5.0
-end
-modelVer = model.name(strfind(model.name,'_v')+1:end);
+modelVer = model.description(strfind(model.description,'_v')+1:end);
 
 %% Define the model conditions and their "parameters"
 % Expand on this conditions structure with more model specific information
@@ -193,6 +190,14 @@ grouping = [2,2,2,2,2,2];
 [~,~,fermParams] = load_Prot_Ferm_Data(grouping);
 
 close all % Close all figures, to facilitate saving of new figures
+% Add 
+rxnsToAdd.rxns={'r_4062','r_4064'};
+rxnsToAdd.equations={'s_3746 =>','s_3747 =>'};
+rxnsToAdd.lb=[0,0]; rxnsToAdd.ub=[0,0]; %Blocked for now, should only be opened when scaling lipids
+ecModel=addRxns(ecModel,rxnsToAdd,1);
+ecModel_batch=addRxns(ecModel_batch,rxnsToAdd,1);
+clear rxnsToAdd
+
 generate_protModels(ecModel,grouping,'ecRhtoGEM',ecModel_batch);
 % TODO: save auto-flexibilized enzymes, now only shown in command window
 

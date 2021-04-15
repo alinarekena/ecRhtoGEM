@@ -73,7 +73,7 @@ c_source   = fermData.c_source;
 
 %Increase enzyme usage fluxes 1000-fold, to prevent very low fluxes.
 models={ecModel,ecModel_batch};
-for m=1:2
+for m=1
     protIdx = find(startsWith(models{m}.mets,'prot_'));
     pExcIdx = find(contains(models{m}.rxns,'prot_'));
     for n=1:length(protIdx)
@@ -84,8 +84,8 @@ for m=1:2
     end
 end
 ecModel=models{1};
-ecModel_batch=models{2};
-ecModel_batch.ub(end)=ecModel_batch.ub(end)*1000;
+%ecModel_batch=models{2};
+%ecModel_batch.ub(end)=ecModel_batch.ub(end)*1000;
 
 %For each condition create a protein constrained model
 for i=1:length(conditions)
@@ -146,7 +146,7 @@ for i=1:length(conditions)
         tempModel = setParam(enzModel,'obj',rxnIndex,-1);
         tempSol   = solveLP(tempModel);
         %Compare enzyme minimum usage with abundance value
-        if (tempSol.x(rxnIndex)-abundances(iA(j)))>0
+        if (tempSol.x(rxnIndex)*1000-abundances(iA(j)))>0
             %Flexibilize limiting values
             disp(['Limiting abundance found for: ' matchedEnz{j} '/Previous value: ' num2str(abundances(iA(j))) ' /New value: ' num2str(tempSol.x(rxnIndex))])
             abundances(iA(j)) = 1.01*tempSol.x(rxnIndex);

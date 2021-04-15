@@ -15,7 +15,7 @@ kOpt = fminsearch(@(k)unusedLipid(k,model,scaling),k0);
 %Find optimality range:
 krange(1) = fminsearch(@(k) +minScaling(k,model,scaling,kOpt),kOpt);
 krange(2) = fminsearch(@(k) -minScaling(k,model,scaling,kOpt),kOpt);
-disp(['Optimality range: k = [ ' num2str(krange(1)) ' , ' num2str(krange(2)) ' ]'])
+%disp(['Optimality range: k = [ ' num2str(krange(1)) ' , ' num2str(krange(2)) ' ]'])
 if(krange(1) == krange(2))
     error('Could not find an optimality range!')
 end
@@ -49,7 +49,7 @@ exchange_tails = sol.x(getIndexes(model,'r_4064','rxns'));
 exchange_backs = sol.x(getIndexes(model,'r_4062','rxns'));
 exchange       = exchange_tails + exchange_backs;
 
-disp(['Scaling abundance data: k = ' num2str(k) ' -> exchange = ' num2str(exchange)])
+%disp(['Scaling abundance data: k = ' num2str(k) ' -> exchange = ' num2str(exchange)])
 
 end
 
@@ -64,9 +64,9 @@ model = adjustModel(model,k,true,scaling);
 try
     [sol,~] = solveRhto(model);
     ngamIdx = getIndexes(model,'r_4046','rxns');
-    disp(['Finding scaling range: k = ' num2str(k) ' -> Maintenance = ' num2str(sol.x(ngamIdx))])
+%    disp(['Finding scaling range: k = ' num2str(k) ' -> Maintenance = ' num2str(sol.x(ngamIdx))])
 catch
-    disp(['Finding scaling range: k = ' num2str(k) ' -> Maintenance = ' num2str(0)])
+%    disp(['Finding scaling range: k = ' num2str(k) ' -> Maintenance = ' num2str(0)])
     k = kOpt;  %any unfeasible simulation returns the original value
 end
 

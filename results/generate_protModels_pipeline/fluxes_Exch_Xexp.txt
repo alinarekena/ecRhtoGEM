@@ -19,6 +19,7 @@ prot_M7WIG9_exchange	(prot_M7WIG9_exchange):	0.00048447
 prot_M7WJI1_exchange	(prot_M7WJI1_exchange):	0.00022793
 prot_M7WKC4_exchange	(prot_M7WKC4_exchange):	0.00019495
 prot_M7WKF8_exchange	(prot_M7WKF8_exchange):	0.00049227
+prot_M7WKL7_exchange	(prot_M7WKL7_exchange):	0.00018785
 prot_M7WKX0_exchange	(prot_M7WKX0_exchange):	0.0047468
 prot_M7WKZ4_exchange	(prot_M7WKZ4_exchange):	0.00015968
 prot_M7WL18_exchange	(prot_M7WL18_exchange):	0.0021491
@@ -29,13 +30,12 @@ prot_M7WMF3_exchange	(prot_M7WMF3_exchange):	0.00011015
 prot_M7WMJ7_exchange	(prot_M7WMJ7_exchange):	0.0035468
 prot_M7WMT2_exchange	(prot_M7WMT2_exchange):	0.0037739
 prot_M7WMY0_exchange	(prot_M7WMY0_exchange):	0.00023739
-prot_M7WN91_exchange	(prot_M7WN91_exchange):	0.00018785
 prot_M7WNB5_exchange	(prot_M7WNB5_exchange):	0.0022123
 prot_M7WNZ9_exchange	(prot_M7WNZ9_exchange):	0.00022476
 prot_M7WP35_exchange	(prot_M7WP35_exchange):	0.00023534
 prot_M7WP44_exchange	(prot_M7WP44_exchange):	0.00049177
 prot_M7WPW0_exchange	(prot_M7WPW0_exchange):	0.00024753
-prot_M7WQ73_exchange	(prot_M7WQ73_exchange):	0.00037834
+prot_M7WQ73_exchange	(prot_M7WQ73_exchange):	0.00012748
 prot_M7WR40_exchange	(prot_M7WR40_exchange):	0.00099081
 prot_M7WS89_exchange	(prot_M7WS89_exchange):	0.0010304
 prot_M7WSB2_exchange	(prot_M7WSB2_exchange):	0.00013909
@@ -72,7 +72,7 @@ prot_M7X689_exchange	(prot_M7X689_exchange):	0.00013182
 prot_M7X6S3_exchange	(prot_M7X6S3_exchange):	0.00027194
 prot_M7X6U2_exchange	(prot_M7X6U2_exchange):	0.00011328
 prot_M7X6W8_exchange	(prot_M7X6W8_exchange):	0.00082235
-prot_M7X6X3_exchange	(prot_M7X6X3_exchange):	0.0019083
+prot_M7X6X3_exchange	(prot_M7X6X3_exchange):	0.0021592
 prot_M7X749_exchange	(prot_M7X749_exchange):	0.0015091
 prot_M7X791_exchange	(prot_M7X791_exchange):	0.00041414
 prot_M7X7R6_exchange	(prot_M7X7R6_exchange):	0.00038688

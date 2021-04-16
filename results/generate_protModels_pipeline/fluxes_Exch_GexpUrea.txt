@@ -14,7 +14,6 @@ r_2060_REV	(sulphate exchange (reversible)):	0.061192
 r_2091_REV	(urea exchange (reversible)):	0.83848
 prot_M7WD99_exchange	(prot_M7WD99_exchange):	0.0096242
 prot_M7WDH6_exchange	(prot_M7WDH6_exchange):	0.00024786
-prot_M7WEV1_exchange	(prot_M7WEV1_exchange):	0.00028786
 prot_M7WFB4_exchange	(prot_M7WFB4_exchange):	0.0020277
 prot_M7WFJ0_exchange	(prot_M7WFJ0_exchange):	0.001
 prot_M7WG58_exchange	(prot_M7WG58_exchange):	0.00044313
@@ -33,7 +32,6 @@ prot_M7WL18_exchange	(prot_M7WL18_exchange):	0.0019944
 prot_M7WL24_exchange	(prot_M7WL24_exchange):	0.0014804
 prot_M7WL39_exchange	(prot_M7WL39_exchange):	0.00061591
 prot_M7WL95_exchange	(prot_M7WL95_exchange):	0.00010226
-prot_M7WLD5_exchange	(prot_M7WLD5_exchange):	0.00028526
 prot_M7WM30_exchange	(prot_M7WM30_exchange):	0.0011005
 prot_M7WME7_exchange	(prot_M7WME7_exchange):	0.00054292
 prot_M7WMF3_exchange	(prot_M7WMF3_exchange):	0.00022725
@@ -48,6 +46,7 @@ prot_M7WP44_exchange	(prot_M7WP44_exchange):	0.0025096
 prot_M7WPW0_exchange	(prot_M7WPW0_exchange):	0.0002297
 prot_M7WQ31_exchange	(prot_M7WQ31_exchange):	0.00048234
 prot_M7WQ73_exchange	(prot_M7WQ73_exchange):	0.00090383
+prot_M7WQF1_exchange	(prot_M7WQF1_exchange):	0.00028526
 prot_M7WR01_exchange	(prot_M7WR01_exchange):	0.00011092
 prot_M7WR40_exchange	(prot_M7WR40_exchange):	0.0018546
 prot_M7WRD1_exchange	(prot_M7WRD1_exchange):	0.0003953
@@ -141,11 +140,12 @@ prot_M7XPE3_exchange	(prot_M7XPE3_exchange):	0.00010596
 prot_M7XQ01_exchange	(prot_M7XQ01_exchange):	0.0017503
 prot_M7XQ28_exchange	(prot_M7XQ28_exchange):	0.00039289
 prot_M7XRP3_exchange	(prot_M7XRP3_exchange):	0.00089487
-prot_M7XRQ3_exchange	(prot_M7XRQ3_exchange):	0.00030591
+prot_M7XRQ3_exchange	(prot_M7XRQ3_exchange):	0.00021474
 prot_M7XV41_exchange	(prot_M7XV41_exchange):	0.00084599
 prot_M7XVW7_exchange	(prot_M7XVW7_exchange):	0.059363
 prot_M7XW21_exchange	(prot_M7XW21_exchange):	0.00018212
 prot_M7XXN8_exchange	(prot_M7XXN8_exchange):	0.0012685
+prot_M7XXS3_exchange	(prot_M7XXS3_exchange):	0.00028786
 prot_M7XYM0_exchange	(prot_M7XYM0_exchange):	0.0013735
 prot_M7XZ93_exchange	(prot_M7XZ93_exchange):	0.00097631
 prot_M7XZD3_exchange	(prot_M7XZD3_exchange):	0.0018049

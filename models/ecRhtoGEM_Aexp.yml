@@ -84459,7 +84459,7 @@
       - s_0794: 1
       - s_0803: -1
       - s_1322: 1
-    - lower_bound: 3.55
+    - lower_bound: 3.6
     - upper_bound: 1000
     - gene_reaction_rule: ""
     - annotation: !!omap

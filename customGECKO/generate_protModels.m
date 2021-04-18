@@ -148,7 +148,7 @@ for i=1:length(conditions)
         %Compare enzyme minimum usage with abundance value
         if (tempSol.x(rxnIndex)*1000-abundances(iA(j)))>0
             %Flexibilize limiting values
-            disp(['Limiting abundance found for: ' matchedEnz{j} '/Previous value: ' num2str(abundances(iA(j))) ' /New value: ' num2str(tempSol.x(rxnIndex))])
+            disp(['Limiting abundance found for: ' matchedEnz{j} '/Previous value: ' num2str(abundances(iA(j))) ' /New value: ' num2str(tempSol.x(rxnIndex)*1000)])
             abundances(iA(j)) = 1.01*tempSol.x(rxnIndex);
         end
         enzIndex = find(contains(tempModel.enzymes,matchedEnz{j}));

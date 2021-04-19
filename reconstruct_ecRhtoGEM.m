@@ -8,7 +8,7 @@
 %   measurements for the modelled enzymes. Thirdly, adds ribosomal subunits
 %   to the ec-models by adding a translation pseudoreaction.
 %
-%   Last modified: 2021-02-20
+%   Last modified: 2021-04-20
 %
 
 % Prepare COBRA and set repo root path
@@ -28,20 +28,20 @@ conditions.exch.rxns = {{'r_1718','r_2104','r_4340'},...    % D-xylose uptake, x
     {'r_1718','r_2104','r_4340'},...                        % D-xylose uptake, xylitol production, D-arabinitol production
     {'r_1718','r_1634','r_1687'},...                        % block D-xylose uptake, allow acetate uptake, citrate(3-) production
     {'r_1718','r_1634','r_1687'},...                        % block D-xylose uptake, allow acetate uptake, citrate(3-) uptake
-    {'r_1718','r_1654','r_1714','r_2091'},...               % block D-xylose uptake, ammonium uptake, allow D-glucose uptake, urea uptake
-    {'r_1718','r_1654','r_1714','r_2091'}};                 % block D-xylose uptake, ammonium uptake, allow D-glucose uptake, urea uptake
+    {'r_1718','r_1654','r_1714','r_1808','r_2091'},...               % block D-xylose uptake, ammonium uptake, allow D-glucose uptake, urea uptake
+    {'r_1718','r_1654','r_1714','r_1808','r_2091'}};                 % block D-xylose uptake, ammonium uptake, allow D-glucose uptake, urea uptake
 conditions.exch.value = {[-1.86,0.223,0.367],... % Xexp
     [-0.4345,0.004,0.077],...                   % XNlim
-    [0,-6.941,0.127],...                        % Aexp
-    [0,-1.9706,-0.033],...                      % ANlim
-    [0,0,-2.45,-1000],...                          % GexpUrea
-    [0,0,-0.415,-1000]};                        %GNlimUrea
+    [0,-6.63,0.122],...                        % Aexp
+    [0,-1.9706,-0.043],...                      % ANlim
+    [0,0,-2.49,0.049,-1000],...                          % GexpUrea
+    [0,0,-0.415,-0.007,-1000]};                        %GNlimUrea
 conditions.exch.lbub = {{'lb','ub','ub'},...    % Xexp
     {'lb','ub','ub'},...                        % XNlim
     {'lb','lb','ub'},...                        % Aexp
     {'lb','lb','lb'},...                        % ANlim
-    {'lb','lb','lb','lb'},...                   % GexpUrea
-    {'lb','lb','lb','lb'}};                     % GNlimUrea
+    {'lb','lb','lb','ub','lb'},...                   % GexpUrea
+    {'lb','lb','lb','lb','lb'}};                     % GNlimUrea
     
 for i = 1:numel(conditions.abbrev) % Loop through the conditions
     modelTmp = model; % Work on a temporary model structure, leaving the original untouched for the next condition
@@ -131,19 +131,19 @@ conditions.exch.rxns = {{'r_1718_REV','r_2104','r_4340'},...    % D-xylose uptak
     {'r_1718_REV','r_1634_REV','r_1687'},...                    % block D-xylose uptake, allow acetate uptake, citrate(3-) production
     {'r_1718_REV','r_1634_REV','r_1687_REV'},...                % block D-xylose uptake, allow acetate uptake, citrate(3-) uptake
     {'r_1718_REV','r_1654_REV','r_1714_REV','r_2091_REV','r_1808'},...  % block D-xylose uptake, ammonium uptake, allow D-glucose uptake, urea uptake, glycerol production
-    {'r_1718_REV','r_1654_REV','r_1714_REV','r_2091_REV'}};             % block D-xylose uptake, ammonium uptake, allow D-glucose uptake, urea uptake
+    {'r_1718_REV','r_1654_REV','r_1714_REV','r_2091_REV','r_1808_REV'}};             % block D-xylose uptake, ammonium uptake, allow D-glucose uptake, urea uptake, glycerol uptake
 conditions.exch.value = {[1.86,0.223,0.367],...                 % Xexp
     [0.4345,0.004,0.077],...                                    % XNlim
-    [0,6.941,0.127],...                                         % Aexp
-    [0,1.9706,0.033],...                                        % ANlim
-    [0,0,2.45,1000,0.06],...                                      % GexpUrea
-    [0,0,0.415,1000]};                                          %GNlimUrea
+    [0,6.63,0.122],...                                         % Aexp
+    [0,1.9706,0.043],...                                        % ANlim
+    [0,0,2.49,1000,0.049],...                                      % GexpUrea
+    [0,0,0.415,1000,0.007]};                                          %GNlimUrea
 conditions.exch.lbub = {{'ub','ub','ub'},...                    % Xexp
     {'ub','ub','ub'},...                                        % XNlim
     {'ub','ub','ub'},...                                        % Aexp
     {'ub','ub','ub'},...                                        % ANlim
     {'ub','ub','ub','ub','ub'},...                              % GexpUrea
-    {'ub','ub','ub','ub'}};                                     % GNlimUrea
+    {'ub','ub','ub','ub','ub'}};                                     % GNlimUrea
 
 cd utilities/integrate_proteomics
 [pIDs,protData,fermParams,byProds] = load_Prot_Ferm_Data([2,2,2,2,2,2]);

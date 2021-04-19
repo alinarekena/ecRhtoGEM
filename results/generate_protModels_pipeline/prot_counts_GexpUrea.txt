@@ -1,2 +1,2 @@
 initial_prots	filtered_prots	matched_prots	model_prots	mass_coverage
-3160	1807	386	693	0.19237058448436
+3160	1807	386	693	0.192599571773192

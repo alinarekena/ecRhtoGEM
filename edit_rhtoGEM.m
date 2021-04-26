@@ -1,80 +1,103 @@
 %
 % edit_rhtoGEM
 %
-%   This script prepares the original rhtoGEM (from Tiukova et al. 2019)
-%   for the integration of enzymatic constraints. Sets the carbon source uptake,
-%   adds D-arabinitol pathway and makes some other minor changes.
+%   Preparing original rhtoGEM (https://github.com/SysBioChalmers/rhto-GEM)
+%   to integrate enzymatic constraints. This script includes curation of
+%   xylose assimilation pathway and setting carbon uptake for xylose.
 %
-%   Last modified: 2020-09-28
+%   Last modified: 2021-02-11
+%
 
-%% Check COBRA Toolbox installation
+% Prepare COBRA and set repo root path
 initCobraToolbox
-% changeCobraSolver('gurobi','all')
-changeCobraSolver('glpk')
+root = pwd; % Get the root directory of the folder
 
-code = pwd();
+%% Load model
+model    = importModel(fullfile(root,'models','rhto.xml'));
+model = changeRxnBounds(model, {'r_1714'},0,'l');      %D-glucose exchange
+model = changeRxnBounds(model, {'r_1718'},-1.86,'l');  %D-xylose exchange
 
-%% Load the model MATLAB structure
-load('../models/rhto.mat')
-disp(model)
-printConstraints(model,-1000,1000);
+%% Introduce reactions
 
-%% Introduce a set of reactions for D-arabinitol
-% Define reactions equations
-t_0883 = 'D-xylulose[c] + NADH[c] + H+[c] <=> D-arabinitol[c] + NAD[c]';
+% Define reaction equations
+t_0883 = 'D-xylulose[c] + NADH[c] + H+[c] <=> D-arabinitol[c] + NAD[c]';% D-arabinitol 4-dehydrogenase (DAD-4)
 r_4339 = 'D-arabinitol[c] <=> D-arabinitol[e]';
 r_4340 = 'D-arabinitol[e] => ';
-rxnsToAdd.equations = {t_0883; r_4339; r_4340}; 
+
+t_0884 = 'D-ribulose[c] + NADPH[c] + H+[c] <=> D-arabinitol[c] + NADP(+)[c]';% D-arabinitol 2-dehydrogenase (DAD-2)/D-ribulose reductase (RiR)
+% RiR as analogue to L-xylulose reductase (LXR):L-xylulose[c] + H+[c] + NADPH[c] <=> NADP(+)[c] + xylitol[c]
+% https://doi.org/10.1074/jbc.M312533200
+t_0885 = 'ATP[c] + D-ribulose[c] => ADP[c] + D-ribulose 5-phosphate[c] + H+[c]';% D-ribulokinase (RiK)
+% analogue to ATP:D-xylulose 5-phosphotransferase from Kluyveromyces
+% marxianus GEM (https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM) and Pichia stipitis GEM
+% (http://biomet-toolbox.chalmers.se/index.php?page=models-Stipitis)
+
+rxnsToAdd.equations = {t_0883; r_4339; r_4340; t_0884; t_0885}; 
+
 % Define reaction names
-t_0883 = 'D-arabinitol dehydrogenase';
+t_0883 = 'D-arabinitol 4-dehydrogenase';
 r_4339 = 'D-arabinitol transport';
 r_4340 = 'D-arabinitol exchange';
-rxnsToAdd.rxnNames = {t_0883; r_4339; r_4340};
+t_0884 = 'D-arabinitol 2-dehydrogenase/D-ribulose reductase';
+t_0885 = 'D-ribulokinase';
+rxnsToAdd.rxnNames = {t_0883; r_4339; r_4340; t_0884; t_0885};
 t_0883 = 't_0883';
 r_4339 = 'r_4339';
 r_4340 = 'r_4340';
-rxnsToAdd.rxns = {t_0883; r_4339; r_4340};
+t_0884 = 't_0884';
+t_0885 = 't_0885';
+rxnsToAdd.rxns = {t_0883; r_4339; r_4340; t_0884; t_0885};
+
 % Define objective and bounds
-rxnsToAdd.c  = [0 0 0];
-rxnsToAdd.lb = [-1000 -1000 0];
-rxnsToAdd.ub = [1000 1000 1000];
+rxnsToAdd.c  = [0 0 0 0 0];
+rxnsToAdd.lb = [-1000 -1000 0 -1000 0];
+rxnsToAdd.ub = [1000 1000 1000 1000 1000];
 
-% Metabolites to Add
-metsToAdd.mets          = {'s_D-arabinitol_c' 's_D-arabinitol_e'};
-metsToAdd.metNames      = {'D-arabinitol' 'D-arabinitol'};
-metsToAdd.compartments  = {'c' 'e'};
+% Define EC numbers
+t_0883 = '1.1.1.11;1.1.1.138';
+r_4339 = '';
+r_4340 = '';
+t_0884 = '1.1.1.10;1.1.1.138';
+t_0885 = '2.7.1.16;2.7.1.47';
+rxnsToAdd.eccodes = {t_0883; r_4339; r_4340; t_0884; t_0885};
 
-%genes to add
-genesToAdd.genes          = {'RHTO_07844'};
-genesToAdd.geneShortNames = {'RHTO_07844'};
-rxnsToAdd.grRules         = {'RHTO_07844' '' ''};
-% Introduce changes to the model
-model = addGenesRaven(model,genesToAdd);
+% Add metabolites
+metsToAdd.mets          = {'s_D-arabinitol_c' 's_D-arabinitol_e' 's_D-ribulose'};
+metsToAdd.metNames      = {'D-arabinitol' 'D-arabinitol' 'D-ribulose'};
+metsToAdd.compartments  = {'c' 'e' 'c'};
+
+% Add genes
+genesToAdd.genes          = {'RHTO_07844' 'RHTO_00950'};
+genesToAdd.geneShortNames = {'RHTO_07844' 'RHTO_00950'};
+rxnsToAdd.grRules         = {'RHTO_07844' '' '' 'RHTO_00373' 'RHTO_00950'};
+
+%% Introduce changes to the model
+
 model = addMets(model,metsToAdd);
-model = addRxns(model,rxnsToAdd,3);
+model = addGenesRaven(model,genesToAdd);
+model = addRxns(model,rxnsToAdd,3);% add reactions in last position to avoid allowNewMets error
+
 %Standardize gene related fields
 [grRules, rxnGeneMat] = standardizeGrRules(model,true);
 model.grRules     = grRules;
 model.rxnGeneMat  = rxnGeneMat;
 
 %% Change gene associations for the following reactions
-%String or cell array of reaction IDs
-rxnID = 'r_0697';
-%String of additional or replacement gene association
+
+rxnID = 'r_0697'; % lactoylglutathione lyase (EC 4.4.1.5)
 geneAssoc = 'RHTO_02522 or RHTO_06289';
-% Introduce changes to the model
 model = changeGeneAssoc(model,rxnID,geneAssoc);
 
-rxnID = {'t_0240' 't_0241'};
+rxnID = {'t_0240' 't_0241'}; % glycerol-3-phosphate acyltransferases (16:0 and 18:0)
 geneAssoc = 'RHTO_03646';
 model = changeGeneAssoc(model,rxnID,geneAssoc);
 
 %% Save models
 
-exportToExcelFormat(model,'../models/model_edit.xlsx')
-exportModel(model,'../models/model_edit.xml')
-save('../models/model_edit.mat','model')
+exportToExcelFormat(model,'models/model_edit.xlsx')
+exportModel(model,'models/rhto_edit.xml')
+save('models/rhto_edit.mat','model')
 
 clear geneAssoc genesToAdd grRules metsToAdd
-clear r_4339 r_4340 rxnGeneMat rxnID rxnsToAdd t_0883
+clear r_4339 r_4340 rxnGeneMat rxnID rxnsToAdd t_0883 t_0884 t_0885
 

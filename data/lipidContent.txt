@@ -1,0 +1,7 @@
+Condition	LipidContent
+Xexp	0.202
+XNlim	0.290
+Aexp	0.175
+ANlim	0.341
+GexpUrea	0.057
+GNlimUrea	0.483

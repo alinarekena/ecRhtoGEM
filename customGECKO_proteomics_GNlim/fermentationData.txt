@@ -1,2 +1,0 @@
-Condition	Ptot	D	Glucose [mmol/gDwh]	CO2 production [mmol/gDwh]	Oxygen uptake [mmol/gDwh]	Glycerol
-GNlim	0.227	0.019	0.415	1.44	1.16	0

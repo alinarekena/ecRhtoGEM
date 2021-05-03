@@ -99,6 +99,7 @@ clear out
 
 %% enzyme usage:
 
+clear protID UB capUsage absUsage
 [absUsage,capUsage,UB,protID] = enzymeUsage(ecModelP_XexpTmp,out_Xexp.mean,true,true);
 [absUsage,capUsage,UB,protID] = enzymeUsage(ecModelP_XNlimTmp2,out_XNlim.mean,true,true);
 [absUsage,capUsage,UB,protID] = enzymeUsage(ecModelP_AexpTmp,out_Aexp.mean,true,true);

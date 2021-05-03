@@ -1,10 +1,20 @@
 %
-% random sampling for ecRhtoGEM:
+% analyze_ecRhtoGEM
 %
-% better set 'gurobi' as RAVEN solver. With 'cobra' it gives warnings.
+%   run random sampling, calculate flux mean value and standard deviation;
+%   calculate enzyme usage; generate ATP, NADPH, and NADH production
+%   balances; calculate energy turnover per compartment; convert fluxes to
+%   original, non-ecModel version.
 %
 %
 
+% better set 'gurobi' as RAVEN solver. With 'cobra' it gives warnings.
+getpref('RAVEN')
+setRavenSolver('gurobi')
+
+% prepare for random sampling:
+%
+%
 % set measured byproduct constraints: (can be found at fermParams.byP_flux)
 ecModelP_Xexp = setParam(ecModelP_Xexp,'eq','r_2104',0.223);    %xylitol exchange
 ecModelP_Xexp = setParam(ecModelP_Xexp,'eq','r_4340',0.367);    %D-arabinitol
@@ -71,7 +81,6 @@ ecModelP_GNlimUreaTmp = setParam(ecModelP_GNlimUreaTmp,'var','r_1808_REV',0.007,
 
 % run random sampling:
 %
-%
 % Note, goodRxns don't make sense because of different C sources.
 %
 goodRxns = [];
@@ -88,4 +97,100 @@ out.mean=full(mean(sol,2)); %2 means for each row
 out.std=full(std(sol,0,2));
 clear out
 
-[absUsage,capUsage,UB,protID] = enzymeUsage(ecModelP_GNlimUreaTmp,out.mean);%same for all models
+%% enzyme usage:
+
+[absUsage,capUsage,UB,protID] = enzymeUsage(ecModelP_XexpTmp,out_Xexp.mean,true,true);
+[absUsage,capUsage,UB,protID] = enzymeUsage(ecModelP_XNlimTmp2,out_XNlim.mean,true,true);
+[absUsage,capUsage,UB,protID] = enzymeUsage(ecModelP_AexpTmp,out_Aexp.mean,true,true);
+[absUsage,capUsage,UB,protID] = enzymeUsage(ecModelP_ANlimTmp,out_ANlim.mean,true,true);
+[absUsage,capUsage,UB,protID] = enzymeUsage(ecModelP_GexpUreaTmp,out_GexpUrea.mean,true,true);
+[absUsage,capUsage,UB,protID] = enzymeUsage(ecModelP_GNlimUreaTmp,out_GNlimUrea.mean,true,true);
+
+% prepare output:
+% repeat for each condition
+clear out
+out(:,1)=ecModelP_Xexp.enzymes;
+out(:,2)=ecModelP_Xexp.enzGenes;
+out(:,3)=ecModelP_Xexp.enzNames;
+for i=1:1
+    out(:,3+i)=strtrim(cellstr(num2str(capUsage,3)));
+end
+for i=1:1
+    out(:,4+i)=strtrim(cellstr(num2str(capUsage,3)));
+end
+for i=1:1
+    out(:,5+i)=strtrim(cellstr(num2str(absUsage,3)));
+end
+for i=1:1
+    out(:,6+i)=strtrim(cellstr(num2str(UB,3)));
+end
+
+head={'protID','geneID','protName','capUse_Xexp','capUse_Xexp','absUse_Xexp','UB_Xexp'};
+out=cell2table(out,'VariableNames',head);
+writetable(out,fullfile('results','model_simulation','enzymeUsages_Xexp.txt'),'Delimiter','\t')
+
+%% calculate ATP, NADPH, and NADH balances:
+
+for i={'NADH'}
+    [fluxes, rxnIdx] = getMetProduction(ecModelP_GNlimUrea,i,out_GNlimUrea.mean,true);
+    clear out
+    out.rxns    = ecModelP_GNlimUrea.rxns(rxnIdx);
+    out.rxnNames= ecModelP_GNlimUrea.rxnNames(rxnIdx);
+    out.rxnEqns = constructEquations(ecModelP_GNlimUrea,rxnIdx);
+    out.fluxes  = num2cell(fluxes);
+    out = [out.rxns out.rxnNames out.rxnEqns out.fluxes];
+    %fid = fopen([root '/results/model_simulation/rs_' i{1} '_productionFluxes.tsv'],'w');
+    %fprintf(fid,['%s' repmat('\t%s',1,8) '\n'],["rxnID" "rxnName" ...
+    %    "rxnEqn" string(conditions.abbrev')]);
+    %for j=1:length(out)
+    %    fprintf(fid,['%s\t%s\t%s' repmat('\t%f',1,6) '\n'],out{j,:});
+    end
+    fclose(fid);
+
+%% calculate energy turnover per compartment:
+
+% Define flux indexes:
+fluxRxns={'r_0226','r_1022No1','r_0892No1','r_0962No1','r_0886No1',...
+    'arm_r_0534','r_4046','r_4041','r_1718_REV','r_0961No1','arm_r_0658',...
+    'r_0714No1','r_0714_REVNo1','r_0713No1','r_0713_REVNo1','arm_r_0770'};
+idxs=getIndexes(ecModelP_Xexp,fluxRxns,'rxns');
+rXexp=out_Xexp.mean(idxs(9),:);
+fluxes(1,:)=rXexp;
+
+% calculate flux rates related to NAD turnover, per compartment:
+% repeat for each condition
+NADmets=find(strcmp(ecModelP_GNlimUrea.metNames,'NAD'));
+[~,NADrxns]=find(ecModelP_GNlimUrea.S(NADmets,:)); clear NAD
+for i=1:numel(ecModelP_GNlimUrea)
+    NADtmp=full(ecModelP_GNlimUrea.S(NADmets,NADrxns).*out_GNlimUrea.mean(NADrxns,i)');
+    NADtmp(NADtmp<0)=0;
+    NAD(:,i)=sum(NADtmp,2);
+end
+zeroFlux=sum(NAD,2)==0;
+NAD=[NAD(~zeroFlux,:);sum(NAD,1)];
+NADmets=[strcat('rNAD[',ecModelP_GNlimUrea.comps(ecModelP_GNlimUrea.metComps(NADmets(~zeroFlux))),']'); ...
+    'rNAD[tot]']';
+fluxes=[fluxes;NAD];
+
+% NADPH:
+NADPmets=find(strcmp(ecModelP_GNlimUrea.metNames,'NADP(+)'));
+[~,NADPrxns]=find(ecModelP_GNlimUrea.S(NADPmets,:)); clear NADP
+for i=1:numel(ecModelP_GNlimUrea)
+    NADPtmp=full(ecModelP_GNlimUrea.S(NADPmets,NADPrxns).*out_GNlimUrea.mean(NADPrxns,i)');
+    NADPtmp(NADPtmp<0)=0;
+    NADP(:,i)=sum(NADPtmp,2);
+end
+zeroFlux=sum(NADP,2)==0;
+NADP=[NADP(~zeroFlux,:);sum(NADP,1)];
+NADPmets=[strcat('rNADP[',ecModelP_GNlimUrea.comps(ecModelP_GNlimUrea.metComps(NADPmets(~zeroFlux))),']'); ...
+    'rNADP[tot]']';
+fluxes=[fluxes;NADP];
+
+% Define row and variable names:
+rowNames=[NADmets, NADPmets];
+%varNames={'Xexp','XNlim','Aexp','ANlim','GexpUrea','GNlimUrea'};
+
+%% convert fluxes to original, non-ecModel version:
+
+% repeat for each condition
+solXmapped = mapRxnsToOriginal(ecModelP_Xexp,model,out_Xexp.mean)

@@ -61,8 +61,3 @@ rxns = regexprep(rxns,'No1$','');
 solXmapped = zeros(numel(model.rxns),1);
 [a,b] = ismember(rxns,model.rxns);
 solXmapped(b(a)) = solX(a);
-
-
-
-
-

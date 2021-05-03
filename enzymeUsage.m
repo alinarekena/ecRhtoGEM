@@ -44,12 +44,12 @@ enzExch     = regexp(ecModel.rxnNames,expression);
 enzExch     = find(~cellfun(@isempty,enzExch));
 
 %Get list of Uniprot protein IDs
-if ~isfield(ecModel,'enzymes')
+%if ~isfield(ecModel,'enzymes')
     expression  = '(^draw_prot_)|(^prot_)|(_exchange$)';
     protId      = regexprep(ecModel.rxnNames(enzExch),expression,'');
-else
-    protId      = ecModel.enzymes;
-end
+%else
+%    protId      = ecModel.enzymes;
+%end
 
 %Map reversible reactions to their original flux value
 if contrastRevRxns == true

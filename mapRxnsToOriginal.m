@@ -32,7 +32,7 @@ oriRxns = cellfun(@isempty,regexp(rxns,'(^arm_)|(^(draw_)?prot)|(No\d{1,2}$)'));
 %Remove protein exchange reactions
 protEx = ~cellfun(@isempty,regexp(rxns,'^(draw_)?prot_'));
 rxns(protEx) = [];
-solX(protEx) = [];
+solX(protEx,:) = [];
 
 %Keep arm reactions, remove arm_ prefix
 armRxns         = ~cellfun(@isempty,regexp(rxns,'^arm_.+'));
@@ -42,7 +42,7 @@ rxns(armRxns)   = armRxnIds;
 %Remove arm-extension reactions
 rmArmRxns = contains(rxns,armRxnIds) & ~armRxns; %Do not remove previous arm_ reactions
 rxns(rmArmRxns) = [];
-solX(rmArmRxns) = [];
+solX(rmArmRxns,:) = [];
 
 %Merge rev reactions
 revRxns     = find(contains(rxns,'_REV'));
@@ -50,14 +50,14 @@ revRxnsOri  = regexprep(rxns(revRxns),'_REV','');
 [revMatch,fwdRxns] = ismember(revRxnsOri,rxns);
 fwdRxns     = fwdRxns(revMatch);
 revRxns     = revRxns(revMatch);
-solX(fwdRxns) = solX(fwdRxns) - solX(revRxns);
-solX(revRxns) = [];
+solX(fwdRxns,:) = solX(fwdRxns,:) - solX(revRxns,:);
+solX(revRxns,:) = [];
 rxns(revRxns) = [];
 
 %Remove No1 suffix from single-enzyme reactions
 rxns = regexprep(rxns,'No1$','');
 
 %Match to original model
-solXmapped = zeros(numel(model.rxns),1);
+solXmapped = zeros(numel(model.rxns),size(solX,2));
 [a,b] = ismember(rxns,model.rxns);
-solXmapped(b(a)) = solX(a);
+solXmapped(b(a),:) = solX(a,:);

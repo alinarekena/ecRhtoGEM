@@ -25,9 +25,7 @@ function solXmapped = mapRxnsToOriginal(ecModel,model,solX)
 %
 %   Usage: solXmapped = mapRxnsToOriginal(ecModel,model,solX)
 
-rxns = ecModelP_ANlim.rxns;
-sol=solveLP(ecModelP_ANlim);
-solX=sol.x;
+rxns = ecModel.rxns;
 %Unchanged reactions
 oriRxns = cellfun(@isempty,regexp(rxns,'(^arm_)|(^(draw_)?prot)|(No\d{1,2}$)'));
 

@@ -35,12 +35,12 @@ rxns(protEx) = [];
 solX(protEx) = [];
 
 %Keep arm reactions, remove arm_ prefix
-armRxns         = find(~cellfun(@isempty,regexp(rxns,'^arm_.+')));
+armRxns         = ~cellfun(@isempty,regexp(rxns,'^arm_.+'));
 armRxnIds       = regexprep(rxns(armRxns),'^arm_','');
 rxns(armRxns)   = armRxnIds;
 
 %Remove arm-extension reactions
-rmArmRxns = contains(rxns,armRxnIds);
+rmArmRxns = contains(rxns,armRxnIds) & ~armRxns; %Do not remove previous arm_ reactions
 rxns(rmArmRxns) = [];
 solX(rmArmRxns) = [];
 

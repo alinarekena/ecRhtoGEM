@@ -104,6 +104,11 @@ updateDatabases;
 
 % Change lipid and protein conteint to Xexp condition
 cd([root '/code'])
+% First increase FA fraction by 25%, to prevent later problems in GexpUrea.
+% scaleLipidProtein function compensates for the FA increase.
+rxnIdx = find(contains(model.rxnNames,'lipid backbone pseudoreaction'));
+metIdx = find(contains(model.metNames,'fatty acid backbone'));
+model.S(metIdx,rxnIdx)=model.S(metIdx,rxnIdx)*1.25;
 lipidData = loadLipidChainData(model,1);
 model = scaleLipidProtein(model,lipidData,0.4385);
 cd([root '/GECKO/geckomat/'])

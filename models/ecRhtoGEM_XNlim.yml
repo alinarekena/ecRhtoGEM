@@ -41353,7 +41353,7 @@
     - metabolites: !!omap
       - prot_M7WJE8: 1
     - lower_bound: 0
-    - upper_bound: 6.174e-05
+    - upper_bound: 5.9953e-05
     - gene_reaction_rule: "RHTO_06635"
   - !!omap
     - id: "prot_M7WJI1_exchange"
@@ -42057,7 +42057,7 @@
     - metabolites: !!omap
       - prot_M7WS89: 1
     - lower_bound: 0
-    - upper_bound: 0.00055274
+    - upper_bound: 0.00052927
     - gene_reaction_rule: "RHTO_07171"
   - !!omap
     - id: "prot_M7WSB2_exchange"
@@ -43929,7 +43929,7 @@
     - metabolites: !!omap
       - prot_M7XI04: 1
     - lower_bound: 0
-    - upper_bound: 0.00045394
+    - upper_bound: 0.00043467
     - gene_reaction_rule: "RHTO_04045"
   - !!omap
     - id: "prot_M7XI20_exchange"
@@ -43945,7 +43945,7 @@
     - metabolites: !!omap
       - prot_M7XI95: 1
     - lower_bound: 0
-    - upper_bound: 0.00068782
+    - upper_bound: 0.00069998
     - gene_reaction_rule: "RHTO_03911"
   - !!omap
     - id: "prot_M7XIC1_exchange"
@@ -44721,7 +44721,7 @@
     - metabolites: !!omap
       - prot_pool: 1
     - lower_bound: 0
-    - upper_bound: 1.804
+    - upper_bound: 1.805
     - gene_reaction_rule: ""
   - !!omap
     - id: "r_0001No1"
@@ -84407,13 +84407,13 @@
     - id: "r_4041"
     - name: "biomass pseudoreaction"
     - metabolites: !!omap
-      - s_0394: 126.078
-      - s_0434: -126.078
+      - s_0394: 125.911
+      - s_0434: -125.911
       - s_0450: 1
-      - s_0794: 126.078
-      - s_0803: -126.078
+      - s_0794: 125.911
+      - s_0803: -125.911
       - s_1096: -1
-      - s_1322: 126.078
+      - s_1322: 125.911
       - s_1405: -0.00099
       - s_1467: -0.02
       - s_3714: -1e-06
@@ -84531,7 +84531,7 @@
       - s_0794: 1
       - s_0803: -1
       - s_1322: 1
-    - lower_bound: 3.1
+    - lower_bound: 3.05
     - upper_bound: 1000
     - gene_reaction_rule: ""
     - annotation: !!omap
@@ -84618,11 +84618,11 @@
     - id: "r_4048"
     - name: "carbohydrate pseudoreaction"
     - metabolites: !!omap
-      - s_0001: -0.92182
-      - s_0004: -0.30791
-      - s_0773: -0.36777
-      - s_1107: -0.87556
-      - s_1520: -0.1481
+      - s_0001: -0.89514
+      - s_0004: -0.299
+      - s_0773: -0.35712
+      - s_1107: -0.85021
+      - s_1520: -0.14382
       - s_3718: 1
     - lower_bound: 0
     - upper_bound: 1000
@@ -84708,16 +84708,16 @@
     - id: "r_4063"
     - name: "lipid backbone pseudoreaction"
     - metabolites: !!omap
-      - m_0100: -0.0037199
-      - s_0089: -0.0053534
-      - s_0666: -0.040354
-      - s_0694: -0.10574
-      - s_1346: -0.0083617
-      - s_1351: -0.0064593
-      - s_1524: -0.072992
-      - s_3710: -0.021192
-      - s_3733: -0.024852
-      - s_3738: -0.00097334
+      - m_0100: -0.0035619
+      - s_0089: -0.0051261
+      - s_0666: -0.038641
+      - s_0694: -0.12657
+      - s_1346: -0.0080067
+      - s_1351: -0.0061851
+      - s_1524: -0.069893
+      - s_3710: -0.020292
+      - s_3733: -0.023797
+      - s_3738: -0.00093201
       - s_3746: 1
     - lower_bound: 0
     - upper_bound: 1000
@@ -84737,11 +84737,11 @@
     - id: "r_4065"
     - name: "lipid chain pseudoreaction"
     - metabolites: !!omap
-      - m_0102: -0.039466
-      - m_0103: -0.0059905
-      - s_3740: -0.067795
-      - s_3742: -0.014856
-      - s_3743: -0.10265
+      - m_0102: -0.038482
+      - m_0103: -0.0064548
+      - s_3740: -0.072695
+      - s_3742: -0.021458
+      - s_3743: -0.10712
       - s_3747: 1
     - lower_bound: 0
     - upper_bound: 1000

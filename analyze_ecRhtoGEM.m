@@ -132,12 +132,12 @@ writetable(out,fullfile('results','model_simulation','enzymeUsages_Xexp.txt'),'D
 
 %% calculate ATP, NADPH, and NADH balances:
 
-for i={'NADH'}
-    [fluxes, rxnIdx] = getMetProduction(ecModelP_GNlimUrea,i,out_GNlimUrea.mean,true);
+for i={'NADPH'}
+    [fluxes, rxnIdx] = getMetProduction(model,i,solXmapped_GNlimUrea,true);
     clear out
-    out.rxns    = ecModelP_GNlimUrea.rxns(rxnIdx);
-    out.rxnNames= ecModelP_GNlimUrea.rxnNames(rxnIdx);
-    out.rxnEqns = constructEquations(ecModelP_GNlimUrea,rxnIdx);
+    out.rxns    = model.rxns(rxnIdx);
+    out.rxnNames= model.rxnNames(rxnIdx);
+    out.rxnEqns = constructEquations(model,rxnIdx);
     out.fluxes  = num2cell(fluxes);
     out = [out.rxns out.rxnNames out.rxnEqns out.fluxes];
     %fid = fopen([root '/results/model_simulation/rs_' i{1} '_productionFluxes.tsv'],'w');
@@ -146,7 +146,7 @@ for i={'NADH'}
     %for j=1:length(out)
     %    fprintf(fid,['%s\t%s\t%s' repmat('\t%f',1,6) '\n'],out{j,:});
     end
-    fclose(fid);
+    %fclose(fid);
 
 %% calculate energy turnover per compartment:
 
@@ -194,4 +194,4 @@ rowNames=[NADmets, NADPmets];
 %% convert fluxes to original, non-ecModel version:
 
 % repeat for each condition
-solXmapped = mapRxnsToOriginal(ecModelP_Xexp,model,out_Xexp.mean)
+solXmapped = mapRxnsToOriginal(ecModelP_XexpTmp,model,out_Xexp.mean)

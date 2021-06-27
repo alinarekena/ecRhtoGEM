@@ -4885,6 +4885,16 @@
     - compartment: "c"
     - formula: ""
   - !!omap
+    - id: "pmet_r_1112"
+    - name: "pmet_r_1112"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
+    - id: "pmet_r_1112_REV"
+    - name: "pmet_r_1112_REV"
+    - compartment: "m"
+    - formula: ""
+  - !!omap
     - id: "pmet_r_1146"
     - name: "pmet_r_1146"
     - compartment: "e"
@@ -6055,6 +6065,11 @@
     - compartment: "c"
     - formula: ""
   - !!omap
+    - id: "prot_M7WEL7"
+    - name: "prot_M7WEL7"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
     - id: "prot_M7WEV1"
     - name: "prot_M7WEV1"
     - compartment: "c"
@@ -6202,6 +6217,11 @@
   - !!omap
     - id: "prot_M7WI54"
     - name: "prot_M7WI54"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
+    - id: "prot_M7WI80"
+    - name: "prot_M7WI80"
     - compartment: "c"
     - formula: ""
   - !!omap
@@ -6500,6 +6520,11 @@
     - compartment: "c"
     - formula: ""
   - !!omap
+    - id: "prot_M7WMH0"
+    - name: "prot_M7WMH0"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
     - id: "prot_M7WMJ7"
     - name: "prot_M7WMJ7"
     - compartment: "c"
@@ -6507,6 +6532,11 @@
   - !!omap
     - id: "prot_M7WMN2"
     - name: "prot_M7WMN2"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
+    - id: "prot_M7WMP3"
+    - name: "prot_M7WMP3"
     - compartment: "c"
     - formula: ""
   - !!omap
@@ -6742,6 +6772,11 @@
   - !!omap
     - id: "prot_M7WQF1"
     - name: "prot_M7WQF1"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
+    - id: "prot_M7WQJ3"
+    - name: "prot_M7WQJ3"
     - compartment: "c"
     - formula: ""
   - !!omap
@@ -7207,6 +7242,11 @@
   - !!omap
     - id: "prot_M7WW56"
     - name: "prot_M7WW56"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
+    - id: "prot_M7WW62"
+    - name: "prot_M7WW62"
     - compartment: "c"
     - formula: ""
   - !!omap
@@ -36387,6 +36427,26 @@
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_00892 or RHTO_01163 or RHTO_02180"
   - !!omap
+    - id: "arm_r_1112"
+    - name: "AKG transporter, mitochonrial (arm)"
+    - metabolites: !!omap
+      - pmet_r_1112: 1
+      - s_0180: -1
+      - s_0524: -1
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_05609 or RHTO_08140"
+  - !!omap
+    - id: "arm_r_1112_REV"
+    - name: "AKG transporter, mitochonrial (reversible) (arm)"
+    - metabolites: !!omap
+      - pmet_r_1112_REV: 1
+      - s_0182: -1
+      - s_0522: -1
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_05609 or RHTO_08140"
+  - !!omap
     - id: "arm_r_1146"
     - name: "episterol transport (arm)"
     - metabolites: !!omap
@@ -38967,6 +39027,15 @@
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_05579"
   - !!omap
+    - id: "draw_prot_M7WEL7"
+    - name: "draw_prot_M7WEL7"
+    - metabolites: !!omap
+      - prot_M7WEL7: 1
+      - prot_pool: -32.6037
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_05609"
+  - !!omap
     - id: "draw_prot_M7WEV1"
     - name: "draw_prot_M7WEV1"
     - metabolites: !!omap
@@ -39236,6 +39305,15 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_03701"
+  - !!omap
+    - id: "draw_prot_M7WI80"
+    - name: "draw_prot_M7WI80"
+    - metabolites: !!omap
+      - prot_M7WI80: 1
+      - prot_pool: -33.1015
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_03731"
   - !!omap
     - id: "draw_prot_M7WI96"
     - name: "draw_prot_M7WI96"
@@ -39768,6 +39846,15 @@
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_05417"
   - !!omap
+    - id: "draw_prot_M7WMH0"
+    - name: "draw_prot_M7WMH0"
+    - metabolites: !!omap
+      - prot_M7WMH0: 1
+      - prot_pool: -32.0288
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_01354"
+  - !!omap
     - id: "draw_prot_M7WMJ7"
     - name: "draw_prot_M7WMJ7"
     - metabolites: !!omap
@@ -39785,6 +39872,15 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_05278"
+  - !!omap
+    - id: "draw_prot_M7WMP3"
+    - name: "draw_prot_M7WMP3"
+    - metabolites: !!omap
+      - prot_M7WMP3: 1
+      - prot_pool: -75.4206
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_04513"
   - !!omap
     - id: "draw_prot_M7WMR9"
     - name: "draw_prot_M7WMR9"
@@ -40208,6 +40304,15 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_03507"
+  - !!omap
+    - id: "draw_prot_M7WQJ3"
+    - name: "draw_prot_M7WQJ3"
+    - metabolites: !!omap
+      - prot_M7WQJ3: 1
+      - prot_pool: -33.6587
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_08140"
   - !!omap
     - id: "draw_prot_M7WQN8"
     - name: "draw_prot_M7WQN8"
@@ -41045,6 +41150,15 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01070"
+  - !!omap
+    - id: "draw_prot_M7WW62"
+    - name: "draw_prot_M7WW62"
+    - metabolites: !!omap
+      - prot_M7WW62: 1
+      - prot_pool: -34.6781
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_05007"
   - !!omap
     - id: "draw_prot_M7WW70"
     - name: "draw_prot_M7WW70"
@@ -45083,7 +45197,7 @@
     - metabolites: !!omap
       - prot_pool: 1
     - lower_bound: 0
-    - upper_bound: 0.034566
+    - upper_bound: 0.050729
     - gene_reaction_rule: ""
   - !!omap
     - id: "r_0001No1"
@@ -46937,7 +47051,7 @@
     - id: "r_0108No1"
     - name: "acetyl-Coa carboxylase (No1)"
     - metabolites: !!omap
-      - prot_M7XLR4: -7.716e-10
+      - prot_M7XLR4: -9.2285e-06
       - s_0376: -1
       - s_0397: 1
       - s_0437: -1
@@ -53472,7 +53586,7 @@
     - id: "r_0471No1"
     - name: "glutamate dehydrogenase (NADP) (No1)"
     - metabolites: !!omap
-      - prot_M7X2B5: -9.6956e-09
+      - prot_M7X2B5: -1.3227e-05
       - s_0180: -1
       - s_0419: -1
       - s_0794: -1
@@ -63482,9 +63596,10 @@
       - sbo: "SBO:0000655"
     - confidence_score: 1
   - !!omap
-    - id: "r_1099"
-    - name: "2-oxoadipate and 2-oxoglutarate transport"
+    - id: "r_1099No1"
+    - name: "2-oxoadipate and 2-oxoglutarate transport (No1)"
     - metabolites: !!omap
+      - prot_M7WI80: -1.0979e-07
       - s_0176: 1
       - s_0177: -1
       - s_0180: -1
@@ -63492,13 +63607,11 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_03731"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
   - !!omap
-    - id: "r_1099_REV"
-    - name: "2-oxoadipate and 2-oxoglutarate transport (reversible)"
+    - id: "r_1099_REVNo1"
+    - name: "2-oxoadipate and 2-oxoglutarate transport (reversible) (No1)"
     - metabolites: !!omap
+      - prot_M7WI80: -1.0979e-07
       - s_0176: -1
       - s_0177: 1
       - s_0180: 1
@@ -63506,9 +63619,6 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_03731"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
   - !!omap
     - id: "r_1100"
     - name: "3-hexaprenyl-4,5-dihydroxybenzoate transport"
@@ -63722,33 +63832,49 @@
       - sbo: "SBO:0000655"
     - confidence_score: 2
   - !!omap
-    - id: "r_1112"
-    - name: "AKG transporter, mitochonrial"
+    - id: "r_1112No1"
+    - name: "AKG transporter, mitochonrial (No1)"
     - metabolites: !!omap
-      - s_0180: -1
+      - pmet_r_1112: -1
+      - prot_M7WEL7: -2.245e-06
       - s_0182: 1
       - s_0522: 1
-      - s_0524: -1
     - lower_bound: 0
     - upper_bound: 1000
-    - gene_reaction_rule: "RHTO_05609 or RHTO_08140"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
+    - gene_reaction_rule: "RHTO_05609"
   - !!omap
-    - id: "r_1112_REV"
-    - name: "AKG transporter, mitochonrial (reversible)"
+    - id: "r_1112No2"
+    - name: "AKG transporter, mitochonrial (No2)"
     - metabolites: !!omap
+      - pmet_r_1112: -1
+      - prot_M7WQJ3: -2.245e-06
+      - s_0182: 1
+      - s_0522: 1
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_08140"
+  - !!omap
+    - id: "r_1112_REVNo1"
+    - name: "AKG transporter, mitochonrial (reversible) (No1)"
+    - metabolites: !!omap
+      - pmet_r_1112_REV: -1
+      - prot_M7WEL7: -2.245e-06
       - s_0180: 1
-      - s_0182: -1
-      - s_0522: -1
       - s_0524: 1
     - lower_bound: 0
     - upper_bound: 1000
-    - gene_reaction_rule: "RHTO_05609 or RHTO_08140"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
+    - gene_reaction_rule: "RHTO_05609"
+  - !!omap
+    - id: "r_1112_REVNo2"
+    - name: "AKG transporter, mitochonrial (reversible) (No2)"
+    - metabolites: !!omap
+      - pmet_r_1112_REV: -1
+      - prot_M7WQJ3: -2.245e-06
+      - s_0180: 1
+      - s_0524: 1
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_08140"
   - !!omap
     - id: "r_1113"
     - name: "allantoate uniport"
@@ -63814,9 +63940,10 @@
       - sbo: "SBO:0000655"
     - confidence_score: 2
   - !!omap
-    - id: "r_1118"
-    - name: "aspartate-glutamate transporter"
+    - id: "r_1118No1"
+    - name: "aspartate-glutamate transporter (No1)"
     - metabolites: !!omap
+      - prot_M7WMP3: -0.00011817
       - s_0973: 1
       - s_0975: -1
       - s_0991: -1
@@ -63824,9 +63951,6 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_04513"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
   - !!omap
     - id: "r_1119"
     - name: "biotin uptake"
@@ -63842,9 +63966,10 @@
       - sbo: "SBO:0000655"
     - confidence_score: 2
   - !!omap
-    - id: "r_1120"
-    - name: "carnithine-acetylcarnithine carrier"
+    - id: "r_1120No1"
+    - name: "carnithine-acetylcarnithine carrier (No1)"
     - metabolites: !!omap
+      - prot_M7WMH0: -2.7594e-07
       - s_0021: 1
       - s_0023: -1
       - s_1235: -1
@@ -63852,9 +63977,6 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
   - !!omap
     - id: "r_1121"
     - name: "ceramide-2' (sphinganine:n-C24:0OH) transport"
@@ -65034,17 +65156,15 @@
       - sbo: "SBO:0000655"
     - confidence_score: 2
   - !!omap
-    - id: "r_1194"
-    - name: "L-glutamate transport"
+    - id: "r_1194No1"
+    - name: "L-glutamate transport (No1)"
     - metabolites: !!omap
+      - prot_M7WMP3: -2.3823e-09
       - s_0991: -1
       - s_0993: 1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_04513"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
   - !!omap
     - id: "r_1195"
     - name: "L-glutamate transport"
@@ -66456,9 +66576,10 @@
       - sbo: "SBO:0000655"
     - confidence_score: 2
   - !!omap
-    - id: "r_1265"
-    - name: "succinate-fumarate transport"
+    - id: "r_1265No1"
+    - name: "succinate-fumarate transport (No1)"
     - metabolites: !!omap
+      - prot_M7WW62: -1.6767e-06
       - s_0725: 1
       - s_0727: -1
       - s_1458: -1
@@ -66466,9 +66587,6 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_05007"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
   - !!omap
     - id: "r_1266"
     - name: "sulfate uniport"
@@ -80588,9 +80706,10 @@
         - "Glutathione metabolism"
         - "Peroxisome"
   - !!omap
-    - id: "r_2132"
-    - name: "oxoglutarate/malate exchange"
+    - id: "r_2132No1"
+    - name: "oxoglutarate/malate exchange (No1)"
     - metabolites: !!omap
+      - prot_M7WI80: -1.8896e-08
       - s_0066: -1
       - s_0068: 1
       - s_0180: 1
@@ -80598,9 +80717,6 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_03731"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
   - !!omap
     - id: "r_2134"
     - name: "14-demethyllanosterol exchange"
@@ -90408,16 +90524,16 @@
     - id: "r_4063"
     - name: "lipid backbone pseudoreaction"
     - metabolites: !!omap
-      - m_0100: -0.0024804
-      - s_0089: -0.0035696
-      - s_0666: -0.026908
-      - s_0694: -0.088136
-      - s_1346: -0.0055756
-      - s_1351: -0.0043071
-      - s_1524: -0.048671
-      - s_3710: -0.014131
-      - s_3733: -0.016571
-      - s_3738: -0.00064903
+      - m_0100: -0.0027065
+      - s_0089: -0.003895
+      - s_0666: -0.029361
+      - s_0694: -0.076936
+      - s_1346: -0.0060839
+      - s_1351: -0.0046997
+      - s_1524: -0.053108
+      - s_3710: -0.015419
+      - s_3733: -0.018082
+      - s_3738: -0.00070819
       - s_3746: 1
     - lower_bound: 0
     - upper_bound: 1000
@@ -90429,11 +90545,11 @@
     - id: "r_4065"
     - name: "lipid chain pseudoreaction"
     - metabolites: !!omap
-      - m_0102: -0.03255
-      - m_0103: -0.0055588
-      - s_3740: -0.046309
-      - s_3742: -0.013601
-      - s_3743: -0.07342
+      - m_0102: -0.031924
+      - m_0103: -0.0052342
+      - s_3740: -0.045419
+      - s_3742: -0.013339
+      - s_3743: -0.072009
       - s_3747: 1
     - lower_bound: 0
     - upper_bound: 1000
@@ -94659,173 +94775,161 @@
     - gene_reaction_rule: "RHTO_01903"
     - subsystem: "Fatty acid degradation (mitochondrial)"
   - !!omap
-    - id: "t_0015"
-    - name: "fatty acylcarnitine transport (C16:0)"
+    - id: "t_0015No1"
+    - name: "fatty acylcarnitine transport (C16:0) (No1)"
     - metabolites: !!omap
       - m_0111: -1
       - m_0112: 1
+      - prot_M7WMH0: -5.5556e-08
       - s_0021: 1
       - s_0023: -1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
     - subsystem: "Fatty acid degradation (mitochondrial)"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0015_REV"
-    - name: "fatty acylcarnitine transport (C16:0) (reversible)"
+    - id: "t_0015_REVNo1"
+    - name: "fatty acylcarnitine transport (C16:0) (reversible) (No1)"
     - metabolites: !!omap
       - m_0111: 1
       - m_0112: -1
+      - prot_M7WMH0: -5.5556e-08
       - s_0021: -1
       - s_0023: 1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
     - subsystem: "Fatty acid degradation (mitochondrial)"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0016"
-    - name: "fatty acylcarnitine transport (C18:0)"
+    - id: "t_0016No1"
+    - name: "fatty acylcarnitine transport (C18:0) (No1)"
     - metabolites: !!omap
       - m_0113: -1
       - m_0114: 1
+      - prot_M7WMH0: -5.5556e-08
       - s_0021: 1
       - s_0023: -1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
     - subsystem: "Fatty acid degradation (mitochondrial)"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0016_REV"
-    - name: "fatty acylcarnitine transport (C18:0) (reversible)"
+    - id: "t_0016_REVNo1"
+    - name: "fatty acylcarnitine transport (C18:0) (reversible) (No1)"
     - metabolites: !!omap
       - m_0113: 1
       - m_0114: -1
+      - prot_M7WMH0: -5.5556e-08
       - s_0021: -1
       - s_0023: 1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
     - subsystem: "Fatty acid degradation (mitochondrial)"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0017"
-    - name: "fatty acylcarnitine transport (C20:0)"
+    - id: "t_0017No1"
+    - name: "fatty acylcarnitine transport (C20:0) (No1)"
     - metabolites: !!omap
       - m_0109: -1
       - m_0110: 1
+      - prot_M7WMH0: -5.5556e-08
       - s_0021: 1
       - s_0023: -1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
     - subsystem: "Fatty acid degradation (mitochondrial)"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0017_REV"
-    - name: "fatty acylcarnitine transport (C20:0) (reversible)"
+    - id: "t_0017_REVNo1"
+    - name: "fatty acylcarnitine transport (C20:0) (reversible) (No1)"
     - metabolites: !!omap
       - m_0109: 1
       - m_0110: -1
+      - prot_M7WMH0: -5.5556e-08
       - s_0021: -1
       - s_0023: 1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
     - subsystem: "Fatty acid degradation (mitochondrial)"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0018"
-    - name: "fatty acylcarnitine transport (C22:0)"
+    - id: "t_0018No1"
+    - name: "fatty acylcarnitine transport (C22:0) (No1)"
     - metabolites: !!omap
       - m_0105: -1
       - m_0106: 1
+      - prot_M7WMH0: -5.5556e-08
       - s_0021: 1
       - s_0023: -1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
     - subsystem: "Fatty acid degradation (mitochondrial)"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0018_REV"
-    - name: "fatty acylcarnitine transport (C22:0) (reversible)"
+    - id: "t_0018_REVNo1"
+    - name: "fatty acylcarnitine transport (C22:0) (reversible) (No1)"
     - metabolites: !!omap
       - m_0105: 1
       - m_0106: -1
+      - prot_M7WMH0: -5.5556e-08
       - s_0021: -1
       - s_0023: 1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
     - subsystem: "Fatty acid degradation (mitochondrial)"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0019"
-    - name: "fatty acylcarnitine transport (C24:0)"
+    - id: "t_0019No1"
+    - name: "fatty acylcarnitine transport (C24:0) (No1)"
     - metabolites: !!omap
       - m_0115: -1
       - m_0116: 1
+      - prot_M7WMH0: -5.5556e-08
       - s_0021: 1
       - s_0023: -1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
     - subsystem: "Fatty acid degradation (mitochondrial)"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0019_REV"
-    - name: "fatty acylcarnitine transport (C24:0) (reversible)"
+    - id: "t_0019_REVNo1"
+    - name: "fatty acylcarnitine transport (C24:0) (reversible) (No1)"
     - metabolites: !!omap
       - m_0115: 1
       - m_0116: -1
+      - prot_M7WMH0: -5.5556e-08
       - s_0021: -1
       - s_0023: 1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
     - subsystem: "Fatty acid degradation (mitochondrial)"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0020"
-    - name: "fatty acylcarnitine transport (C26:0)"
+    - id: "t_0020No1"
+    - name: "fatty acylcarnitine transport (C26:0) (No1)"
     - metabolites: !!omap
       - m_0107: -1
       - m_0108: 1
+      - prot_M7WMH0: -5.5556e-08
       - s_0021: 1
       - s_0023: -1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
     - subsystem: "Fatty acid degradation (mitochondrial)"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0020_REV"
-    - name: "fatty acylcarnitine transport (C26:0) (reversible)"
+    - id: "t_0020_REVNo1"
+    - name: "fatty acylcarnitine transport (C26:0) (reversible) (No1)"
     - metabolites: !!omap
       - m_0107: 1
       - m_0108: -1
+      - prot_M7WMH0: -5.5556e-08
       - s_0021: -1
       - s_0023: 1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
     - subsystem: "Fatty acid degradation (mitochondrial)"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
     - id: "t_0021No1"
     - name: "mitochondrial carnitine acyltransferase (C16:0) (No1)"
@@ -110917,7 +111021,7 @@
     - id: "t_0883No1"
     - name: "D-arabinitol 4-dehydrogenase (No1)"
     - metabolites: !!omap
-      - prot_M7XGH5: -1.2626e-09
+      - prot_M7XGH5: -3.171e-07
       - s_0580: -1
       - s_0794: -1
       - s_1198: 1
@@ -110943,7 +111047,7 @@
     - id: "t_0884No1"
     - name: "D-arabinitol 2-dehydrogenase/D-ribulose reductase (No1)"
     - metabolites: !!omap
-      - prot_M7X791: -8.5734e-10
+      - prot_M7X791: -2.5484e-06
       - s_0794: -1
       - s_1207: 1
       - s_1212: -1
@@ -110956,7 +111060,7 @@
     - id: "t_0884_REVNo1"
     - name: "D-arabinitol 2-dehydrogenase/D-ribulose reductase (reversible) (No1)"
     - metabolites: !!omap
-      - prot_M7X791: -3.171e-07
+      - prot_M7X791: -2.5484e-06
       - s_0794: 1
       - s_1207: -1
       - s_1212: 1
@@ -110969,7 +111073,7 @@
     - id: "t_0885No1"
     - name: "D-ribulokinase (No1)"
     - metabolites: !!omap
-      - prot_M7WVT6: -1.8618e-07
+      - prot_M7WVT6: -2.5484e-06
       - s_0394: 1
       - s_0434: -1
       - s_0577: 1
@@ -111025,7 +111129,7 @@
     - id: "y200003No1"
     - name: "ATP-citrate lyase (No1)"
     - metabolites: !!omap
-      - prot_M7WHC9: -1.5461e-06
+      - prot_M7WHC9: -0.00014478
       - s_0373: 1
       - s_0394: 1
       - s_0434: -1

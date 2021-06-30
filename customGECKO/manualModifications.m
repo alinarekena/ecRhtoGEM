@@ -561,6 +561,7 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
           if strcmpi('prot_M7X2B5',enzName) && contains(reaction,'glutamate dehydrogenase (NADP) (No1)')
              % K. lactis kcat [2021-06-16];
              % https://www.brenda-enzymes.org/literature.php?e=1.4.1.4&r=743258;
+             %newValue      = -(21*3600)^-1;
              newValue      = -(21*3600)^-1;
              modifications{1} = [modifications{1}; 'M7X2B5'];
              modifications{2} = [modifications{2}; reaction];
@@ -574,7 +575,7 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
              % S. cerevisiae S.A. [2021-06-16];
              % https://doi.org/10.1046/j.1365-2958.2003.03742.x;
              %newValue      = -(0.0187*75.42*60)^-1;         %0.0235[1/s]
-             newValue      = -(100*0.0187*75.42*60)^-1; 
+             newValue      = -(100000*0.0187*75.42*60)^-1; 
              modifications{1} = [modifications{1}; 'M7WMP3'];
              modifications{2} = [modifications{2}; reaction];
           end
@@ -587,7 +588,7 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
              % S. cerevisiae S.A. [2021-06-16];
              % https://doi.org/10.1074/jbc.M004332200;
              %newValue      = -(252*35*60)^-1;         %147[1/s]
-             newValue      = -(100*252*35*60)^-1;
+             newValue      = -(10*252*35*60)^-1;
              modifications{1} = [modifications{1}; 'M7WI80'];
              modifications{2} = [modifications{2}; reaction];
           end
@@ -601,12 +602,12 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
                  % M circinelloidesWJ11 S.A. [2021-06-17];
                  % https://doi.org/10.3389/fmicb.2021.673881;
                  %newValue     = -(2.32*32*60)^-1;       %1.237[1/s]
-                 newValue     = -(100*2.32*32*60)^-1;
+                 newValue     = -(1000*2.32*32*60)^-1;
                  modifications{1} = [modifications{1}; 'M7WEL7'];
                  modifications{2} = [modifications{2}; reaction];
               elseif strcmpi('prot_M7WQJ3',enzName)
                   %newValue      = -(2.32*32*60)^-1;
-                  newValue      = -(100*2.32*32*60)^-1;
+                  newValue      = -(1000*2.32*32*60)^-1;
                   modifications{1} = [modifications{1}; 'M7WQJ3'];
                   modifications{2} = [modifications{2}; reaction];
               end
@@ -620,7 +621,7 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
              % S. cerevisiae S.A. [2021-06-17];
              % https://doi.org/10.1016/S0014-5793(97)01269-6;
              %newValue      = -(2.8*35.5*60)^-1;         %1.657[1/s]
-             newValue      = -(100*2.8*35.5*60)^-1;
+             newValue      = -(1000*2.8*35.5*60)^-1;
              modifications{1} = [modifications{1}; 'M7WW62'];
              modifications{2} = [modifications{2}; reaction];
           end
@@ -633,7 +634,7 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
              % S. cerevisiae S.A. [2021-06-17];
              % https://doi.org/10.1016/S0014-5793(99)01555-0;
              %newValue      = -(15.1*40*60)^-1;         %10.07[1/s]
-             newValue      = -(100*15.1*40*60)^-1;
+             newValue      = -(10*15.1*40*60)^-1;
              modifications{1} = [modifications{1}; 'M7WMH0'];
              modifications{2} = [modifications{2}; reaction];
           end

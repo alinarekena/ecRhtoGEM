@@ -63124,7 +63124,7 @@
     - name: "AKG transporter, mitochonrial (No1)"
     - metabolites: !!omap
       - pmet_r_1112: -1
-      - prot_M7WEL7: -2.245e-06
+      - prot_M7WEL7: -2.245e-07
       - s_0182: 1
       - s_0522: 1
     - lower_bound: 0
@@ -63135,7 +63135,7 @@
     - name: "AKG transporter, mitochonrial (No2)"
     - metabolites: !!omap
       - pmet_r_1112: -1
-      - prot_M7WQJ3: -2.245e-06
+      - prot_M7WQJ3: -2.245e-07
       - s_0182: 1
       - s_0522: 1
     - lower_bound: 0
@@ -63146,7 +63146,7 @@
     - name: "AKG transporter, mitochonrial (reversible) (No1)"
     - metabolites: !!omap
       - pmet_r_1112_REV: -1
-      - prot_M7WEL7: -2.245e-06
+      - prot_M7WEL7: -2.245e-07
       - s_0180: 1
       - s_0524: 1
     - lower_bound: 0
@@ -63157,7 +63157,7 @@
     - name: "AKG transporter, mitochonrial (reversible) (No2)"
     - metabolites: !!omap
       - pmet_r_1112_REV: -1
-      - prot_M7WQJ3: -2.245e-06
+      - prot_M7WQJ3: -2.245e-07
       - s_0180: 1
       - s_0524: 1
     - lower_bound: 0
@@ -63231,7 +63231,7 @@
     - id: "r_1118No1"
     - name: "aspartate-glutamate transporter (No1)"
     - metabolites: !!omap
-      - prot_M7WMP3: -0.00011817
+      - prot_M7WMP3: -1.1817e-07
       - s_0973: 1
       - s_0975: -1
       - s_0991: -1
@@ -63257,7 +63257,7 @@
     - id: "r_1120No1"
     - name: "carnithine-acetylcarnithine carrier (No1)"
     - metabolites: !!omap
-      - prot_M7WMH0: -2.7594e-07
+      - prot_M7WMH0: -2.7594e-06
       - s_0021: 1
       - s_0023: -1
       - s_1235: -1
@@ -65867,7 +65867,7 @@
     - id: "r_1265No1"
     - name: "succinate-fumarate transport (No1)"
     - metabolites: !!omap
-      - prot_M7WW62: -1.6767e-06
+      - prot_M7WW62: -1.6767e-07
       - s_0725: 1
       - s_0727: -1
       - s_1458: -1
@@ -79997,7 +79997,7 @@
     - id: "r_2132No1"
     - name: "oxoglutarate/malate exchange (No1)"
     - metabolites: !!omap
-      - prot_M7WI80: -1.8896e-08
+      - prot_M7WI80: -1.8896e-07
       - s_0066: -1
       - s_0068: 1
       - s_0180: 1

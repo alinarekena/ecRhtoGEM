@@ -4890,6 +4890,16 @@
     - compartment: "c"
     - formula: ""
   - !!omap
+    - id: "pmet_r_1112"
+    - name: "pmet_r_1112"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
+    - id: "pmet_r_1112_REV"
+    - name: "pmet_r_1112_REV"
+    - compartment: "m"
+    - formula: ""
+  - !!omap
     - id: "pmet_r_1146"
     - name: "pmet_r_1146"
     - compartment: "e"
@@ -6060,6 +6070,11 @@
     - compartment: "c"
     - formula: ""
   - !!omap
+    - id: "prot_M7WEL7"
+    - name: "prot_M7WEL7"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
     - id: "prot_M7WEV1"
     - name: "prot_M7WEV1"
     - compartment: "c"
@@ -6212,6 +6227,11 @@
   - !!omap
     - id: "prot_M7WI54"
     - name: "prot_M7WI54"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
+    - id: "prot_M7WI80"
+    - name: "prot_M7WI80"
     - compartment: "c"
     - formula: ""
   - !!omap
@@ -6545,6 +6565,11 @@
     - compartment: "c"
     - formula: ""
   - !!omap
+    - id: "prot_M7WMH0"
+    - name: "prot_M7WMH0"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
     - id: "prot_M7WMJ7"
     - name: "prot_M7WMJ7"
     - compartment: "c"
@@ -6552,6 +6577,11 @@
   - !!omap
     - id: "prot_M7WMN2"
     - name: "prot_M7WMN2"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
+    - id: "prot_M7WMP3"
+    - name: "prot_M7WMP3"
     - compartment: "c"
     - formula: ""
   - !!omap
@@ -6827,6 +6857,11 @@
   - !!omap
     - id: "prot_M7WQF1"
     - name: "prot_M7WQF1"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
+    - id: "prot_M7WQJ3"
+    - name: "prot_M7WQJ3"
     - compartment: "c"
     - formula: ""
   - !!omap
@@ -7337,6 +7372,11 @@
   - !!omap
     - id: "prot_M7WW56"
     - name: "prot_M7WW56"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
+    - id: "prot_M7WW62"
+    - name: "prot_M7WW62"
     - compartment: "c"
     - formula: ""
   - !!omap
@@ -36034,6 +36074,26 @@
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_00892 or RHTO_01163 or RHTO_02180"
   - !!omap
+    - id: "arm_r_1112"
+    - name: "AKG transporter, mitochonrial (arm)"
+    - metabolites: !!omap
+      - pmet_r_1112: 1
+      - s_0180: -1
+      - s_0524: -1
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_05609 or RHTO_08140"
+  - !!omap
+    - id: "arm_r_1112_REV"
+    - name: "AKG transporter, mitochonrial (reversible) (arm)"
+    - metabolites: !!omap
+      - pmet_r_1112_REV: 1
+      - s_0182: -1
+      - s_0522: -1
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_05609 or RHTO_08140"
+  - !!omap
     - id: "arm_r_1146"
     - name: "episterol transport (arm)"
     - metabolites: !!omap
@@ -40886,7 +40946,7 @@
     - metabolites: !!omap
       - prot_M7WCH0: 1
     - lower_bound: 0
-    - upper_bound: 0.0018709
+    - upper_bound: 0.00092534
     - gene_reaction_rule: "RHTO_07387"
   - !!omap
     - id: "prot_M7WD54_exchange"
@@ -40894,7 +40954,7 @@
     - metabolites: !!omap
       - prot_M7WD54: 1
     - lower_bound: 0
-    - upper_bound: 0.0084108
+    - upper_bound: 0.0050816
     - gene_reaction_rule: "RHTO_06455"
   - !!omap
     - id: "prot_M7WD99_exchange"
@@ -40902,7 +40962,7 @@
     - metabolites: !!omap
       - prot_M7WD99: 1
     - lower_bound: 0
-    - upper_bound: 0.033862
+    - upper_bound: 0.0077835
     - gene_reaction_rule: "RHTO_06415"
   - !!omap
     - id: "prot_M7WDC1_exchange"
@@ -40910,7 +40970,7 @@
     - metabolites: !!omap
       - prot_M7WDC1: 1
     - lower_bound: 0
-    - upper_bound: 0.00036836
+    - upper_bound: 0.0005557
     - gene_reaction_rule: "RHTO_06445"
   - !!omap
     - id: "prot_M7WDH6_exchange"
@@ -40918,7 +40978,7 @@
     - metabolites: !!omap
       - prot_M7WDH6: 1
     - lower_bound: 0
-    - upper_bound: 0.00062944
+    - upper_bound: 0.00047479
     - gene_reaction_rule: "RHTO_05993"
   - !!omap
     - id: "prot_M7WDP6_exchange"
@@ -40926,7 +40986,7 @@
     - metabolites: !!omap
       - prot_M7WDP6: 1
     - lower_bound: 0
-    - upper_bound: 0.0050664
+    - upper_bound: 0.0030113
     - gene_reaction_rule: "RHTO_05934"
   - !!omap
     - id: "prot_M7WEG7_exchange"
@@ -40934,7 +40994,7 @@
     - metabolites: !!omap
       - prot_M7WEG7: 1
     - lower_bound: 0
-    - upper_bound: 0.00037878
+    - upper_bound: 0.0014518
     - gene_reaction_rule: "RHTO_05549"
   - !!omap
     - id: "prot_M7WEJ4_exchange"
@@ -40942,15 +41002,23 @@
     - metabolites: !!omap
       - prot_M7WEJ4: 1
     - lower_bound: 0
-    - upper_bound: 0.00052626
+    - upper_bound: 0.00036639
     - gene_reaction_rule: "RHTO_05579"
+  - !!omap
+    - id: "prot_M7WEL7_exchange"
+    - name: "prot_M7WEL7_exchange"
+    - metabolites: !!omap
+      - prot_M7WEL7: 1
+    - lower_bound: 0
+    - upper_bound: 0.0018168
+    - gene_reaction_rule: "RHTO_05609"
   - !!omap
     - id: "prot_M7WEV1_exchange"
     - name: "prot_M7WEV1_exchange"
     - metabolites: !!omap
       - prot_M7WEV1: 1
     - lower_bound: 0
-    - upper_bound: 0.0063641
+    - upper_bound: 0.0034265
     - gene_reaction_rule: "RHTO_05520"
   - !!omap
     - id: "prot_M7WFJ0_exchange"
@@ -40958,7 +41026,7 @@
     - metabolites: !!omap
       - prot_M7WFJ0: 1
     - lower_bound: 0
-    - upper_bound: 0.0008094
+    - upper_bound: 0.00064474
     - gene_reaction_rule: "RHTO_05134"
   - !!omap
     - id: "prot_M7WFK5_exchange"
@@ -40966,7 +41034,7 @@
     - metabolites: !!omap
       - prot_M7WFK5: 1
     - lower_bound: 0
-    - upper_bound: 0.0012719
+    - upper_bound: 0.00038603
     - gene_reaction_rule: "RHTO_05149"
   - !!omap
     - id: "prot_M7WFL8_exchange"
@@ -40974,7 +41042,7 @@
     - metabolites: !!omap
       - prot_M7WFL8: 1
     - lower_bound: 0
-    - upper_bound: 0.00014276
+    - upper_bound: 9.4507e-05
     - gene_reaction_rule: "RHTO_05159"
   - !!omap
     - id: "prot_M7WFU6_exchange"
@@ -40982,7 +41050,7 @@
     - metabolites: !!omap
       - prot_M7WFU6: 1
     - lower_bound: 0
-    - upper_bound: 0.00080909
+    - upper_bound: 0.00035308
     - gene_reaction_rule: "RHTO_05219"
   - !!omap
     - id: "prot_M7WG58_exchange"
@@ -40990,7 +41058,7 @@
     - metabolites: !!omap
       - prot_M7WG58: 1
     - lower_bound: 0
-    - upper_bound: 0.0046498
+    - upper_bound: 0.0045518
     - gene_reaction_rule: "RHTO_04408"
   - !!omap
     - id: "prot_M7WGA7_exchange"
@@ -40998,7 +41066,7 @@
     - metabolites: !!omap
       - prot_M7WGA7: 1
     - lower_bound: 0
-    - upper_bound: 0.0039574
+    - upper_bound: 0.0058264
     - gene_reaction_rule: "RHTO_04463"
   - !!omap
     - id: "prot_M7WH87_exchange"
@@ -41006,7 +41074,7 @@
     - metabolites: !!omap
       - prot_M7WH87: 1
     - lower_bound: 0
-    - upper_bound: 0.00083773
+    - upper_bound: 0.00041921
     - gene_reaction_rule: "RHTO_04109"
   - !!omap
     - id: "prot_M7WH92_exchange"
@@ -41014,7 +41082,7 @@
     - metabolites: !!omap
       - prot_M7WH92: 1
     - lower_bound: 0
-    - upper_bound: 0.046151
+    - upper_bound: 0.015236
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WHA9_exchange"
@@ -41022,7 +41090,7 @@
     - metabolites: !!omap
       - prot_M7WHA9: 1
     - lower_bound: 0
-    - upper_bound: 0.00020781
+    - upper_bound: 0.00025966
     - gene_reaction_rule: "RHTO_03890"
   - !!omap
     - id: "prot_M7WHB3_exchange"
@@ -41030,7 +41098,7 @@
     - metabolites: !!omap
       - prot_M7WHB3: 1
     - lower_bound: 0
-    - upper_bound: 0.00019444
+    - upper_bound: 9.7009e-05
     - gene_reaction_rule: "RHTO_03895"
   - !!omap
     - id: "prot_M7WHC9_exchange"
@@ -41038,7 +41106,7 @@
     - metabolites: !!omap
       - prot_M7WHC9: 1
     - lower_bound: 0
-    - upper_bound: 0.0028894
+    - upper_bound: 0.00552
     - gene_reaction_rule: "RHTO_03915"
   - !!omap
     - id: "prot_M7WHN9_exchange"
@@ -41046,7 +41114,7 @@
     - metabolites: !!omap
       - prot_M7WHN9: 1
     - lower_bound: 0
-    - upper_bound: 0.001283
+    - upper_bound: 0.00117
     - gene_reaction_rule: "RHTO_03795"
   - !!omap
     - id: "prot_M7WHV7_exchange"
@@ -41054,7 +41122,7 @@
     - metabolites: !!omap
       - prot_M7WHV7: 1
     - lower_bound: 0
-    - upper_bound: 0.00086097
+    - upper_bound: 0.00078832
     - gene_reaction_rule: "RHTO_03865"
   - !!omap
     - id: "prot_M7WI20_exchange"
@@ -41062,7 +41130,7 @@
     - metabolites: !!omap
       - prot_M7WI20: 1
     - lower_bound: 0
-    - upper_bound: 0.033862
+    - upper_bound: 0.0077835
     - gene_reaction_rule: "RHTO_03666"
   - !!omap
     - id: "prot_M7WI54_exchange"
@@ -41070,15 +41138,23 @@
     - metabolites: !!omap
       - prot_M7WI54: 1
     - lower_bound: 0
-    - upper_bound: 0.0024165
+    - upper_bound: 0.0021505
     - gene_reaction_rule: "RHTO_03701"
+  - !!omap
+    - id: "prot_M7WI80_exchange"
+    - name: "prot_M7WI80_exchange"
+    - metabolites: !!omap
+      - prot_M7WI80: 1
+    - lower_bound: 0
+    - upper_bound: 0.0012554
+    - gene_reaction_rule: "RHTO_03731"
   - !!omap
     - id: "prot_M7WI96_exchange"
     - name: "prot_M7WI96_exchange"
     - metabolites: !!omap
       - prot_M7WI96: 1
     - lower_bound: 0
-    - upper_bound: 0.073152
+    - upper_bound: 0.041
     - gene_reaction_rule: "RHTO_03746"
   - !!omap
     - id: "prot_M7WIG9_exchange"
@@ -41086,7 +41162,7 @@
     - metabolites: !!omap
       - prot_M7WIG9: 1
     - lower_bound: 0
-    - upper_bound: 0.0098555
+    - upper_bound: 0.0092529
     - gene_reaction_rule: "RHTO_03543"
   - !!omap
     - id: "prot_M7WIR6_exchange"
@@ -41094,7 +41170,7 @@
     - metabolites: !!omap
       - prot_M7WIR6: 1
     - lower_bound: 0
-    - upper_bound: 0.0014216
+    - upper_bound: 0.0007438
     - gene_reaction_rule: "RHTO_03331"
   - !!omap
     - id: "prot_M7WJ06_exchange"
@@ -41102,7 +41178,7 @@
     - metabolites: !!omap
       - prot_M7WJ06: 1
     - lower_bound: 0
-    - upper_bound: 0.0043081
+    - upper_bound: 0.0025391
     - gene_reaction_rule: "RHTO_03406"
   - !!omap
     - id: "prot_M7WJ30_exchange"
@@ -41110,7 +41186,7 @@
     - metabolites: !!omap
       - prot_M7WJ30: 1
     - lower_bound: 0
-    - upper_bound: 0.00048478
+    - upper_bound: 0.00027356
     - gene_reaction_rule: "RHTO_03426"
   - !!omap
     - id: "prot_M7WJI1_exchange"
@@ -41118,7 +41194,7 @@
     - metabolites: !!omap
       - prot_M7WJI1: 1
     - lower_bound: 0
-    - upper_bound: 0.00067928
+    - upper_bound: 0.00059094
     - gene_reaction_rule: "RHTO_02590"
   - !!omap
     - id: "prot_M7WJN6_exchange"
@@ -41126,7 +41202,7 @@
     - metabolites: !!omap
       - prot_M7WJN6: 1
     - lower_bound: 0
-    - upper_bound: 0.00036542
+    - upper_bound: 0.00035562
     - gene_reaction_rule: "RHTO_02645"
   - !!omap
     - id: "prot_M7WJP1_exchange"
@@ -41134,7 +41210,7 @@
     - metabolites: !!omap
       - prot_M7WJP1: 1
     - lower_bound: 0
-    - upper_bound: 0.089477
+    - upper_bound: 0.037412
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WK31_exchange"
@@ -41142,7 +41218,7 @@
     - metabolites: !!omap
       - prot_M7WK31: 1
     - lower_bound: 0
-    - upper_bound: 0.0043352
+    - upper_bound: 0.0026569
     - gene_reaction_rule: "RHTO_02463"
   - !!omap
     - id: "prot_M7WK47_exchange"
@@ -41150,7 +41226,7 @@
     - metabolites: !!omap
       - prot_M7WK47: 1
     - lower_bound: 0
-    - upper_bound: 0.31202
+    - upper_bound: 0.043084
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WK50_exchange"
@@ -41158,7 +41234,7 @@
     - metabolites: !!omap
       - prot_M7WK50: 1
     - lower_bound: 0
-    - upper_bound: 0.00079758
+    - upper_bound: 0.00052285
     - gene_reaction_rule: "RHTO_05962"
   - !!omap
     - id: "prot_M7WKC4_exchange"
@@ -41166,7 +41242,7 @@
     - metabolites: !!omap
       - prot_M7WKC4: 1
     - lower_bound: 0
-    - upper_bound: 0.010513
+    - upper_bound: 0.0093097
     - gene_reaction_rule: "RHTO_06551"
   - !!omap
     - id: "prot_M7WKF8_exchange"
@@ -41174,7 +41250,7 @@
     - metabolites: !!omap
       - prot_M7WKF8: 1
     - lower_bound: 0
-    - upper_bound: 0.0043787
+    - upper_bound: 0.0034147
     - gene_reaction_rule: "RHTO_02312"
   - !!omap
     - id: "prot_M7WKI7_exchange"
@@ -41182,7 +41258,7 @@
     - metabolites: !!omap
       - prot_M7WKI7: 1
     - lower_bound: 0
-    - upper_bound: 0.034342
+    - upper_bound: 0.033653
     - gene_reaction_rule: "RHTO_06468"
   - !!omap
     - id: "prot_M7WKL7_exchange"
@@ -41190,7 +41266,7 @@
     - metabolites: !!omap
       - prot_M7WKL7: 1
     - lower_bound: 0
-    - upper_bound: 0.017326
+    - upper_bound: 0.014418
     - gene_reaction_rule: "RHTO_05838"
   - !!omap
     - id: "prot_M7WKR4_exchange"
@@ -41198,7 +41274,7 @@
     - metabolites: !!omap
       - prot_M7WKR4: 1
     - lower_bound: 0
-    - upper_bound: 0.00098048
+    - upper_bound: 0.00099803
     - gene_reaction_rule: "RHTO_01947"
   - !!omap
     - id: "prot_M7WKV3_exchange"
@@ -41206,7 +41282,7 @@
     - metabolites: !!omap
       - prot_M7WKV3: 1
     - lower_bound: 0
-    - upper_bound: 4.6554e-05
+    - upper_bound: 0.00016154
     - gene_reaction_rule: "RHTO_05769"
   - !!omap
     - id: "prot_M7WKX0_exchange"
@@ -41222,7 +41298,7 @@
     - metabolites: !!omap
       - prot_M7WKZ4: 1
     - lower_bound: 0
-    - upper_bound: 0.002728
+    - upper_bound: 0.0023748
     - gene_reaction_rule: "RHTO_05912"
   - !!omap
     - id: "prot_M7WKZ9_exchange"
@@ -41230,7 +41306,7 @@
     - metabolites: !!omap
       - prot_M7WKZ9: 1
     - lower_bound: 0
-    - upper_bound: 0.17599
+    - upper_bound: 0.073083
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WL18_exchange"
@@ -41238,7 +41314,7 @@
     - metabolites: !!omap
       - prot_M7WL18: 1
     - lower_bound: 0
-    - upper_bound: 0.0081802
+    - upper_bound: 0.0054516
     - gene_reaction_rule: "RHTO_02048"
   - !!omap
     - id: "prot_M7WL19_exchange"
@@ -41246,7 +41322,7 @@
     - metabolites: !!omap
       - prot_M7WL19: 1
     - lower_bound: 0
-    - upper_bound: 0.00027392
+    - upper_bound: 0.00024957
     - gene_reaction_rule: "RHTO_05797"
   - !!omap
     - id: "prot_M7WL24_exchange"
@@ -41254,7 +41330,7 @@
     - metabolites: !!omap
       - prot_M7WL24: 1
     - lower_bound: 0
-    - upper_bound: 0.00092913
+    - upper_bound: 0.00080416
     - gene_reaction_rule: "RHTO_05802"
   - !!omap
     - id: "prot_M7WL95_exchange"
@@ -41262,7 +41338,7 @@
     - metabolites: !!omap
       - prot_M7WL95: 1
     - lower_bound: 0
-    - upper_bound: 0.00042493
+    - upper_bound: 0.00097377
     - gene_reaction_rule: "RHTO_02113"
   - !!omap
     - id: "prot_M7WLD5_exchange"
@@ -41270,7 +41346,7 @@
     - metabolites: !!omap
       - prot_M7WLD5: 1
     - lower_bound: 0
-    - upper_bound: 0.00062144
+    - upper_bound: 0.00057309
     - gene_reaction_rule: "RHTO_05768"
   - !!omap
     - id: "prot_M7WLI2_exchange"
@@ -41278,7 +41354,7 @@
     - metabolites: !!omap
       - prot_M7WLI2: 1
     - lower_bound: 0
-    - upper_bound: 0.0036343
+    - upper_bound: 0.0018968
     - gene_reaction_rule: "RHTO_05640"
   - !!omap
     - id: "prot_M7WLM0_exchange"
@@ -41286,7 +41362,7 @@
     - metabolites: !!omap
       - prot_M7WLM0: 1
     - lower_bound: 0
-    - upper_bound: 0.074016
+    - upper_bound: 0.038518
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WLP6_exchange"
@@ -41294,7 +41370,7 @@
     - metabolites: !!omap
       - prot_M7WLP6: 1
     - lower_bound: 0
-    - upper_bound: 0.0028629
+    - upper_bound: 0.0024264
     - gene_reaction_rule: "RHTO_05680"
   - !!omap
     - id: "prot_M7WLQ0_exchange"
@@ -41302,7 +41378,7 @@
     - metabolites: !!omap
       - prot_M7WLQ0: 1
     - lower_bound: 0
-    - upper_bound: 0.00011148
+    - upper_bound: 0.00014215
     - gene_reaction_rule: "RHTO_01903"
   - !!omap
     - id: "prot_M7WLQ9_exchange"
@@ -41310,7 +41386,7 @@
     - metabolites: !!omap
       - prot_M7WLQ9: 1
     - lower_bound: 0
-    - upper_bound: 0.0611
+    - upper_bound: 0.018648
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WLR9_exchange"
@@ -41318,7 +41394,7 @@
     - metabolites: !!omap
       - prot_M7WLR9: 1
     - lower_bound: 0
-    - upper_bound: 0.00033612
+    - upper_bound: 0.00047966
     - gene_reaction_rule: "RHTO_05705"
   - !!omap
     - id: "prot_M7WLS9_exchange"
@@ -41326,7 +41402,7 @@
     - metabolites: !!omap
       - prot_M7WLS9: 1
     - lower_bound: 0
-    - upper_bound: 0.0013708
+    - upper_bound: 0.00081745
     - gene_reaction_rule: "RHTO_05715"
   - !!omap
     - id: "prot_M7WLT0_exchange"
@@ -41334,7 +41410,7 @@
     - metabolites: !!omap
       - prot_M7WLT0: 1
     - lower_bound: 0
-    - upper_bound: 0.14245
+    - upper_bound: 0.035001
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WLV7_exchange"
@@ -41342,7 +41418,7 @@
     - metabolites: !!omap
       - prot_M7WLV7: 1
     - lower_bound: 0
-    - upper_bound: 0.00064115
+    - upper_bound: 0.00036118
     - gene_reaction_rule: "RHTO_05562"
   - !!omap
     - id: "prot_M7WLX6_exchange"
@@ -41350,7 +41426,7 @@
     - metabolites: !!omap
       - prot_M7WLX6: 1
     - lower_bound: 0
-    - upper_bound: 0.00037829
+    - upper_bound: 0.00049757
     - gene_reaction_rule: "RHTO_05582"
   - !!omap
     - id: "prot_M7WM05_exchange"
@@ -41358,7 +41434,7 @@
     - metabolites: !!omap
       - prot_M7WM05: 1
     - lower_bound: 0
-    - upper_bound: 0.085728
+    - upper_bound: 0.026373
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WM30_exchange"
@@ -41366,7 +41442,7 @@
     - metabolites: !!omap
       - prot_M7WM30: 1
     - lower_bound: 0
-    - upper_bound: 0.0039093
+    - upper_bound: 0.0027039
     - gene_reaction_rule: "RHTO_05264"
   - !!omap
     - id: "prot_M7WMC4_exchange"
@@ -41374,7 +41450,7 @@
     - metabolites: !!omap
       - prot_M7WMC4: 1
     - lower_bound: 0
-    - upper_bound: 0.0010158
+    - upper_bound: 0.00045093
     - gene_reaction_rule: "RHTO_05138"
   - !!omap
     - id: "prot_M7WMD7_exchange"
@@ -41382,7 +41458,7 @@
     - metabolites: !!omap
       - prot_M7WMD7: 1
     - lower_bound: 0
-    - upper_bound: 0.00047122
+    - upper_bound: 0.00058771
     - gene_reaction_rule: "RHTO_01732"
   - !!omap
     - id: "prot_M7WME7_exchange"
@@ -41390,7 +41466,7 @@
     - metabolites: !!omap
       - prot_M7WME7: 1
     - lower_bound: 0
-    - upper_bound: 0.018782
+    - upper_bound: 0.0081329
     - gene_reaction_rule: "RHTO_01329"
   - !!omap
     - id: "prot_M7WMF3_exchange"
@@ -41398,23 +41474,39 @@
     - metabolites: !!omap
       - prot_M7WMF3: 1
     - lower_bound: 0
-    - upper_bound: 0.015536
+    - upper_bound: 0.0073297
     - gene_reaction_rule: "RHTO_05407"
+  - !!omap
+    - id: "prot_M7WMH0_exchange"
+    - name: "prot_M7WMH0_exchange"
+    - metabolites: !!omap
+      - prot_M7WMH0: 1
+    - lower_bound: 0
+    - upper_bound: 0.0037358
+    - gene_reaction_rule: "RHTO_01354"
   - !!omap
     - id: "prot_M7WMJ7_exchange"
     - name: "prot_M7WMJ7_exchange"
     - metabolites: !!omap
       - prot_M7WMJ7: 1
     - lower_bound: 0
-    - upper_bound: 0.033862
+    - upper_bound: 0.0077835
     - gene_reaction_rule: "RHTO_05208"
+  - !!omap
+    - id: "prot_M7WMP3_exchange"
+    - name: "prot_M7WMP3_exchange"
+    - metabolites: !!omap
+      - prot_M7WMP3: 1
+    - lower_bound: 0
+    - upper_bound: 0.00057132
+    - gene_reaction_rule: "RHTO_04513"
   - !!omap
     - id: "prot_M7WMR9_exchange"
     - name: "prot_M7WMR9_exchange"
     - metabolites: !!omap
       - prot_M7WMR9: 1
     - lower_bound: 0
-    - upper_bound: 0.0018402
+    - upper_bound: 0.0017078
     - gene_reaction_rule: "RHTO_01459"
   - !!omap
     - id: "prot_M7WMS7_exchange"
@@ -41422,7 +41514,7 @@
     - metabolites: !!omap
       - prot_M7WMS7: 1
     - lower_bound: 0
-    - upper_bound: 8.7724e-05
+    - upper_bound: 8.6649e-05
     - gene_reaction_rule: "RHTO_05313"
   - !!omap
     - id: "prot_M7WMT2_exchange"
@@ -41430,7 +41522,7 @@
     - metabolites: !!omap
       - prot_M7WMT2: 1
     - lower_bound: 0
-    - upper_bound: 0.0038574
+    - upper_bound: 0.0035324
     - gene_reaction_rule: "RHTO_05318"
   - !!omap
     - id: "prot_M7WMU5_exchange"
@@ -41438,7 +41530,7 @@
     - metabolites: !!omap
       - prot_M7WMU5: 1
     - lower_bound: 0
-    - upper_bound: 0.00016451
+    - upper_bound: 0.00041304
     - gene_reaction_rule: "RHTO_01494"
   - !!omap
     - id: "prot_M7WMY0_exchange"
@@ -41446,7 +41538,7 @@
     - metabolites: !!omap
       - prot_M7WMY0: 1
     - lower_bound: 0
-    - upper_bound: 0.011015
+    - upper_bound: 0.008265
     - gene_reaction_rule: "RHTO_05147"
   - !!omap
     - id: "prot_M7WN54_exchange"
@@ -41454,7 +41546,7 @@
     - metabolites: !!omap
       - prot_M7WN54: 1
     - lower_bound: 0
-    - upper_bound: 0.00021058
+    - upper_bound: 0.0002282
     - gene_reaction_rule: "RHTO_05197"
   - !!omap
     - id: "prot_M7WN91_exchange"
@@ -41462,7 +41554,7 @@
     - metabolites: !!omap
       - prot_M7WN91: 1
     - lower_bound: 0
-    - upper_bound: 0.00094614
+    - upper_bound: 0.00073874
     - gene_reaction_rule: "RHTO_04310"
   - !!omap
     - id: "prot_M7WN97_exchange"
@@ -41470,7 +41562,7 @@
     - metabolites: !!omap
       - prot_M7WN97: 1
     - lower_bound: 0
-    - upper_bound: 0.0027194
+    - upper_bound: 0.0023932
     - gene_reaction_rule: "RHTO_04315"
   - !!omap
     - id: "prot_M7WNA8_exchange"
@@ -41478,7 +41570,7 @@
     - metabolites: !!omap
       - prot_M7WNA8: 1
     - lower_bound: 0
-    - upper_bound: 0.075348
+    - upper_bound: 0.019675
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WNB5_exchange"
@@ -41486,7 +41578,7 @@
     - metabolites: !!omap
       - prot_M7WNB5: 1
     - lower_bound: 0
-    - upper_bound: 0.00248
+    - upper_bound: 0.0025904
     - gene_reaction_rule: "RHTO_01252"
   - !!omap
     - id: "prot_M7WNN8_exchange"
@@ -41494,7 +41586,7 @@
     - metabolites: !!omap
       - prot_M7WNN8: 1
     - lower_bound: 0
-    - upper_bound: 0.0070222
+    - upper_bound: 0.0030683
     - gene_reaction_rule: "RHTO_00906"
   - !!omap
     - id: "prot_M7WNN9_exchange"
@@ -41502,7 +41594,7 @@
     - metabolites: !!omap
       - prot_M7WNN9: 1
     - lower_bound: 0
-    - upper_bound: 0.00018735
+    - upper_bound: 0.00019228
     - gene_reaction_rule: "RHTO_04196"
   - !!omap
     - id: "prot_M7WNR0_exchange"
@@ -41510,7 +41602,7 @@
     - metabolites: !!omap
       - prot_M7WNR0: 1
     - lower_bound: 0
-    - upper_bound: 0.042026
+    - upper_bound: 0.0111
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WNW6_exchange"
@@ -41518,7 +41610,7 @@
     - metabolites: !!omap
       - prot_M7WNW6: 1
     - lower_bound: 0
-    - upper_bound: 0.061816
+    - upper_bound: 0.025794
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WNY9_exchange"
@@ -41526,7 +41618,7 @@
     - metabolites: !!omap
       - prot_M7WNY9: 1
     - lower_bound: 0
-    - upper_bound: 0.054195
+    - upper_bound: 0.013946
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WNZ9_exchange"
@@ -41534,7 +41626,7 @@
     - metabolites: !!omap
       - prot_M7WNZ9: 1
     - lower_bound: 0
-    - upper_bound: 0.019064
+    - upper_bound: 0.017885
     - gene_reaction_rule: "RHTO_04058"
   - !!omap
     - id: "prot_M7WP17_exchange"
@@ -41542,7 +41634,7 @@
     - metabolites: !!omap
       - prot_M7WP17: 1
     - lower_bound: 0
-    - upper_bound: 0.12347
+    - upper_bound: 0.014621
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WP35_exchange"
@@ -41550,7 +41642,7 @@
     - metabolites: !!omap
       - prot_M7WP35: 1
     - lower_bound: 0
-    - upper_bound: 0.00060485
+    - upper_bound: 0.00053816
     - gene_reaction_rule: "RHTO_04103"
   - !!omap
     - id: "prot_M7WP44_exchange"
@@ -41558,7 +41650,7 @@
     - metabolites: !!omap
       - prot_M7WP44: 1
     - lower_bound: 0
-    - upper_bound: 0.0029488
+    - upper_bound: 0.0029964
     - gene_reaction_rule: "RHTO_01051"
   - !!omap
     - id: "prot_M7WP55_exchange"
@@ -41566,7 +41658,7 @@
     - metabolites: !!omap
       - prot_M7WP55: 1
     - lower_bound: 0
-    - upper_bound: 0.00043422
+    - upper_bound: 0.0002896
     - gene_reaction_rule: "RHTO_04128"
   - !!omap
     - id: "prot_M7WPA0_exchange"
@@ -41574,7 +41666,7 @@
     - metabolites: !!omap
       - prot_M7WPA0: 1
     - lower_bound: 0
-    - upper_bound: 0.0055823
+    - upper_bound: 0.0029256
     - gene_reaction_rule: "RHTO_00641"
   - !!omap
     - id: "prot_M7WPA9_exchange"
@@ -41582,7 +41674,7 @@
     - metabolites: !!omap
       - prot_M7WPA9: 1
     - lower_bound: 0
-    - upper_bound: 0.00010316
+    - upper_bound: 0.00016952
     - gene_reaction_rule: "RHTO_04225"
   - !!omap
     - id: "prot_M7WPB7_exchange"
@@ -41590,7 +41682,7 @@
     - metabolites: !!omap
       - prot_M7WPB7: 1
     - lower_bound: 0
-    - upper_bound: 0.00026039
+    - upper_bound: 0.00032391
     - gene_reaction_rule: "RHTO_04235"
   - !!omap
     - id: "prot_M7WPC7_exchange"
@@ -41598,7 +41690,7 @@
     - metabolites: !!omap
       - prot_M7WPC7: 1
     - lower_bound: 0
-    - upper_bound: 0.053236
+    - upper_bound: 0.022909
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WPU4_exchange"
@@ -41606,7 +41698,7 @@
     - metabolites: !!omap
       - prot_M7WPU4: 1
     - lower_bound: 0
-    - upper_bound: 0.00036357
+    - upper_bound: 0.00018289
     - gene_reaction_rule: "RHTO_00841"
   - !!omap
     - id: "prot_M7WPW0_exchange"
@@ -41614,7 +41706,7 @@
     - metabolites: !!omap
       - prot_M7WPW0: 1
     - lower_bound: 0
-    - upper_bound: 0.0034368
+    - upper_bound: 0.0021171
     - gene_reaction_rule: "RHTO_00856"
   - !!omap
     - id: "prot_M7WPZ9_exchange"
@@ -41622,7 +41714,7 @@
     - metabolites: !!omap
       - prot_M7WPZ9: 1
     - lower_bound: 0
-    - upper_bound: 0.1932
+    - upper_bound: 0.053663
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WQ32_exchange"
@@ -41630,7 +41722,7 @@
     - metabolites: !!omap
       - prot_M7WQ32: 1
     - lower_bound: 0
-    - upper_bound: 0.00094346
+    - upper_bound: 0.00035307
     - gene_reaction_rule: "RHTO_03783"
   - !!omap
     - id: "prot_M7WQ42_exchange"
@@ -41638,7 +41730,7 @@
     - metabolites: !!omap
       - prot_M7WQ42: 1
     - lower_bound: 0
-    - upper_bound: 0.033898
+    - upper_bound: 0.0075345
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WQ73_exchange"
@@ -41646,7 +41738,7 @@
     - metabolites: !!omap
       - prot_M7WQ73: 1
     - lower_bound: 0
-    - upper_bound: 0.00037834
+    - upper_bound: 0.00050331
     - gene_reaction_rule: "RHTO_08030"
   - !!omap
     - id: "prot_M7WQ86_exchange"
@@ -41654,7 +41746,7 @@
     - metabolites: !!omap
       - prot_M7WQ86: 1
     - lower_bound: 0
-    - upper_bound: 0.013664
+    - upper_bound: 0.0072827
     - gene_reaction_rule: "RHTO_03745"
   - !!omap
     - id: "prot_M7WQ90_exchange"
@@ -41662,7 +41754,7 @@
     - metabolites: !!omap
       - prot_M7WQ90: 1
     - lower_bound: 0
-    - upper_bound: 0.0011797
+    - upper_bound: 0.00085916
     - gene_reaction_rule: "RHTO_08045"
   - !!omap
     - id: "prot_M7WQ95_exchange"
@@ -41670,7 +41762,7 @@
     - metabolites: !!omap
       - prot_M7WQ95: 1
     - lower_bound: 0
-    - upper_bound: 0.001905
+    - upper_bound: 0.0010914
     - gene_reaction_rule: "RHTO_08050"
   - !!omap
     - id: "prot_M7WQC9_exchange"
@@ -41678,7 +41770,7 @@
     - metabolites: !!omap
       - prot_M7WQC9: 1
     - lower_bound: 0
-    - upper_bound: 0.0016119
+    - upper_bound: 0.0012276
     - gene_reaction_rule: "RHTO_03472"
   - !!omap
     - id: "prot_M7WQF1_exchange"
@@ -41686,15 +41778,23 @@
     - metabolites: !!omap
       - prot_M7WQF1: 1
     - lower_bound: 0
-    - upper_bound: 0.00089143
+    - upper_bound: 0.00089864
     - gene_reaction_rule: "RHTO_03507"
+  - !!omap
+    - id: "prot_M7WQJ3_exchange"
+    - name: "prot_M7WQJ3_exchange"
+    - metabolites: !!omap
+      - prot_M7WQJ3: 1
+    - lower_bound: 0
+    - upper_bound: 0.0012865
+    - gene_reaction_rule: "RHTO_08140"
   - !!omap
     - id: "prot_M7WQK0_exchange"
     - name: "prot_M7WQK0_exchange"
     - metabolites: !!omap
       - prot_M7WQK0: 1
     - lower_bound: 0
-    - upper_bound: 0.17142
+    - upper_bound: 0.062241
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WQN8_exchange"
@@ -41702,7 +41802,7 @@
     - metabolites: !!omap
       - prot_M7WQN8: 1
     - lower_bound: 0
-    - upper_bound: 0.00013734
+    - upper_bound: 0.00019866
     - gene_reaction_rule: "RHTO_07717"
   - !!omap
     - id: "prot_M7WR01_exchange"
@@ -41710,7 +41810,7 @@
     - metabolites: !!omap
       - prot_M7WR01: 1
     - lower_bound: 0
-    - upper_bound: 0.011625
+    - upper_bound: 0.010404
     - gene_reaction_rule: "RHTO_07853"
   - !!omap
     - id: "prot_M7WR16_exchange"
@@ -41718,7 +41818,7 @@
     - metabolites: !!omap
       - prot_M7WR16: 1
     - lower_bound: 0
-    - upper_bound: 0.057942
+    - upper_bound: 0.035285
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WR40_exchange"
@@ -41726,7 +41826,7 @@
     - metabolites: !!omap
       - prot_M7WR40: 1
     - lower_bound: 0
-    - upper_bound: 0.0088917
+    - upper_bound: 0.0071389
     - gene_reaction_rule: "RHTO_07893"
   - !!omap
     - id: "prot_M7WRD1_exchange"
@@ -41734,7 +41834,7 @@
     - metabolites: !!omap
       - prot_M7WRD1: 1
     - lower_bound: 0
-    - upper_bound: 8.2586e-05
+    - upper_bound: 0.0001127
     - gene_reaction_rule: "RHTO_02564"
   - !!omap
     - id: "prot_M7WRF4_exchange"
@@ -41742,7 +41842,7 @@
     - metabolites: !!omap
       - prot_M7WRF4: 1
     - lower_bound: 0
-    - upper_bound: 0.35948
+    - upper_bound: 0.039146
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WRH3_exchange"
@@ -41750,7 +41850,7 @@
     - metabolites: !!omap
       - prot_M7WRH3: 1
     - lower_bound: 0
-    - upper_bound: 0.00064475
+    - upper_bound: 0.00040666
     - gene_reaction_rule: "RHTO_03399"
   - !!omap
     - id: "prot_M7WRR3_exchange"
@@ -41758,7 +41858,7 @@
     - metabolites: !!omap
       - prot_M7WRR3: 1
     - lower_bound: 0
-    - upper_bound: 0.00169
+    - upper_bound: 0.00064447
     - gene_reaction_rule: "RHTO_07569"
   - !!omap
     - id: "prot_M7WRW9_exchange"
@@ -41766,7 +41866,7 @@
     - metabolites: !!omap
       - prot_M7WRW9: 1
     - lower_bound: 0
-    - upper_bound: 7.2439e-06
+    - upper_bound: 1.8226e-05
     - gene_reaction_rule: "RHTO_02583"
   - !!omap
     - id: "prot_M7WRY8_exchange"
@@ -41774,7 +41874,7 @@
     - metabolites: !!omap
       - prot_M7WRY8: 1
     - lower_bound: 0
-    - upper_bound: 0.00071146
+    - upper_bound: 0.0007044
     - gene_reaction_rule: "RHTO_07649"
   - !!omap
     - id: "prot_M7WS17_exchange"
@@ -41782,7 +41882,7 @@
     - metabolites: !!omap
       - prot_M7WS17: 1
     - lower_bound: 0
-    - upper_bound: 0.0010603
+    - upper_bound: 0.0021164
     - gene_reaction_rule: "RHTO_02628"
   - !!omap
     - id: "prot_M7WS33_exchange"
@@ -41790,7 +41890,7 @@
     - metabolites: !!omap
       - prot_M7WS33: 1
     - lower_bound: 0
-    - upper_bound: 0.00082123
+    - upper_bound: 0.00059566
     - gene_reaction_rule: "RHTO_02643"
   - !!omap
     - id: "prot_M7WS38_exchange"
@@ -41798,7 +41898,7 @@
     - metabolites: !!omap
       - prot_M7WS38: 1
     - lower_bound: 0
-    - upper_bound: 0.00011521
+    - upper_bound: 0.00010488
     - gene_reaction_rule: "RHTO_07106"
   - !!omap
     - id: "prot_M7WS43_exchange"
@@ -41806,7 +41906,7 @@
     - metabolites: !!omap
       - prot_M7WS43: 1
     - lower_bound: 0
-    - upper_bound: 0.0023693
+    - upper_bound: 0.0015923
     - gene_reaction_rule: "RHTO_02272"
   - !!omap
     - id: "prot_M7WS89_exchange"
@@ -41814,7 +41914,7 @@
     - metabolites: !!omap
       - prot_M7WS89: 1
     - lower_bound: 0
-    - upper_bound: 0.001155
+    - upper_bound: 0.0012065
     - gene_reaction_rule: "RHTO_07171"
   - !!omap
     - id: "prot_M7WSB2_exchange"
@@ -41822,7 +41922,7 @@
     - metabolites: !!omap
       - prot_M7WSB2: 1
     - lower_bound: 0
-    - upper_bound: 0.0033909
+    - upper_bound: 0.0020805
     - gene_reaction_rule: "RHTO_07196"
   - !!omap
     - id: "prot_M7WSE0_exchange"
@@ -41830,7 +41930,7 @@
     - metabolites: !!omap
       - prot_M7WSE0: 1
     - lower_bound: 0
-    - upper_bound: 0.0035712
+    - upper_bound: 0.0043431
     - gene_reaction_rule: "RHTO_02328"
   - !!omap
     - id: "prot_M7WSH3_exchange"
@@ -41838,7 +41938,7 @@
     - metabolites: !!omap
       - prot_M7WSH3: 1
     - lower_bound: 0
-    - upper_bound: 0.000406
+    - upper_bound: 0.00034224
     - gene_reaction_rule: "RHTO_02257"
   - !!omap
     - id: "prot_M7WSN0_exchange"
@@ -41846,7 +41946,7 @@
     - metabolites: !!omap
       - prot_M7WSN0: 1
     - lower_bound: 0
-    - upper_bound: 3.4123e-05
+    - upper_bound: 0.00011794
     - gene_reaction_rule: "RHTO_07316"
   - !!omap
     - id: "prot_M7WSW5_exchange"
@@ -41854,7 +41954,7 @@
     - metabolites: !!omap
       - prot_M7WSW5: 1
     - lower_bound: 0
-    - upper_bound: 0.00038073
+    - upper_bound: 0.00080041
     - gene_reaction_rule: "RHTO_02032"
   - !!omap
     - id: "prot_M7WSY9_exchange"
@@ -41862,7 +41962,7 @@
     - metabolites: !!omap
       - prot_M7WSY9: 1
     - lower_bound: 0
-    - upper_bound: 0.00080301
+    - upper_bound: 0.00047354
     - gene_reaction_rule: "RHTO_02273"
   - !!omap
     - id: "prot_M7WSZ7_exchange"
@@ -41870,7 +41970,7 @@
     - metabolites: !!omap
       - prot_M7WSZ7: 1
     - lower_bound: 0
-    - upper_bound: 0.0006356
+    - upper_bound: 0.00056085
     - gene_reaction_rule: "RHTO_02062"
   - !!omap
     - id: "prot_M7WT03_exchange"
@@ -41878,7 +41978,7 @@
     - metabolites: !!omap
       - prot_M7WT03: 1
     - lower_bound: 0
-    - upper_bound: 0.11019
+    - upper_bound: 0.048892
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WT15_exchange"
@@ -41886,7 +41986,7 @@
     - metabolites: !!omap
       - prot_M7WT15: 1
     - lower_bound: 0
-    - upper_bound: 0.0022406
+    - upper_bound: 0.00077541
     - gene_reaction_rule: "RHTO_02077"
   - !!omap
     - id: "prot_M7WT18_exchange"
@@ -41894,7 +41994,7 @@
     - metabolites: !!omap
       - prot_M7WT18: 1
     - lower_bound: 0
-    - upper_bound: 0.081992
+    - upper_bound: 0.015419
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WT61_exchange"
@@ -41902,7 +42002,7 @@
     - metabolites: !!omap
       - prot_M7WT61: 1
     - lower_bound: 0
-    - upper_bound: 0.00012068
+    - upper_bound: 0.00017589
     - gene_reaction_rule: "RHTO_02122"
   - !!omap
     - id: "prot_M7WT77_exchange"
@@ -41910,7 +42010,7 @@
     - metabolites: !!omap
       - prot_M7WT77: 1
     - lower_bound: 0
-    - upper_bound: 0.0032286
+    - upper_bound: 0.0019498
     - gene_reaction_rule: "RHTO_06811"
   - !!omap
     - id: "prot_M7WT79_exchange"
@@ -41918,7 +42018,7 @@
     - metabolites: !!omap
       - prot_M7WT79: 1
     - lower_bound: 0
-    - upper_bound: 0.02801
+    - upper_bound: 0.017917
     - gene_reaction_rule: "RHTO_01970"
   - !!omap
     - id: "prot_M7WTA9_exchange"
@@ -41926,7 +42026,7 @@
     - metabolites: !!omap
       - prot_M7WTA9: 1
     - lower_bound: 0
-    - upper_bound: 6.3866e-05
+    - upper_bound: 5.9287e-05
     - gene_reaction_rule: "RHTO_01996"
   - !!omap
     - id: "prot_M7WTD9_exchange"
@@ -41934,7 +42034,7 @@
     - metabolites: !!omap
       - prot_M7WTD9: 1
     - lower_bound: 0
-    - upper_bound: 0.0030581
+    - upper_bound: 0.002551
     - gene_reaction_rule: "RHTO_06886"
   - !!omap
     - id: "prot_M7WTG7_exchange"
@@ -41942,7 +42042,7 @@
     - metabolites: !!omap
       - prot_M7WTG7: 1
     - lower_bound: 0
-    - upper_bound: 0.00095256
+    - upper_bound: 0.00077758
     - gene_reaction_rule: "RHTO_06921"
   - !!omap
     - id: "prot_M7WTI0_exchange"
@@ -41950,7 +42050,7 @@
     - metabolites: !!omap
       - prot_M7WTI0: 1
     - lower_bound: 0
-    - upper_bound: 0.0058517
+    - upper_bound: 0.0042632
     - gene_reaction_rule: "RHTO_01852"
   - !!omap
     - id: "prot_M7WTN9_exchange"
@@ -41958,7 +42058,7 @@
     - metabolites: !!omap
       - prot_M7WTN9: 1
     - lower_bound: 0
-    - upper_bound: 0.079236
+    - upper_bound: 0.047735
     - gene_reaction_rule: "RHTO_01922"
   - !!omap
     - id: "prot_M7WTR2_exchange"
@@ -41966,7 +42066,7 @@
     - metabolites: !!omap
       - prot_M7WTR2: 1
     - lower_bound: 0
-    - upper_bound: 0.26273
+    - upper_bound: 0.041952
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WTT0_exchange"
@@ -41974,7 +42074,7 @@
     - metabolites: !!omap
       - prot_M7WTT0: 1
     - lower_bound: 0
-    - upper_bound: 0.00043787
+    - upper_bound: 0.00037709
     - gene_reaction_rule: "RHTO_01735"
   - !!omap
     - id: "prot_M7WTV5_exchange"
@@ -41982,7 +42082,7 @@
     - metabolites: !!omap
       - prot_M7WTV5: 1
     - lower_bound: 0
-    - upper_bound: 0.00016531
+    - upper_bound: 0.0001673
     - gene_reaction_rule: "RHTO_01766"
   - !!omap
     - id: "prot_M7WU06_exchange"
@@ -41990,7 +42090,7 @@
     - metabolites: !!omap
       - prot_M7WU06: 1
     - lower_bound: 0
-    - upper_bound: 0.0010575
+    - upper_bound: 0.00058791
     - gene_reaction_rule: "RHTO_01826"
   - !!omap
     - id: "prot_M7WU96_exchange"
@@ -41998,7 +42098,7 @@
     - metabolites: !!omap
       - prot_M7WU96: 1
     - lower_bound: 0
-    - upper_bound: 0.1017
+    - upper_bound: 0.049556
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WU99_exchange"
@@ -42006,7 +42106,7 @@
     - metabolites: !!omap
       - prot_M7WU99: 1
     - lower_bound: 0
-    - upper_bound: 6.1758e-05
+    - upper_bound: 9.3821e-05
     - gene_reaction_rule: "RHTO_01931"
   - !!omap
     - id: "prot_M7WUD3_exchange"
@@ -42014,7 +42114,7 @@
     - metabolites: !!omap
       - prot_M7WUD3: 1
     - lower_bound: 0
-    - upper_bound: 0.013135
+    - upper_bound: 0.013657
     - gene_reaction_rule: "RHTO_01560"
   - !!omap
     - id: "prot_M7WUF2_exchange"
@@ -42022,7 +42122,7 @@
     - metabolites: !!omap
       - prot_M7WUF2: 1
     - lower_bound: 0
-    - upper_bound: 0.0031665
+    - upper_bound: 0.0012282
     - gene_reaction_rule: "RHTO_06216"
   - !!omap
     - id: "prot_M7WUH8_exchange"
@@ -42030,7 +42130,7 @@
     - metabolites: !!omap
       - prot_M7WUH8: 1
     - lower_bound: 0
-    - upper_bound: 0.001355
+    - upper_bound: 0.00065791
     - gene_reaction_rule: "RHTO_06231"
   - !!omap
     - id: "prot_M7WUI0_exchange"
@@ -42038,7 +42138,7 @@
     - metabolites: !!omap
       - prot_M7WUI0: 1
     - lower_bound: 0
-    - upper_bound: 0.033862
+    - upper_bound: 0.0077835
     - gene_reaction_rule: "RHTO_01605"
   - !!omap
     - id: "prot_M7WUI5_exchange"
@@ -42046,7 +42146,7 @@
     - metabolites: !!omap
       - prot_M7WUI5: 1
     - lower_bound: 0
-    - upper_bound: 0.011617
+    - upper_bound: 0.010035
     - gene_reaction_rule: "RHTO_01610"
   - !!omap
     - id: "prot_M7WUJ6_exchange"
@@ -42054,7 +42154,7 @@
     - metabolites: !!omap
       - prot_M7WUJ6: 1
     - lower_bound: 0
-    - upper_bound: 0.0011471
+    - upper_bound: 0.0008416
     - gene_reaction_rule: "RHTO_01625"
   - !!omap
     - id: "prot_M7WUM6_exchange"
@@ -42062,7 +42162,7 @@
     - metabolites: !!omap
       - prot_M7WUM6: 1
     - lower_bound: 0
-    - upper_bound: 0.033882
+    - upper_bound: 0.0095145
     - gene_reaction_rule: "RHTO_06286"
   - !!omap
     - id: "prot_M7WUP1_exchange"
@@ -42070,7 +42170,7 @@
     - metabolites: !!omap
       - prot_M7WUP1: 1
     - lower_bound: 0
-    - upper_bound: 0.0006776
+    - upper_bound: 0.00041715
     - gene_reaction_rule: "RHTO_01660"
   - !!omap
     - id: "prot_M7WUP8_exchange"
@@ -42078,7 +42178,7 @@
     - metabolites: !!omap
       - prot_M7WUP8: 1
     - lower_bound: 0
-    - upper_bound: 0.0056321
+    - upper_bound: 0.0031216
     - gene_reaction_rule: "RHTO_06311"
   - !!omap
     - id: "prot_M7WUQ8_exchange"
@@ -42086,7 +42186,7 @@
     - metabolites: !!omap
       - prot_M7WUQ8: 1
     - lower_bound: 0
-    - upper_bound: 0.0009359
+    - upper_bound: 0.00068528
     - gene_reaction_rule: "RHTO_06321"
   - !!omap
     - id: "prot_M7WUR1_exchange"
@@ -42094,7 +42194,7 @@
     - metabolites: !!omap
       - prot_M7WUR1: 1
     - lower_bound: 0
-    - upper_bound: 0.00049427
+    - upper_bound: 0.00031512
     - gene_reaction_rule: "RHTO_06326"
   - !!omap
     - id: "prot_M7WUU3_exchange"
@@ -42102,7 +42202,7 @@
     - metabolites: !!omap
       - prot_M7WUU3: 1
     - lower_bound: 0
-    - upper_bound: 0.028352
+    - upper_bound: 0.020121
     - gene_reaction_rule: "RHTO_01695"
   - !!omap
     - id: "prot_M7WUV4_exchange"
@@ -42110,7 +42210,7 @@
     - metabolites: !!omap
       - prot_M7WUV4: 1
     - lower_bound: 0
-    - upper_bound: 6.3712e-05
+    - upper_bound: 5.055e-05
     - gene_reaction_rule: "RHTO_01498"
   - !!omap
     - id: "prot_M7WUY3_exchange"
@@ -42118,7 +42218,7 @@
     - metabolites: !!omap
       - prot_M7WUY3: 1
     - lower_bound: 0
-    - upper_bound: 0.00067585
+    - upper_bound: 0.00070046
     - gene_reaction_rule: "RHTO_04575"
   - !!omap
     - id: "prot_M7WV44_exchange"
@@ -42126,7 +42226,7 @@
     - metabolites: !!omap
       - prot_M7WV44: 1
     - lower_bound: 0
-    - upper_bound: 0.076106
+    - upper_bound: 0.018138
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WV85_exchange"
@@ -42134,7 +42234,7 @@
     - metabolites: !!omap
       - prot_M7WV85: 1
     - lower_bound: 0
-    - upper_bound: 0.0014452
+    - upper_bound: 0.002201
     - gene_reaction_rule: "RHTO_01392"
   - !!omap
     - id: "prot_M7WVH5_exchange"
@@ -42142,7 +42242,7 @@
     - metabolites: !!omap
       - prot_M7WVH5: 1
     - lower_bound: 0
-    - upper_bound: 0.00013503
+    - upper_bound: 0.00011768
     - gene_reaction_rule: "RHTO_01311"
   - !!omap
     - id: "prot_M7WVH9_exchange"
@@ -42150,7 +42250,7 @@
     - metabolites: !!omap
       - prot_M7WVH9: 1
     - lower_bound: 0
-    - upper_bound: 0.00861
+    - upper_bound: 0.0032989
     - gene_reaction_rule: "RHTO_04781"
   - !!omap
     - id: "prot_M7WVL3_exchange"
@@ -42158,7 +42258,7 @@
     - metabolites: !!omap
       - prot_M7WVL3: 1
     - lower_bound: 0
-    - upper_bound: 0.1175
+    - upper_bound: 0.038981
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WVP5_exchange"
@@ -42166,7 +42266,7 @@
     - metabolites: !!omap
       - prot_M7WVP5: 1
     - lower_bound: 0
-    - upper_bound: 0.001877
+    - upper_bound: 0.00072679
     - gene_reaction_rule: "RHTO_04846"
   - !!omap
     - id: "prot_M7WVT6_exchange"
@@ -42174,7 +42274,7 @@
     - metabolites: !!omap
       - prot_M7WVT6: 1
     - lower_bound: 0
-    - upper_bound: 0.0050383
+    - upper_bound: 0.0050585
     - gene_reaction_rule: "RHTO_00950"
   - !!omap
     - id: "prot_M7WVW2_exchange"
@@ -42182,7 +42282,7 @@
     - metabolites: !!omap
       - prot_M7WVW2: 1
     - lower_bound: 0
-    - upper_bound: 0.0076422
+    - upper_bound: 0.004114
     - gene_reaction_rule: "RHTO_01205"
   - !!omap
     - id: "prot_M7WVW4_exchange"
@@ -42190,7 +42290,7 @@
     - metabolites: !!omap
       - prot_M7WVW4: 1
     - lower_bound: 0
-    - upper_bound: 0.00012211
+    - upper_bound: 0.00025001
     - gene_reaction_rule: "RHTO_00975"
   - !!omap
     - id: "prot_M7WW26_exchange"
@@ -42198,7 +42298,7 @@
     - metabolites: !!omap
       - prot_M7WW26: 1
     - lower_bound: 0
-    - upper_bound: 0.00072309
+    - upper_bound: 0.00085264
     - gene_reaction_rule: "RHTO_04957"
   - !!omap
     - id: "prot_M7WW40_exchange"
@@ -42214,15 +42314,23 @@
     - metabolites: !!omap
       - prot_M7WW42: 1
     - lower_bound: 0
-    - upper_bound: 0.017134
+    - upper_bound: 0.010541
     - gene_reaction_rule: "RHTO_01290"
+  - !!omap
+    - id: "prot_M7WW62_exchange"
+    - name: "prot_M7WW62_exchange"
+    - metabolites: !!omap
+      - prot_M7WW62: 1
+    - lower_bound: 0
+    - upper_bound: 0.00010875
+    - gene_reaction_rule: "RHTO_05007"
   - !!omap
     - id: "prot_M7WW95_exchange"
     - name: "prot_M7WW95_exchange"
     - metabolites: !!omap
       - prot_M7WW95: 1
     - lower_bound: 0
-    - upper_bound: 0.0062202
+    - upper_bound: 0.0057951
     - gene_reaction_rule: "RHTO_05042"
   - !!omap
     - id: "prot_M7WWD6_exchange"
@@ -42230,7 +42338,7 @@
     - metabolites: !!omap
       - prot_M7WWD6: 1
     - lower_bound: 0
-    - upper_bound: 0.00025414
+    - upper_bound: 0.00017081
     - gene_reaction_rule: "RHTO_00685"
   - !!omap
     - id: "prot_M7WWF5_exchange"
@@ -42238,7 +42346,7 @@
     - metabolites: !!omap
       - prot_M7WWF5: 1
     - lower_bound: 0
-    - upper_bound: 0.0025893
+    - upper_bound: 0.0019848
     - gene_reaction_rule: "RHTO_00710"
   - !!omap
     - id: "prot_M7WWF7_exchange"
@@ -42246,7 +42354,7 @@
     - metabolites: !!omap
       - prot_M7WWF7: 1
     - lower_bound: 0
-    - upper_bound: 0.0036249
+    - upper_bound: 0.0013772
     - gene_reaction_rule: "RHTO_05117"
   - !!omap
     - id: "prot_M7WWG0_exchange"
@@ -42254,7 +42362,7 @@
     - metabolites: !!omap
       - prot_M7WWG0: 1
     - lower_bound: 0
-    - upper_bound: 7.1847e-06
+    - upper_bound: 4.3901e-06
     - gene_reaction_rule: "RHTO_00715"
   - !!omap
     - id: "prot_M7WWJ6_exchange"
@@ -42262,7 +42370,7 @@
     - metabolites: !!omap
       - prot_M7WWJ6: 1
     - lower_bound: 0
-    - upper_bound: 0.033862
+    - upper_bound: 0.0077835
     - gene_reaction_rule: "RHTO_00755"
   - !!omap
     - id: "prot_M7WWV0_exchange"
@@ -42270,7 +42378,7 @@
     - metabolites: !!omap
       - prot_M7WWV0: 1
     - lower_bound: 0
-    - upper_bound: 0.0014618
+    - upper_bound: 0.00166
     - gene_reaction_rule: "RHTO_01064"
   - !!omap
     - id: "prot_M7WWW0_exchange"
@@ -42278,7 +42386,7 @@
     - metabolites: !!omap
       - prot_M7WWW0: 1
     - lower_bound: 0
-    - upper_bound: 0.016046
+    - upper_bound: 0.0073153
     - gene_reaction_rule: "RHTO_07939"
   - !!omap
     - id: "prot_M7WWX9_exchange"
@@ -42286,7 +42394,7 @@
     - metabolites: !!omap
       - prot_M7WWX9: 1
     - lower_bound: 0
-    - upper_bound: 0.095179
+    - upper_bound: 0.063693
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WX06_exchange"
@@ -42294,7 +42402,7 @@
     - metabolites: !!omap
       - prot_M7WX06: 1
     - lower_bound: 0
-    - upper_bound: 0.00097609
+    - upper_bound: 0.0011548
     - gene_reaction_rule: "RHTO_02880"
   - !!omap
     - id: "prot_M7WX10_exchange"
@@ -42302,7 +42410,7 @@
     - metabolites: !!omap
       - prot_M7WX10: 1
     - lower_bound: 0
-    - upper_bound: 0.00075141
+    - upper_bound: 0.00044285
     - gene_reaction_rule: "RHTO_07984"
   - !!omap
     - id: "prot_M7WX25_exchange"
@@ -42310,7 +42418,7 @@
     - metabolites: !!omap
       - prot_M7WX25: 1
     - lower_bound: 0
-    - upper_bound: 0.00012924
+    - upper_bound: 0.00012262
     - gene_reaction_rule: "RHTO_07994"
   - !!omap
     - id: "prot_M7WX81_exchange"
@@ -42318,7 +42426,7 @@
     - metabolites: !!omap
       - prot_M7WX81: 1
     - lower_bound: 0
-    - upper_bound: 0.003055
+    - upper_bound: 0.0024089
     - gene_reaction_rule: "RHTO_00749"
   - !!omap
     - id: "prot_M7WX90_exchange"
@@ -42326,7 +42434,7 @@
     - metabolites: !!omap
       - prot_M7WX90: 1
     - lower_bound: 0
-    - upper_bound: 0.0056879
+    - upper_bound: 0.001971
     - gene_reaction_rule: "RHTO_00759"
   - !!omap
     - id: "prot_M7WXC3_exchange"
@@ -42334,7 +42442,7 @@
     - metabolites: !!omap
       - prot_M7WXC3: 1
     - lower_bound: 0
-    - upper_bound: 0.0020163
+    - upper_bound: 0.0024131
     - gene_reaction_rule: "RHTO_00794"
   - !!omap
     - id: "prot_M7WXK0_exchange"
@@ -42342,7 +42450,7 @@
     - metabolites: !!omap
       - prot_M7WXK0: 1
     - lower_bound: 0
-    - upper_bound: 0.0024029
+    - upper_bound: 0.0023296
     - gene_reaction_rule: "RHTO_08139"
   - !!omap
     - id: "prot_M7WXL1_exchange"
@@ -42350,7 +42458,7 @@
     - metabolites: !!omap
       - prot_M7WXL1: 1
     - lower_bound: 0
-    - upper_bound: 0.012353
+    - upper_bound: 0.0076126
     - gene_reaction_rule: "RHTO_03075"
   - !!omap
     - id: "prot_M7WXL3_exchange"
@@ -42358,7 +42466,7 @@
     - metabolites: !!omap
       - prot_M7WXL3: 1
     - lower_bound: 0
-    - upper_bound: 7.6434e-05
+    - upper_bound: 7.5183e-05
     - gene_reaction_rule: "RHTO_08154"
   - !!omap
     - id: "prot_M7WXM9_exchange"
@@ -42366,7 +42474,7 @@
     - metabolites: !!omap
       - prot_M7WXM9: 1
     - lower_bound: 0
-    - upper_bound: 0.019541
+    - upper_bound: 0.025696
     - gene_reaction_rule: "RHTO_07691"
   - !!omap
     - id: "prot_M7WXN3_exchange"
@@ -42374,7 +42482,7 @@
     - metabolites: !!omap
       - prot_M7WXN3: 1
     - lower_bound: 0
-    - upper_bound: 0.00036171
+    - upper_bound: 0.0002024
     - gene_reaction_rule: "RHTO_07696"
   - !!omap
     - id: "prot_M7WXR0_exchange"
@@ -42382,7 +42490,7 @@
     - metabolites: !!omap
       - prot_M7WXR0: 1
     - lower_bound: 0
-    - upper_bound: 0.00086369
+    - upper_bound: 0.00024259
     - gene_reaction_rule: "RHTO_07998"
   - !!omap
     - id: "prot_M7WXS9_exchange"
@@ -42390,7 +42498,7 @@
     - metabolites: !!omap
       - prot_M7WXS9: 1
     - lower_bound: 0
-    - upper_bound: 0.0023191
+    - upper_bound: 0.0017483
     - gene_reaction_rule: "RHTO_08013"
   - !!omap
     - id: "prot_M7WXT3_exchange"
@@ -42398,7 +42506,7 @@
     - metabolites: !!omap
       - prot_M7WXT3: 1
     - lower_bound: 0
-    - upper_bound: 0.16573
+    - upper_bound: 0.050267
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WXT8_exchange"
@@ -42406,7 +42514,7 @@
     - metabolites: !!omap
       - prot_M7WXT8: 1
     - lower_bound: 0
-    - upper_bound: 0.10063
+    - upper_bound: 0.022129
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WXU4_exchange"
@@ -42414,7 +42522,7 @@
     - metabolites: !!omap
       - prot_M7WXU4: 1
     - lower_bound: 0
-    - upper_bound: 0.030604
+    - upper_bound: 0.0082839
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WXZ0_exchange"
@@ -42422,7 +42530,7 @@
     - metabolites: !!omap
       - prot_M7WXZ0: 1
     - lower_bound: 0
-    - upper_bound: 0.00051398
+    - upper_bound: 0.00036097
     - gene_reaction_rule: "RHTO_03226"
   - !!omap
     - id: "prot_M7WY13_exchange"
@@ -42430,7 +42538,7 @@
     - metabolites: !!omap
       - prot_M7WY13: 1
     - lower_bound: 0
-    - upper_bound: 0.00028678
+    - upper_bound: 0.0003285
     - gene_reaction_rule: "RHTO_03251"
   - !!omap
     - id: "prot_M7WY92_exchange"
@@ -42438,7 +42546,7 @@
     - metabolites: !!omap
       - prot_M7WY92: 1
     - lower_bound: 0
-    - upper_bound: 0.00021803
+    - upper_bound: 0.00079085
     - gene_reaction_rule: "RHTO_00025"
   - !!omap
     - id: "prot_M7WYE8_exchange"
@@ -42446,7 +42554,7 @@
     - metabolites: !!omap
       - prot_M7WYE8: 1
     - lower_bound: 0
-    - upper_bound: 0.0026013
+    - upper_bound: 0.0012991
     - gene_reaction_rule: "RHTO_07750"
   - !!omap
     - id: "prot_M7WYG5_exchange"
@@ -42454,7 +42562,7 @@
     - metabolites: !!omap
       - prot_M7WYG5: 1
     - lower_bound: 0
-    - upper_bound: 0.00011969
+    - upper_bound: 0.00014374
     - gene_reaction_rule: "RHTO_00095"
   - !!omap
     - id: "prot_M7WYL9_exchange"
@@ -42462,7 +42570,7 @@
     - metabolites: !!omap
       - prot_M7WYL9: 1
     - lower_bound: 0
-    - upper_bound: 0.0067229
+    - upper_bound: 0.0062475
     - gene_reaction_rule: "RHTO_07820"
   - !!omap
     - id: "prot_M7WYS8_exchange"
@@ -42470,7 +42578,7 @@
     - metabolites: !!omap
       - prot_M7WYS8: 1
     - lower_bound: 0
-    - upper_bound: 0.10857
+    - upper_bound: 0.031397
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WYU1_exchange"
@@ -42478,7 +42586,7 @@
     - metabolites: !!omap
       - prot_M7WYU1: 1
     - lower_bound: 0
-    - upper_bound: 0.00047804
+    - upper_bound: 0.00032844
     - gene_reaction_rule: "RHTO_00205"
   - !!omap
     - id: "prot_M7WYV8_exchange"
@@ -42486,7 +42594,7 @@
     - metabolites: !!omap
       - prot_M7WYV8: 1
     - lower_bound: 0
-    - upper_bound: 0.16951
+    - upper_bound: 0.035641
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7WYZ8_exchange"
@@ -42494,7 +42602,7 @@
     - metabolites: !!omap
       - prot_M7WYZ8: 1
     - lower_bound: 0
-    - upper_bound: 0.0012572
+    - upper_bound: 0.0012806
     - gene_reaction_rule: "RHTO_00280"
   - !!omap
     - id: "prot_M7WZ16_exchange"
@@ -42502,7 +42610,7 @@
     - metabolites: !!omap
       - prot_M7WZ16: 1
     - lower_bound: 0
-    - upper_bound: 0.0025626
+    - upper_bound: 0.0017397
     - gene_reaction_rule: "RHTO_00300"
   - !!omap
     - id: "prot_M7WZ39_exchange"
@@ -42510,7 +42618,7 @@
     - metabolites: !!omap
       - prot_M7WZ39: 1
     - lower_bound: 0
-    - upper_bound: 8.6508e-05
+    - upper_bound: 9.5396e-05
     - gene_reaction_rule: "RHTO_07075"
   - !!omap
     - id: "prot_M7WZ44_exchange"
@@ -42518,7 +42626,7 @@
     - metabolites: !!omap
       - prot_M7WZ44: 1
     - lower_bound: 0
-    - upper_bound: 0.018127
+    - upper_bound: 0.011668
     - gene_reaction_rule: "RHTO_07080"
   - !!omap
     - id: "prot_M7WZC2_exchange"
@@ -42526,7 +42634,7 @@
     - metabolites: !!omap
       - prot_M7WZC2: 1
     - lower_bound: 0
-    - upper_bound: 0.00012931
+    - upper_bound: 0.000124
     - gene_reaction_rule: "RHTO_07522"
   - !!omap
     - id: "prot_M7WZC3_exchange"
@@ -42534,7 +42642,7 @@
     - metabolites: !!omap
       - prot_M7WZC3: 1
     - lower_bound: 0
-    - upper_bound: 0.0014612
+    - upper_bound: 0.0010983
     - gene_reaction_rule: "RHTO_00425"
   - !!omap
     - id: "prot_M7WZE5_exchange"
@@ -42542,7 +42650,7 @@
     - metabolites: !!omap
       - prot_M7WZE5: 1
     - lower_bound: 0
-    - upper_bound: 0.0010314
+    - upper_bound: 0.0004167
     - gene_reaction_rule: "RHTO_00450"
   - !!omap
     - id: "prot_M7WZG4_exchange"
@@ -42550,7 +42658,7 @@
     - metabolites: !!omap
       - prot_M7WZG4: 1
     - lower_bound: 0
-    - upper_bound: 0.00028767
+    - upper_bound: 0.00022053
     - gene_reaction_rule: "RHTO_00470"
   - !!omap
     - id: "prot_M7WZJ7_exchange"
@@ -42558,7 +42666,7 @@
     - metabolites: !!omap
       - prot_M7WZJ7: 1
     - lower_bound: 0
-    - upper_bound: 0.0061445
+    - upper_bound: 0.004038
     - gene_reaction_rule: "RHTO_07250"
   - !!omap
     - id: "prot_M7WZV2_exchange"
@@ -42566,7 +42674,7 @@
     - metabolites: !!omap
       - prot_M7WZV2: 1
     - lower_bound: 0
-    - upper_bound: 0.00091272
+    - upper_bound: 0.00075517
     - gene_reaction_rule: "RHTO_07345"
   - !!omap
     - id: "prot_M7X080_exchange"
@@ -42574,7 +42682,7 @@
     - metabolites: !!omap
       - prot_M7X080: 1
     - lower_bound: 0
-    - upper_bound: 7.4312e-05
+    - upper_bound: 4.4058e-05
     - gene_reaction_rule: "RHTO_07249"
   - !!omap
     - id: "prot_M7X0B3_exchange"
@@ -42582,7 +42690,7 @@
     - metabolites: !!omap
       - prot_M7X0B3: 1
     - lower_bound: 0
-    - upper_bound: 6.5873e-05
+    - upper_bound: 0.00013805
     - gene_reaction_rule: "RHTO_07284"
   - !!omap
     - id: "prot_M7X0E7_exchange"
@@ -42590,7 +42698,7 @@
     - metabolites: !!omap
       - prot_M7X0E7: 1
     - lower_bound: 0
-    - upper_bound: 0.0024273
+    - upper_bound: 0.0012579
     - gene_reaction_rule: "RHTO_06810"
   - !!omap
     - id: "prot_M7X0F2_exchange"
@@ -42598,7 +42706,7 @@
     - metabolites: !!omap
       - prot_M7X0F2: 1
     - lower_bound: 0
-    - upper_bound: 0.059633
+    - upper_bound: 0.032333
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X0J8_exchange"
@@ -42606,7 +42714,7 @@
     - metabolites: !!omap
       - prot_M7X0J8: 1
     - lower_bound: 0
-    - upper_bound: 0.0045034
+    - upper_bound: 0.0038032
     - gene_reaction_rule: "RHTO_06870"
   - !!omap
     - id: "prot_M7X0P4_exchange"
@@ -42614,7 +42722,7 @@
     - metabolites: !!omap
       - prot_M7X0P4: 1
     - lower_bound: 0
-    - upper_bound: 0.0003121
+    - upper_bound: 0.00055814
     - gene_reaction_rule: "RHTO_06925"
   - !!omap
     - id: "prot_M7X0P7_exchange"
@@ -42622,7 +42730,7 @@
     - metabolites: !!omap
       - prot_M7X0P7: 1
     - lower_bound: 0
-    - upper_bound: 0.02166
+    - upper_bound: 0.0082723
     - gene_reaction_rule: "RHTO_06930"
   - !!omap
     - id: "prot_M7X0R7_exchange"
@@ -42630,7 +42738,7 @@
     - metabolites: !!omap
       - prot_M7X0R7: 1
     - lower_bound: 0
-    - upper_bound: 0.066535
+    - upper_bound: 0.036465
     - gene_reaction_rule: "RHTO_06955"
   - !!omap
     - id: "prot_M7X0T7_exchange"
@@ -42638,7 +42746,7 @@
     - metabolites: !!omap
       - prot_M7X0T7: 1
     - lower_bound: 0
-    - upper_bound: 6.5602e-05
+    - upper_bound: 0.00011179
     - gene_reaction_rule: "RHTO_06769"
   - !!omap
     - id: "prot_M7X0Y9_exchange"
@@ -42646,7 +42754,7 @@
     - metabolites: !!omap
       - prot_M7X0Y9: 1
     - lower_bound: 0
-    - upper_bound: 8.7914e-05
+    - upper_bound: 0.00014284
     - gene_reaction_rule: "RHTO_06799"
   - !!omap
     - id: "prot_M7X0Z1_exchange"
@@ -42654,7 +42762,7 @@
     - metabolites: !!omap
       - prot_M7X0Z1: 1
     - lower_bound: 0
-    - upper_bound: 0.0012165
+    - upper_bound: 0.0015043
     - gene_reaction_rule: "RHTO_07040"
   - !!omap
     - id: "prot_M7X101_exchange"
@@ -42662,7 +42770,7 @@
     - metabolites: !!omap
       - prot_M7X101: 1
     - lower_bound: 0
-    - upper_bound: 0.00022907
+    - upper_bound: 0.00012325
     - gene_reaction_rule: "RHTO_06809"
   - !!omap
     - id: "prot_M7X109_exchange"
@@ -42670,7 +42778,7 @@
     - metabolites: !!omap
       - prot_M7X109: 1
     - lower_bound: 0
-    - upper_bound: 0.00068666
+    - upper_bound: 0.00046861
     - gene_reaction_rule: "RHTO_06005"
   - !!omap
     - id: "prot_M7X113_exchange"
@@ -42678,7 +42786,7 @@
     - metabolites: !!omap
       - prot_M7X113: 1
     - lower_bound: 0
-    - upper_bound: 0.22957
+    - upper_bound: 0.055807
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X137_exchange"
@@ -42686,7 +42794,7 @@
     - metabolites: !!omap
       - prot_M7X137: 1
     - lower_bound: 0
-    - upper_bound: 0.0034239
+    - upper_bound: 0.0038625
     - gene_reaction_rule: "RHTO_06035"
   - !!omap
     - id: "prot_M7X192_exchange"
@@ -42694,7 +42802,7 @@
     - metabolites: !!omap
       - prot_M7X192: 1
     - lower_bound: 0
-    - upper_bound: 0.0054652
+    - upper_bound: 0.0024572
     - gene_reaction_rule: "RHTO_06919"
   - !!omap
     - id: "prot_M7X1C7_exchange"
@@ -42702,7 +42810,7 @@
     - metabolites: !!omap
       - prot_M7X1C7: 1
     - lower_bound: 0
-    - upper_bound: 0.00034338
+    - upper_bound: 0.00029035
     - gene_reaction_rule: "RHTO_06125"
   - !!omap
     - id: "prot_M7X1E3_exchange"
@@ -42710,7 +42818,7 @@
     - metabolites: !!omap
       - prot_M7X1E3: 1
     - lower_bound: 0
-    - upper_bound: 0.011535
+    - upper_bound: 0.0092183
     - gene_reaction_rule: "RHTO_06979"
   - !!omap
     - id: "prot_M7X1F6_exchange"
@@ -42718,7 +42826,7 @@
     - metabolites: !!omap
       - prot_M7X1F6: 1
     - lower_bound: 0
-    - upper_bound: 0.14999
+    - upper_bound: 0.021562
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X1K0_exchange"
@@ -42726,7 +42834,7 @@
     - metabolites: !!omap
       - prot_M7X1K0: 1
     - lower_bound: 0
-    - upper_bound: 0.12689
+    - upper_bound: 0.030753
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X1K9_exchange"
@@ -42734,7 +42842,7 @@
     - metabolites: !!omap
       - prot_M7X1K9: 1
     - lower_bound: 0
-    - upper_bound: 0.00010659
+    - upper_bound: 0.000111
     - gene_reaction_rule: "RHTO_06004"
   - !!omap
     - id: "prot_M7X1R6_exchange"
@@ -42742,7 +42850,7 @@
     - metabolites: !!omap
       - prot_M7X1R6: 1
     - lower_bound: 0
-    - upper_bound: 0.0014202
+    - upper_bound: 0.0023042
     - gene_reaction_rule: "RHTO_06064"
   - !!omap
     - id: "prot_M7X1T3_exchange"
@@ -42750,7 +42858,7 @@
     - metabolites: !!omap
       - prot_M7X1T3: 1
     - lower_bound: 0
-    - upper_bound: 0.00015455
+    - upper_bound: 0.0001106
     - gene_reaction_rule: "RHTO_06079"
   - !!omap
     - id: "prot_M7X1X8_exchange"
@@ -42758,7 +42866,7 @@
     - metabolites: !!omap
       - prot_M7X1X8: 1
     - lower_bound: 0
-    - upper_bound: 3.2682e-06
+    - upper_bound: 1.0842e-05
     - gene_reaction_rule: "RHTO_06310"
   - !!omap
     - id: "prot_M7X2B5_exchange"
@@ -42766,7 +42874,7 @@
     - metabolites: !!omap
       - prot_M7X2B5: 1
     - lower_bound: 0
-    - upper_bound: 0.024177
+    - upper_bound: 0.018451
     - gene_reaction_rule: "RHTO_04650"
   - !!omap
     - id: "prot_M7X2E5_exchange"
@@ -42774,7 +42882,7 @@
     - metabolites: !!omap
       - prot_M7X2E5: 1
     - lower_bound: 0
-    - upper_bound: 0.12044
+    - upper_bound: 0.032057
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X2F3_exchange"
@@ -42782,7 +42890,7 @@
     - metabolites: !!omap
       - prot_M7X2F3: 1
     - lower_bound: 0
-    - upper_bound: 0.0010739
+    - upper_bound: 0.00073159
     - gene_reaction_rule: "RHTO_04690"
   - !!omap
     - id: "prot_M7X2H6_exchange"
@@ -42790,7 +42898,7 @@
     - metabolites: !!omap
       - prot_M7X2H6: 1
     - lower_bound: 0
-    - upper_bound: 0.033096
+    - upper_bound: 0.0087322
     - gene_reaction_rule: "RHTO_06289"
   - !!omap
     - id: "prot_M7X2J2_exchange"
@@ -42798,7 +42906,7 @@
     - metabolites: !!omap
       - prot_M7X2J2: 1
     - lower_bound: 0
-    - upper_bound: 0.00047428
+    - upper_bound: 0.00057222
     - gene_reaction_rule: "RHTO_06309"
   - !!omap
     - id: "prot_M7X2K5_exchange"
@@ -42806,7 +42914,7 @@
     - metabolites: !!omap
       - prot_M7X2K5: 1
     - lower_bound: 0
-    - upper_bound: 0.077403
+    - upper_bound: 0.020995
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X2T0_exchange"
@@ -42814,7 +42922,7 @@
     - metabolites: !!omap
       - prot_M7X2T0: 1
     - lower_bound: 0
-    - upper_bound: 0.11807
+    - upper_bound: 0.025885
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X2V8_exchange"
@@ -42822,7 +42930,7 @@
     - metabolites: !!omap
       - prot_M7X2V8: 1
     - lower_bound: 0
-    - upper_bound: 0.0005294
+    - upper_bound: 0.00040187
     - gene_reaction_rule: "RHTO_04835"
   - !!omap
     - id: "prot_M7X2Z7_exchange"
@@ -42830,7 +42938,7 @@
     - metabolites: !!omap
       - prot_M7X2Z7: 1
     - lower_bound: 0
-    - upper_bound: 0.00096722
+    - upper_bound: 0.00086428
     - gene_reaction_rule: "RHTO_04871"
   - !!omap
     - id: "prot_M7X302_exchange"
@@ -42838,7 +42946,7 @@
     - metabolites: !!omap
       - prot_M7X302: 1
     - lower_bound: 0
-    - upper_bound: 0.00025862
+    - upper_bound: 0.0002574
     - gene_reaction_rule: "RHTO_04669"
   - !!omap
     - id: "prot_M7X304_exchange"
@@ -42846,7 +42954,7 @@
     - metabolites: !!omap
       - prot_M7X304: 1
     - lower_bound: 0
-    - upper_bound: 0.0082439
+    - upper_bound: 0.0024182
     - gene_reaction_rule: "RHTO_04876"
   - !!omap
     - id: "prot_M7X369_exchange"
@@ -42854,7 +42962,7 @@
     - metabolites: !!omap
       - prot_M7X369: 1
     - lower_bound: 0
-    - upper_bound: 0.0019
+    - upper_bound: 0.0018719
     - gene_reaction_rule: "RHTO_06694"
   - !!omap
     - id: "prot_M7X3A8_exchange"
@@ -42862,7 +42970,7 @@
     - metabolites: !!omap
       - prot_M7X3A8: 1
     - lower_bound: 0
-    - upper_bound: 0.0018758
+    - upper_bound: 0.0012876
     - gene_reaction_rule: "RHTO_04971"
   - !!omap
     - id: "prot_M7X3D9_exchange"
@@ -42870,7 +42978,7 @@
     - metabolites: !!omap
       - prot_M7X3D9: 1
     - lower_bound: 0
-    - upper_bound: 0.088836
+    - upper_bound: 0.039232
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X3F9_exchange"
@@ -42878,7 +42986,7 @@
     - metabolites: !!omap
       - prot_M7X3F9: 1
     - lower_bound: 0
-    - upper_bound: 0.0031875
+    - upper_bound: 0.003279
     - gene_reaction_rule: "RHTO_04819"
   - !!omap
     - id: "prot_M7X3G0_exchange"
@@ -42886,7 +42994,7 @@
     - metabolites: !!omap
       - prot_M7X3G0: 1
     - lower_bound: 0
-    - upper_bound: 0.00071615
+    - upper_bound: 0.00029161
     - gene_reaction_rule: "RHTO_05036"
   - !!omap
     - id: "prot_M7X3I2_exchange"
@@ -42894,7 +43002,7 @@
     - metabolites: !!omap
       - prot_M7X3I2: 1
     - lower_bound: 0
-    - upper_bound: 0.051767
+    - upper_bound: 0.018928
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X3J1_exchange"
@@ -42902,7 +43010,7 @@
     - metabolites: !!omap
       - prot_M7X3J1: 1
     - lower_bound: 0
-    - upper_bound: 0.0050971
+    - upper_bound: 0.0074717
     - gene_reaction_rule: "RHTO_06581"
   - !!omap
     - id: "prot_M7X3N3_exchange"
@@ -42910,7 +43018,7 @@
     - metabolites: !!omap
       - prot_M7X3N3: 1
     - lower_bound: 0
-    - upper_bound: 0.042653
+    - upper_bound: 0.01595
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X3P9_exchange"
@@ -42918,7 +43026,7 @@
     - metabolites: !!omap
       - prot_M7X3P9: 1
     - lower_bound: 0
-    - upper_bound: 2.6035e-05
+    - upper_bound: 1.4213e-05
     - gene_reaction_rule: "RHTO_06555"
   - !!omap
     - id: "prot_M7X3R7_exchange"
@@ -42926,7 +43034,7 @@
     - metabolites: !!omap
       - prot_M7X3R7: 1
     - lower_bound: 0
-    - upper_bound: 0.033862
+    - upper_bound: 0.0077835
     - gene_reaction_rule: "RHTO_04910"
   - !!omap
     - id: "prot_M7X3V9_exchange"
@@ -42934,7 +43042,7 @@
     - metabolites: !!omap
       - prot_M7X3V9: 1
     - lower_bound: 0
-    - upper_bound: 0.00093739
+    - upper_bound: 0.001797
     - gene_reaction_rule: "RHTO_06477"
   - !!omap
     - id: "prot_M7X3Z4_exchange"
@@ -42942,7 +43050,7 @@
     - metabolites: !!omap
       - prot_M7X3Z4: 1
     - lower_bound: 0
-    - upper_bound: 0.071514
+    - upper_bound: 0.057413
     - gene_reaction_rule: "RHTO_02788"
   - !!omap
     - id: "prot_M7X428_exchange"
@@ -42950,7 +43058,7 @@
     - metabolites: !!omap
       - prot_M7X428: 1
     - lower_bound: 0
-    - upper_bound: 0.19089
+    - upper_bound: 0.029579
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X450_exchange"
@@ -42958,7 +43066,7 @@
     - metabolites: !!omap
       - prot_M7X450: 1
     - lower_bound: 0
-    - upper_bound: 3.7655e-05
+    - upper_bound: 3.3418e-05
     - gene_reaction_rule: "RHTO_05970"
   - !!omap
     - id: "prot_M7X456_exchange"
@@ -42966,7 +43074,7 @@
     - metabolites: !!omap
       - prot_M7X456: 1
     - lower_bound: 0
-    - upper_bound: 0.00066485
+    - upper_bound: 0.00044621
     - gene_reaction_rule: "RHTO_02848"
   - !!omap
     - id: "prot_M7X476_exchange"
@@ -42974,7 +43082,7 @@
     - metabolites: !!omap
       - prot_M7X476: 1
     - lower_bound: 0
-    - upper_bound: 0.00057911
+    - upper_bound: 0.00038222
     - gene_reaction_rule: "RHTO_05995"
   - !!omap
     - id: "prot_M7X4A4_exchange"
@@ -42982,7 +43090,7 @@
     - metabolites: !!omap
       - prot_M7X4A4: 1
     - lower_bound: 0
-    - upper_bound: 0.0007442
+    - upper_bound: 0.00082164
     - gene_reaction_rule: "RHTO_02671"
   - !!omap
     - id: "prot_M7X4L7_exchange"
@@ -42990,7 +43098,7 @@
     - metabolites: !!omap
       - prot_M7X4L7: 1
     - lower_bound: 0
-    - upper_bound: 0.0013516
+    - upper_bound: 0.0022288
     - gene_reaction_rule: "RHTO_02988"
   - !!omap
     - id: "prot_M7X4N6_exchange"
@@ -42998,7 +43106,7 @@
     - metabolites: !!omap
       - prot_M7X4N6: 1
     - lower_bound: 0
-    - upper_bound: 0.0026905
+    - upper_bound: 0.0027693
     - gene_reaction_rule: "RHTO_05737"
   - !!omap
     - id: "prot_M7X4W9_exchange"
@@ -43006,7 +43114,7 @@
     - metabolites: !!omap
       - prot_M7X4W9: 1
     - lower_bound: 0
-    - upper_bound: 0.0029405
+    - upper_bound: 0.0024162
     - gene_reaction_rule: "RHTO_03104"
   - !!omap
     - id: "prot_M7X4X3_exchange"
@@ -43014,7 +43122,7 @@
     - metabolites: !!omap
       - prot_M7X4X3: 1
     - lower_bound: 0
-    - upper_bound: 0.005405
+    - upper_bound: 0.0056187
     - gene_reaction_rule: "RHTO_03109"
   - !!omap
     - id: "prot_M7X560_exchange"
@@ -43022,7 +43130,7 @@
     - metabolites: !!omap
       - prot_M7X560: 1
     - lower_bound: 0
-    - upper_bound: 0.0039953
+    - upper_bound: 0.0025677
     - gene_reaction_rule: "RHTO_05714"
   - !!omap
     - id: "prot_M7X586_exchange"
@@ -43030,7 +43138,7 @@
     - metabolites: !!omap
       - prot_M7X586: 1
     - lower_bound: 0
-    - upper_bound: 0.001188
+    - upper_bound: 0.00098322
     - gene_reaction_rule: "RHTO_05571"
   - !!omap
     - id: "prot_M7X5D5_exchange"
@@ -43038,7 +43146,7 @@
     - metabolites: !!omap
       - prot_M7X5D5: 1
     - lower_bound: 0
-    - upper_bound: 0.17092
+    - upper_bound: 0.04304
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X5E3_exchange"
@@ -43046,7 +43154,7 @@
     - metabolites: !!omap
       - prot_M7X5E3: 1
     - lower_bound: 0
-    - upper_bound: 0.0011908
+    - upper_bound: 0.00083299
     - gene_reaction_rule: "RHTO_03027"
   - !!omap
     - id: "prot_M7X5F4_exchange"
@@ -43054,7 +43162,7 @@
     - metabolites: !!omap
       - prot_M7X5F4: 1
     - lower_bound: 0
-    - upper_bound: 0.030861
+    - upper_bound: 0.019793
     - gene_reaction_rule: "RHTO_03043"
   - !!omap
     - id: "prot_M7X5G5_exchange"
@@ -43062,7 +43170,7 @@
     - metabolites: !!omap
       - prot_M7X5G5: 1
     - lower_bound: 0
-    - upper_bound: 0.00013227
+    - upper_bound: 0.00020086
     - gene_reaction_rule: "RHTO_03058"
   - !!omap
     - id: "prot_M7X5H7_exchange"
@@ -43070,7 +43178,7 @@
     - metabolites: !!omap
       - prot_M7X5H7: 1
     - lower_bound: 0
-    - upper_bound: 0.00070127
+    - upper_bound: 0.00043243
     - gene_reaction_rule: "RHTO_00024"
   - !!omap
     - id: "prot_M7X5J4_exchange"
@@ -43078,7 +43186,7 @@
     - metabolites: !!omap
       - prot_M7X5J4: 1
     - lower_bound: 0
-    - upper_bound: 0.070892
+    - upper_bound: 0.025125
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X5L6_exchange"
@@ -43086,7 +43194,7 @@
     - metabolites: !!omap
       - prot_M7X5L6: 1
     - lower_bound: 0
-    - upper_bound: 0.10508
+    - upper_bound: 0.036351
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X5V2_exchange"
@@ -43094,7 +43202,7 @@
     - metabolites: !!omap
       - prot_M7X5V2: 1
     - lower_bound: 0
-    - upper_bound: 0.0022723
+    - upper_bound: 0.00095085
     - gene_reaction_rule: "RHTO_00134"
   - !!omap
     - id: "prot_M7X622_exchange"
@@ -43102,7 +43210,7 @@
     - metabolites: !!omap
       - prot_M7X622: 1
     - lower_bound: 0
-    - upper_bound: 0.00063989
+    - upper_bound: 0.00022352
     - gene_reaction_rule: "RHTO_00199"
   - !!omap
     - id: "prot_M7X688_exchange"
@@ -43110,7 +43218,7 @@
     - metabolites: !!omap
       - prot_M7X688: 1
     - lower_bound: 0
-    - upper_bound: 0.0054677
+    - upper_bound: 0.0043344
     - gene_reaction_rule: "RHTO_00279"
   - !!omap
     - id: "prot_M7X689_exchange"
@@ -43118,7 +43226,7 @@
     - metabolites: !!omap
       - prot_M7X689: 1
     - lower_bound: 0
-    - upper_bound: 0.016096
+    - upper_bound: 0.011069
     - gene_reaction_rule: "RHTO_00033"
   - !!omap
     - id: "prot_M7X6B9_exchange"
@@ -43126,7 +43234,7 @@
     - metabolites: !!omap
       - prot_M7X6B9: 1
     - lower_bound: 0
-    - upper_bound: 0.00048918
+    - upper_bound: 0.00055002
     - gene_reaction_rule: "RHTO_00058"
   - !!omap
     - id: "prot_M7X6E8_exchange"
@@ -43134,7 +43242,7 @@
     - metabolites: !!omap
       - prot_M7X6E8: 1
     - lower_bound: 0
-    - upper_bound: 0.10826
+    - upper_bound: 0.028626
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X6F0_exchange"
@@ -43142,7 +43250,7 @@
     - metabolites: !!omap
       - prot_M7X6F0: 1
     - lower_bound: 0
-    - upper_bound: 0.00049371
+    - upper_bound: 0.00036603
     - gene_reaction_rule: "RHTO_05176"
   - !!omap
     - id: "prot_M7X6G2_exchange"
@@ -43150,7 +43258,7 @@
     - metabolites: !!omap
       - prot_M7X6G2: 1
     - lower_bound: 0
-    - upper_bound: 0.00038288
+    - upper_bound: 0.00043708
     - gene_reaction_rule: "RHTO_00098"
   - !!omap
     - id: "prot_M7X6H1_exchange"
@@ -43158,7 +43266,7 @@
     - metabolites: !!omap
       - prot_M7X6H1: 1
     - lower_bound: 0
-    - upper_bound: 0.011091
+    - upper_bound: 0.0072851
     - gene_reaction_rule: "RHTO_05191"
   - !!omap
     - id: "prot_M7X6L5_exchange"
@@ -43166,7 +43274,7 @@
     - metabolites: !!omap
       - prot_M7X6L5: 1
     - lower_bound: 0
-    - upper_bound: 4.1135e-05
+    - upper_bound: 4.1553e-05
     - gene_reaction_rule: "RHTO_00429"
   - !!omap
     - id: "prot_M7X6L8_exchange"
@@ -43174,7 +43282,7 @@
     - metabolites: !!omap
       - prot_M7X6L8: 1
     - lower_bound: 0
-    - upper_bound: 4.1354e-05
+    - upper_bound: 3.9839e-05
     - gene_reaction_rule: "RHTO_00143"
   - !!omap
     - id: "prot_M7X6P6_exchange"
@@ -43182,7 +43290,7 @@
     - metabolites: !!omap
       - prot_M7X6P6: 1
     - lower_bound: 0
-    - upper_bound: 1.6679e-05
+    - upper_bound: 1.4096e-05
     - gene_reaction_rule: "RHTO_00464"
   - !!omap
     - id: "prot_M7X6Q2_exchange"
@@ -43190,7 +43298,7 @@
     - metabolites: !!omap
       - prot_M7X6Q2: 1
     - lower_bound: 0
-    - upper_bound: 0.19548
+    - upper_bound: 0.038604
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X6S3_exchange"
@@ -43198,7 +43306,7 @@
     - metabolites: !!omap
       - prot_M7X6S3: 1
     - lower_bound: 0
-    - upper_bound: 0.00090037
+    - upper_bound: 0.0012905
     - gene_reaction_rule: "RHTO_00494"
   - !!omap
     - id: "prot_M7X6U2_exchange"
@@ -43206,7 +43314,7 @@
     - metabolites: !!omap
       - prot_M7X6U2: 1
     - lower_bound: 0
-    - upper_bound: 0.00074721
+    - upper_bound: 0.00053776
     - gene_reaction_rule: "RHTO_00514"
   - !!omap
     - id: "prot_M7X6U6_exchange"
@@ -43214,7 +43322,7 @@
     - metabolites: !!omap
       - prot_M7X6U6: 1
     - lower_bound: 0
-    - upper_bound: 0.00044378
+    - upper_bound: 0.00085351
     - gene_reaction_rule: "RHTO_04405"
   - !!omap
     - id: "prot_M7X6W7_exchange"
@@ -43222,7 +43330,7 @@
     - metabolites: !!omap
       - prot_M7X6W7: 1
     - lower_bound: 0
-    - upper_bound: 0.00073299
+    - upper_bound: 0.00064578
     - gene_reaction_rule: "RHTO_04425"
   - !!omap
     - id: "prot_M7X6W8_exchange"
@@ -43230,7 +43338,7 @@
     - metabolites: !!omap
       - prot_M7X6W8: 1
     - lower_bound: 0
-    - upper_bound: 0.0039953
+    - upper_bound: 0.0025677
     - gene_reaction_rule: "RHTO_00534"
   - !!omap
     - id: "prot_M7X6X3_exchange"
@@ -43238,7 +43346,7 @@
     - metabolites: !!omap
       - prot_M7X6X3: 1
     - lower_bound: 0
-    - upper_bound: 0.0070969
+    - upper_bound: 0.009203
     - gene_reaction_rule: "RHTO_00539"
   - !!omap
     - id: "prot_M7X6Z4_exchange"
@@ -43246,7 +43354,7 @@
     - metabolites: !!omap
       - prot_M7X6Z4: 1
     - lower_bound: 0
-    - upper_bound: 0.0019447
+    - upper_bound: 0.001137
     - gene_reaction_rule: "RHTO_04450"
   - !!omap
     - id: "prot_M7X711_exchange"
@@ -43254,7 +43362,7 @@
     - metabolites: !!omap
       - prot_M7X711: 1
     - lower_bound: 0
-    - upper_bound: 0.00064016
+    - upper_bound: 0.00031407
     - gene_reaction_rule: "RHTO_00574"
   - !!omap
     - id: "prot_M7X749_exchange"
@@ -43262,7 +43370,7 @@
     - metabolites: !!omap
       - prot_M7X749: 1
     - lower_bound: 0
-    - upper_bound: 0.034138
+    - upper_bound: 0.024957
     - gene_reaction_rule: "RHTO_00323"
   - !!omap
     - id: "prot_M7X774_exchange"
@@ -43270,7 +43378,7 @@
     - metabolites: !!omap
       - prot_M7X774: 1
     - lower_bound: 0
-    - upper_bound: 0.00043412
+    - upper_bound: 0.00020278
     - gene_reaction_rule: "RHTO_04298"
   - !!omap
     - id: "prot_M7X791_exchange"
@@ -43278,7 +43386,7 @@
     - metabolites: !!omap
       - prot_M7X791: 1
     - lower_bound: 0
-    - upper_bound: 0.07813
+    - upper_bound: 0.034139
     - gene_reaction_rule: "RHTO_00373"
   - !!omap
     - id: "prot_M7X7A4_exchange"
@@ -43286,7 +43394,7 @@
     - metabolites: !!omap
       - prot_M7X7A4: 1
     - lower_bound: 0
-    - upper_bound: 0.002497
+    - upper_bound: 0.0025
     - gene_reaction_rule: "RHTO_00388"
   - !!omap
     - id: "prot_M7X7L3_exchange"
@@ -43294,7 +43402,7 @@
     - metabolites: !!omap
       - prot_M7X7L3: 1
     - lower_bound: 0
-    - upper_bound: 0.0026967
+    - upper_bound: 0.0019911
     - gene_reaction_rule: "RHTO_00518"
   - !!omap
     - id: "prot_M7X7Q5_exchange"
@@ -43302,7 +43410,7 @@
     - metabolites: !!omap
       - prot_M7X7Q5: 1
     - lower_bound: 0
-    - upper_bound: 0.0030956
+    - upper_bound: 0.0024671
     - gene_reaction_rule: "RHTO_00558"
   - !!omap
     - id: "prot_M7X7R6_exchange"
@@ -43310,7 +43418,7 @@
     - metabolites: !!omap
       - prot_M7X7R6: 1
     - lower_bound: 0
-    - upper_bound: 0.0034873
+    - upper_bound: 0.001198
     - gene_reaction_rule: "RHTO_04229"
   - !!omap
     - id: "prot_M7X7W6_exchange"
@@ -43318,7 +43426,7 @@
     - metabolites: !!omap
       - prot_M7X7W6: 1
     - lower_bound: 0
-    - upper_bound: 8.4865e-05
+    - upper_bound: 0.00016669
     - gene_reaction_rule: "RHTO_00613"
   - !!omap
     - id: "prot_M7X852_exchange"
@@ -43326,7 +43434,7 @@
     - metabolites: !!omap
       - prot_M7X852: 1
     - lower_bound: 0
-    - upper_bound: 0.012734
+    - upper_bound: 0.01008
     - gene_reaction_rule: "RHTO_04131"
   - !!omap
     - id: "prot_M7X896_exchange"
@@ -43334,7 +43442,7 @@
     - metabolites: !!omap
       - prot_M7X896: 1
     - lower_bound: 0
-    - upper_bound: 0.00084994
+    - upper_bound: 0.00087067
     - gene_reaction_rule: "RHTO_03928"
   - !!omap
     - id: "prot_M7X8C7_exchange"
@@ -43342,7 +43450,7 @@
     - metabolites: !!omap
       - prot_M7X8C7: 1
     - lower_bound: 0
-    - upper_bound: 0.28445
+    - upper_bound: 0.15754
     - gene_reaction_rule: "RHTO_03963"
   - !!omap
     - id: "prot_M7X8D2_exchange"
@@ -43350,7 +43458,7 @@
     - metabolites: !!omap
       - prot_M7X8D2: 1
     - lower_bound: 0
-    - upper_bound: 0.091452
+    - upper_bound: 0.040842
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X8U4_exchange"
@@ -43358,7 +43466,7 @@
     - metabolites: !!omap
       - prot_M7X8U4: 1
     - lower_bound: 0
-    - upper_bound: 0.027454
+    - upper_bound: 0.0092566
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7X8V9_exchange"
@@ -43366,7 +43474,7 @@
     - metabolites: !!omap
       - prot_M7X8V9: 1
     - lower_bound: 0
-    - upper_bound: 0.0010833
+    - upper_bound: 0.00062612
     - gene_reaction_rule: "RHTO_03653"
   - !!omap
     - id: "prot_M7X998_exchange"
@@ -43374,7 +43482,7 @@
     - metabolites: !!omap
       - prot_M7X998: 1
     - lower_bound: 0
-    - upper_bound: 0.00053419
+    - upper_bound: 0.00036864
     - gene_reaction_rule: "RHTO_03490"
   - !!omap
     - id: "prot_M7XA01_exchange"
@@ -43382,7 +43490,7 @@
     - metabolites: !!omap
       - prot_M7XA01: 1
     - lower_bound: 0
-    - upper_bound: 0.00022293
+    - upper_bound: 9.72e-05
     - gene_reaction_rule: "RHTO_02512"
   - !!omap
     - id: "prot_M7XA66_exchange"
@@ -43390,7 +43498,7 @@
     - metabolites: !!omap
       - prot_M7XA66: 1
     - lower_bound: 0
-    - upper_bound: 0.14844
+    - upper_bound: 0.033992
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XAJ6_exchange"
@@ -43398,7 +43506,7 @@
     - metabolites: !!omap
       - prot_M7XAJ6: 1
     - lower_bound: 0
-    - upper_bound: 0.001733
+    - upper_bound: 0.0013846
     - gene_reaction_rule: "RHTO_02358"
   - !!omap
     - id: "prot_M7XAS2_exchange"
@@ -43406,7 +43514,7 @@
     - metabolites: !!omap
       - prot_M7XAS2: 1
     - lower_bound: 0
-    - upper_bound: 0.25111
+    - upper_bound: 0.055151
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XAY4_exchange"
@@ -43414,7 +43522,7 @@
     - metabolites: !!omap
       - prot_M7XAY4: 1
     - lower_bound: 0
-    - upper_bound: 0.10175
+    - upper_bound: 0.038557
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XAZ8_exchange"
@@ -43422,7 +43530,7 @@
     - metabolites: !!omap
       - prot_M7XAZ8: 1
     - lower_bound: 0
-    - upper_bound: 0.13189
+    - upper_bound: 0.022395
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XB28_exchange"
@@ -43430,7 +43538,7 @@
     - metabolites: !!omap
       - prot_M7XB28: 1
     - lower_bound: 0
-    - upper_bound: 0.00045337
+    - upper_bound: 0.00045869
     - gene_reaction_rule: "RHTO_02297"
   - !!omap
     - id: "prot_M7XB33_exchange"
@@ -43438,7 +43546,7 @@
     - metabolites: !!omap
       - prot_M7XB33: 1
     - lower_bound: 0
-    - upper_bound: 0.033369
+    - upper_bound: 0.017187
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XB76_exchange"
@@ -43446,7 +43554,7 @@
     - metabolites: !!omap
       - prot_M7XB76: 1
     - lower_bound: 0
-    - upper_bound: 0.070218
+    - upper_bound: 0.018151
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XB86_exchange"
@@ -43454,7 +43562,7 @@
     - metabolites: !!omap
       - prot_M7XB86: 1
     - lower_bound: 0
-    - upper_bound: 0.0016308
+    - upper_bound: 0.00076051
     - gene_reaction_rule: "RHTO_02309"
   - !!omap
     - id: "prot_M7XBA0_exchange"
@@ -43462,7 +43570,7 @@
     - metabolites: !!omap
       - prot_M7XBA0: 1
     - lower_bound: 0
-    - upper_bound: 0.0013061
+    - upper_bound: 0.0010678
     - gene_reaction_rule: "RHTO_02305"
   - !!omap
     - id: "prot_M7XBX1_exchange"
@@ -43470,7 +43578,7 @@
     - metabolites: !!omap
       - prot_M7XBX1: 1
     - lower_bound: 0
-    - upper_bound: 0.088124
+    - upper_bound: 0.023685
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XBZ9_exchange"
@@ -43478,7 +43586,7 @@
     - metabolites: !!omap
       - prot_M7XBZ9: 1
     - lower_bound: 0
-    - upper_bound: 0.0055473
+    - upper_bound: 0.0057944
     - gene_reaction_rule: "RHTO_01745"
   - !!omap
     - id: "prot_M7XCG8_exchange"
@@ -43486,7 +43594,7 @@
     - metabolites: !!omap
       - prot_M7XCG8: 1
     - lower_bound: 0
-    - upper_bound: 0.0022964
+    - upper_bound: 0.0022635
     - gene_reaction_rule: "RHTO_01529"
   - !!omap
     - id: "prot_M7XCQ6_exchange"
@@ -43494,7 +43602,7 @@
     - metabolites: !!omap
       - prot_M7XCQ6: 1
     - lower_bound: 0
-    - upper_bound: 0.028964
+    - upper_bound: 0.017519
     - gene_reaction_rule: "RHTO_01629"
   - !!omap
     - id: "prot_M7XCR6_exchange"
@@ -43502,7 +43610,7 @@
     - metabolites: !!omap
       - prot_M7XCR6: 1
     - lower_bound: 0
-    - upper_bound: 0.0002362
+    - upper_bound: 0.00021453
     - gene_reaction_rule: "RHTO_01639"
   - !!omap
     - id: "prot_M7XCY6_exchange"
@@ -43510,7 +43618,7 @@
     - metabolites: !!omap
       - prot_M7XCY6: 1
     - lower_bound: 0
-    - upper_bound: 0.0011515
+    - upper_bound: 0.00080508
     - gene_reaction_rule: "RHTO_01709"
   - !!omap
     - id: "prot_M7XD32_exchange"
@@ -43518,7 +43626,7 @@
     - metabolites: !!omap
       - prot_M7XD32: 1
     - lower_bound: 0
-    - upper_bound: 7.0007e-05
+    - upper_bound: 8.2753e-05
     - gene_reaction_rule: "RHTO_01341"
   - !!omap
     - id: "prot_M7XDT3_exchange"
@@ -43526,7 +43634,7 @@
     - metabolites: !!omap
       - prot_M7XDT3: 1
     - lower_bound: 0
-    - upper_bound: 0.10478
+    - upper_bound: 0.039957
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XE28_exchange"
@@ -43534,7 +43642,7 @@
     - metabolites: !!omap
       - prot_M7XE28: 1
     - lower_bound: 0
-    - upper_bound: 0.012051
+    - upper_bound: 0.0074904
     - gene_reaction_rule: "RHTO_01289"
   - !!omap
     - id: "prot_M7XE29_exchange"
@@ -43542,7 +43650,7 @@
     - metabolites: !!omap
       - prot_M7XE29: 1
     - lower_bound: 0
-    - upper_bound: 0.017498
+    - upper_bound: 0.013446
     - gene_reaction_rule: "RHTO_06406"
   - !!omap
     - id: "prot_M7XE45_exchange"
@@ -43550,7 +43658,7 @@
     - metabolites: !!omap
       - prot_M7XE45: 1
     - lower_bound: 0
-    - upper_bound: 0.00090355
+    - upper_bound: 0.00080248
     - gene_reaction_rule: "RHTO_06426"
   - !!omap
     - id: "prot_M7XE86_exchange"
@@ -43558,7 +43666,7 @@
     - metabolites: !!omap
       - prot_M7XE86: 1
     - lower_bound: 0
-    - upper_bound: 0.14324
+    - upper_bound: 0.046586
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XEA2_exchange"
@@ -43566,7 +43674,7 @@
     - metabolites: !!omap
       - prot_M7XEA2: 1
     - lower_bound: 0
-    - upper_bound: 0.0087752
+    - upper_bound: 0.0034128
     - gene_reaction_rule: "RHTO_05984"
   - !!omap
     - id: "prot_M7XEG0_exchange"
@@ -43574,7 +43682,7 @@
     - metabolites: !!omap
       - prot_M7XEG0: 1
     - lower_bound: 0
-    - upper_bound: 0.0092041
+    - upper_bound: 0.0052059
     - gene_reaction_rule: "RHTO_05920"
   - !!omap
     - id: "prot_M7XEQ0_exchange"
@@ -43582,7 +43690,7 @@
     - metabolites: !!omap
       - prot_M7XEQ0: 1
     - lower_bound: 0
-    - upper_bound: 0.03593
+    - upper_bound: 0.0072177
     - gene_reaction_rule: "RHTO_01048"
   - !!omap
     - id: "prot_M7XEQ5_exchange"
@@ -43590,7 +43698,7 @@
     - metabolites: !!omap
       - prot_M7XEQ5: 1
     - lower_bound: 0
-    - upper_bound: 0.0025604
+    - upper_bound: 0.003897
     - gene_reaction_rule: "RHTO_01053"
   - !!omap
     - id: "prot_M7XEU6_exchange"
@@ -43598,7 +43706,7 @@
     - metabolites: !!omap
       - prot_M7XEU6: 1
     - lower_bound: 0
-    - upper_bound: 0.0081276
+    - upper_bound: 0.0066173
     - gene_reaction_rule: "RHTO_05746"
   - !!omap
     - id: "prot_M7XEY0_exchange"
@@ -43606,7 +43714,7 @@
     - metabolites: !!omap
       - prot_M7XEY0: 1
     - lower_bound: 0
-    - upper_bound: 0.0070222
+    - upper_bound: 0.0030683
     - gene_reaction_rule: "RHTO_00668"
   - !!omap
     - id: "prot_M7XEY4_exchange"
@@ -43614,7 +43722,7 @@
     - metabolites: !!omap
       - prot_M7XEY4: 1
     - lower_bound: 0
-    - upper_bound: 0.0029577
+    - upper_bound: 0.0017977
     - gene_reaction_rule: "RHTO_00673"
   - !!omap
     - id: "prot_M7XF32_exchange"
@@ -43622,7 +43730,7 @@
     - metabolites: !!omap
       - prot_M7XF32: 1
     - lower_bound: 0
-    - upper_bound: 0.0039953
+    - upper_bound: 0.0025677
     - gene_reaction_rule: "RHTO_00723"
   - !!omap
     - id: "prot_M7XF80_exchange"
@@ -43630,7 +43738,7 @@
     - metabolites: !!omap
       - prot_M7XF80: 1
     - lower_bound: 0
-    - upper_bound: 0.002153
+    - upper_bound: 0.00066521
     - gene_reaction_rule: "RHTO_05673"
   - !!omap
     - id: "prot_M7XFE4_exchange"
@@ -43638,7 +43746,7 @@
     - metabolites: !!omap
       - prot_M7XFE4: 1
     - lower_bound: 0
-    - upper_bound: 0.0045874
+    - upper_bound: 0.0019679
     - gene_reaction_rule: "RHTO_00838"
   - !!omap
     - id: "prot_M7XFN1_exchange"
@@ -43646,7 +43754,7 @@
     - metabolites: !!omap
       - prot_M7XFN1: 1
     - lower_bound: 0
-    - upper_bound: 9.3948e-05
+    - upper_bound: 7.8594e-05
     - gene_reaction_rule: "RHTO_05506"
   - !!omap
     - id: "prot_M7XFR0_exchange"
@@ -43654,7 +43762,7 @@
     - metabolites: !!omap
       - prot_M7XFR0: 1
     - lower_bound: 0
-    - upper_bound: 0.0020593
+    - upper_bound: 0.0023249
     - gene_reaction_rule: "RHTO_08027"
   - !!omap
     - id: "prot_M7XFU7_exchange"
@@ -43662,7 +43770,7 @@
     - metabolites: !!omap
       - prot_M7XFU7: 1
     - lower_bound: 0
-    - upper_bound: 0.00010717
+    - upper_bound: 0.0001014
     - gene_reaction_rule: "RHTO_08062"
   - !!omap
     - id: "prot_M7XFZ0_exchange"
@@ -43670,7 +43778,7 @@
     - metabolites: !!omap
       - prot_M7XFZ0: 1
     - lower_bound: 0
-    - upper_bound: 0.0015135
+    - upper_bound: 0.0014583
     - gene_reaction_rule: "RHTO_08097"
   - !!omap
     - id: "prot_M7XG68_exchange"
@@ -43678,7 +43786,7 @@
     - metabolites: !!omap
       - prot_M7XG68: 1
     - lower_bound: 0
-    - upper_bound: 0.034922
+    - upper_bound: 0.013058
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XG92_exchange"
@@ -43686,7 +43794,7 @@
     - metabolites: !!omap
       - prot_M7XG92: 1
     - lower_bound: 0
-    - upper_bound: 0.00046888
+    - upper_bound: 0.0001021
     - gene_reaction_rule: "RHTO_05321"
   - !!omap
     - id: "prot_M7XGB9_exchange"
@@ -43694,7 +43802,7 @@
     - metabolites: !!omap
       - prot_M7XGB9: 1
     - lower_bound: 0
-    - upper_bound: 0.14816
+    - upper_bound: 0.037872
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XGF4_exchange"
@@ -43702,7 +43810,7 @@
     - metabolites: !!omap
       - prot_M7XGF4: 1
     - lower_bound: 0
-    - upper_bound: 0.0003879
+    - upper_bound: 0.00020391
     - gene_reaction_rule: "RHTO_05160"
   - !!omap
     - id: "prot_M7XGH5_exchange"
@@ -43710,7 +43818,7 @@
     - metabolites: !!omap
       - prot_M7XGH5: 1
     - lower_bound: 0
-    - upper_bound: 0.032518
+    - upper_bound: 0.019308
     - gene_reaction_rule: "RHTO_07844"
   - !!omap
     - id: "prot_M7XGI7_exchange"
@@ -43718,7 +43826,7 @@
     - metabolites: !!omap
       - prot_M7XGI7: 1
     - lower_bound: 0
-    - upper_bound: 0.0011645
+    - upper_bound: 0.002042
     - gene_reaction_rule: "RHTO_07860"
   - !!omap
     - id: "prot_M7XGU7_exchange"
@@ -43726,7 +43834,7 @@
     - metabolites: !!omap
       - prot_M7XGU7: 1
     - lower_bound: 0
-    - upper_bound: 0.0068174
+    - upper_bound: 0.0089999
     - gene_reaction_rule: "RHTO_04540"
   - !!omap
     - id: "prot_M7XH05_exchange"
@@ -43734,7 +43842,7 @@
     - metabolites: !!omap
       - prot_M7XH05: 1
     - lower_bound: 0
-    - upper_bound: 0.00054327
+    - upper_bound: 0.00027592
     - gene_reaction_rule: "RHTO_04419"
   - !!omap
     - id: "prot_M7XH40_exchange"
@@ -43742,7 +43850,7 @@
     - metabolites: !!omap
       - prot_M7XH40: 1
     - lower_bound: 0
-    - upper_bound: 0.00034997
+    - upper_bound: 0.00024608
     - gene_reaction_rule: "RHTO_04459"
   - !!omap
     - id: "prot_M7XHB5_exchange"
@@ -43758,7 +43866,7 @@
     - metabolites: !!omap
       - prot_M7XHF8: 1
     - lower_bound: 0
-    - upper_bound: 0.048044
+    - upper_bound: 0.02617
     - gene_reaction_rule: "RHTO_04363"
   - !!omap
     - id: "prot_M7XHL0_exchange"
@@ -43766,7 +43874,7 @@
     - metabolites: !!omap
       - prot_M7XHL0: 1
     - lower_bound: 0
-    - upper_bound: 0.00034128
+    - upper_bound: 0.00018562
     - gene_reaction_rule: "RHTO_04173"
   - !!omap
     - id: "prot_M7XHL1_exchange"
@@ -43774,7 +43882,7 @@
     - metabolites: !!omap
       - prot_M7XHL1: 1
     - lower_bound: 0
-    - upper_bound: 0.0020008
+    - upper_bound: 0.0013442
     - gene_reaction_rule: "RHTO_07118"
   - !!omap
     - id: "prot_M7XHM9_exchange"
@@ -43782,7 +43890,7 @@
     - metabolites: !!omap
       - prot_M7XHM9: 1
     - lower_bound: 0
-    - upper_bound: 6.6751e-06
+    - upper_bound: 1.9122e-05
     - gene_reaction_rule: "RHTO_07138"
   - !!omap
     - id: "prot_M7XHN3_exchange"
@@ -43790,7 +43898,7 @@
     - metabolites: !!omap
       - prot_M7XHN3: 1
     - lower_bound: 0
-    - upper_bound: 0.0085628
+    - upper_bound: 0.0038816
     - gene_reaction_rule: "RHTO_04193"
   - !!omap
     - id: "prot_M7XHQ6_exchange"
@@ -43798,7 +43906,7 @@
     - metabolites: !!omap
       - prot_M7XHQ6: 1
     - lower_bound: 0
-    - upper_bound: 0.0017381
+    - upper_bound: 0.0020158
     - gene_reaction_rule: "RHTO_04213"
   - !!omap
     - id: "prot_M7XHV2_exchange"
@@ -43806,7 +43914,7 @@
     - metabolites: !!omap
       - prot_M7XHV2: 1
     - lower_bound: 0
-    - upper_bound: 4.2935e-05
+    - upper_bound: 4.5871e-05
     - gene_reaction_rule: "RHTO_07218"
   - !!omap
     - id: "prot_M7XI04_exchange"
@@ -43814,7 +43922,7 @@
     - metabolites: !!omap
       - prot_M7XI04: 1
     - lower_bound: 0
-    - upper_bound: 0.00094859
+    - upper_bound: 0.00099086
     - gene_reaction_rule: "RHTO_04045"
   - !!omap
     - id: "prot_M7XI20_exchange"
@@ -43822,7 +43930,7 @@
     - metabolites: !!omap
       - prot_M7XI20: 1
     - lower_bound: 0
-    - upper_bound: 0.0015904
+    - upper_bound: 0.0020703
     - gene_reaction_rule: "RHTO_04065"
   - !!omap
     - id: "prot_M7XI95_exchange"
@@ -43830,7 +43938,7 @@
     - metabolites: !!omap
       - prot_M7XI95: 1
     - lower_bound: 0
-    - upper_bound: 0.0015654
+    - upper_bound: 0.0015605
     - gene_reaction_rule: "RHTO_03911"
   - !!omap
     - id: "prot_M7XIA6_exchange"
@@ -43838,7 +43946,7 @@
     - metabolites: !!omap
       - prot_M7XIA6: 1
     - lower_bound: 0
-    - upper_bound: 0.0018502
+    - upper_bound: 0.001464
     - gene_reaction_rule: "RHTO_07353"
   - !!omap
     - id: "prot_M7XIC1_exchange"
@@ -43846,7 +43954,7 @@
     - metabolites: !!omap
       - prot_M7XIC1: 1
     - lower_bound: 0
-    - upper_bound: 8.3709e-05
+    - upper_bound: 0.00014041
     - gene_reaction_rule: "RHTO_03942"
   - !!omap
     - id: "prot_M7XID1_exchange"
@@ -43854,7 +43962,7 @@
     - metabolites: !!omap
       - prot_M7XID1: 1
     - lower_bound: 0
-    - upper_bound: 0.00050669
+    - upper_bound: 0.000467
     - gene_reaction_rule: "RHTO_07378"
   - !!omap
     - id: "prot_M7XIE1_exchange"
@@ -43862,7 +43970,7 @@
     - metabolites: !!omap
       - prot_M7XIE1: 1
     - lower_bound: 0
-    - upper_bound: 0.17845
+    - upper_bound: 0.031477
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XIE8_exchange"
@@ -43870,7 +43978,7 @@
     - metabolites: !!omap
       - prot_M7XIE8: 1
     - lower_bound: 0
-    - upper_bound: 0.00098389
+    - upper_bound: 0.00057207
     - gene_reaction_rule: "RHTO_06718"
   - !!omap
     - id: "prot_M7XIH3_exchange"
@@ -43878,7 +43986,7 @@
     - metabolites: !!omap
       - prot_M7XIH3: 1
     - lower_bound: 0
-    - upper_bound: 0.0021786
+    - upper_bound: 0.0017019
     - gene_reaction_rule: "RHTO_06738"
   - !!omap
     - id: "prot_M7XII9_exchange"
@@ -43886,7 +43994,7 @@
     - metabolites: !!omap
       - prot_M7XII9: 1
     - lower_bound: 0
-    - upper_bound: 1.5254e-05
+    - upper_bound: 1.5167e-05
     - gene_reaction_rule: "RHTO_06753"
   - !!omap
     - id: "prot_M7XIT2_exchange"
@@ -43894,7 +44002,7 @@
     - metabolites: !!omap
       - prot_M7XIT2: 1
     - lower_bound: 0
-    - upper_bound: 0.0017584
+    - upper_bound: 0.0020176
     - gene_reaction_rule: "RHTO_03621"
   - !!omap
     - id: "prot_M7XIT7_exchange"
@@ -43902,7 +44010,7 @@
     - metabolites: !!omap
       - prot_M7XIT7: 1
     - lower_bound: 0
-    - upper_bound: 0.00023249
+    - upper_bound: 0.00018165
     - gene_reaction_rule: "RHTO_06843"
   - !!omap
     - id: "prot_M7XIZ5_exchange"
@@ -43910,7 +44018,7 @@
     - metabolites: !!omap
       - prot_M7XIZ5: 1
     - lower_bound: 0
-    - upper_bound: 0.00039456
+    - upper_bound: 0.00021651
     - gene_reaction_rule: "RHTO_06918"
   - !!omap
     - id: "prot_M7XJ56_exchange"
@@ -43918,7 +44026,7 @@
     - metabolites: !!omap
       - prot_M7XJ56: 1
     - lower_bound: 0
-    - upper_bound: 0.11997
+    - upper_bound: 0.037434
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XJ70_exchange"
@@ -43926,7 +44034,7 @@
     - metabolites: !!omap
       - prot_M7XJ70: 1
     - lower_bound: 0
-    - upper_bound: 0.0027058
+    - upper_bound: 0.0026984
     - gene_reaction_rule: "RHTO_07003"
   - !!omap
     - id: "prot_M7XJ78_exchange"
@@ -43934,7 +44042,7 @@
     - metabolites: !!omap
       - prot_M7XJ78: 1
     - lower_bound: 0
-    - upper_bound: 0.0021334
+    - upper_bound: 0.0013064
     - gene_reaction_rule: "RHTO_03757"
   - !!omap
     - id: "prot_M7XJ86_exchange"
@@ -43942,7 +44050,7 @@
     - metabolites: !!omap
       - prot_M7XJ86: 1
     - lower_bound: 0
-    - upper_bound: 9.9406e-05
+    - upper_bound: 7.1449e-05
     - gene_reaction_rule: "RHTO_07023"
   - !!omap
     - id: "prot_M7XJD3_exchange"
@@ -43950,7 +44058,7 @@
     - metabolites: !!omap
       - prot_M7XJD3: 1
     - lower_bound: 0
-    - upper_bound: 0.00056779
+    - upper_bound: 0.0005261
     - gene_reaction_rule: "RHTO_06018"
   - !!omap
     - id: "prot_M7XJI6_exchange"
@@ -43958,7 +44066,7 @@
     - metabolites: !!omap
       - prot_M7XJI6: 1
     - lower_bound: 0
-    - upper_bound: 0.0063533
+    - upper_bound: 0.0039434
     - gene_reaction_rule: "RHTO_03559"
   - !!omap
     - id: "prot_M7XJJ4_exchange"
@@ -43966,7 +44074,7 @@
     - metabolites: !!omap
       - prot_M7XJJ4: 1
     - lower_bound: 0
-    - upper_bound: 0.0039953
+    - upper_bound: 0.0025677
     - gene_reaction_rule: "RHTO_06068"
   - !!omap
     - id: "prot_M7XJK5_exchange"
@@ -43974,7 +44082,7 @@
     - metabolites: !!omap
       - prot_M7XJK5: 1
     - lower_bound: 0
-    - upper_bound: 0.0039134
+    - upper_bound: 0.0026266
     - gene_reaction_rule: "RHTO_03579"
   - !!omap
     - id: "prot_M7XJM1_exchange"
@@ -43982,7 +44090,7 @@
     - metabolites: !!omap
       - prot_M7XJM1: 1
     - lower_bound: 0
-    - upper_bound: 0.00084164
+    - upper_bound: 0.00058941
     - gene_reaction_rule: "RHTO_03594"
   - !!omap
     - id: "prot_M7XJX2_exchange"
@@ -43990,7 +44098,7 @@
     - metabolites: !!omap
       - prot_M7XJX2: 1
     - lower_bound: 0
-    - upper_bound: 0.0010009
+    - upper_bound: 0.0012158
     - gene_reaction_rule: "RHTO_06168"
   - !!omap
     - id: "prot_M7XK01_exchange"
@@ -43998,7 +44106,7 @@
     - metabolites: !!omap
       - prot_M7XK01: 1
     - lower_bound: 0
-    - upper_bound: 0.0069935
+    - upper_bound: 0.0042626
     - gene_reaction_rule: "RHTO_06193"
   - !!omap
     - id: "prot_M7XK72_exchange"
@@ -44006,7 +44114,7 @@
     - metabolites: !!omap
       - prot_M7XK72: 1
     - lower_bound: 0
-    - upper_bound: 0.10332
+    - upper_bound: 0.023382
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XK83_exchange"
@@ -44014,7 +44122,7 @@
     - metabolites: !!omap
       - prot_M7XK83: 1
     - lower_bound: 0
-    - upper_bound: 0.00089015
+    - upper_bound: 0.0016773
     - gene_reaction_rule: "RHTO_02531"
   - !!omap
     - id: "prot_M7XK91_exchange"
@@ -44022,7 +44130,7 @@
     - metabolites: !!omap
       - prot_M7XK91: 1
     - lower_bound: 0
-    - upper_bound: 0.0010234
+    - upper_bound: 0.0012059
     - gene_reaction_rule: "RHTO_06273"
   - !!omap
     - id: "prot_M7XKA2_exchange"
@@ -44030,7 +44138,7 @@
     - metabolites: !!omap
       - prot_M7XKA2: 1
     - lower_bound: 0
-    - upper_bound: 0.00014134
+    - upper_bound: 0.00038408
     - gene_reaction_rule: "RHTO_06288"
   - !!omap
     - id: "prot_M7XKA8_exchange"
@@ -44038,7 +44146,7 @@
     - metabolites: !!omap
       - prot_M7XKA8: 1
     - lower_bound: 0
-    - upper_bound: 0.033862
+    - upper_bound: 0.0077835
     - gene_reaction_rule: "RHTO_06298"
   - !!omap
     - id: "prot_M7XKF0_exchange"
@@ -44046,7 +44154,7 @@
     - metabolites: !!omap
       - prot_M7XKF0: 1
     - lower_bound: 0
-    - upper_bound: 0.0015819
+    - upper_bound: 0.00095885
     - gene_reaction_rule: "RHTO_02591"
   - !!omap
     - id: "prot_M7XKI3_exchange"
@@ -44054,7 +44162,7 @@
     - metabolites: !!omap
       - prot_M7XKI3: 1
     - lower_bound: 0
-    - upper_bound: 0.0011943
+    - upper_bound: 0.00085795
     - gene_reaction_rule: "RHTO_02616"
   - !!omap
     - id: "prot_M7XKI7_exchange"
@@ -44062,7 +44170,7 @@
     - metabolites: !!omap
       - prot_M7XKI7: 1
     - lower_bound: 0
-    - upper_bound: 0.0052385
+    - upper_bound: 0.0025945
     - gene_reaction_rule: "RHTO_02621"
   - !!omap
     - id: "prot_M7XKJ8_exchange"
@@ -44070,7 +44178,7 @@
     - metabolites: !!omap
       - prot_M7XKJ8: 1
     - lower_bound: 0
-    - upper_bound: 0.033862
+    - upper_bound: 0.0077835
     - gene_reaction_rule: "RHTO_04577"
   - !!omap
     - id: "prot_M7XKK7_exchange"
@@ -44078,7 +44186,7 @@
     - metabolites: !!omap
       - prot_M7XKK7: 1
     - lower_bound: 0
-    - upper_bound: 0.22904
+    - upper_bound: 0.041819
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XKL7_exchange"
@@ -44086,7 +44194,7 @@
     - metabolites: !!omap
       - prot_M7XKL7: 1
     - lower_bound: 0
-    - upper_bound: 5.2313e-05
+    - upper_bound: 5.4273e-05
     - gene_reaction_rule: "RHTO_04602"
   - !!omap
     - id: "prot_M7XKN2_exchange"
@@ -44094,7 +44202,7 @@
     - metabolites: !!omap
       - prot_M7XKN2: 1
     - lower_bound: 0
-    - upper_bound: 0.0018315
+    - upper_bound: 0.00060782
     - gene_reaction_rule: "RHTO_04617"
   - !!omap
     - id: "prot_M7XKN4_exchange"
@@ -44102,7 +44210,7 @@
     - metabolites: !!omap
       - prot_M7XKN4: 1
     - lower_bound: 0
-    - upper_bound: 0.0005284
+    - upper_bound: 0.00022297
     - gene_reaction_rule: "RHTO_02661"
   - !!omap
     - id: "prot_M7XKU4_exchange"
@@ -44110,7 +44218,7 @@
     - metabolites: !!omap
       - prot_M7XKU4: 1
     - lower_bound: 0
-    - upper_bound: 0.21189
+    - upper_bound: 0.05104
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XKV7_exchange"
@@ -44118,7 +44226,7 @@
     - metabolites: !!omap
       - prot_M7XKV7: 1
     - lower_bound: 0
-    - upper_bound: 0.00027671
+    - upper_bound: 0.00042099
     - gene_reaction_rule: "RHTO_02389"
   - !!omap
     - id: "prot_M7XKW6_exchange"
@@ -44126,7 +44234,7 @@
     - metabolites: !!omap
       - prot_M7XKW6: 1
     - lower_bound: 0
-    - upper_bound: 0.00072877
+    - upper_bound: 0.0014499
     - gene_reaction_rule: "RHTO_04703"
   - !!omap
     - id: "prot_M7XKX2_exchange"
@@ -44134,7 +44242,7 @@
     - metabolites: !!omap
       - prot_M7XKX2: 1
     - lower_bound: 0
-    - upper_bound: 0.00016054
+    - upper_bound: 9.3276e-05
     - gene_reaction_rule: "RHTO_04708"
   - !!omap
     - id: "prot_M7XL11_exchange"
@@ -44142,7 +44250,7 @@
     - metabolites: !!omap
       - prot_M7XL11: 1
     - lower_bound: 0
-    - upper_bound: 0.00029838
+    - upper_bound: 0.00048599
     - gene_reaction_rule: "RHTO_02459"
   - !!omap
     - id: "prot_M7XLR4_exchange"
@@ -44150,7 +44258,7 @@
     - metabolites: !!omap
       - prot_M7XLR4: 1
     - lower_bound: 0
-    - upper_bound: 0.00012337
+    - upper_bound: 0.00046382
     - gene_reaction_rule: "RHTO_02004"
   - !!omap
     - id: "prot_M7XLR5_exchange"
@@ -44158,7 +44266,7 @@
     - metabolites: !!omap
       - prot_M7XLR5: 1
     - lower_bound: 0
-    - upper_bound: 0.0010111
+    - upper_bound: 0.00064424
     - gene_reaction_rule: "RHTO_05024"
   - !!omap
     - id: "prot_M7XLS1_exchange"
@@ -44166,7 +44274,7 @@
     - metabolites: !!omap
       - prot_M7XLS1: 1
     - lower_bound: 0
-    - upper_bound: 0.090015
+    - upper_bound: 0.021261
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XLS6_exchange"
@@ -44174,7 +44282,7 @@
     - metabolites: !!omap
       - prot_M7XLS6: 1
     - lower_bound: 0
-    - upper_bound: 0.00016359
+    - upper_bound: 0.00044058
     - gene_reaction_rule: "RHTO_05039"
   - !!omap
     - id: "prot_M7XLZ6_exchange"
@@ -44182,7 +44290,7 @@
     - metabolites: !!omap
       - prot_M7XLZ6: 1
     - lower_bound: 0
-    - upper_bound: 0.076811
+    - upper_bound: 0.029018
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XM07_exchange"
@@ -44190,7 +44298,7 @@
     - metabolites: !!omap
       - prot_M7XM07: 1
     - lower_bound: 0
-    - upper_bound: 0.0055783
+    - upper_bound: 0.0019662
     - gene_reaction_rule: "RHTO_02079"
   - !!omap
     - id: "prot_M7XM82_exchange"
@@ -44198,7 +44306,7 @@
     - metabolites: !!omap
       - prot_M7XM82: 1
     - lower_bound: 0
-    - upper_bound: 0.056762
+    - upper_bound: 0.0093111
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XM89_exchange"
@@ -44206,7 +44314,7 @@
     - metabolites: !!omap
       - prot_M7XM89: 1
     - lower_bound: 0
-    - upper_bound: 0.000219
+    - upper_bound: 0.0010662
     - gene_reaction_rule: "RHTO_02139"
   - !!omap
     - id: "prot_M7XMA7_exchange"
@@ -44214,7 +44322,7 @@
     - metabolites: !!omap
       - prot_M7XMA7: 1
     - lower_bound: 0
-    - upper_bound: 0.00093894
+    - upper_bound: 0.00047264
     - gene_reaction_rule: "RHTO_01754"
   - !!omap
     - id: "prot_M7XMJ4_exchange"
@@ -44222,7 +44330,7 @@
     - metabolites: !!omap
       - prot_M7XMJ4: 1
     - lower_bound: 0
-    - upper_bound: 0.033862
+    - upper_bound: 0.0077835
     - gene_reaction_rule: "RHTO_01854"
   - !!omap
     - id: "prot_M7XMK5_exchange"
@@ -44230,7 +44338,7 @@
     - metabolites: !!omap
       - prot_M7XMK5: 1
     - lower_bound: 0
-    - upper_bound: 0.00099825
+    - upper_bound: 0.00046527
     - gene_reaction_rule: "RHTO_02861"
   - !!omap
     - id: "prot_M7XMV4_exchange"
@@ -44238,7 +44346,7 @@
     - metabolites: !!omap
       - prot_M7XMV4: 1
     - lower_bound: 0
-    - upper_bound: 0.00016288
+    - upper_bound: 0.00021185
     - gene_reaction_rule: "RHTO_02952"
   - !!omap
     - id: "prot_M7XN27_exchange"
@@ -44246,7 +44354,7 @@
     - metabolites: !!omap
       - prot_M7XN27: 1
     - lower_bound: 0
-    - upper_bound: 0.0012659
+    - upper_bound: 0.00063572
     - gene_reaction_rule: "RHTO_03032"
   - !!omap
     - id: "prot_M7XN51_exchange"
@@ -44254,7 +44362,7 @@
     - metabolites: !!omap
       - prot_M7XN51: 1
     - lower_bound: 0
-    - upper_bound: 0.034259
+    - upper_bound: 0.020036
     - gene_reaction_rule: "RHTO_03062"
   - !!omap
     - id: "prot_M7XN95_exchange"
@@ -44262,7 +44370,7 @@
     - metabolites: !!omap
       - prot_M7XN95: 1
     - lower_bound: 0
-    - upper_bound: 0.011539
+    - upper_bound: 0.0055889
     - gene_reaction_rule: "RHTO_03117"
   - !!omap
     - id: "prot_M7XNE0_exchange"
@@ -44270,7 +44378,7 @@
     - metabolites: !!omap
       - prot_M7XNE0: 1
     - lower_bound: 0
-    - upper_bound: 1.528e-05
+    - upper_bound: 3.1256e-05
     - gene_reaction_rule: "RHTO_01350"
   - !!omap
     - id: "prot_M7XNG2_exchange"
@@ -44278,7 +44386,7 @@
     - metabolites: !!omap
       - prot_M7XNG2: 1
     - lower_bound: 0
-    - upper_bound: 0.00017655
+    - upper_bound: 0.00023737
     - gene_reaction_rule: "RHTO_01370"
   - !!omap
     - id: "prot_M7XNL9_exchange"
@@ -44286,7 +44394,7 @@
     - metabolites: !!omap
       - prot_M7XNL9: 1
     - lower_bound: 0
-    - upper_bound: 0.026005
+    - upper_bound: 0.029852
     - gene_reaction_rule: "RHTO_03248"
   - !!omap
     - id: "prot_M7XNP4_exchange"
@@ -44294,7 +44402,7 @@
     - metabolites: !!omap
       - prot_M7XNP4: 1
     - lower_bound: 0
-    - upper_bound: 0.0060484
+    - upper_bound: 0.0058479
     - gene_reaction_rule: "RHTO_01440"
   - !!omap
     - id: "prot_M7XNS5_exchange"
@@ -44302,7 +44410,7 @@
     - metabolites: !!omap
       - prot_M7XNS5: 1
     - lower_bound: 0
-    - upper_bound: 0.00084199
+    - upper_bound: 0.00098099
     - gene_reaction_rule: "RHTO_03298"
   - !!omap
     - id: "prot_M7XPA1_exchange"
@@ -44310,7 +44418,7 @@
     - metabolites: !!omap
       - prot_M7XPA1: 1
     - lower_bound: 0
-    - upper_bound: 0.0024113
+    - upper_bound: 0.003116
     - gene_reaction_rule: "RHTO_00152"
   - !!omap
     - id: "prot_M7XPE3_exchange"
@@ -44318,7 +44426,7 @@
     - metabolites: !!omap
       - prot_M7XPE3: 1
     - lower_bound: 0
-    - upper_bound: 0.0088819
+    - upper_bound: 0.0043683
     - gene_reaction_rule: "RHTO_00177"
   - !!omap
     - id: "prot_M7XPG3_exchange"
@@ -44326,7 +44434,7 @@
     - metabolites: !!omap
       - prot_M7XPG3: 1
     - lower_bound: 0
-    - upper_bound: 0.0014215
+    - upper_bound: 0.0012588
     - gene_reaction_rule: "RHTO_00202"
   - !!omap
     - id: "prot_M7XPJ7_exchange"
@@ -44334,7 +44442,7 @@
     - metabolites: !!omap
       - prot_M7XPJ7: 1
     - lower_bound: 0
-    - upper_bound: 1.271e-05
+    - upper_bound: 1.4396e-05
     - gene_reaction_rule: "RHTO_00892"
   - !!omap
     - id: "prot_M7XPM3_exchange"
@@ -44342,7 +44450,7 @@
     - metabolites: !!omap
       - prot_M7XPM3: 1
     - lower_bound: 0
-    - upper_bound: 0.0012855
+    - upper_bound: 0.0010537
     - gene_reaction_rule: "RHTO_00287"
   - !!omap
     - id: "prot_M7XPP0_exchange"
@@ -44350,7 +44458,7 @@
     - metabolites: !!omap
       - prot_M7XPP0: 1
     - lower_bound: 0
-    - upper_bound: 8.5265e-05
+    - upper_bound: 7.7294e-05
     - gene_reaction_rule: "RHTO_00312"
   - !!omap
     - id: "prot_M7XPW4_exchange"
@@ -44358,7 +44466,7 @@
     - metabolites: !!omap
       - prot_M7XPW4: 1
     - lower_bound: 0
-    - upper_bound: 0.00081363
+    - upper_bound: 0.00072854
     - gene_reaction_rule: "RHTO_00397"
   - !!omap
     - id: "prot_M7XPZ4_exchange"
@@ -44366,7 +44474,7 @@
     - metabolites: !!omap
       - prot_M7XPZ4: 1
     - lower_bound: 0
-    - upper_bound: 0.028924
+    - upper_bound: 0.011599
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XQ01_exchange"
@@ -44374,7 +44482,7 @@
     - metabolites: !!omap
       - prot_M7XQ01: 1
     - lower_bound: 0
-    - upper_bound: 0.0055882
+    - upper_bound: 0.0040209
     - gene_reaction_rule: "RHTO_01027"
   - !!omap
     - id: "prot_M7XQ28_exchange"
@@ -44382,7 +44490,7 @@
     - metabolites: !!omap
       - prot_M7XQ28: 1
     - lower_bound: 0
-    - upper_bound: 0.00025494
+    - upper_bound: 0.00069176
     - gene_reaction_rule: "RHTO_01057"
   - !!omap
     - id: "prot_M7XQ37_exchange"
@@ -44390,7 +44498,7 @@
     - metabolites: !!omap
       - prot_M7XQ37: 1
     - lower_bound: 0
-    - upper_bound: 0.0016235
+    - upper_bound: 0.00062091
     - gene_reaction_rule: "RHTO_01067"
   - !!omap
     - id: "prot_M7XQ75_exchange"
@@ -44398,7 +44506,7 @@
     - metabolites: !!omap
       - prot_M7XQ75: 1
     - lower_bound: 0
-    - upper_bound: 0.12101
+    - upper_bound: 0.029969
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XRG0_exchange"
@@ -44406,7 +44514,7 @@
     - metabolites: !!omap
       - prot_M7XRG0: 1
     - lower_bound: 0
-    - upper_bound: 0.45174
+    - upper_bound: 0.04145
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XRK5_exchange"
@@ -44414,7 +44522,7 @@
     - metabolites: !!omap
       - prot_M7XRK5: 1
     - lower_bound: 0
-    - upper_bound: 0.00053589
+    - upper_bound: 0.0009554
     - gene_reaction_rule: "RHTO_07718"
   - !!omap
     - id: "prot_M7XRP3_exchange"
@@ -44422,7 +44530,7 @@
     - metabolites: !!omap
       - prot_M7XRP3: 1
     - lower_bound: 0
-    - upper_bound: 0.00023421
+    - upper_bound: 0.00017711
     - gene_reaction_rule: "RHTO_07763"
   - !!omap
     - id: "prot_M7XRQ3_exchange"
@@ -44430,7 +44538,7 @@
     - metabolites: !!omap
       - prot_M7XRQ3: 1
     - lower_bound: 0
-    - upper_bound: 0.015424
+    - upper_bound: 0.0057583
     - gene_reaction_rule: "RHTO_07773"
   - !!omap
     - id: "prot_M7XS16_exchange"
@@ -44438,7 +44546,7 @@
     - metabolites: !!omap
       - prot_M7XS16: 1
     - lower_bound: 0
-    - upper_bound: 0.00013058
+    - upper_bound: 7.8068e-05
     - gene_reaction_rule: "RHTO_07889"
   - !!omap
     - id: "prot_M7XSC4_exchange"
@@ -44446,7 +44554,7 @@
     - metabolites: !!omap
       - prot_M7XSC4: 1
     - lower_bound: 0
-    - upper_bound: 0.00022928
+    - upper_bound: 0.00021677
     - gene_reaction_rule: "RHTO_07480"
   - !!omap
     - id: "prot_M7XSX2_exchange"
@@ -44454,7 +44562,7 @@
     - metabolites: !!omap
       - prot_M7XSX2: 1
     - lower_bound: 0
-    - upper_bound: 0.0011544
+    - upper_bound: 0.0016747
     - gene_reaction_rule: "RHTO_07665"
   - !!omap
     - id: "prot_M7XTB2_exchange"
@@ -44462,7 +44570,7 @@
     - metabolites: !!omap
       - prot_M7XTB2: 1
     - lower_bound: 0
-    - upper_bound: 0.012139
+    - upper_bound: 0.0040673
     - gene_reaction_rule: "RHTO_07202"
   - !!omap
     - id: "prot_M7XU45_exchange"
@@ -44470,7 +44578,7 @@
     - metabolites: !!omap
       - prot_M7XU45: 1
     - lower_bound: 0
-    - upper_bound: 0.18617
+    - upper_bound: 0.041658
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XUQ1_exchange"
@@ -44478,7 +44586,7 @@
     - metabolites: !!omap
       - prot_M7XUQ1: 1
     - lower_bound: 0
-    - upper_bound: 0.0070222
+    - upper_bound: 0.0030683
     - gene_reaction_rule: "RHTO_07027"
   - !!omap
     - id: "prot_M7XUQ9_exchange"
@@ -44486,7 +44594,7 @@
     - metabolites: !!omap
       - prot_M7XUQ9: 1
     - lower_bound: 0
-    - upper_bound: 4.2218e-05
+    - upper_bound: 0.00010834
     - gene_reaction_rule: "RHTO_07037"
   - !!omap
     - id: "prot_M7XUW4_exchange"
@@ -44494,7 +44602,7 @@
     - metabolites: !!omap
       - prot_M7XUW4: 1
     - lower_bound: 0
-    - upper_bound: 0.015605
+    - upper_bound: 0.0094031
     - gene_reaction_rule: "RHTO_06042"
   - !!omap
     - id: "prot_M7XUZ4_exchange"
@@ -44502,7 +44610,7 @@
     - metabolites: !!omap
       - prot_M7XUZ4: 1
     - lower_bound: 0
-    - upper_bound: 0.0019856
+    - upper_bound: 0.0017631
     - gene_reaction_rule: "RHTO_06072"
   - !!omap
     - id: "prot_M7XV41_exchange"
@@ -44510,7 +44618,7 @@
     - metabolites: !!omap
       - prot_M7XV41: 1
     - lower_bound: 0
-    - upper_bound: 0.00077851
+    - upper_bound: 0.001346
     - gene_reaction_rule: "RHTO_06117"
   - !!omap
     - id: "prot_M7XVK5_exchange"
@@ -44518,7 +44626,7 @@
     - metabolites: !!omap
       - prot_M7XVK5: 1
     - lower_bound: 0
-    - upper_bound: 0.00039616
+    - upper_bound: 0.00017942
     - gene_reaction_rule: "RHTO_06252"
   - !!omap
     - id: "prot_M7XVT2_exchange"
@@ -44526,7 +44634,7 @@
     - metabolites: !!omap
       - prot_M7XVT2: 1
     - lower_bound: 0
-    - upper_bound: 0.00022655
+    - upper_bound: 0.00022236
     - gene_reaction_rule: "RHTO_06352"
   - !!omap
     - id: "prot_M7XVW7_exchange"
@@ -44534,7 +44642,7 @@
     - metabolites: !!omap
       - prot_M7XVW7: 1
     - lower_bound: 0
-    - upper_bound: 0.020623
+    - upper_bound: 0.011877
     - gene_reaction_rule: "RHTO_04566"
   - !!omap
     - id: "prot_M7XW21_exchange"
@@ -44542,7 +44650,7 @@
     - metabolites: !!omap
       - prot_M7XW21: 1
     - lower_bound: 0
-    - upper_bound: 0.003787
+    - upper_bound: 0.0026711
     - gene_reaction_rule: "RHTO_04622"
   - !!omap
     - id: "prot_M7XX64_exchange"
@@ -44550,7 +44658,7 @@
     - metabolites: !!omap
       - prot_M7XX64: 1
     - lower_bound: 0
-    - upper_bound: 0.00057933
+    - upper_bound: 0.00024293
     - gene_reaction_rule: "RHTO_05018"
   - !!omap
     - id: "prot_M7XXD2_exchange"
@@ -44558,7 +44666,7 @@
     - metabolites: !!omap
       - prot_M7XXD2: 1
     - lower_bound: 0
-    - upper_bound: 0.050785
+    - upper_bound: 0.021614
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XXN8_exchange"
@@ -44566,7 +44674,7 @@
     - metabolites: !!omap
       - prot_M7XXN8: 1
     - lower_bound: 0
-    - upper_bound: 0.0044558
+    - upper_bound: 0.0045828
     - gene_reaction_rule: "RHTO_02759"
   - !!omap
     - id: "prot_M7XXQ5_exchange"
@@ -44574,7 +44682,7 @@
     - metabolites: !!omap
       - prot_M7XXQ5: 1
     - lower_bound: 0
-    - upper_bound: 6.5269e-06
+    - upper_bound: 2.106e-05
     - gene_reaction_rule: "RHTO_02780"
   - !!omap
     - id: "prot_M7XXS3_exchange"
@@ -44582,7 +44690,7 @@
     - metabolites: !!omap
       - prot_M7XXS3: 1
     - lower_bound: 0
-    - upper_bound: 0.0012579
+    - upper_bound: 0.00075142
     - gene_reaction_rule: "RHTO_02800"
   - !!omap
     - id: "prot_M7XYF6_exchange"
@@ -44590,7 +44698,7 @@
     - metabolites: !!omap
       - prot_M7XYF6: 1
     - lower_bound: 0
-    - upper_bound: 0.0022788
+    - upper_bound: 0.0012843
     - gene_reaction_rule: "RHTO_03046"
   - !!omap
     - id: "prot_M7XYI4_exchange"
@@ -44598,7 +44706,7 @@
     - metabolites: !!omap
       - prot_M7XYI4: 1
     - lower_bound: 0
-    - upper_bound: 0.23375
+    - upper_bound: 0.025832
     - gene_reaction_rule: ""
   - !!omap
     - id: "prot_M7XYM0_exchange"
@@ -44606,7 +44714,7 @@
     - metabolites: !!omap
       - prot_M7XYM0: 1
     - lower_bound: 0
-    - upper_bound: 0.00087338
+    - upper_bound: 0.0010341
     - gene_reaction_rule: "RHTO_03126"
   - !!omap
     - id: "prot_M7XZ23_exchange"
@@ -44614,7 +44722,7 @@
     - metabolites: !!omap
       - prot_M7XZ23: 1
     - lower_bound: 0
-    - upper_bound: 0.30699
+    - upper_bound: 0.077448
     - gene_reaction_rule: "RHTO_03292"
   - !!omap
     - id: "prot_M7XZ85_exchange"
@@ -44622,7 +44730,7 @@
     - metabolites: !!omap
       - prot_M7XZ85: 1
     - lower_bound: 0
-    - upper_bound: 0.00038237
+    - upper_bound: 0.00029391
     - gene_reaction_rule: "RHTO_00056"
   - !!omap
     - id: "prot_M7XZ93_exchange"
@@ -44630,7 +44738,7 @@
     - metabolites: !!omap
       - prot_M7XZ93: 1
     - lower_bound: 0
-    - upper_bound: 0.00049936
+    - upper_bound: 0.00047287
     - gene_reaction_rule: "RHTO_00066"
   - !!omap
     - id: "prot_M7XZD3_exchange"
@@ -44638,7 +44746,7 @@
     - metabolites: !!omap
       - prot_M7XZD3: 1
     - lower_bound: 0
-    - upper_bound: 0.004162
+    - upper_bound: 0.0034373
     - gene_reaction_rule: "RHTO_00111"
   - !!omap
     - id: "prot_M7XZM3_exchange"
@@ -44646,7 +44754,7 @@
     - metabolites: !!omap
       - prot_M7XZM3: 1
     - lower_bound: 0
-    - upper_bound: 0.072278
+    - upper_bound: 0.02414
     - gene_reaction_rule: "RHTO_00206"
   - !!omap
     - id: "prot_M7XZN8_exchange"
@@ -44654,7 +44762,7 @@
     - metabolites: !!omap
       - prot_M7XZN8: 1
     - lower_bound: 0
-    - upper_bound: 0.0003205
+    - upper_bound: 0.00044134
     - gene_reaction_rule: "RHTO_00226"
   - !!omap
     - id: "prot_M7XZX7_exchange"
@@ -44662,7 +44770,7 @@
     - metabolites: !!omap
       - prot_M7XZX7: 1
     - lower_bound: 0
-    - upper_bound: 8.9466e-05
+    - upper_bound: 0.00010657
     - gene_reaction_rule: "RHTO_00321"
   - !!omap
     - id: "prot_M7Y042_exchange"
@@ -44670,7 +44778,7 @@
     - metabolites: !!omap
       - prot_M7Y042: 1
     - lower_bound: 0
-    - upper_bound: 0.011285
+    - upper_bound: 0.0071427
     - gene_reaction_rule: "RHTO_00391"
   - !!omap
     - id: "prot_M7Y0M2_exchange"
@@ -44678,7 +44786,7 @@
     - metabolites: !!omap
       - prot_M7Y0M2: 1
     - lower_bound: 0
-    - upper_bound: 0.00038772
+    - upper_bound: 0.00016825
     - gene_reaction_rule: "RHTO_00551"
   - !!omap
     - id: "prot_M7Y0M8_exchange"
@@ -44686,7 +44794,7 @@
     - metabolites: !!omap
       - prot_M7Y0M8: 1
     - lower_bound: 0
-    - upper_bound: 0.0032245
+    - upper_bound: 0.001825
     - gene_reaction_rule: "RHTO_00556"
   - !!omap
     - id: "prot_pool_exchange"
@@ -44694,7 +44802,7 @@
     - metabolites: !!omap
       - prot_pool: 1
     - lower_bound: 0
-    - upper_bound: 2.6079
+    - upper_bound: 26.7145
     - gene_reaction_rule: ""
   - !!omap
     - id: "r_0001No1"
@@ -46077,7 +46185,7 @@
     - id: "r_0108No1"
     - name: "acetyl-Coa carboxylase (No1)"
     - metabolites: !!omap
-      - prot_M7XLR4: -7.716e-07
+      - prot_M7XLR4: -0.0092285
       - s_0376: -1
       - s_0397: 1
       - s_0437: -1
@@ -50819,7 +50927,7 @@
     - id: "r_0471No1"
     - name: "glutamate dehydrogenase (NADP) (No1)"
     - metabolites: !!omap
-      - prot_M7X2B5: -9.6956e-06
+      - prot_M7X2B5: -0.013227
       - s_0180: -1
       - s_0419: -1
       - s_0794: -1
@@ -58529,9 +58637,10 @@
       - sbo: "SBO:0000655"
     - confidence_score: 1
   - !!omap
-    - id: "r_1099"
-    - name: "2-oxoadipate and 2-oxoglutarate transport"
+    - id: "r_1099No1"
+    - name: "2-oxoadipate and 2-oxoglutarate transport (No1)"
     - metabolites: !!omap
+      - prot_M7WI80: -0.00010979
       - s_0176: 1
       - s_0177: -1
       - s_0180: -1
@@ -58539,13 +58648,11 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_03731"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
   - !!omap
-    - id: "r_1099_REV"
-    - name: "2-oxoadipate and 2-oxoglutarate transport (reversible)"
+    - id: "r_1099_REVNo1"
+    - name: "2-oxoadipate and 2-oxoglutarate transport (reversible) (No1)"
     - metabolites: !!omap
+      - prot_M7WI80: -0.00010979
       - s_0176: -1
       - s_0177: 1
       - s_0180: 1
@@ -58553,9 +58660,6 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_03731"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
   - !!omap
     - id: "r_1100"
     - name: "3-hexaprenyl-4,5-dihydroxybenzoate transport"
@@ -58769,33 +58873,49 @@
       - sbo: "SBO:0000655"
     - confidence_score: 2
   - !!omap
-    - id: "r_1112"
-    - name: "AKG transporter, mitochonrial"
+    - id: "r_1112No1"
+    - name: "AKG transporter, mitochonrial (No1)"
     - metabolites: !!omap
-      - s_0180: -1
+      - pmet_r_1112: -1
+      - prot_M7WEL7: -0.0002245
       - s_0182: 1
       - s_0522: 1
-      - s_0524: -1
     - lower_bound: 0
     - upper_bound: 1000
-    - gene_reaction_rule: "RHTO_05609 or RHTO_08140"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
+    - gene_reaction_rule: "RHTO_05609"
   - !!omap
-    - id: "r_1112_REV"
-    - name: "AKG transporter, mitochonrial (reversible)"
+    - id: "r_1112No2"
+    - name: "AKG transporter, mitochonrial (No2)"
     - metabolites: !!omap
+      - pmet_r_1112: -1
+      - prot_M7WQJ3: -0.0002245
+      - s_0182: 1
+      - s_0522: 1
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_08140"
+  - !!omap
+    - id: "r_1112_REVNo1"
+    - name: "AKG transporter, mitochonrial (reversible) (No1)"
+    - metabolites: !!omap
+      - pmet_r_1112_REV: -1
+      - prot_M7WEL7: -0.0002245
       - s_0180: 1
-      - s_0182: -1
-      - s_0522: -1
       - s_0524: 1
     - lower_bound: 0
     - upper_bound: 1000
-    - gene_reaction_rule: "RHTO_05609 or RHTO_08140"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
+    - gene_reaction_rule: "RHTO_05609"
+  - !!omap
+    - id: "r_1112_REVNo2"
+    - name: "AKG transporter, mitochonrial (reversible) (No2)"
+    - metabolites: !!omap
+      - pmet_r_1112_REV: -1
+      - prot_M7WQJ3: -0.0002245
+      - s_0180: 1
+      - s_0524: 1
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_08140"
   - !!omap
     - id: "r_1113"
     - name: "allantoate uniport"
@@ -58861,9 +58981,10 @@
       - sbo: "SBO:0000655"
     - confidence_score: 2
   - !!omap
-    - id: "r_1118"
-    - name: "aspartate-glutamate transporter"
+    - id: "r_1118No1"
+    - name: "aspartate-glutamate transporter (No1)"
     - metabolites: !!omap
+      - prot_M7WMP3: -0.00011817
       - s_0973: 1
       - s_0975: -1
       - s_0991: -1
@@ -58871,9 +58992,6 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_04513"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
   - !!omap
     - id: "r_1119"
     - name: "biotin uptake"
@@ -58889,9 +59007,10 @@
       - sbo: "SBO:0000655"
     - confidence_score: 2
   - !!omap
-    - id: "r_1120"
-    - name: "carnithine-acetylcarnithine carrier"
+    - id: "r_1120No1"
+    - name: "carnithine-acetylcarnithine carrier (No1)"
     - metabolites: !!omap
+      - prot_M7WMH0: -0.0027594
       - s_0021: 1
       - s_0023: -1
       - s_1235: -1
@@ -58899,9 +59018,6 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
   - !!omap
     - id: "r_1121"
     - name: "ceramide-2' (sphinganine:n-C24:0OH) transport"
@@ -60076,17 +60192,15 @@
       - sbo: "SBO:0000655"
     - confidence_score: 2
   - !!omap
-    - id: "r_1194"
-    - name: "L-glutamate transport"
+    - id: "r_1194No1"
+    - name: "L-glutamate transport (No1)"
     - metabolites: !!omap
+      - prot_M7WMP3: -2.3823e-06
       - s_0991: -1
       - s_0993: 1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_04513"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
   - !!omap
     - id: "r_1195"
     - name: "L-glutamate transport"
@@ -61488,9 +61602,10 @@
       - sbo: "SBO:0000655"
     - confidence_score: 2
   - !!omap
-    - id: "r_1265"
-    - name: "succinate-fumarate transport"
+    - id: "r_1265No1"
+    - name: "succinate-fumarate transport (No1)"
     - metabolites: !!omap
+      - prot_M7WW62: -0.00016767
       - s_0725: 1
       - s_0727: -1
       - s_1458: -1
@@ -61498,9 +61613,6 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_05007"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
   - !!omap
     - id: "r_1266"
     - name: "sulfate uniport"
@@ -75510,9 +75622,10 @@
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_04315"
   - !!omap
-    - id: "r_2132"
-    - name: "oxoglutarate/malate exchange"
+    - id: "r_2132No1"
+    - name: "oxoglutarate/malate exchange (No1)"
     - metabolites: !!omap
+      - prot_M7WI80: -0.00018896
       - s_0066: -1
       - s_0068: 1
       - s_0180: 1
@@ -75520,9 +75633,6 @@
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_03731"
-    - annotation: !!omap
-      - sbo: "SBO:0000655"
-    - confidence_score: 2
   - !!omap
     - id: "r_2134"
     - name: "14-demethyllanosterol exchange"
@@ -84380,13 +84490,13 @@
     - id: "r_4041"
     - name: "biomass pseudoreaction"
     - metabolites: !!omap
-      - s_0394: 133.217
-      - s_0434: -133.217
+      - s_0394: 133.102
+      - s_0434: -133.102
       - s_0450: 1
-      - s_0794: 133.217
-      - s_0803: -133.217
+      - s_0794: 133.102
+      - s_0803: -133.102
       - s_1096: -1
-      - s_1322: 133.217
+      - s_1322: 133.102
       - s_1405: -0.00099
       - s_1467: -0.02
       - s_3714: -1e-06
@@ -84591,11 +84701,11 @@
     - id: "r_4048"
     - name: "carbohydrate pseudoreaction"
     - metabolites: !!omap
-      - s_0001: -0.60672
-      - s_0004: -0.20266
-      - s_0773: -0.24206
-      - s_1107: -0.57627
-      - s_1520: -0.097478
+      - s_0001: -0.58825
+      - s_0004: -0.19649
+      - s_0773: -0.23469
+      - s_1107: -0.55872
+      - s_1520: -0.09451
       - s_3718: 1
     - lower_bound: 0
     - upper_bound: 1000
@@ -84681,16 +84791,16 @@
     - id: "r_4063"
     - name: "lipid backbone pseudoreaction"
     - metabolites: !!omap
-      - m_0100: -0.0025911
-      - s_0089: -0.0037289
-      - s_0666: -0.028109
-      - s_0694: -0.073655
-      - s_1346: -0.0058244
-      - s_1351: -0.0044993
-      - s_1524: -0.050843
-      - s_3710: -0.014762
-      - s_3733: -0.017311
-      - s_3738: -0.00067798
+      - m_0100: -0.0027065
+      - s_0089: -0.003895
+      - s_0666: -0.029361
+      - s_0694: -0.076936
+      - s_1346: -0.0060839
+      - s_1351: -0.0046997
+      - s_1524: -0.053108
+      - s_3710: -0.015419
+      - s_3733: -0.018082
+      - s_3738: -0.00070819
       - s_3746: 1
     - lower_bound: 0
     - upper_bound: 1000
@@ -84710,11 +84820,11 @@
     - id: "r_4065"
     - name: "lipid chain pseudoreaction"
     - metabolites: !!omap
-      - m_0102: -0.033222
-      - m_0103: -0.0051332
-      - s_3740: -0.042939
-      - s_3742: -0.0093612
-      - s_3743: -0.07006
+      - m_0102: -0.031924
+      - m_0103: -0.0052342
+      - s_3740: -0.045419
+      - s_3742: -0.013339
+      - s_3743: -0.072009
       - s_3747: 1
     - lower_bound: 0
     - upper_bound: 1000
@@ -88919,161 +89029,149 @@
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01903"
   - !!omap
-    - id: "t_0015"
-    - name: "fatty acylcarnitine transport (C16:0)"
+    - id: "t_0015No1"
+    - name: "fatty acylcarnitine transport (C16:0) (No1)"
     - metabolites: !!omap
       - m_0111: -1
       - m_0112: 1
+      - prot_M7WMH0: -5.5556e-05
       - s_0021: 1
       - s_0023: -1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0015_REV"
-    - name: "fatty acylcarnitine transport (C16:0) (reversible)"
+    - id: "t_0015_REVNo1"
+    - name: "fatty acylcarnitine transport (C16:0) (reversible) (No1)"
     - metabolites: !!omap
       - m_0111: 1
       - m_0112: -1
+      - prot_M7WMH0: -5.5556e-05
       - s_0021: -1
       - s_0023: 1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0016"
-    - name: "fatty acylcarnitine transport (C18:0)"
+    - id: "t_0016No1"
+    - name: "fatty acylcarnitine transport (C18:0) (No1)"
     - metabolites: !!omap
       - m_0113: -1
       - m_0114: 1
+      - prot_M7WMH0: -5.5556e-05
       - s_0021: 1
       - s_0023: -1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0016_REV"
-    - name: "fatty acylcarnitine transport (C18:0) (reversible)"
+    - id: "t_0016_REVNo1"
+    - name: "fatty acylcarnitine transport (C18:0) (reversible) (No1)"
     - metabolites: !!omap
       - m_0113: 1
       - m_0114: -1
+      - prot_M7WMH0: -5.5556e-05
       - s_0021: -1
       - s_0023: 1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0017"
-    - name: "fatty acylcarnitine transport (C20:0)"
+    - id: "t_0017No1"
+    - name: "fatty acylcarnitine transport (C20:0) (No1)"
     - metabolites: !!omap
       - m_0109: -1
       - m_0110: 1
+      - prot_M7WMH0: -5.5556e-05
       - s_0021: 1
       - s_0023: -1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0017_REV"
-    - name: "fatty acylcarnitine transport (C20:0) (reversible)"
+    - id: "t_0017_REVNo1"
+    - name: "fatty acylcarnitine transport (C20:0) (reversible) (No1)"
     - metabolites: !!omap
       - m_0109: 1
       - m_0110: -1
+      - prot_M7WMH0: -5.5556e-05
       - s_0021: -1
       - s_0023: 1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0018"
-    - name: "fatty acylcarnitine transport (C22:0)"
+    - id: "t_0018No1"
+    - name: "fatty acylcarnitine transport (C22:0) (No1)"
     - metabolites: !!omap
       - m_0105: -1
       - m_0106: 1
+      - prot_M7WMH0: -5.5556e-05
       - s_0021: 1
       - s_0023: -1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0018_REV"
-    - name: "fatty acylcarnitine transport (C22:0) (reversible)"
+    - id: "t_0018_REVNo1"
+    - name: "fatty acylcarnitine transport (C22:0) (reversible) (No1)"
     - metabolites: !!omap
       - m_0105: 1
       - m_0106: -1
+      - prot_M7WMH0: -5.5556e-05
       - s_0021: -1
       - s_0023: 1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0019"
-    - name: "fatty acylcarnitine transport (C24:0)"
+    - id: "t_0019No1"
+    - name: "fatty acylcarnitine transport (C24:0) (No1)"
     - metabolites: !!omap
       - m_0115: -1
       - m_0116: 1
+      - prot_M7WMH0: -5.5556e-05
       - s_0021: 1
       - s_0023: -1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0019_REV"
-    - name: "fatty acylcarnitine transport (C24:0) (reversible)"
+    - id: "t_0019_REVNo1"
+    - name: "fatty acylcarnitine transport (C24:0) (reversible) (No1)"
     - metabolites: !!omap
       - m_0115: 1
       - m_0116: -1
+      - prot_M7WMH0: -5.5556e-05
       - s_0021: -1
       - s_0023: 1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0020"
-    - name: "fatty acylcarnitine transport (C26:0)"
+    - id: "t_0020No1"
+    - name: "fatty acylcarnitine transport (C26:0) (No1)"
     - metabolites: !!omap
       - m_0107: -1
       - m_0108: 1
+      - prot_M7WMH0: -5.5556e-05
       - s_0021: 1
       - s_0023: -1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
-    - id: "t_0020_REV"
-    - name: "fatty acylcarnitine transport (C26:0) (reversible)"
+    - id: "t_0020_REVNo1"
+    - name: "fatty acylcarnitine transport (C26:0) (reversible) (No1)"
     - metabolites: !!omap
       - m_0107: 1
       - m_0108: -1
+      - prot_M7WMH0: -5.5556e-05
       - s_0021: -1
       - s_0023: 1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_01354"
-    - annotation: !!omap
-      - sbo: "SBO:0000176"
   - !!omap
     - id: "t_0021No1"
     - name: "mitochondrial carnitine acyltransferase (C16:0) (No1)"
@@ -104828,7 +104926,7 @@
     - id: "t_0883No1"
     - name: "D-arabinitol 4-dehydrogenase (No1)"
     - metabolites: !!omap
-      - prot_M7XGH5: -1.2626e-06
+      - prot_M7XGH5: -0.0003171
       - s_0580: -1
       - s_0794: -1
       - s_1198: 1
@@ -104854,7 +104952,7 @@
     - id: "t_0884No1"
     - name: "D-arabinitol 2-dehydrogenase/D-ribulose reductase (No1)"
     - metabolites: !!omap
-      - prot_M7X791: -8.5734e-07
+      - prot_M7X791: -0.0025484
       - s_0794: -1
       - s_1207: 1
       - s_1212: -1
@@ -104867,7 +104965,7 @@
     - id: "t_0884_REVNo1"
     - name: "D-arabinitol 2-dehydrogenase/D-ribulose reductase (reversible) (No1)"
     - metabolites: !!omap
-      - prot_M7X791: -0.0003171
+      - prot_M7X791: -0.0025484
       - s_0794: 1
       - s_1207: -1
       - s_1212: 1
@@ -104880,7 +104978,7 @@
     - id: "t_0885No1"
     - name: "D-ribulokinase (No1)"
     - metabolites: !!omap
-      - prot_M7WVT6: -0.00018618
+      - prot_M7WVT6: -0.0025484
       - s_0394: 1
       - s_0434: -1
       - s_0577: 1
@@ -105016,7 +105114,7 @@
     - id: "y200003No1"
     - name: "ATP-citrate lyase (No1)"
     - metabolites: !!omap
-      - prot_M7WHC9: -0.0015461
+      - prot_M7WHC9: -0.14477
       - s_0373: 1
       - s_0394: 1
       - s_0434: -1

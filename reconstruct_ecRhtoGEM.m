@@ -1,4 +1,4 @@
- %
+%
 % reconstruct_ecRhtoGEM
 %
 %   Reconstruction of enzyme-constrained genome-scale metabolic model for
@@ -8,7 +8,7 @@
 %   measurements for the modelled enzymes. Thirdly, adds ribosomal subunits
 %   to the ec-models by adding a translation pseudoreaction.
 %
-%   Last modified: 2021-04-20
+%   Last modified: 2021-05-03
 %
 
 % Prepare COBRA and set repo root path
@@ -104,6 +104,11 @@ updateDatabases;
 
 % Change lipid and protein conteint to Xexp condition
 cd([root '/code'])
+% First increase FA fraction by 25%, to prevent later problems in GexpUrea.
+% scaleLipidProtein function compensates for the FA increase.
+rxnIdx = find(contains(model.rxnNames,'lipid backbone pseudoreaction'));
+metIdx = find(contains(model.metNames,'fatty acid backbone'));
+model.S(metIdx,rxnIdx)=model.S(metIdx,rxnIdx)*1.25;
 lipidData = loadLipidChainData(model,1);
 model = scaleLipidProtein(model,lipidData,0.4385);
 cd([root '/GECKO/geckomat/'])
@@ -332,12 +337,15 @@ for j=1:numel(ecModels);
     mmolAA=full(model_P.S(:,protRxnIdx));
     mmolAA=-sum(mmolAA(mmolAA<0)); %mmol amino acids in biomass
     riboKcat=10.5*3600; %10.5 aa/sec (doi:10.1042/bj1680409) -> aa/hour
-    riboKcat=mmolAA/riboKcat; %compensate for the amount of amino acids elongated
+    riboKcat=riboKcat/mmolAA; %new version
+    %riboKcat=mmolAA/riboKcat; %old version:compensate for the amount of amino acids elongated
     riboKcat=riboKcat*1000; % 1000-fold increase to prevent very low fluxes
     % Include new reaction representing ribosomes (=translation)
     rxnsToAdd.rxns={'translation'};
     rxnsToAdd.mets=[model_P.mets(protMetIdx),model_P.mets(aaMetIdx),riboToAdd.mets'];
-    rxnsToAdd.stoichCoeffs=[1,-1,repmat(-riboKcat,1,numel(riboToAdd.mets))];
+    rxnsToAdd.stoichCoeffs=[1,-1,repmat(-1/riboKcat,1,numel(riboToAdd.mets))];
+    % rxnsToAdd.stoichCoeffs=[1,-1,repmat(-riboKcat,1,numel(riboToAdd.mets))];
+    % old version
     rxnsToAdd.subSystem={'Ribosome'};
     rxnsToAdd.grRules={strjoin(enzGenes,' and ')};
     model_P=addRxns(model_P,rxnsToAdd);
@@ -393,24 +401,5 @@ clear protMetIdx protRxnIdx repl ribo riboExchId riboKcat riboToAdd
 clear rxnsToAdd sequences sol
 cd ([root]);
 
-%% Get fluxes and enzyme usages to each reaction
-
-ecModelsRibo{1} = ecModelP_Xexp;
-ecModelsRibo{2} = ecModelP_XNlim;
-ecModelsRibo{3} = ecModelP_Aexp;
-ecModelsRibo{4} = ecModelP_ANlim;
-ecModelsRibo{5} = ecModelP_GexpUrea;
-ecModelsRibo{6} = ecModelP_GNlimUrea;
-% Order in ecModelsRibo matches fermParams.conds
-
-for j = 1:numel(ecModelsRibo)
-    disp(['======= Results from model: ' fermParams.conds{j}, ' ======='])
-    modelTmp_proteome = ecModelsRibo{j};    
-    printConstraints(modelTmp_proteome,-1000,1000);
-    disp(['======= fluxes: ======='])
-    sol = solveLP(modelTmp_proteome,1);
-    printFluxVector(modelTmp_proteome, sol.x, 'true', 'true');
-    disp(['======= enzyme usage: ======='])
-    [absUsage,capUsage] = enzymeUsage(modelTmp_proteome,sol.x);
-    ecModelsRibo{j} = modelTmp_proteome;
-end
+%Remove the cloned repos:
+rmdir('GECKO', 's')

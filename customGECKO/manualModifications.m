@@ -1,6 +1,6 @@
 function [model,modifications] = manualModifications(model)
 %
-% Ivan Domenzain.      Last edited: 2020-02-07
+%
 
 modifications{1} = cell(0,1);
 modifications{2} = cell(0,1);
@@ -136,7 +136,7 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
         newValue = [];
         reaction = string(reaction);
         % 1. [M7WT33//EC2.4.1.109] dolichyl-phosphate-mannose--protein
-        % mannosyltransferase (No2):
+        % mannosyltransferase (No2): limiting enzyme in
         % xylose-->prev_Kcat:0.0053666 new_Kcat:0.0053667 CC:6.6589 Err:-81.3496%
         % acetate-->prev_Kcat:0.0053666 new_Kcat:0.0053667 CC:3.4618 Err:-94.1527%
         % No Kcats available in BRENDA; S.A. values for EC2.4.1.109 were
@@ -160,7 +160,8 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
                   modifications{2} = [modifications{2}; reaction];
               end
           end
-          % [M7X5F4/EC4.1.2.13] fructose-bisphosphate aldolase:
+          % 2.[M7X5F4/EC4.1.2.13] fructose-bisphosphate aldolase: limiting
+          % enzyme in
           % acetate-->prev_Kcat:0.002 new_Kcat:1562 CC:138.5014 Err:344.9769%
           % Many Kcats available in BRENDA according to different
           % substrates; by curating, some Kcats calculated from S.A., some
@@ -200,8 +201,8 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
               modifications{1} = [modifications{1}; 'M7X5F4'];
               modifications{2} = [modifications{2}; reaction];
           end
-        % 2. [M7XI04/EC1.1.1.34] HMG-CoA reductase/ 3-hydroxy-3-methylglutaryl
-        % coenzyme A reductase:
+        % 3. [M7XI04/EC1.1.1.34] HMG-CoA reductase/ 3-hydroxy-3-methylglutaryl
+        % coenzyme A reductase: limiting enyzme in
         % xylose-->1.7122e-01 of total protein pool at round A of ecRhtoGEM generation;
         % acetate-->3.6845e-01 of total pool at round A;
         % Higher than prev_Kcat not available in BRENDA (Rattus
@@ -217,8 +218,8 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
              modifications{1} = [modifications{1}; 'M7XI04'];
              modifications{2} = [modifications{2}; reaction];
           end
-         % 3. [M7XKV7//EC#:6.3.5.3] 5'-phosphoribosylformyl glycinamidine
-         % synthetase:
+         % 4. [M7XKV7//EC#:6.3.5.3] 5'-phosphoribosylformyl glycinamidine
+         % synthetase: limiting enzyme in
          % xylose-->8.4551e-02 of total protein pool at round A of ecRhtoGEM generation;
          % acetate-->1.3833e-01 of total pool at round A
          % Higher than prev_Kcat not available in BRENDA (E.coli).
@@ -230,7 +231,8 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
              modifications{1} = [modifications{1}; 'M7XKV7'];
              modifications{2} = [modifications{2}; reaction];
           end
-        % 4. [M7WFB4//EC#:2.4.1.34] 1,3-beta-glucan synthase (No1):
+        % 5. [M7WFB4//EC#:2.4.1.34] 1,3-beta-glucan synthase (No1):
+        % limiting enyzme in
         % xylose-->7.0144e-02 of total protein pool at round A of ecRhtoGEM generation;
         % acetate-->1.5094e-01 of total pool at round A
         % No higher than prev_Kcat available in BRENDA (S.aureus).
@@ -246,10 +248,10 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
              modifications{1} = [modifications{1}; 'M7WFB4'];
              modifications{2} = [modifications{2}; reaction];
           end
-        % 5. [M7XI95//EC#:1.14.19.1] Delta-9 fatty acid desaturase ER membrane
+        % 6. [M7XI95//EC#:1.14.19.1] Delta-9 fatty acid desaturase ER membrane
         % (No1); stearoyl- or oleoyl- or palmitoyl-CoA desaturase
         % (n-C18:0CoA -> n-C18:1CoA),(n-C18:1CoA -n-C18:2CoA),(n-C16:0CoA
-        % -> n-C16:1CoA);
+        % -> n-C16:1CoA): limiting enzyme in
         % xylose-->2.6441e-02  of total protein pool at round B of ecModel generation;
         % acetate-->3.5704e-02 of total pool at round A
         % Kcat values available in BRENDA were for Rattus norvegicus and
@@ -262,7 +264,8 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
              modifications{1} = [modifications{1}; 'M7XI95'];
              modifications{2} = [modifications{2}; reaction];
           end
-          % 6. [M7WPW0/EC2.1.1.41] sterol 24-C-methyltransferase:
+          % 7. [M7WPW0/EC2.1.1.41] sterol 24-C-methyltransferase: limiting
+          % enzyme in
           % xylose-->2.3058e-02 of total protein pool (version B of ecModel);
           % acetate-->3.1136e-02 of total pool at round A
           % prev_Kcat:0.013;
@@ -275,8 +278,8 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
               modifications{1} = [modifications{1}; 'M7WPW0'];
               modifications{2} = [modifications{2}; reaction];
           end
-          % 7. [M7WFJ0/EC2.3.1.35] Glutamate N-acetyltransferase/ ornithine
-          % transacetylase (No1):
+          % 8. [M7WFJ0/EC2.3.1.35] Glutamate N-acetyltransferase/ ornithine
+          % transacetylase (No1): limiting enzyme in
           % xylose-->3.1109e-02 of total protein pool (version B of ecModel);
           % acetate-->3.3393e-02 of total pool at round B
           % No Kcats available in BRENDA; prev_Kcat:0.22;
@@ -288,7 +291,8 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
              modifications{1} = [modifications{1}; 'M7WFJ0'];
              modifications{2} = [modifications{2}; reaction];
           end
-          % 8. [M7X6X3/EC4.2.1.3] aconitase/ aconitate hydratase:
+          % 9. [M7X6X3/EC4.2.1.3] aconitase/ aconitate hydratase: limiting
+          % enzyme in
           % xylose-->2.8584e-01 of total protein pool )topUsedEnzymes); prev_Kcat:5.2;
           % acetate-->prev_Kcat:5.2 new_Kcat:5.2 CC:0.097124 Err:-94.1527%
           % Higher than prev_Kcat not available in BRENDA (Salmonella
@@ -318,9 +322,9 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
                   modifications{2} = [modifications{2}; reaction];
               end
           end
-          % 9. [M7WG08/EC1.1.1.302]
+          % 10. [M7WG08/EC1.1.1.302]
           % 2,5-diamino-6-ribosylamino-4(3H)-pyrimidinone 5'-phosphate
-          % reductase (NADPH):
+          % reductase (NADPH): limiting enzyme in
           % xylose-->2.0551e-02 of total protein pool; prev_Kcat:0.0006;
           % acetate-->2.1099e-02 of total pool at round A
           % No Kcats reported on BRENDA; highest S.A. available in BRENDA
@@ -332,11 +336,12 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
               modifications{1} = [modifications{1}; 'M7WG08'];
               modifications{2} = [modifications{2}; reaction];
           end
-          % 10. [M7X6B9/M7WNY8/M7X383/M7WW26/EC6.2.1.3] fatty-acid--CoA
-          % ligase/long-chain acyl-coa synthetase: prev_Kcat: 0.029;
+          % 11. [M7X6B9/M7WNY8/M7X383/M7WW26/EC6.2.1.3] fatty-acid--CoA
+          % ligase/long-chain acyl-coa synthetase: limiting enzyme in
           % xylose-->6.5097e-02 of total protein pool (version B of ecModel);
-          % acetate-->1.0845e-01 of total pool at round B
-          % and [M7WNY8/EC6.2.1.3]; prev_Kcat:1.2;
+          % acetate-->1.0845e-01 of total pool at round B;
+          % prev_Kcat: 0.029;
+          % prev_Kcat:1.2 [M7WNY8/EC6.2.1.3];
           % No higher Kcats reported on BRENDA;
           if strcmpi('prot_M7WNY8',enzName) && contains(reaction,'fatty-acid--CoA ligase')
               % Y.lipolytica S.A. [2020-06-09];
@@ -370,7 +375,27 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
               modifications{1} = [modifications{1}; 'M7WW26'];
               modifications{2} = [modifications{2}; reaction];
           end
-          % 11. [M7WT53/EC2.3.1.158] Phospholipid:diacylglycerol acyltransferase:
+          % 12.,13. [M7WSW5/M7XM89/EC2.3.1.86] fatty acid synthase, subunits beta and alpha:
+          % acetate-->limiting enzymes at Aexp condition
+          % prev_Kcat:120 is specific activity of S.cerevisiae,as
+          % reported on BRENDA; No Kcats available on BRENDA;
+          % Therefore, Kcat value artificially increased;
+          if strcmpi('prot_M7WSW5',enzName) && contains(reaction,'fatty-acyl-CoA synthase')
+              % S.cerevisiae S.A. [2020-10-29];
+              % https://www.brenda-enzymes.org/literature.php?e=2.3.1.86&r=487603;
+              %newValue      = -(3*2400*60)^-1;             % 120[1/s]
+              newValue      = -(10*3*2400*60)^-1;
+              modifications{1} = [modifications{1}; 'M7WSW5'];
+              modifications{2} = [modifications{2}; reaction];
+          end
+          if strcmpi('prot_M7XM89',enzName) && contains(reaction,'fatty-acyl-CoA synthase')
+              %newValue      = -(3*2400*60)^-1;             % 120[1/s]
+              newValue      = -(10*3*2400*60)^-1;
+              modifications{1} = [modifications{1}; 'M7XM89'];
+              modifications{2} = [modifications{2}; reaction];
+          end
+          % 14. [M7WT53/EC2.3.1.158] Phospholipid:diacylglycerol
+          % acyltransferase: limiting enzyme in
           % xylose-->5.1163e-01 of total protein pool (B version of ecModel);
           % xylose-->3.0163e-01 of total protein pool (C version of ecModel);
           % acetate-->4.3341e-01 of total pool at round B
@@ -386,9 +411,9 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
               modifications{1} = [modifications{1}; 'M7WT53'];
               modifications{2} = [modifications{2}; reaction];
           end
-          % [M7WXM9/EC2.1.1.14]
+          % 15. [M7WXM9/EC2.1.1.14]
           % 5-methyltetrahydropteroyltriglutamate-homocysteine
-          % S-methyltransferase:
+          % S-methyltransferase: limiting enzyme in
           % acetate-->2.4333e-02 of total pool at round A; prev_Kcat:0.45;
           % Highest reported Kcat in BRENDA for S.cerevisiae 0.6 [1/s];
           % New value chosen according to: EC number/any organism;
@@ -408,27 +433,8 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
                  modifications{2} = [modifications{2}; reaction];
               end
           end
-          % [M7WSW5/M7XM89/EC2.3.1.86] fatty acid synthase, subunits beta and alpha:
-          % acetate-->limiting enzymes at Aexp condition
-          % prev_Kcat:120 is specific activity of S.cerevisiae,as
-          % reported on BRENDA; No Kcats available on BRENDA;
-          % Therefore, Kcat value artificially increased;
-          if strcmpi('prot_M7WSW5',enzName) && contains(reaction,'fatty-acyl-CoA synthase')
-              % S.cerevisiae S.A. [2020-10-29];
-              % https://www.brenda-enzymes.org/literature.php?e=2.3.1.86&r=487603;
-              %newValue      = -(3*2400*60)^-1;             % 120[1/s]
-              newValue      = -(10*3*2400*60)^-1;
-              modifications{1} = [modifications{1}; 'M7WSW5'];
-              modifications{2} = [modifications{2}; reaction];
-          end
-          if strcmpi('prot_M7XM89',enzName) && contains(reaction,'fatty-acyl-CoA synthase')
-              %newValue      = -(3*2400*60)^-1;             % 120[1/s]
-              newValue      = -(10*3*2400*60)^-1;
-              modifications{1} = [modifications{1}; 'M7XM89'];
-              modifications{2} = [modifications{2}; reaction];
-          end
-          % [M7WLQ0/EC2.3.1.7] Carnitine O-acetyltransferase:
-          % acetate-->limiting enzymes at Aexp condition
+          % 16. [M7WLQ0/EC2.3.1.7] Carnitine O-acetyltransferase:
+          % acetate-->limiting enzyme in Aexp condition
           % prev_Kcat:97.5994 Mus Musculus (acetyl-Coa) as reported on
           % BRENDA;
           if strcmpi('prot_M7WLQ0',enzName) && contains(reaction,'carnitine O-acetyltransferase')
@@ -443,13 +449,13 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
               modifications{1} = [modifications{1}; 'M7WLQ0'];
               modifications{2} = [modifications{2}; reaction];
           end
-           % 13. EC1.9.3.1 - cytochrome-c oxidase;
+           % 17. EC1.9.3.1 - cytochrome-c oxidase: limiting enzyme in
            % xylose-->0.043 to 0.137 of total protein pool at round A;
            % acetate-->prev_Kcat:12.0001 new_Kcat:2000 CC:0.085716 Err:-93.654%
            % prev_Kcat for M7WUI0 0.15634;
            % The highest available S.A. in BRENDA gives Kcat of 712.5 [1/s]
            % for S.cerevisiae;
-           % Required for Xexp condition;
+           % Manual curation required in Xexp condition;
           if contains(reaction,'ferrocytochrome-c:oxygen oxidoreductase')
               if strcmpi('prot_M7WUI0',enzName)
                  % S.cerevisiae Kcat [2020-05-08];
@@ -490,6 +496,147 @@ function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,
                   modifications{1} = [modifications{1}; 'M7XKA8'];
                   modifications{2} = [modifications{2}; reaction];
               end
+          end
+          % 18. [M7XGH5/EC1.1.1.11] D-arabinitol 4-dehydrogenase: manual
+          % curation to precise xylose utilisation pathway;
+          % xylose: prev kcat 220004 (probably a wild card);
+          % New kcat chosen as highest available on BRENDA;
+          % criteria: EC1.1.1.11, any organism, any substrate;
+          if strcmpi('prot_M7XGH5',enzName) && contains(reaction,'D-arabinitol 4-dehydrogenase (No1)')
+             % G. oxydans (acetic acid bacteria) kcat [2021-06-16];
+             % NAD-dependent, substrate: D-arabinitol;
+             % https://www.brenda-enzymes.org/literature.php?e=1.1.1.11&r=701082;
+             newValue      = -(876*3600)^-1;
+             modifications{1} = [modifications{1}; 'M7XGH5'];
+             modifications{2} = [modifications{2}; reaction];
+          end
+          % 19. [M7X791/EC1.1.1.10] D-arabinitol 2-dehydrogenase/D-ribulose
+          % reductase, same as L-xylulose reductase: manual curation to
+          % precise xylose utilisation pathway;
+          % xylose: prev kcat 876 (wild card EC1.1.1.11 D-arabinitol 4-dehydrogenase);
+          % New kcat chosen as highest available on BRENDA;
+          % criteria: EC1.1.1.10, any organism, any substrate;
+          if strcmpi('prot_M7X791',enzName) && contains(reaction,'D-arabinitol 2-dehydrogenase/D-ribulose reductase')
+             % N. crassa (bread mold) kcat [2021-06-16];
+             % NADP/NADPH-dependent, does not accept NAD/NADH;
+             % substrate: D-ribulose;
+             % https://www.brenda-enzymes.org/literature.php?e=1.1.1.10&r=684552;
+             newValue      = -(109*3600)^-1;
+             modifications{1} = [modifications{1}; 'M7X791'];
+             modifications{2} = [modifications{2}; reaction];
+          end
+          % 20. [M7WVT6/EC2.7.1.16] D-ribulokinase: manual curation to
+          % precise xylose utilisation pathway;
+          % xylose: prev kcat 1492 (wild card EC2.7.1.2 glucokinase);
+          % New kcat chosen as highest available on BRENDA;
+          % criteria: EC2.7.1.16, any organism, any substrate;
+          if strcmpi('prot_M7WVT6',enzName) && contains(reaction,'D-ribulokinase (No1)')
+             % E. coli kcat (D-ribitol) [2021-06-16];
+             % https://www.brenda-enzymes.org/literature.php?e=2.7.1.16&r=641013;
+             newValue      = -(109*3600)^-1;
+             modifications{1} = [modifications{1}; 'M7WVT6'];
+             modifications{2} = [modifications{2}; reaction];
+          end
+          % 21. [M7WHC9/EC2.3.3.8] ATP citrate synthase (ACL)/ATP-citrate
+          % lyase (ACL): manual curation because of importance in lipid
+          % production (previously low flux observed, now kcat decreased);
+          % prev kcat: 179.7 (probably a wild card);
+          % no kcats available on BRENDA, specific activity used instead;
+          % criteria: EC2.3.3.8, phylogenetically closest organism with
+          % available values;
+          if strcmpi('prot_M7WHC9',enzName) && contains(reaction,'ATP-citrate lyase (No1)')
+             % L. starkeyi S.A. (Ratledge 1983) [2021-06-16];
+             % https://www.brenda-enzymes.org/literature.php?e=2.3.3.8&r=488187;
+             newValue      = -(0.922*124.86*60)^-1;          %1.918 [1/s]
+             modifications{1} = [modifications{1}; 'M7WHC9'];
+             modifications{2} = [modifications{2}; reaction];
+          end
+          % 22. [M7X2B5/EC1.4.1.4] glutamate dehydrogenase(NADP-dependent):
+          % manual curation because of importance in NADPH balance
+          % (previously high flux observed, now kcat decreased);
+          % prev kcat: 28650 (highest available on BRENDA, from S.toebii);
+          % New kcat chosen to satisfy criteria:
+          % EC1.4.1.4, substrate 2-oxoglutarate, phylogenetically closest
+          % organism (yeast) with highest available value;
+          if strcmpi('prot_M7X2B5',enzName) && contains(reaction,'glutamate dehydrogenase (NADP) (No1)')
+             % K. lactis kcat [2021-06-16];
+             % https://www.brenda-enzymes.org/literature.php?e=1.4.1.4&r=743258;
+             %newValue      = -(21*3600)^-1;
+             newValue      = -(21*3600)^-1;
+             modifications{1} = [modifications{1}; 'M7X2B5'];
+             modifications{2} = [modifications{2}; reaction];
+          end
+          %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+          % 23. [M7WMP3/EC7.-.-.-] aspartate-glutamate transporter
+          % (mitochondrial carrier protein), Agc1p: manual curation because
+          % no EC number in BRENDA database (previously not
+          % enzyme-constrained, now kcat from the literature);
+          if strcmpi('prot_M7WMP3',enzName) && contains(reaction,'aspartate-glutamate transporter')
+             % S. cerevisiae S.A. [2021-06-16];
+             % https://doi.org/10.1046/j.1365-2958.2003.03742.x;
+             %newValue      = -(0.0187*75.42*60)^-1;         %0.0235[1/s]
+             newValue      = -(100000*0.0187*75.42*60)^-1; 
+             modifications{1} = [modifications{1}; 'M7WMP3'];
+             modifications{2} = [modifications{2}; reaction];
+          end
+          % 24. [M7WI80/EC7.-.-.-] oxoglutarate/malate exchange
+          % (Mitochondrial 2-oxodicarboxylate carrier), Odc1p, Odc2p:
+          % manual curation because no EC number in BRENDA database
+          % (previously not enzyme-constrained, now kcat from the
+          % literature);
+          if strcmpi('prot_M7WI80',enzName) && contains(reaction,'oxoglutarate/malate exchange')
+             % S. cerevisiae S.A. [2021-06-16];
+             % https://doi.org/10.1074/jbc.M004332200;
+             %newValue      = -(252*35*60)^-1;         %147[1/s]
+             newValue      = -(10*252*35*60)^-1;
+             modifications{1} = [modifications{1}; 'M7WI80'];
+             modifications{2} = [modifications{2}; reaction];
+          end
+          % 25. [M7WEL7/M7WQJ3/EC7.-.-.-] AKG transporter, mitochondrial;
+          % citrate transporter (Mitochondrial carrier protein,
+          % tricarboxylate carrier), Ctp1p, Yhm2p: manual curation because
+          % no EC number in BRENDA database (previously not
+          % enzyme-constrained, now kcat from the literature);
+          if contains(reaction,'AKG transporter, mitochonrial')
+              if strcmpi('prot_M7WEL7',enzName)
+                 % M circinelloidesWJ11 S.A. [2021-06-17];
+                 % https://doi.org/10.3389/fmicb.2021.673881;
+                 %newValue     = -(2.32*32*60)^-1;       %1.237[1/s]
+                 newValue     = -(1000*2.32*32*60)^-1;
+                 modifications{1} = [modifications{1}; 'M7WEL7'];
+                 modifications{2} = [modifications{2}; reaction];
+              elseif strcmpi('prot_M7WQJ3',enzName)
+                  %newValue      = -(2.32*32*60)^-1;
+                  newValue      = -(1000*2.32*32*60)^-1;
+                  modifications{1} = [modifications{1}; 'M7WQJ3'];
+                  modifications{2} = [modifications{2}; reaction];
+              end
+          end
+          % 26. [M7WW62/EC7.-.-.-] succinate-fumarate transport
+          % (Mitochondrial carrier protein, succinate:fumarate antiporter),
+          % Sfc1p: manual curation because no EC number in BRENDA database
+          % (previously not enzyme-constrained, now kcat from the
+          % literature);
+          if strcmpi('prot_M7WW62',enzName) && contains(reaction,'succinate-fumarate transport')
+             % S. cerevisiae S.A. [2021-06-17];
+             % https://doi.org/10.1016/S0014-5793(97)01269-6;
+             %newValue      = -(2.8*35.5*60)^-1;         %1.657[1/s]
+             newValue      = -(1000*2.8*35.5*60)^-1;
+             modifications{1} = [modifications{1}; 'M7WW62'];
+             modifications{2} = [modifications{2}; reaction];
+          end
+          % 27. [M7WMH0/EC7.-.-.-] carnithine-acetylcarnithine carrier
+          % (Carnitine acyl carnitine carrier, mitochondrial), Crc1p:
+          % manual curation because no EC number in BRENDA database
+          % (previously not enzyme-constrained, now kcat from the
+          % literature);
+          if strcmpi('prot_M7WMH0',enzName) && contains(reaction,'carnithine-acetylcarnithine carrier')
+             % S. cerevisiae S.A. [2021-06-17];
+             % https://doi.org/10.1016/S0014-5793(99)01555-0;
+             %newValue      = -(15.1*40*60)^-1;         %10.07[1/s]
+             newValue      = -(10*15.1*40*60)^-1;
+             modifications{1} = [modifications{1}; 'M7WMH0'];
+             modifications{2} = [modifications{2}; reaction];
           end
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

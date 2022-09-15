@@ -337,12 +337,15 @@ for j=1:numel(ecModels);
     mmolAA=full(model_P.S(:,protRxnIdx));
     mmolAA=-sum(mmolAA(mmolAA<0)); %mmol amino acids in biomass
     riboKcat=10.5*3600; %10.5 aa/sec (doi:10.1042/bj1680409) -> aa/hour
-    riboKcat=mmolAA/riboKcat; %compensate for the amount of amino acids elongated
+    riboKcat=riboKcat/mmolAA; %new version
+    %riboKcat=mmolAA/riboKcat; %old version:compensate for the amount of amino acids elongated
     riboKcat=riboKcat*1000; % 1000-fold increase to prevent very low fluxes
     % Include new reaction representing ribosomes (=translation)
     rxnsToAdd.rxns={'translation'};
     rxnsToAdd.mets=[model_P.mets(protMetIdx),model_P.mets(aaMetIdx),riboToAdd.mets'];
-    rxnsToAdd.stoichCoeffs=[1,-1,repmat(-riboKcat,1,numel(riboToAdd.mets))];
+    rxnsToAdd.stoichCoeffs=[1,-1,repmat(-1/riboKcat,1,numel(riboToAdd.mets))];
+    % rxnsToAdd.stoichCoeffs=[1,-1,repmat(-riboKcat,1,numel(riboToAdd.mets))];
+    % old version
     rxnsToAdd.subSystem={'Ribosome'};
     rxnsToAdd.grRules={strjoin(enzGenes,' and ')};
     model_P=addRxns(model_P,rxnsToAdd);

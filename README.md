@@ -18,9 +18,9 @@
 
 
 ### Instructions:
-* `edit_rhtoGEM.m`: run this script to introduce reactions for alternative xylose assimilation pathway.
-* `reconstruct_ecRhtoGEM.m`: generate condition-specific enzyme-constrained models with integrated absolute proteomics data. Models are reconstructed based on optimized parameters, including manually curated enzymatic kcat values as provided in `manualModifications.m`. Model reconstruction involves the following steps: 1) `geckomat/enhanceGEM.m` pipeline which creates the first version of ec-model with an enzyme pool used for screening required kcat modifications; 2) `gecomat/utilities/integrate_proteomics/generate_protModels.m` pipeline which sets constraints on high-quality measured individual enzymes from the provided proteomics dataset; 3) adding ribosomal subunits to the ec-models. In `results/generate_protModels_pipeline` is written which enzyme abundances were automatically modified in order to reach the experimental conditions. In `results/ribosome_integration` is written distribution of average ribosomal subunit abundances and also which subunit abundances were flexibilized in order to reach experimental conditions.
-* `analyze_ecRhtoGEM.m`: runs random sampling, calculates flux mean value and standard deviation; calculate enzyme usage; extracts ATP, NADPH, and NADH production balances from flux results; converts fluxes to original, non-ecModel version.
+* Script `edit_rhtoGEM.m` introduces reactions for alternative xylose assimilation pathway.
+* Script `reconstruct_ecRhtoGEM.m` generates condition-specific enzyme-constrained models with integrated absolute proteomics data. Models are reconstructed based on optimized parameters, including manually curated enzymatic kcat values, as provided in `manualModifications.m`. After downloading the GECKO folder, model reconstruction involves the following steps: 1) `geckomat/enhanceGEM.m` pipeline, which creates the first version of ec-model with an enzyme pool that is used for screening required kcat modifications; 2) `geckomat/utilities/integrate_proteomics/generate_protModels.m` pipeline, which sets constraints on high-quality measured individual enzymes from the provided proteomics dataset. Folder `results/generate_protModels_pipeline` provides the track of enzyme abundances which were automatically modified in order to reach the experimental conditions.
+* Script `analyze_ecRhtoGEM.m` runs random sampling, calculates flux mean value and standard deviation, calculates enzyme usage, extracts ATP, NADPH, and NADH production balances from flux results, and converts fluxes to original, non-ecModel version.
 
 ##### Last update:
-09-15-2022
+2022-09-15

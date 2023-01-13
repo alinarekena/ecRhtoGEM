@@ -6,11 +6,3 @@ prot_M7XI04	5.05701250283813e-07	0.00050064423776224	0.070259466610585
 prot_M7XI95	7.29743072386243e-07	0.000722510956797117	0.0439184091746243
 prot_M7XJ70	4.26096187538957e-07	0.000421835225663568	0.0226073608535483
 prot_M7XKF0	0.000431358336353629	0.00205108042379637	0.0641670073994569
-
-Modified ub for:	prot_M7WJE8_exchange	gRate: 1.9188e-05
-Modified ub for:	prot_M7XI95_exchange	gRate: 1.919e-05
-Modified ub for:	prot_M7XJ70_exchange	gRate: 1.919e-05
-Modified ub for:	prot_M7WS89_exchange	gRate: 1.919e-05
-Modified ub for:	prot_M7XI04_exchange	gRate: 1.919e-05
-Modified ub for:	prot_M7WW40_exchange	gRate: 0.0084552
-Modified ub for:	prot_M7XKF0_exchange	gRate: 0.020769

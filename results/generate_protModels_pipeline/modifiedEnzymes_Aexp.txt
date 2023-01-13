@@ -19,25 +19,3 @@ prot_M7XI95	2.13383466239461e-06	0.00223378483709269	0.135789848774137
 prot_M7XIT2	2.11360850294053e-06	0.00209247241791112	0.19334027549526
 prot_M7XJ70	3.2077313311442e-06	0.00319330585196017	0.171139385283272
 prot_M7XKV7	3.77846279651525e-07	0.00037406781684344	0.0550490767340881
-
-Modified ub for:	prot_M7XKV7_exchange	gRate: 7.373e-05
-Modified ub for:	prot_M7WNB5_exchange	gRate: 7.373e-05
-Modified ub for:	prot_M7XIT2_exchange	gRate: 7.373e-05
-Modified ub for:	prot_M7X109_exchange	gRate: 7.373e-05
-Modified ub for:	prot_M7WS89_exchange	gRate: 7.373e-05
-Modified ub for:	prot_M7WJI1_exchange	gRate: 7.373e-05
-Modified ub for:	prot_M7XI04_exchange	gRate: 7.373e-05
-Modified ub for:	prot_M7WFB4_exchange	gRate: 7.373e-05
-Modified ub for:	prot_M7XJ70_exchange	gRate: 7.373e-05
-Warning: No limiting individual enzyme was found. All fully saturated enzymes are
-flexibilized by 1% 
-> In flexibilizeProteins (line 79)
-  In constrainEnzymes (line 143)
-  In generate_protModels (line 162) 
-
-Modified ub for:	prot_M7WMT2_exchange	gRate: 7.4467e-05
-Modified ub for:	prot_M7WKX0_exchange	gRate: 7.4467e-05
-Modified ub for:	prot_M7XI95_exchange	gRate: 7.4467e-05
-Modified ub for:	prot_M7WW40_exchange	gRate: 7.4467e-05
-Modified ub for:	prot_M7XBZ9_exchange	gRate: 0.022086
-Modified ub for:	prot_M7XHB5_exchange	gRate: 0.075685

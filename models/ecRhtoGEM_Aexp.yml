@@ -4680,11 +4680,6 @@
     - compartment: "c"
     - formula: ""
   - !!omap
-    - id: "pmet_r_0697"
-    - name: "pmet_r_0697"
-    - compartment: "c"
-    - formula: ""
-  - !!omap
     - id: "pmet_r_0734"
     - name: "pmet_r_0734"
     - compartment: "m"
@@ -6205,11 +6200,6 @@
     - compartment: "c"
     - formula: ""
   - !!omap
-    - id: "prot_M7WHZ8"
-    - name: "prot_M7WHZ8"
-    - compartment: "c"
-    - formula: ""
-  - !!omap
     - id: "prot_M7WI20"
     - name: "prot_M7WI20"
     - compartment: "c"
@@ -6612,6 +6602,11 @@
   - !!omap
     - id: "prot_M7WNF8"
     - name: "prot_M7WNF8"
+    - compartment: "c"
+    - formula: ""
+  - !!omap
+    - id: "prot_M7WNN7"
+    - name: "prot_M7WNN7"
     - compartment: "c"
     - formula: ""
   - !!omap
@@ -7742,11 +7737,6 @@
   - !!omap
     - id: "prot_M7X2H2"
     - name: "prot_M7X2H2"
-    - compartment: "c"
-    - formula: ""
-  - !!omap
-    - id: "prot_M7X2H6"
-    - name: "prot_M7X2H6"
     - compartment: "c"
     - formula: ""
   - !!omap
@@ -35804,17 +35794,6 @@
         - "Propanoate metabolism"
         - "Pyruvate metabolism"
   - !!omap
-    - id: "arm_r_0697"
-    - name: "lactoylglutathione lyase (arm)"
-    - metabolites: !!omap
-      - pmet_r_0697: 1
-      - s_0750: -1
-      - s_1151: -1
-    - lower_bound: 0
-    - upper_bound: 1000
-    - gene_reaction_rule: "RHTO_02522 or RHTO_06289"
-    - subsystem: "Pyruvate metabolism"
-  - !!omap
     - id: "arm_r_0734"
     - name: "methylisocitrate lyase (arm)"
     - metabolites: !!omap
@@ -39045,15 +39024,6 @@
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_03810"
   - !!omap
-    - id: "draw_prot_M7WHZ8"
-    - name: "draw_prot_M7WHZ8"
-    - metabolites: !!omap
-      - prot_M7WHZ8: 1
-      - prot_pool: -78.8824
-    - lower_bound: 0
-    - upper_bound: 1000
-    - gene_reaction_rule: "RHTO_03646"
-  - !!omap
     - id: "draw_prot_M7WIF9"
     - name: "draw_prot_M7WIF9"
     - metabolites: !!omap
@@ -41400,7 +41370,7 @@
     - metabolites: !!omap
       - prot_M7WJI1: 1
     - lower_bound: 0
-    - upper_bound: 0.00031805
+    - upper_bound: 0.00029148
     - gene_reaction_rule: "RHTO_02590"
   - !!omap
     - id: "prot_M7WJN6_exchange"
@@ -41760,7 +41730,7 @@
     - metabolites: !!omap
       - prot_M7WNB5: 1
     - lower_bound: 0
-    - upper_bound: 0.003087
+    - upper_bound: 0.0028291
     - gene_reaction_rule: "RHTO_01252"
   - !!omap
     - id: "prot_M7WNF8_exchange"
@@ -41768,8 +41738,16 @@
     - metabolites: !!omap
       - prot_M7WNF8: 1
     - lower_bound: 0
-    - upper_bound: 1.1625e-05
+    - upper_bound: 1.1509e-05
     - gene_reaction_rule: "RHTO_01292"
+  - !!omap
+    - id: "prot_M7WNN7_exchange"
+    - name: "prot_M7WNN7_exchange"
+    - metabolites: !!omap
+      - prot_M7WNN7: 1
+    - lower_bound: 0
+    - upper_bound: 0.00018619
+    - gene_reaction_rule: "RHTO_04461"
   - !!omap
     - id: "prot_M7WNN8_exchange"
     - name: "prot_M7WNN8_exchange"
@@ -41848,7 +41826,7 @@
     - metabolites: !!omap
       - prot_M7WPA9: 1
     - lower_bound: 0
-    - upper_bound: 9.1677e-05
+    - upper_bound: 9.2594e-05
     - gene_reaction_rule: "RHTO_04225"
   - !!omap
     - id: "prot_M7WPB7_exchange"
@@ -41904,7 +41882,7 @@
     - metabolites: !!omap
       - prot_M7WQ73: 1
     - lower_bound: 0
-    - upper_bound: 0.00084512
+    - upper_bound: 0.00083676
     - gene_reaction_rule: "RHTO_08030"
   - !!omap
     - id: "prot_M7WQ86_exchange"
@@ -42072,7 +42050,7 @@
     - metabolites: !!omap
       - prot_M7WS89: 1
     - lower_bound: 0
-    - upper_bound: 0.0014378
+    - upper_bound: 0.0013177
     - gene_reaction_rule: "RHTO_07171"
   - !!omap
     - id: "prot_M7WSB2_exchange"
@@ -42648,7 +42626,7 @@
     - metabolites: !!omap
       - prot_M7WY13: 1
     - lower_bound: 0
-    - upper_bound: 0.000239
+    - upper_bound: 0.00023663
     - gene_reaction_rule: "RHTO_03251"
   - !!omap
     - id: "prot_M7WY92_exchange"
@@ -42720,7 +42698,7 @@
     - metabolites: !!omap
       - prot_M7WZ39: 1
     - lower_bound: 0
-    - upper_bound: 0.00010638
+    - upper_bound: 0.00010745
     - gene_reaction_rule: "RHTO_07075"
   - !!omap
     - id: "prot_M7WZ44_exchange"
@@ -42880,7 +42858,7 @@
     - metabolites: !!omap
       - prot_M7X109: 1
     - lower_bound: 0
-    - upper_bound: 0.00053369
+    - upper_bound: 0.0004891
     - gene_reaction_rule: "RHTO_06005"
   - !!omap
     - id: "prot_M7X121_exchange"
@@ -42986,14 +42964,6 @@
     - lower_bound: 0
     - upper_bound: 0.0016637
     - gene_reaction_rule: "RHTO_04690"
-  - !!omap
-    - id: "prot_M7X2H6_exchange"
-    - name: "prot_M7X2H6_exchange"
-    - metabolites: !!omap
-      - prot_M7X2H6: 1
-    - lower_bound: 0
-    - upper_bound: 0.0024287
-    - gene_reaction_rule: "RHTO_06289"
   - !!omap
     - id: "prot_M7X2J2_exchange"
     - name: "prot_M7X2J2_exchange"
@@ -43168,7 +43138,7 @@
     - metabolites: !!omap
       - prot_M7X4L7: 1
     - lower_bound: 0
-    - upper_bound: 0.0033008
+    - upper_bound: 0.0032681
     - gene_reaction_rule: "RHTO_02988"
   - !!omap
     - id: "prot_M7X4N6_exchange"
@@ -43208,7 +43178,7 @@
     - metabolites: !!omap
       - prot_M7X560: 1
     - lower_bound: 0
-    - upper_bound: 0.0073258
+    - upper_bound: 0.0072532
     - gene_reaction_rule: "RHTO_05714"
   - !!omap
     - id: "prot_M7X586_exchange"
@@ -43240,7 +43210,7 @@
     - metabolites: !!omap
       - prot_M7X5G5: 1
     - lower_bound: 0
-    - upper_bound: 0.00010988
+    - upper_bound: 0.00064989
     - gene_reaction_rule: "RHTO_03058"
   - !!omap
     - id: "prot_M7X5H7_exchange"
@@ -43592,7 +43562,7 @@
     - metabolites: !!omap
       - prot_M7XBZ9: 1
     - lower_bound: 0
-    - upper_bound: 0.0069051
+    - upper_bound: 0.0063282
     - gene_reaction_rule: "RHTO_01745"
   - !!omap
     - id: "prot_M7XCG8_exchange"
@@ -43936,7 +43906,7 @@
     - metabolites: !!omap
       - prot_M7XI04: 1
     - lower_bound: 0
-    - upper_bound: 0.0011808
+    - upper_bound: 0.0010821
     - gene_reaction_rule: "RHTO_04045"
   - !!omap
     - id: "prot_M7XI20_exchange"
@@ -43960,7 +43930,7 @@
     - metabolites: !!omap
       - prot_M7XI95: 1
     - lower_bound: 0
-    - upper_bound: 0.0022338
+    - upper_bound: 0.0022782
     - gene_reaction_rule: "RHTO_03911"
   - !!omap
     - id: "prot_M7XIA6_exchange"
@@ -44744,7 +44714,7 @@
     - metabolites: !!omap
       - prot_pool: 1
     - lower_bound: 0
-    - upper_bound: 22.7222
+    - upper_bound: 22.7215
     - gene_reaction_rule: ""
   - !!omap
     - id: "r_0001No1"
@@ -56930,23 +56900,13 @@
     - id: "r_0697No1"
     - name: "lactoylglutathione lyase (No1)"
     - metabolites: !!omap
-      - pmet_r_0697: -1
       - prot_M7XA12: -0.00015263
       - s_0033: 1
+      - s_0750: -1
+      - s_1151: -1
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_02522"
-    - subsystem: "Pyruvate metabolism"
-  - !!omap
-    - id: "r_0697No2"
-    - name: "lactoylglutathione lyase (No2)"
-    - metabolites: !!omap
-      - pmet_r_0697: -1
-      - prot_M7X2H6: -0.00015263
-      - s_0033: 1
-    - lower_bound: 0
-    - upper_bound: 1000
-    - gene_reaction_rule: "RHTO_06289"
     - subsystem: "Pyruvate metabolism"
   - !!omap
     - id: "r_0698No1"
@@ -90079,16 +90039,16 @@
     - id: "r_4063"
     - name: "lipid backbone pseudoreaction"
     - metabolites: !!omap
-      - m_0100: -0.0023859
-      - s_0089: -0.0034335
-      - s_0666: -0.025882
-      - s_0694: -0.067821
-      - s_1346: -0.0053631
-      - s_1351: -0.0041429
-      - s_1524: -0.046816
-      - s_3710: -0.013592
-      - s_3733: -0.01594
-      - s_3738: -0.00062428
+      - m_0100: -0.0021865
+      - s_0089: -0.0031467
+      - s_0666: -0.02372
+      - s_0694: -0.077693
+      - s_1346: -0.004915
+      - s_1351: -0.0037968
+      - s_1524: -0.042905
+      - s_3710: -0.012457
+      - s_3733: -0.014608
+      - s_3738: -0.00057213
       - s_3746: 1
     - lower_bound: 0
     - upper_bound: 1000
@@ -90108,11 +90068,11 @@
     - id: "r_4065"
     - name: "lipid chain pseudoreaction"
     - metabolites: !!omap
-      - m_0102: -0.033114
-      - m_0103: -0.0092247
-      - s_3740: -0.022332
-      - s_3742: -0.021708
-      - s_3743: -0.061724
+      - m_0102: -0.03381
+      - m_0103: -0.0094184
+      - s_3740: -0.022801
+      - s_3742: -0.022164
+      - s_3743: -0.06302
       - s_3747: 1
     - lower_bound: 0
     - upper_bound: 1000
@@ -98470,56 +98430,6 @@
     - gene_reaction_rule: "RHTO_04463"
     - subsystem: "Pentose phosphate pathway"
   - !!omap
-    - id: "t_0082"
-    - name: "phosphate transacetylase"
-    - metabolites: !!omap
-      - m_0184: 1
-      - s_0373: -1
-      - s_0529: 1
-      - s_1322: -1
-    - lower_bound: 0
-    - upper_bound: 1000
-    - gene_reaction_rule: ""
-    - subsystem: "Pyruvate metabolism"
-    - annotation: !!omap
-      - ec-code: "2.3.1.8"
-      - bigg.reaction:
-        - "PTAr"
-        - "PTArh"
-        - "PTArm"
-      - kegg.reaction: "R00230"
-      - metacyc.reaction: "PHOSACETYLTRANS-RXN"
-      - metanetx.reaction: "MNXR103319"
-      - rhea: "19521"
-      - sabiork.reaction: "72"
-      - sbo: "SBO:0000176"
-      - seed.reaction: "rxn00173"
-  - !!omap
-    - id: "t_0082_REV"
-    - name: "phosphate transacetylase (reversible)"
-    - metabolites: !!omap
-      - m_0184: -1
-      - s_0373: 1
-      - s_0529: -1
-      - s_1322: 1
-    - lower_bound: 0
-    - upper_bound: 1000
-    - gene_reaction_rule: ""
-    - subsystem: "Pyruvate metabolism"
-    - annotation: !!omap
-      - ec-code: "2.3.1.8"
-      - bigg.reaction:
-        - "PTAr"
-        - "PTArh"
-        - "PTArm"
-      - kegg.reaction: "R00230"
-      - metacyc.reaction: "PHOSACETYLTRANS-RXN"
-      - metanetx.reaction: "MNXR103319"
-      - rhea: "19521"
-      - sabiork.reaction: "72"
-      - sbo: "SBO:0000176"
-      - seed.reaction: "rxn00173"
-  - !!omap
     - id: "t_0083No1"
     - name: "1-acyl-sn-glycerol-3-phosphate acyltransferase (1-16:0, 2-18:1), endoplasmic reticulum membrane (No1)"
     - metabolites: !!omap
@@ -100948,26 +100858,26 @@
     - id: "t_0240No1"
     - name: "glycerol-3-phosphate acyltransferase (16:0), endoplasmic reticulum membrane (No1)"
     - metabolites: !!omap
-      - prot_M7WHZ8: -3.0259
+      - prot_M7X5G5: -0.055279
       - s_2785: 1
       - s_2789: -1
       - s_2934: -1
       - s_2935: 1
     - lower_bound: 0
     - upper_bound: 1000
-    - gene_reaction_rule: "RHTO_03646"
+    - gene_reaction_rule: "RHTO_03058"
   - !!omap
     - id: "t_0241No1"
     - name: "glycerol-3-phosphate acyltransferase (18:0), endoplasmic reticulum membrane (No1)"
     - metabolites: !!omap
-      - prot_M7WHZ8: -3.0259
+      - prot_M7X5G5: -0.055279
       - s_2785: 1
       - s_2791: -1
       - s_2934: -1
       - s_2937: 1
     - lower_bound: 0
     - upper_bound: 1000
-    - gene_reaction_rule: "RHTO_03646"
+    - gene_reaction_rule: "RHTO_03058"
   - !!omap
     - id: "t_0243"
     - name: "IPC synthase (PI (1-16:0, 2-18:2) ceramide-1 (C24))"
@@ -110646,6 +110556,30 @@
     - upper_bound: 1000
     - gene_reaction_rule: "RHTO_00950"
   - !!omap
+    - id: "t_0886No1"
+    - name: "Acetate kinase (No1)"
+    - metabolites: !!omap
+      - m_0184: 1
+      - prot_M7WNN7: -0.00018519
+      - s_0362: -1
+      - s_0394: 1
+      - s_0434: -1
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_04461"
+  - !!omap
+    - id: "t_0886_REVNo1"
+    - name: "Acetate kinase (reversible) (No1)"
+    - metabolites: !!omap
+      - m_0184: -1
+      - prot_M7WNN7: -7.9026e-05
+      - s_0362: 1
+      - s_0394: -1
+      - s_0434: 1
+    - lower_bound: 0
+    - upper_bound: 1000
+    - gene_reaction_rule: "RHTO_04461"
+  - !!omap
     - id: "y200001No1"
     - name: "glycinamide ribonucleotide transformylase (No1)"
     - metabolites: !!omap
@@ -113984,9 +113918,6 @@
     - id: "RHTO_03621"
     - name: "RHTO_03621"
   - !!omap
-    - id: "RHTO_03646"
-    - name: "RHTO_03646"
-  - !!omap
     - id: "RHTO_03653"
     - name: "RHTO_03653"
   - !!omap
@@ -114244,6 +114175,9 @@
   - !!omap
     - id: "RHTO_04459"
     - name: "RHTO_04459"
+  - !!omap
+    - id: "RHTO_04461"
+    - name: "RHTO_04461"
   - !!omap
     - id: "RHTO_04463"
     - name: "RHTO_04463"
@@ -114811,9 +114745,6 @@
   - !!omap
     - id: "RHTO_06288"
     - name: "RHTO_06288"
-  - !!omap
-    - id: "RHTO_06289"
-    - name: "RHTO_06289"
   - !!omap
     - id: "RHTO_06298"
     - name: "RHTO_06298"

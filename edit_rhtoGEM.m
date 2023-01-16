@@ -17,6 +17,9 @@ model    = importModel(fullfile(root,'models','rhto.xml'));
 model = changeRxnBounds(model, {'r_1714'},0,'l');      %D-glucose exchange
 model = changeRxnBounds(model, {'r_1718'},-1.86,'l');  %D-xylose exchange
 
+%% Remove reactions
+model=removeReactions(model,'t_0082');
+
 %% Introduce reactions
 
 % Define reaction equations
@@ -31,8 +34,10 @@ t_0885 = 'ATP[c] + D-ribulose[c] => ADP[c] + D-ribulose 5-phosphate[c] + H+[c]';
 % analogue to ATP:D-xylulose 5-phosphotransferase from Kluyveromyces
 % marxianus GEM (https://github.com/SysBioChalmers/Kluyveromyces_marxianus-GEM) and Pichia stipitis GEM
 % (http://biomet-toolbox.chalmers.se/index.php?page=models-Stipitis)
+t_0886 = 'ATP[c] + acetate[c] <=> ADP[c] + acetyl-phosphate[c]';% Acetate kinase
+% ACKr (13383) from Rt_IFO0880 and iRhtoC
 
-rxnsToAdd.equations = {t_0883; r_4339; r_4340; t_0884; t_0885}; 
+rxnsToAdd.equations = {t_0883; r_4339; r_4340; t_0884; t_0885; t_0886}; 
 
 % Define reaction names
 t_0883 = 'D-arabinitol 4-dehydrogenase';
@@ -40,18 +45,20 @@ r_4339 = 'D-arabinitol transport';
 r_4340 = 'D-arabinitol exchange';
 t_0884 = 'D-arabinitol 2-dehydrogenase/D-ribulose reductase';
 t_0885 = 'D-ribulokinase';
-rxnsToAdd.rxnNames = {t_0883; r_4339; r_4340; t_0884; t_0885};
+t_0886 = 'Acetate kinase';
+rxnsToAdd.rxnNames = {t_0883; r_4339; r_4340; t_0884; t_0885; t_0886};
 t_0883 = 't_0883';
 r_4339 = 'r_4339';
 r_4340 = 'r_4340';
 t_0884 = 't_0884';
 t_0885 = 't_0885';
-rxnsToAdd.rxns = {t_0883; r_4339; r_4340; t_0884; t_0885};
+t_0886 = 't_0886';
+rxnsToAdd.rxns = {t_0883; r_4339; r_4340; t_0884; t_0885; t_0886};
 
 % Define objective and bounds
-rxnsToAdd.c  = [0 0 0 0 0];
-rxnsToAdd.lb = [-1000 -1000 0 -1000 0];
-rxnsToAdd.ub = [1000 1000 1000 1000 1000];
+rxnsToAdd.c  = [0 0 0 0 0 0];
+rxnsToAdd.lb = [-1000 -1000 0 -1000 0 -1000];
+rxnsToAdd.ub = [1000 1000 1000 1000 1000 1000];
 
 % Define EC numbers
 t_0883 = '1.1.1.11;1.1.1.138';
@@ -59,7 +66,8 @@ r_4339 = '';
 r_4340 = '';
 t_0884 = '1.1.1.10;1.1.1.138';
 t_0885 = '2.7.1.16;2.7.1.47';
-rxnsToAdd.eccodes = {t_0883; r_4339; r_4340; t_0884; t_0885};
+t_0886 = '2.7.2.1';
+rxnsToAdd.eccodes = {t_0883; r_4339; r_4340; t_0884; t_0885; t_0886};
 
 % Add metabolites
 metsToAdd.mets          = {'s_D-arabinitol_c' 's_D-arabinitol_e' 's_D-ribulose'};
@@ -67,9 +75,9 @@ metsToAdd.metNames      = {'D-arabinitol' 'D-arabinitol' 'D-ribulose'};
 metsToAdd.compartments  = {'c' 'e' 'c'};
 
 % Add genes
-genesToAdd.genes          = {'RHTO_07844' 'RHTO_00950'};
-genesToAdd.geneShortNames = {'RHTO_07844' 'RHTO_00950'};
-rxnsToAdd.grRules         = {'RHTO_07844' '' '' 'RHTO_00373' 'RHTO_00950'};
+genesToAdd.genes          = {'RHTO_07844' 'RHTO_00950' 'RHTO_04461'};
+genesToAdd.geneShortNames = {'RHTO_07844' 'RHTO_00950' 'RHTO_04461'};
+rxnsToAdd.grRules         = {'RHTO_07844' '' '' 'RHTO_00373' 'RHTO_00950' 'RHTO_04461'};
 
 %% Introduce changes to the model
 
@@ -99,5 +107,5 @@ exportModel(model,'models/rhto_edit.xml')
 save('models/rhto_edit.mat','model')
 
 clear geneAssoc genesToAdd grRules metsToAdd
-clear r_4339 r_4340 rxnGeneMat rxnID rxnsToAdd t_0883 t_0884 t_0885
+clear r_4339 r_4340 rxnGeneMat rxnID rxnsToAdd t_0883 t_0884 t_0885 t_0886
 

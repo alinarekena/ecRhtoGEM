@@ -1,4 +1,4 @@
-MATLAB	9.5.0.1298439 (R2018b) Update 7
-libSBML	5.17.0
+MATLAB	9.11.0.1809720 (R2021b) Update 1
+libSBML	5.19.0
 RAVEN_toolbox	2.4.3
 COBRA_toolbox	commit b702946
